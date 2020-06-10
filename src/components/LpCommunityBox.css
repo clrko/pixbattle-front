@@ -1,0 +1,28 @@
+.communityBoxLP {
+    background-color: #235789;
+    margin: 0 10%;
+    border-radius: 10%;
+    /* margin-top: 50%; */
+}
+
+.communityBoxLP-text {
+    margin: 0 10%;
+    text-align: center;
+}
+
+.community-button {
+    color: #3181C8;
+    background-color: #FAC748;
+    border-radius: 10%;
+    width: 40%;
+    padding: 3%;
+}
+
+.community-h1 {
+    color: #FAC748;
+    padding: 5%;
+}
+
+.community-p {
+    color: #FDFFFC;
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 import logoLP from '../Logo/logo-web-transparent.png'
 import './LandingPage.css'
-import LpCommunityBox from './Lp_CommunityBox'
+import LpCommunityBox from './LpCommunityBox'
 
 function LandingPage () {
   return (
