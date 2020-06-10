@@ -5,8 +5,9 @@ import './LandingPage.css'
 function LandingPage () {
   return (
     <div className='landingPage'>
-        LandingPage
-      <img src={logoLP} className='logo-landingPage' />
+      <div className='logo-div'>
+        <img src={logoLP} className='logoLP' />
+      </div>
     </div>
   )
 }

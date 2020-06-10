@@ -3,3 +3,13 @@
     width: 100vw;
     height: 100vh;
 }
+
+.logo-div {
+    display: flex;
+    justify-content: center;
+
+}
+
+.logoLP {
+    width: 80%;
+}
