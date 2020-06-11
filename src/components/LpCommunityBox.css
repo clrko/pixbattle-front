@@ -11,11 +11,22 @@
 }
 
 .community-button {
-    color: #3181C8;
+    /* color: #3181C8;
     background-color: #FAC748;
-    border-radius: 10%;
+    border-radius: 30%;
     width: 40%;
-    padding: 3%;
+    padding:16px 31px; */
+    background-color:#FAC748;
+	border-radius:28px;
+	border:1px solid rgb(247, 193, 57);
+	display:inline-block;
+	cursor:pointer;
+	color:#3181C8;
+	font-family:Arial;
+	font-size:20px;
+	padding:12px 31px;
+    text-decoration:none;
+    margin-bottom: 1em;
 }
 
 .community-h1 {
