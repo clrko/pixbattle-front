@@ -6,10 +6,11 @@ function LandingPagePitchBoxMobile () {
     <div className='pitchBoxLandingPageMobile'>
       <div className='pitchBoxLandingPage-text-mobile'>
         <h2 className='pitch-h2-mobile'>
-            Community
+            A toi de Jouer!
         </h2>
         <p className='pitch-p-mobile'>
-        Lorem ipsum dolor sit,in reprehenderit cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.
+        Invite tout tes amis dans des groupes!
+        Crée des battles et poste la photo la plus créative pour voir qui sera le vainqueur!
         </p>
         <button className='pitch-button-mobile'>
             Jouer

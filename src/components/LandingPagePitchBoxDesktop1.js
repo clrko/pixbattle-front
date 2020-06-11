@@ -11,7 +11,7 @@ function LandingPagePitchBoxDesktop1 () {
             Groupe
             </h2>
             <p className='pitch-p-Desktop1'>
-            Créé des groupes, invitent tout tes amis pour pouvoir vous affronter dans des battles plus créatives les unes que les autres.
+            Créé des groupes, invitent tout tes amis, partager des défis pour voir qui sera le meilleur.
             </p>
           </div>
         </div>
@@ -21,7 +21,7 @@ function LandingPagePitchBoxDesktop1 () {
             Battle
             </h2>
             <p className='pitch-p-Desktop1'>
-            Invite les membres de ton groupe pour voir qui sera le meilleur!
+            Invite les membres de ton groupe et affronter vous dans des battles plus créatives les unes que les autres!
             </p>
           </div>
         </div>
@@ -31,7 +31,7 @@ function LandingPagePitchBoxDesktop1 () {
             Photo
             </h2>
             <p className='pitch-p-Desktop1'>
-            Poste la plus belle et la plus créative des photos en fonction du théme pour remporter la victoire!
+            Poste ta plus belle photo en fonction du thème pour remporter la victoire!
             </p>
           </div>
         </div>
