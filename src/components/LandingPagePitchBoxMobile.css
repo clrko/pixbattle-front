@@ -1,4 +1,4 @@
-.communityBoxLP {
+.pitchBoxLandingPageMobile {
     background-color: #235789;
     margin: 0 10%;
     border-radius: 10%;
@@ -6,12 +6,12 @@
     margin-top: 25%;
 }
 
-.communityBoxLP-text {
+.pitchBoxLandingPage-text-mobile {
     margin: 0 10%;
     text-align: center;
 }
 
-.community-button {
+.pitch-button-mobile {
     /* color: #3181C8;
     background-color: #FAC748;
     border-radius: 30%;
@@ -30,11 +30,17 @@
     margin-bottom: 1em;
 }
 
-.community-h1 {
+.pitch-h1-mobile {
     color: #FAC748;
     padding: 5%;
 }
 
-.community-p {
+.pitch-p-mobile {
     color: #FDFFFC;
+}
+
+@media screen and (min-width: 640px) {
+    .pitchBoxLandingPageMobile {
+        display: none;
+    }
 }

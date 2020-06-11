@@ -1,7 +1,7 @@
 import React from 'react'
+import LandingPagePitchBoxMobile from './LandingPagePitchBoxMobile'
 import logoLP from '../Logo/logo-web-transparent.png'
 import './LandingPage.css'
-import LandingPagePitchBox from './LandingPagePitchBox'
 
 function LandingPage () {
   return (
@@ -10,7 +10,7 @@ function LandingPage () {
         <img src={logoLP} className='logoLP' />
       </div>
       <div>
-        <LandingPagePitchBox />
+        <LandingPagePitchBoxMobile className='LandingPagePitchBoxMobile' />
       </div>
     </div>
   )
