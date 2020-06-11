@@ -18,8 +18,15 @@
 @media screen and (min-width: 640px){
     .logoLP {
         width: 60%;
-        margin-top: 3rem;
-        margin-bottom: 5rem;
+        margin-top: 1rem;
+        /* margin-bottom: 5rem; */
     }
 }
 
+@media screen and (min-width: 1024px){
+    .logoLP {
+        width: 50%;
+        margin-top: 1rem;
+        /* margin-bottom: 5rem; */
+    }
+}
