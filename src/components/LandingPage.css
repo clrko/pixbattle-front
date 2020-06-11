@@ -11,7 +11,15 @@
 }
 
 .logoLP {
-    width: 80%;
+    width: 90%;
+    margin-top: 3rem;
 }
 
+@media screen and (min-width: 640px){
+    .logoLP {
+        width: 60%;
+        margin-top: 3rem;
+        margin-bottom: 5rem;
+    }
+}
 
