@@ -1,7 +1,7 @@
 import React from 'react'
-import './LpCommunityBox.css'
+import './LandingPagePitchBox.css'
 
-function LpCommunityBox () {
+function LandingPagePitchBox () {
   return (
     <div className='communityBoxLP'>
       <div className='communityBoxLP-text'>
@@ -19,4 +19,4 @@ function LpCommunityBox () {
   )
 }
 
-export default LpCommunityBox
+export default LandingPagePitchBox
