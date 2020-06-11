@@ -9,6 +9,7 @@
 .pitchBoxLandingPage-text-mobile {
     margin: 0 10%;
     text-align: center;
+    font-size: 25px;
 }
 
 .pitch-button-mobile {
@@ -30,7 +31,7 @@
     margin-bottom: 1em;
 }
 
-.pitch-h1-mobile {
+.pitch-h2-mobile {
     color: #FAC748;
     padding: 5%;
 }
