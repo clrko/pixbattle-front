@@ -14,10 +14,17 @@
     margin-top: 3rem;
 }
 
+
 @media screen and (min-width: 640px){
     .logoLP {
         width: 60%;
         margin-top: 1rem;
+    }
+
+    .box-landing {
+        display: flex;
+        max-width: 100%;
+        justify-content: space-around;
     }
 }
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import './LandingPagePitchBoxMobile.css'
 
-function LandingPagePitchBoxMobile () {
+const LandingPagePitchBoxMobile = () => {
   return (
     <div className='pitchBoxLandingPageMobile'>
       <div className='pitchBoxLandingPage-text-mobile'>
