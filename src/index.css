@@ -3,6 +3,11 @@
   src: local('FuturaBT'), url(./Fonts/FuturaBT-ExtraBlack.ttf) format('truetype');
 }
 
+@font-face {
+  font-family: 'FuturaPTMedium';
+  src: local('FuturaPTMedium'), url(./Fonts/FuturaPTMedium.otf) format('truetype');
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -21,4 +26,8 @@ code {
 
 h2 {
   font-family: FuturaBT;
+}
+
+p {
+  font-family: FuturaPTMedium;
 }

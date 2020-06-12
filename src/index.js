@@ -5,6 +5,7 @@ import './index.css'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 import './Fonts/FuturaBT-ExtraBlack.ttf'
+import './Fonts/FuturaPTMedium.otf'
 
 ReactDOM.render(
   <React.StrictMode>
