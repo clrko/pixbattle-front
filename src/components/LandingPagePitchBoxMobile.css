@@ -2,7 +2,6 @@
     background-color: #235789;
     margin: 0 10%;
     border-radius: 10%;
-    /* margin-top: 50%; */
     margin-top: 15%;
 }
 
@@ -13,11 +12,6 @@
 }
 
 .pitch-button-mobile {
-    /* color: #3181C8;
-    background-color: #FAC748;
-    border-radius: 30%;
-    width: 40%;
-    padding:16px 31px; */
     background-color:#FAC748;
 	border-radius:28px;
 	border:1px solid rgb(247, 193, 57);
@@ -29,6 +23,7 @@
 	padding:12px 31px;
     text-decoration:none;
     margin-bottom: 1em;
+    outline: none;
 }
 
 .pitch-h2-mobile {

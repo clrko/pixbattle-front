@@ -8,8 +8,6 @@
     margin: 0 20px;
     border-radius: 10%;
     width: 60rem;
-    /* margin-top: 50%; */
-    /* margin-top: 25%; */
 }
 
 .pitchBoxLandingPage-text-Desktop1 {
@@ -19,26 +17,18 @@
 }
 
 .pitch-button-Desktop1 {
-    /* color: #3181C8;
-    background-color: #FAC748;
-    border-radius: 30%;
-    width: 40%;
-    padding:16px 31px; */
     background-color:#FAC748;
 	border-radius:28px;
 	border:1px solid rgb(247, 193, 57);
-	display:inline-block;
 	cursor:pointer;
 	color:#3181C8;
 	font-family:Arial;
 	font-size:20px;
 	padding:12px 31px;
     text-decoration:none;
-    margin-top: 2em;
-    margin-bottom: 1em;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 2em auto 1em auto;
     display: flex;
+    outline: none;
 }
 
 .pitch-h2-Desktop1 {

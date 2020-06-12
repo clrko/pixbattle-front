@@ -21,7 +21,7 @@ function LandingPagePitchBoxDesktop1 () {
             Battle
             </h2>
             <p className='pitch-p-Desktop1'>
-            Invite les membres de ton groupe et affronter vous dans des battles plus créatives les unes que les autres!
+            Invite les membres de ton groupe et affrontez vous dans des battles plus créatives les unes que les autres!
             </p>
           </div>
         </div>

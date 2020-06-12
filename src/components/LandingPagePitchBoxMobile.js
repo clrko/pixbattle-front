@@ -9,7 +9,7 @@ function LandingPagePitchBoxMobile () {
             A toi de Jouer!
         </h2>
         <p className='pitch-p-mobile'>
-        Invite tout tes amis dans des groupes!
+        Invite tous tes amis dans des groupes!
         Crée des battles et poste la photo la plus créative pour voir qui sera le vainqueur!
         </p>
         <button className='pitch-button-mobile'>
