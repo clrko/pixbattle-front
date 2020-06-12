@@ -1,6 +1,6 @@
 import React from 'react'
-import LandingPagePitchBoxMobile from './LandingPagePitchBoxMobile'
 import LandingPagePitchBoxDesktop1 from './LandingPagePitchBoxDesktop1'
+import LandingPagePitchBoxMobile from './LandingPagePitchBoxMobile'
 import logoLP from '../Logo/logo-web-transparent.png'
 import './LandingPage.css'
 
