@@ -11,7 +11,7 @@ function LandingPagePitchBoxDesktop1 () {
             Groupe
             </h2>
             <p className='pitch-p-Desktop1'>
-            Créé des groupes, invitent tout tes amis, partager des défis pour voir qui sera le meilleur.
+            Crée des groupes, invite tous tes amis, et relevez des défis pour voir qui sera le meilleur.
             </p>
           </div>
         </div>
