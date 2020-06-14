@@ -1,9 +1,9 @@
 import React from 'react'
-import BattleTheme from './components/pages/BattleTheme'
+import BattleCreationPage from './components/pages/BattleCreationPage'
 
 const App = () => {
   return (
-    <BattleTheme />
+    <BattleCreationPage />
   )
 }
 
