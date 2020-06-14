@@ -1,8 +1,9 @@
 import React from 'react'
+import BattleTheme from './components/pages/BattleTheme'
 
-function App () {
+const App = () => {
   return (
-    <div>Hello</div>
+    <BattleTheme />
   )
 }
 
