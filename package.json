@@ -9,6 +9,7 @@
     "eslint-plugin-import": "^2.21.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1"
   },
   "scripts": {
@@ -24,10 +25,10 @@
   },
   "lint-staged": {
     "*.js": [
-      "npx standard"
+      "npx standard --parser babel-eslint"
     ],
     "*.jsx": [
-      "npx standard"
+      "npx standard --parser babel-eslint"
     ]
   },
   "eslintConfig": {
@@ -46,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.7",
     "standard": "^14.3.4"
