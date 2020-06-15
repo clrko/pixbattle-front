@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import LandingPagePitchBoxDesktop1 from './LandingPagePitchBoxDesktop1'
 import LandingPagePitchBoxMobile from './LandingPagePitchBoxMobile'
-import logoLP from '../Logo/logo-web-transparent.png'
+import logoLP from '../Logo/logo.svg'
 import './LandingPage.css'
 
 class LandingPage extends Component {
