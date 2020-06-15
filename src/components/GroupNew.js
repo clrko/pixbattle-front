@@ -170,4 +170,4 @@ class GroupNew extends Component {
   }
 }
 
-export default GroupNew
+export default GroupNew;
