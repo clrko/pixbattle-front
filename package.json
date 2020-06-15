@@ -24,11 +24,13 @@
     }
   },
   "lint-staged": {
-    "*.js": [
-      "npx standard --parser babel-eslint"
-    ],
-    "*.jsx": [
-      "npx standard --parser babel-eslint"
+    "src/**/*.js*": [
+      "npx standard --parser babel-eslint --fix --env browser"
+    ]
+  },
+  "standard": {
+    "ignore": [
+      "src/serviceWorker.js"
     ]
   },
   "eslintConfig": {
