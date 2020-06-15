@@ -25,10 +25,10 @@
   },
   "lint-staged": {
     ".js": [
-      "npx standard --parser babel-eslint"
+      "npx standard --parser babel-eslint --fix --env browser"
     ],
     ".jsx": [
-      "npx standard --parser babel-eslint"
+      "npx standard --parser babel-eslint --fix --env browser"
     ]
   },
   "standard": {
