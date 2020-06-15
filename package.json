@@ -22,11 +22,11 @@
     }
   },
   "lint-staged": {
-    "*.js": [
-      "npx standard"
+    ".js": [
+      "npx standard --parser babel-eslint"
     ],
-    "*.jsx": [
-      "npx standard"
+    ".jsx": [
+      "npx standard --parser babel-eslint"
     ]
   },
   "eslintConfig": {
@@ -45,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.7",
     "standard": "^14.3.4"

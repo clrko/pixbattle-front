@@ -1,0 +1,144 @@
+.form-container {
+  padding: 0 1rem;
+}
+
+.group-container {
+  margin-top: 1rem;
+}
+
+.new-group-text {
+  color: white;
+  font-size: 1.3rem;
+  margin: 0 0 0.8rem 0;
+}
+
+.new-group-input {
+  width: 75%;
+  height: 5vh;
+  border-radius: 50px;
+  border: none;
+  outline: transparent;
+  padding: 0 1em;
+  font-size: 1em;
+  color: #235789;
+}
+
+.new-group-input:focus {
+  background-color: #FAC748;
+}
+
+.add-user {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  outline: transparent;
+}
+
+.fa-plus-circle {
+  font-size: 2rem;
+  margin-left: 0.5rem;
+}
+
+.email-abled {
+  color: #73DB5A;
+  transition: all 0.2s ease-in-out;
+}
+
+.email-abled:hover {
+  transform: scale(1.1);
+}
+
+.email-abled:active {
+  transform: scale(0.9);
+}
+
+.email-disabled {
+  color: lightgray;
+}
+
+.group-input {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.info {
+  color: white;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  line-height: 1rem;
+}
+
+.red {
+  color: red;
+}
+
+.green{
+  color: #73DB5A;
+}
+
+.group-emails {
+  line-height: 0rem;
+}
+
+.emails-container {
+  height: 19vh;
+  width: 90%;
+  overflow: scroll;
+  padding: 0;
+}
+
+.emails-container::-webkit-scrollbar {
+  width: 5px;
+}
+
+.emails-container::-webkit-scrollbar-thumb {
+  background-color: #FAC748;
+  border-radius: 10px;
+}
+
+.emails-list {
+  list-style: none;
+  color: #FAC748;
+  line-height: 1.5rem;
+}
+
+.bottom-new-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.members {
+  width: 45%;
+  color: white;
+  font-size: 0.8rem;
+}
+
+.create-group {
+  border-radius: 50px;
+  border: none;
+  color: white;
+  height: 5vh;
+  padding: 0 1rem;
+  font-size: 1rem;
+  outline: transparent;
+}
+
+.create-abled {
+  background-color: #73DB5A;
+  transition: all 0.2s ease-in-out;
+}
+
+.create-abled:hover {
+  transform: scale(1.1);
+}
+
+.create-abled:active {
+  transform: scale(0.9);
+}
+
+.create-disabled {
+  background-color: lightgray;
+}
