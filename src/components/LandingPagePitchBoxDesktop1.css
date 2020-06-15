@@ -9,6 +9,7 @@
     border-radius: 25px;
     width: 30vw;
     height: 50vh;
+    overflow: auto;
 }
 
 .pitchBoxLandingPage-text-Desktop1 {
@@ -49,4 +50,15 @@
     .pitch-button-Desktop1 {
         display: none;
     }
+}
+
+@media screen and (min-width: 420px) and  (max-width: 1297px) {
+    .pitchBoxLandingPageDesktop1::-webkit-scrollbar {
+        width: 5px;
+    }
+    
+    .pitchBoxLandingPageDesktop1::-webkit-scrollbar-thumb {
+        background-color: #FAC748;
+    }
+
 }
