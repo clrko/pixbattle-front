@@ -17,7 +17,7 @@ const ModalComponent = () => {
               className='modal-button'
               onClick={() => setModalIsOpen(false)}
             >
-              <i className="fas fa-times"></i>
+              <i className='fas fa-times' />
             </button>
           </div>
         </div>

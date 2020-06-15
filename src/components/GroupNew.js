@@ -11,7 +11,7 @@ class GroupNew extends Component {
     allEmails: []
   }
 
-  componentDidMount() {
+  componentDidMount () {
     console.log(this.state.allEmails.length)
   }
 
@@ -33,7 +33,7 @@ class GroupNew extends Component {
     //       console.log(success)
     //     })
     // }
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.state.email)) {
+    if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(this.state.email)) {
       if (this.state.allEmails.includes(this.state.email) === false) {
         const allEmailsTemp = this.state.allEmails
         const newEmail = this.state.email
@@ -69,7 +69,7 @@ class GroupNew extends Component {
     console.log(this.state.groupName)
   }
 
-  render() {
+  render () {
     return (
       <div className='NewGroup'>
         <form onSubmit={this.submitForm} className='form-container'>
@@ -86,13 +86,11 @@ class GroupNew extends Component {
               minLength='5'
               maxLength='25'
             />
-            <p className=
-              {
-                this.state.groupName.length < 5
-                  ?
-                  'info red'
-                  : 'info green'
-              }
+            <p className={
+              this.state.groupName.length < 5
+                ? 'info red'
+                : 'info green'
+            }
             >
               Entre 5 et 25 caractères
             </p>
@@ -115,14 +113,12 @@ class GroupNew extends Component {
                   onClick={this.addEmail}
                   disabled={this.state.count >= 12}
                 >
-                  <i className=
-                    {
-                      this.state.count < 12 ?
-                        'fas fa-plus-circle email-abled'
-                        : 'fas fa-plus-circle email-disabled'
-                    }
-                  >
-                  </i>
+                  <i className={
+                    this.state.count < 12
+                      ? 'fas fa-plus-circle email-abled'
+                      : 'fas fa-plus-circle email-disabled'
+                  }
+                  />
                 </button>
               </div>
               <p className={
@@ -133,7 +129,7 @@ class GroupNew extends Component {
               </p>
             </div>
             <ul className='emails-container'>
-              <li className='emails-list' >current_username</li>
+              <li className='emails-list'>current_username</li>
               {
                 this.state.allEmails.map((e, i) => (
                   <li
@@ -151,17 +147,16 @@ class GroupNew extends Component {
               </p>
               <button
                 type='submit'
-                className=
-                {
-                  this.state.count > 3 ?
-                    'create-group create-abled'
+                className={
+                  this.state.count > 3
+                    ? 'create-group create-abled'
                     : 'create-group create-disabled'
                 }
                 onClick={this.createGroup}
                 disabled={this.state.count < 4}
               >
                 Créé ta battle !
-            </button>
+              </button>
             </div>
           </div>
         </form>
@@ -170,4 +165,4 @@ class GroupNew extends Component {
   }
 }
 
-export default GroupNew;
+export default GroupNew
