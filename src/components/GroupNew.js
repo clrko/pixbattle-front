@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 
 import './GroupNew.css'
 
@@ -11,28 +10,12 @@ class GroupNew extends Component {
     allEmails: []
   }
 
-  componentDidMount () {
-    console.log(this.state.allEmails.length)
-  }
-
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  addEmail = (e) => {
+  handleAddEmail = (e) => {
     e.preventDefault()
-    // if (localStorage.getItem("token")) {
-    //   axios
-    //     .post('http://localhost:8080/group', {
-    //       headers: {
-    //         'x-access-token': localStorage.getItem("token")
-    //       },
-    //       email: this.state.email
-    //     })
-    //     .then(() => {
-    //       console.log(success)
-    //     })
-    // }
     if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(this.state.email)) {
       if (this.state.allEmails.includes(this.state.email) === false) {
         const allEmailsTemp = this.state.allEmails
@@ -52,27 +35,22 @@ class GroupNew extends Component {
     }
   }
 
-  createGroup = (e) => {
+  handleCreateGroup = (e) => {
     e.preventDefault()
-    // if (localStorage.getItem("token")) {
-    //   axios
-    //     .put('http://localhost:8080/group', {
-    //       headers: {
-    //         'x-access-token': localStorage.getItem("token")
-    //       },
-    //       groupName: this.state.groupName
-    //     })
-    //     .then(() => {
-    //       console.log(success)
-    //     })
-    // }
     console.log(this.state.groupName)
+  }
+
+  handleSubmitForm = e => {
+    console.log(
+      'nom du groupe : ', this.state.groupName,
+      'liste des participants : ', this.state.allEmails
+    )
   }
 
   render () {
     return (
       <div className='NewGroup'>
-        <form onSubmit={this.submitForm} className='form-container'>
+        <form onSubmit={this.handleSubmitForm} className='form-container'>
           <div className='group-container'>
             <p className='new-group-text'>Quel est le nom de ton groupe ?</p>
             <input
@@ -88,7 +66,7 @@ class GroupNew extends Component {
             />
             <p className={
               this.state.groupName.length < 5
-                ? 'info red'
+                ? 'info'
                 : 'info green'
             }
             >
@@ -110,7 +88,7 @@ class GroupNew extends Component {
                 <button
                   type='submit'
                   className='add-user'
-                  onClick={this.addEmail}
+                  onClick={this.handleAddEmail}
                   disabled={this.state.count >= 12}
                 >
                   <i className={
@@ -122,7 +100,7 @@ class GroupNew extends Component {
                 </button>
               </div>
               <p className={
-                this.state.allEmails.length < 3 ? 'info red' : 'info green'
+                this.state.allEmails.length < 3 ? 'info' : 'info green'
               }
               >
                 Entre 4 à 12 personnes
@@ -152,7 +130,7 @@ class GroupNew extends Component {
                     ? 'create-group create-abled'
                     : 'create-group create-disabled'
                 }
-                onClick={this.createGroup}
+                onClick={this.handleCreateGroup}
                 disabled={this.state.count < 4}
               >
                 Créé ta battle !

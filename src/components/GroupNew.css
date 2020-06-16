@@ -70,11 +70,7 @@
   line-height: 1rem;
 }
 
-.red {
-  color: red;
-}
-
-.green{
+.green {
   color: #73DB5A;
 }
 
@@ -102,6 +98,7 @@
   list-style: none;
   color: #FAC748;
   line-height: 1.5rem;
+  font-weight: bold;
 }
 
 .bottom-new-group {
