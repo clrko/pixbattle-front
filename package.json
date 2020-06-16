@@ -24,10 +24,7 @@
     }
   },
   "lint-staged": {
-    ".js": [
-      "npx standard --parser babel-eslint --fix --env browser"
-    ],
-    ".jsx": [
+    "src/**/*.js*": [
       "npx standard --parser babel-eslint --fix --env browser"
     ]
   },

@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
-import ModalComponent from './components/ModalComponent'
-
-import axios from 'axios'
+import ModalContent from './components/ModalContent'
 
 class App extends Component {
-  render() {
+  render () {
     return (
       <div>
-        <ModalComponent />
+        <ModalContent />
       </div>
     )
   }
