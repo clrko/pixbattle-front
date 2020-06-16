@@ -11,7 +11,7 @@ const LandingPagePitchBoxDesktop1 = (props) => {
               {props.title}
             </h2>
             <p className='pitch-p-Desktop1'>
-              {props.content}
+              {props.text}
             </p>
           </div>
         </div>

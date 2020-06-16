@@ -44,14 +44,14 @@
     color: #FDFFFC;
 }
 
-@media screen and (max-width: 640px) {
+/* @media screen and (max-width: 640px) {
     .pitchBoxLandingPageDesktop1 {
         display: none;
     }
     .pitch-button-Desktop1 {
         display: none;
     }
-}
+} */
 
 @media screen and (min-width: 420px) and  (max-width: 1297px) {
     .pitchBoxLandingPageDesktop1::-webkit-scrollbar {
