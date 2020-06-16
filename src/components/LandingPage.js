@@ -1,19 +1,10 @@
 import React, { Component } from 'react'
-import LandingPagePitchBoxDesktop1 from './LandingPagePitchBoxDesktop1'
+import LandingPagePitchBox from './LandingPagePitchBox'
 // import LandingPagePitchBoxMobile from './LandingPagePitchBoxMobile'
 import logoLP from '../Logo/logo.svg'
 import './LandingPage.css'
 
 class LandingPage extends Component {
-  // state = {
-  //   title1: 'Groupe',
-  //   content1: 'Crée des groupes, invite tous tes amis, et relevez des défis pour voir qui sera le meilleur.',
-  //   title2: 'Battle',
-  //   content2: 'Invite les membres de ton groupe et affrontez vous dans des battles plus créatives les unes que les autres!',
-  //   title3: 'Photo',
-  //   content3: 'Poste ta plus belle photo en fonction du thème pour remporter la victoire!',
-  // }
-
   state = {
     content:
       [
@@ -41,7 +32,7 @@ class LandingPage extends Component {
         </div>
         <div className='mobile'>
           <div className='box-landing'>
-            <LandingPagePitchBoxDesktop1
+            <LandingPagePitchBox
               title={this.state.contentMobile[0].title}
               text={this.state.contentMobile[0].text}
             />
@@ -58,7 +49,7 @@ class LandingPage extends Component {
           >
             {
               this.state.content.map((c, i) => (
-                <LandingPagePitchBoxDesktop1
+                <LandingPagePitchBox
                   title={c.title}
                   text={c.text}
                   key={i}
@@ -67,7 +58,7 @@ class LandingPage extends Component {
             }
           </div>
         </div>
-        <button className='pitch-button-Desktop1'>
+        <button className='pitch-button'>
           Jouer
         </button>
       </div>

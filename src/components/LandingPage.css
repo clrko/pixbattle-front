@@ -42,12 +42,6 @@
         display: block;
         
     }
-    
-    /* .box-landing {
-        display: flex;
-        max-width: 100%;
-        justify-content: space-around;
-    } */
 }
 
 @media screen and (min-width: 640px){
@@ -55,12 +49,6 @@
         width: 60%;
         margin-top: 1rem;
     }
-
-    /* .box-landing {
-        display: flex !important;
-        max-width: 100%;
-        justify-content: space-around;
-    } */
 }
 
 @media screen and (min-width: 1024px){
@@ -69,11 +57,3 @@
         margin-top: 1rem;
     }
 }
-
-/* @media screen and (max-width: 640px) {
-
-    .landingPage {
-        height: 100%;
-    }
-
-} */
