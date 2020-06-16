@@ -64,11 +64,11 @@
 
 
 @media screen and (min-width: 420px) and  (max-width: 1297px) {
-    .pitchBoxLandingPageDesktop1::-webkit-scrollbar {
+    .pitchBoxLandingPage::-webkit-scrollbar {
         width: 5px;
     }
     
-    .pitchBoxLandingPageDesktop1::-webkit-scrollbar-thumb {
+    .pitchBoxLandingPage::-webkit-scrollbar-thumb {
         background-color: #FAC748;
     }
 
