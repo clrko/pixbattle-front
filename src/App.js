@@ -1,14 +1,14 @@
 import React from 'react'
+import BattleCreationTheme from './components/pages/BattleCreationTheme'
 import LoginRegistrationFormPage from './components/pages/LoginRegistrationFormPage'
 
-class App extends React.Component {
-  render () {
-    return (
-      <div>
-        <LoginRegistrationFormPage />
-      </div>
-    )
-  }
+const App = () => {
+  return (
+    <div>
+      <LoginRegistrationFormPage />
+      <BattleCreationTheme />
+    </div>
+  )
 }
 
 export default App
