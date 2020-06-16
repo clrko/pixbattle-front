@@ -4,8 +4,8 @@
     margin-bottom: 5%;
     width: 100vw;
     height: 10vh;
-  }
-  
+}
+
 .TabSelector button {
     border: 2px solid transparent;
     background: white;
@@ -18,16 +18,16 @@
     font-weight: bold;
     width: 50vw;
 }
-  
+
 .TabSelector button {
     border-bottom: 2px solid #eee;
 }
-  
+
 .TabSelector button.active {
     border-bottom: 4px solid #FAC748;
     color: #FAC748;
 }
-  
+
 .TabSelector button:focus {
     outline: none;
 }

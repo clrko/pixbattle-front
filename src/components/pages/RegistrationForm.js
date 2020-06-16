@@ -24,15 +24,6 @@ class RegistrationForm extends React.Component {
     }
   }
 
-  // checkEmail = () => {
-  //   if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(this.state.email)) {
-  //     console.log(this.state.email)
-  //     console.log('email valid')
-  //   } else {
-  //     console.log('email invalid')
-  //   }
-  // }
-
   handleCheckbox = e => {
     this.setState({ isChecked: e.target.checked })
   }
@@ -74,31 +65,72 @@ class RegistrationForm extends React.Component {
 
         <div className='login-inside LoginForm-div'>
           <label className='LoginForm-label'>Email</label>
-          <input className={emailClass} type='email' value={this.state.email} onChange={this.handleChange} name='email' required />
+          <input
+            className={emailClass}
+            type='email'
+            value={this.state.email}
+            onChange={this.handleChange}
+            name='email'
+            required
+          />
         </div>
 
         <div className='login-inside LoginForm-div'>
           <label className='LoginForm-label'>Mot de passe</label>
-          <input className={passwordClass} type='password' value={this.state.password} onChange={this.handleChange} name='password' minLength='6' maxLength='15' required />
+          <input
+            className={passwordClass}
+            type='password'
+            value={this.state.password}
+            onChange={this.handleChange}
+            name='password'
+            minLength='6'
+            maxLength='15'
+            required
+          />
           <div className={this.state.password.length > 5 && 'green'}>
-          entre 6 et 15 caractères
+            Entre 6 et 15 caractères
           </div>
         </div>
 
         <div className='login-inside LoginForm-div CheckPassword-wrapper'>
           <label className='LoginForm-label'>Confirmer le mot de passe</label>
-          <input className={passwordClass} type='password' value={this.state.checkPassword} onChange={this.handleChange} name='checkPassword' minLength='6' maxLength='15' required />
+          <input
+            className={passwordClass}
+            type='password'
+            value={this.state.checkPassword}
+            onChange={this.handleChange}
+            name='checkPassword'
+            minLength='6'
+            maxLength='15'
+            required
+          />
           <div className='password-error-message'>Les mots de passe de correspondent pas</div>
         </div>
 
         <div className='LoginForm-checkboxAlign1 LoginForm-div'>
-          <input className='LoginForm-checkbox' name='acceptedCGU' type='checkbox' checked={this.state.isChecked} onChange={this.handleCheckbox} required />
+          <input
+            className='LoginForm-checkbox'
+            name='acceptedCGU'
+            type='checkbox'
+            checked={this.state.isChecked}
+            onChange={this.handleCheckbox}
+            required
+          />
           <label className='label-UGC'>Conditions générales d'utilisations</label>
         </div>
 
         <div>
-          <input className='LoginForm-boutonAnnuler' type='button' value='Annuler' />
-          <input className='LoginForm-boutonValider' type='submit' value='Valider' onClick={this.handleSubmit} />
+          <input
+            className='LoginForm-boutonAnnuler'
+            type='button'
+            value='Annuler'
+          />
+          <input
+            className='LoginForm-boutonValider'
+            type='submit'
+            value='Valider'
+            onClick={this.handleSubmit}
+          />
         </div>
       </form>
     )
