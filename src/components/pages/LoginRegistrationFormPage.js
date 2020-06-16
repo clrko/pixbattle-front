@@ -10,12 +10,8 @@ const Error = () => (
 )
 
 class LoginRegistrationFormPage extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      activeId: ''
-    }
-    this.handleChangeTab = this.handleChangeTab.bind(this)
+  state = {
+    activeId: ''
   }
 
   handleChangeTab (event) {
