@@ -37,6 +37,32 @@
     color: #FDFFFC;
 }
 
+@media screen and (min-width: 320px) and  (max-width: 370px) {
+  .logoLp {
+    width: 90%;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .pitch-button-Desktop1 {
+    margin: none;
+  }
+
+  .pitchBoxLandingPageDesktop1 {
+    background-color: #235789;
+    margin: none;
+    border-radius: 25px;
+    margin-top: 15%;
+}
+.pitchBoxLandingPage-text-Desktop1 {
+  margin: 0 10%;
+  text-align: center;
+  font-size: 24px;
+}
+  
+}
+
+
 
 
 @media screen and (min-width: 420px) and  (max-width: 1297px) {
