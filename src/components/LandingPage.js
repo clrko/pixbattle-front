@@ -20,6 +20,12 @@ class LandingPage extends Component {
         { title: 'Groupe', text: 'Crée des groupes, invite tous tes amis, et relevez des défis pour voir qui sera le meilleur.' },
         { title: 'Battle', text: 'Invite les membres de ton groupe et affrontez vous dans des battles plus créatives les unes que les autres!' },
         { title: 'Photo', text: 'Poste ta plus belle photo en fonction du thème pour remporter la victoire!' }
+
+      ],
+
+    contentMobile:
+      [
+        { title: 'A toi de Jouer!', text: 'Invite tous tes amis dans des groupes! Crée des battles et poste la photo la plus créative pour voir qui sera le vainqueur!' }
       ]
   }
 
@@ -33,22 +39,33 @@ class LandingPage extends Component {
         <div className='logo-div'>
           <img src={logoLP} className='logoLP' />
         </div>
-        {/* <div>
-          <LandingPagePitchBoxMobile className='LandingPagePitchBoxMobile' />
-        </div> */}
-        <div className='box-landing'>
-          {/* <LandingPagePitchBoxDesktop1 title={this.state.title1} content={this.state.content1} />
-          <LandingPagePitchBoxDesktop1 title={this.state.title2} content={this.state.content2} />
-          <LandingPagePitchBoxDesktop1 title={this.state.title3} content={this.state.content3} /> */}
-
-          {
-            window.innerWidth > 640
-              ? this.state.content.map((c, i) => (
-                <LandingPagePitchBoxDesktop1 title={c.title} text={c.text} key={i} />
+        <div className='mobile'>
+          <div className='box-landing'>
+            <LandingPagePitchBoxDesktop1
+              title={this.state.contentMobile[0].title}
+              text={this.state.contentMobile[0].text}
+            />
+          </div>
+        </div>
+        <div className='desktop'>
+          <div
+            classname='box-landing'
+            style={{
+              display: 'flex',
+              maxWidth: '100%',
+              justifyContent: 'spaceAround'
+            }}
+          >
+            {
+              this.state.content.map((c, i) => (
+                <LandingPagePitchBoxDesktop1
+                  title={c.title}
+                  text={c.text}
+                  key={i}
+                />
               ))
-              : <LandingPagePitchBoxDesktop1 title={this.state.content[0].title} text={this.state.content[0].text} />
-
-          }
+            }
+          </div>
         </div>
         <button className='pitch-button-Desktop1'>
           Jouer

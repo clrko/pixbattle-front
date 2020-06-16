@@ -1,15 +1,8 @@
-.div-pitchBoxDesktop1 {
-    display: flex;
-    justify-content: space-evenly;
-}
-
 .pitchBoxLandingPageDesktop1 {
     background-color: #235789;
-    margin: 0 20px;
+    margin: 0 10%;
     border-radius: 25px;
-    width: 30vw;
-    height: 50vh;
-    overflow: auto;
+    margin-top: 15%;
 }
 
 .pitchBoxLandingPage-text-Desktop1 {
@@ -20,13 +13,13 @@
 
 .pitch-button-Desktop1 {
     background-color:#FAC748;
-	border-radius:28px;
-	border:1px solid rgb(247, 193, 57);
-	cursor:pointer;
-	color:#3181C8;
-	font-family:Arial;
-	font-size:20px;
-	padding:12px 31px;
+    border-radius:28px;
+    border:1px solid rgb(247, 193, 57);
+    cursor:pointer;
+    color:#3181C8;
+    font-family:Arial;
+    font-size:20px;
+    padding:12px 31px;
     text-decoration:none;
     margin: 2em auto 1em auto;
     display: flex;
@@ -44,14 +37,7 @@
     color: #FDFFFC;
 }
 
-/* @media screen and (max-width: 640px) {
-    .pitchBoxLandingPageDesktop1 {
-        display: none;
-    }
-    .pitch-button-Desktop1 {
-        display: none;
-    }
-} */
+
 
 @media screen and (min-width: 420px) and  (max-width: 1297px) {
     .pitchBoxLandingPageDesktop1::-webkit-scrollbar {
@@ -64,6 +50,54 @@
 
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (min-width: 640px) {
+    .div-pitchBoxDesktop1 {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    
+    .pitchBoxLandingPageDesktop1 {
+        background-color: #235789;
+        margin: 0 20px;
+        border-radius: 25px;
+        width: 30vw;
+        height: 50vh;
+        overflow: auto;
+    }
+    
+    .pitchBoxLandingPage-text-Desktop1 {
+        margin: 0 10%;
+        text-align: center;
+        font-size: 25px;
+    }
+    
+    .pitch-button-Desktop1 {
+        background-color:#FAC748;
+        border-radius:28px;
+        border:1px solid rgb(247, 193, 57);
+        cursor:pointer;
+        color:#3181C8;
+        font-family:Arial;
+        font-size:20px;
+        padding:12px 31px;
+        text-decoration:none;
+        margin: 2em auto 1em auto;
+        display: flex;
+        outline: none;
+        font-family: FuturaPTMedium;
+    }
+    
+    .pitch-h2-Desktop1 {
+        color: #FAC748;
+        padding: 5%;
+        letter-spacing: 1px;
+    }
+    
+    .pitch-p-Desktop1 {
+        color: #FDFFFC;
+    }
     
 }
+
+
+    
