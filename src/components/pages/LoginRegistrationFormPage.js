@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import LoginForm from './LoginForm'
 import RegistrationForm from './RegistrationForm'
 import TabSelector from './TabSelector'
@@ -9,13 +9,13 @@ const Error = () => (
   <p>Something went <strong>wrong</strong>!</p>
 )
 
-class LoginRegistrationFormPage extends React.Component {
+class LoginRegistrationFormPage extends Component {
   state = {
     activeId: ''
   }
 
-  handleChangeTab (event) {
-    const buttonId = event.target.id
+  handleChangeTab = e => {
+    const buttonId = e.target.id
     this.setState({ activeId: buttonId })
   }
 
@@ -23,7 +23,7 @@ class LoginRegistrationFormPage extends React.Component {
     this.setState({ activeId: 'registration' })
   }
 
-  getTabContent () {
+  getTabContent = () => {
     switch (this.state.activeId) {
       case 'registration':
         return <RegistrationForm />

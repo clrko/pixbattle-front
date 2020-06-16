@@ -28,12 +28,13 @@
 .LoginForm-input {
     border-radius: 20px;
     border-style: none;
-    padding: 5px;
-    width: 100%;
+    padding: 4px;
+    border: 1px solid transparent;
     height: 30px;
     padding-left: 15px;
     font-size: 1rem;
     font-weight: bold;
+    outline: 0;
 }
 
 .LoginForm-checkbox {
