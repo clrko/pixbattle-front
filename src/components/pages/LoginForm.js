@@ -1,5 +1,7 @@
 import React from 'react'
 import axios from 'axios'
+import { connect } from 'react-redux'
+import { LOGIN } from '../../store/action-types'
 import './LoginForm.css'
 
 class LoginForm extends React.Component {
@@ -20,8 +22,9 @@ class LoginForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault()
+    const { dispatch } = this.props
     axios.post(`${process.env.REACT_APP_SERVER_URL}/auth`, this.state)
-      .then(res => console.log('res est', res))
+      .then(res => dispatch({ type: LOGIN, ...res.data }))
   }
 
   render () {
@@ -54,4 +57,4 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm
+export default connect()(LoginForm)
