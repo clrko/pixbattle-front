@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 import './BattleCreationPage.css'
 
 const themes = [
@@ -76,7 +77,7 @@ class BattleCreationTheme extends Component {
           <button className={refreshed ? 'refreshed' : 'refreshButton'} onClick={this.handleRefresh} type='button'>Plus de thèmes</button>
           <div className='battleCreation-btnContainer'>
             <button className='battleCreation-cancelButton battle-btn' type='button'>Annuler</button> {/* Ajouter lien vers userpage */}
-            <button className='battleCreation-validateButton battle-btn' type='button'>Suivant</button> {/* Ajotuer lien vers next page choix des règles */}
+            <NavLink to='/battlecreationrules'><button className='battleCreation-validateButton battle-btn' type='button'>Suivant</button></NavLink>
           </div>
         </div>
       </div>
