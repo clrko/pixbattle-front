@@ -56,13 +56,14 @@
 .LoginForm-checkboxAlign {
   display: flex;
   align-items: center;
-  margin-left: 6%;
+  margin-left: 14%;
   margin-right: 22%;
 }
 
 .label-remember {
   font-size: 0.8rem;
   width: 140px;
+  padding-left: 10px;
 }
 
 .label-UGC {
