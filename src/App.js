@@ -1,12 +1,17 @@
 import React from 'react'
-import BattleCreationTheme from './components/pages/BattleCreationTheme'
-import LoginRegistrationFormPage from './components/pages/LoginRegistrationFormPage'
+import { Route, Switch } from 'react-router-dom'
+import LandingPage from './components/pages/LandingPage.js'
+import LoginRegistrationFormPage from './components/pages/LoginRegistrationFormPage.js'
+// import BattleCreationTheme from './components/pages/BattleCreationTheme'
 
 const App = () => {
   return (
     <div>
-      <LoginRegistrationFormPage />
-      <BattleCreationTheme />
+      <Switch>
+        <Route exact path='/' component={LandingPage} />
+        <Route path='/LoginRegistration' component={LoginRegistrationFormPage} />
+      </Switch>
+      {/* <BattleCreationTheme /> */}
     </div>
   )
 }
