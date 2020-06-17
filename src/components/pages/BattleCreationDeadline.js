@@ -66,8 +66,8 @@ class BattleCreationRule extends Component {
           <h1>2. Personnalise la battle</h1>{/* classname ne marche pas  */}
           <div className='battleCreation-ruleContainer'> {rules.map((rule, i) => <button type='button' className={selectedRules.includes(toString(rule.rule_id)) ? 'battle-optionButton-selected battle-btn' : 'battle-optionButton battle-btn'} onClick={this.handleClick} id={rule.rule_id} key={i}>{rule.rule_name}</button>)}</div>
           <div className='battleCreation-btnContainer'>
-            <NavLink to='/battlecreationtheme'><button className='battleCreation-cancelButton battle-btn' type='button'>Retour</button></NavLink> {/* Ajouter lien vers theme page */}
-            <NavLink to='/battlecreationdeadline'><button className='battleCreation-validateButton battle-btn' type='button'>Suivant</button></NavLink> {/* Ajotuer lien vers next page choix du temps */}
+            <NavLink to='/battlecreationrule'><button className='battleCreation-cancelButton battle-btn' type='button'>Retour</button></NavLink>
+            <button className='battleCreation-validateButton battle-btn' type='button'>Suivant</button> {/* Ajotuer lien vers next page de poste ta photo */}
           </div>
         </div>
       </div>
