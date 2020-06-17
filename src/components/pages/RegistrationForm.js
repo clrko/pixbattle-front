@@ -36,7 +36,7 @@ class RegistrationForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault()
     if (!this.checkPassword()) {
-      alert('Mauvais mot de passe')
+      // alert('Mauvais mot de passe')
     } else { // Appel Axios
     }
   }
@@ -87,7 +87,7 @@ class RegistrationForm extends React.Component {
             maxLength='15'
             required
           />
-          <div className={this.state.password.length > 5 && 'green'}>
+          <div className={this.state.password.length > 5 && 'character-validation'}>
             Entre 6 et 15 caractères
           </div>
         </div>

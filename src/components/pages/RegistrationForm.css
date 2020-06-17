@@ -1,9 +1,9 @@
 .LoginForm-passwordError {
-  border: 1px red solid;
+  border: 1px #ef4536 solid;
 }
 
-.green {
-  color: green;
+.character-validation {
+  color: #73db5a;
 }
 
 .password-error-message {
@@ -25,4 +25,8 @@
 
 .CheckPassword-wrapper {
   position: relative;
+}
+
+.color {
+  color: #ef4536;
 }
