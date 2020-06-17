@@ -1,7 +1,12 @@
-.LoginRegistrationFormPage-background {
+.LoginRegistrationFormPage-FullPage {
   height: 100vh;
   width: 100%;
   background-color: #3181C8;
+}
+
+.LoginRegistrationFormPage-background {
+  width: 100%;
+  margin-top: 6%;
   display: flex;
   flex-direction: column;
   justify-content: center;

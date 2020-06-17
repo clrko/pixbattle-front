@@ -36,12 +36,14 @@ class LoginRegistrationFormPage extends Component {
 
   render () {
     return (
-      <div className='LoginRegistrationFormPage-background'>
+      <div className='LoginRegistrationFormPage-FullPage'>
         <TabSelector
           onHandleChange={this.handleChangeTab}
           activeId={this.state.activeId}
         />
-        <div>{this.getTabContent()}</div>
+        <div className='LoginRegistrationFormPage-background'>
+          <div>{this.getTabContent()}</div>
+        </div>
       </div>
     )
   }

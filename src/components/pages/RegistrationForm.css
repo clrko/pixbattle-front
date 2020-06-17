@@ -6,6 +6,12 @@
   color: #73db5a;
 }
 
+.character-validation-p {
+  padding-left: 10px;
+  padding-top: 5px;
+  font-size: 0.8rem;
+}
+
 .password-error-message {
   display: none;
 }
@@ -25,8 +31,4 @@
 
 .CheckPassword-wrapper {
   position: relative;
-}
-
-.color {
-  color: #ef4536;
 }

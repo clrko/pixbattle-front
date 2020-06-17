@@ -61,6 +61,9 @@ class RegistrationForm extends React.Component {
             maxLength='15'
             required
           />
+          <div className={this.state.username.length > 3 && 'character-validation'}>
+            <p className='character-validation-p'>Entre 3 et 15 caractères</p>
+          </div>
         </div>
 
         <div className='login-inside LoginForm-div'>
@@ -88,7 +91,7 @@ class RegistrationForm extends React.Component {
             required
           />
           <div className={this.state.password.length > 5 && 'character-validation'}>
-            Entre 6 et 15 caractères
+            <p className='character-validation-p'>Entre 6 et 15 caractères</p>
           </div>
         </div>
 
