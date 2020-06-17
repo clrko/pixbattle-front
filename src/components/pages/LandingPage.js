@@ -11,7 +11,6 @@ class LandingPage extends Component {
         { title: 'Groupe', text: 'Crée des groupes, invite tous tes amis, et relevez des défis pour voir qui sera le meilleur.' },
         { title: 'Battle', text: 'Invite les membres de ton groupe et affrontez vous dans des battles plus créatives les unes que les autres!' },
         { title: 'Photo', text: 'Poste ta plus belle photo en fonction du thème pour remporter la victoire!' }
-
       ],
     contentMobile:
       [
