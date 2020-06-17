@@ -1,33 +1,33 @@
 .TabSelector {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5%;
-    width: 100vw;
-    height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5%;
+  width: 100vw;
+  height: 10vh;
 }
 
 .TabSelector button {
-    border: 2px solid transparent;
-    background: white;
-    color: #235789;
-    font-size: 1rem;
-    padding: 0.5rem;
-    flex-grow: 1;
-    cursor: pointer;
-    font-size: 1.2rem;
-    font-weight: bold;
-    width: 50vw;
+  border: 2px solid transparent;
+  background: white;
+  color: #235789;
+  font-size: 1rem;
+  padding: 0.5rem;
+  flex-grow: 1;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 50vw;
 }
 
 .TabSelector button {
-    border-bottom: 2px solid #eee;
+  border-bottom: 2px solid #eee;
 }
 
 .TabSelector button.active {
-    border-bottom: 4px solid #FAC748;
-    color: #FAC748;
+  border-bottom: 4px solid #FAC748;
+  color: #FAC748;
 }
 
 .TabSelector button:focus {
-    outline: none;
+  outline: none;
 }
