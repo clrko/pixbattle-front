@@ -8,8 +8,12 @@
   src: local('FuturaPTMedium'), url(./Fonts/FuturaPTMedium.otf) format('truetype');
 }
 
-body {
+* {
   margin: 0;
+  text-decoration: none;
+}
+
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;

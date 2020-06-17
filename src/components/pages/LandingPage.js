@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 import LandingPagePitchBox from './LandingPagePitchBox'
-// import LandingPagePitchBoxMobile from './LandingPagePitchBoxMobile'
-import logoLP from '../Logo/logo.svg'
+import logoLP from '../../Logo/logo.svg'
 import './LandingPage.css'
 
 class LandingPage extends Component {
@@ -13,15 +13,10 @@ class LandingPage extends Component {
         { title: 'Photo', text: 'Poste ta plus belle photo en fonction du thème pour remporter la victoire!' }
 
       ],
-
     contentMobile:
       [
         { title: 'A toi de Jouer!', text: 'Invite tous tes amis dans des groupes! Crée des battles et poste la photo la plus créative pour voir qui sera le vainqueur!' }
       ]
-  }
-
-  componentDidMount () {
-    console.log(window.innerWidth)
   }
 
   render () {
@@ -58,9 +53,11 @@ class LandingPage extends Component {
             }
           </div>
         </div>
-        <button className='pitch-button'>
+        <NavLink to='/LoginRegistration'>
+          <button className='pitch-button'>
           Jouer
-        </button>
+          </button>
+        </NavLink>
       </div>
     )
   }
