@@ -34,8 +34,9 @@
   visibility: hidden;
 }
 
-.battleCreation-themeContainer input:checked + label {
-  background: red;
+.battleCreation-themeContainer input:checked+label {
+  color: #FAC748;
+	background-color: #3181C8;
 }
 
 .refreshed {
