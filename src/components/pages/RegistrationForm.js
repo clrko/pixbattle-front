@@ -18,8 +18,6 @@ class RegistrationForm extends React.Component {
 
   checkEmail = () => {
     if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(this.state.email)) {
-      console.log(this.state.email)
-      console.log('email valid')
       return (this.state.email)
     }
   }
