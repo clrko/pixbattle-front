@@ -22,7 +22,7 @@
 }
 
 .cardBattle h1 {
-  font-size: 25px;
+  font-size: 20px;
   margin-bottom: 20px;
 }
 
@@ -60,16 +60,24 @@
   cursor: pointer;
   font-family:Arial;
   font-family: FuturaPTMedium;
-  font-size:20px;
+  font-size:15px;
   border-style: none;
   outline: none;
   font-weight: bolder;
   letter-spacing: 0.5px;
 }
 
-.themeButton {
+.battle-optionButton {
 	background-color: #FAC748;
 	color: #3181C8;
+  padding: 7px 10px;
+  margin: 7px 15px;
+  width: fit-content;
+}
+
+.battle-optionButton-selected {
+	background-color: #13293D;
+	color: #FDFFFC;
   padding: 7px 10px;
   margin: 7px 15px;
   width: fit-content;
