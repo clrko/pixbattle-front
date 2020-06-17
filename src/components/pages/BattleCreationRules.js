@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './BattleCreationPage.css'
 
-const themes = [
+const rules = [
   {
     theme_id: 26,
     theme_name: 'Petit bonheur'
@@ -48,15 +48,10 @@ class BattleCreationTheme extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      refreshed: false,
-      selectedTheme: 0
+      selectedRules: []
     }
     this.handleRefresh = this.handleRefresh.bind(this)
     this.handleThemeChange = this.handleThemeChange.bind(this)
-  }
-
-  handleRefresh () {
-    this.setState({ refreshed: !this.state.refreshed })
   }
 
   handleThemeChange (event) {
@@ -66,17 +61,16 @@ class BattleCreationTheme extends Component {
   }
 
   render () {
-    const { refreshed, selectedTheme } = this.state
+    const { selectedTheme } = this.state
     return (
       <div className='battleCreation-page'>
         <div className='battleCreation-banner'>Créer une battle</div>
         <div className='cardBattle'>
-          <h1>1. Choisis un thème</h1>
-          <div className='battleCreation-themeContainer'> {refreshed ? themes.map((theme, i) => <><input type='radio' name='themeButton' value={theme.theme_name} checked={selectedTheme === theme.theme_id} onChange={this.handleThemeChange} id={theme.theme_id} key={theme.theme_id} /><label htmlFor={theme.theme_id} className='themeButton battle-btn' key={i}>{theme.theme_name}</label></>) : themes.slice(0, 5).map((theme, i) => <><input type='radio' name='themeButton' value={theme.theme_name} checked={selectedTheme === theme.theme_id} onChange={this.handleThemeChange} id={theme.theme_id} key={theme.theme_id} /><label htmlFor={theme.theme_id} className='themeButton battle-btn' key={i}>{theme.theme_name}</label></>)}</div>
-          <button className={refreshed ? 'refreshed' : 'refreshButton'} onClick={this.handleRefresh} type='button'>Plus de thèmes</button>
+          <h1>2. Choisis les règles</h1>
+          <div className='battleCreation-themeContainer'> {rules.map((theme, i) => <><input type='radio' name='themeButton' value={theme.theme_name} checked={selectedTheme === theme.theme_id} onChange={this.handleThemeChange} id={theme.theme_id} key={theme.theme_id} /><label htmlFor={theme.theme_id} className='themeButton battle-btn' key={i}>{theme.theme_name}</label></>)}</div>
           <div className='battleCreation-btnContainer'>
-            <button className='battleCreation-cancelButton battle-btn' type='button'>Annuler</button> {/* Ajouter lien vers userpage */}
-            <button className='battleCreation-validateButton battle-btn' type='button'>Suivant</button> {/* Ajotuer lien vers next page choix des règles */}
+            <button className='battleCreation-cancelButton battle-btn' type='button'>Retour</button> {/* Ajouter lien vers theme page */}
+            <button className='battleCreation-validateButton battle-btn' type='button'>Suivant</button> {/* Ajotuer lien vers next page choix du temps */}
           </div>
         </div>
       </div>
