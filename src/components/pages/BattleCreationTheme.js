@@ -49,23 +49,30 @@ class BattleCreationTheme extends Component {
     super(props)
     this.state = {
       refreshed: false,
-      themeSelected: ''
+      selectedTheme: 0
     }
     this.handleRefresh = this.handleRefresh.bind(this)
+    this.handleThemeChange = this.handleThemeChange.bind(this)
   }
 
   handleRefresh () {
     this.setState({ refreshed: !this.state.refreshed })
   }
 
+  handleThemeChange (event) {
+    this.setState({
+      selectedTheme: event.target.id
+    })
+  }
+
   render () {
-    const { refreshed } = this.state
+    const { refreshed, selectedTheme } = this.state
     return (
       <div className='battleCreation-page'>
         <div className='battleCreation-banner'>Créer une battle</div>
         <div className='cardBattle'>
           <h1>1. Choisis un thème</h1>
-          <div className='battleCreation-themeContainer'> {refreshed ? themes.map(theme => <button className='themeButton battle-btn' key={theme.theme_id}>{theme.theme_name}</button>) : themes.slice(0, 5).map(theme => <button className='themeButton battle-btn' key={theme.theme_id}>{theme.theme_name}</button>)}</div>
+          <div className='battleCreation-themeContainer'> {refreshed ? themes.map(theme => <><input type='radio' name='themeButton' value={theme.theme_name} checked={selectedTheme === theme.theme_id} onChange={this.handleThemeChange} id={theme.theme_id} key={theme.theme_id} /><label for={theme.theme_id} className='themeButton battle-btn'>{theme.theme_name}</label></>) : themes.slice(0, 5).map(theme => <><input type='radio' name='themeButton' value={theme.theme_name} checked={selectedTheme === theme.theme_id} onChange={this.handleThemeChange} id={theme.theme_id} key={theme.theme_id} /><label for={theme.theme_id} className='themeButton battle-btn'>{theme.theme_name}</label></>)}</div>
           <button className={refreshed ? 'refreshed' : 'refreshButton'} onClick={this.handleRefresh} type='button'>Plus de thèmes</button>
           <div className='battleCreation-btnContainer'>
             <button className='battleCreation-cancelButton battle-btn' type='button'>Annuler</button> {/* Ajouter lien vers userpage */}
