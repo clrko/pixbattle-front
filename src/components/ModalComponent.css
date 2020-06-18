@@ -10,7 +10,7 @@
 
 .modal-title-container {
   background-color: white;
-  height: 20vh;
+  height: 15vh;
   font-size: 1.3rem;
   border-radius: 25px 25px 0 0;
   padding-left: 1rem;
@@ -27,7 +27,7 @@
   font-size: 1.3rem;
   position: fixed;
   top: 7%;
-  right:30%;
+  right: 30%;
 }
 
 @media screen and (max-width: 1025px) {
@@ -57,5 +57,11 @@
   .modal-button {
     top: 2%;
     right: 3%;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .modal-title-container {
+    height: 10vh;
   }
 }
