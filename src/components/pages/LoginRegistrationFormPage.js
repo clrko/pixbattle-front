@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import LoginForm from './LoginForm'
 import RegistrationForm from './RegistrationForm'
 import TabSelector from './TabSelector'
-
 import './LoginRegistrationFormPage.css'
 
 const Error = () => (

@@ -1,5 +1,4 @@
 import React from 'react'
-
 import './LoginForm.css'
 
 class LoginForm extends React.Component {
@@ -59,12 +58,12 @@ class LoginForm extends React.Component {
           </div>
           <div className='LoginForm-div'>
             <input
-              className='LoginForm-boutonAnnuler'
+              className='LoginForm-cancelButton'
               type='button'
               value='Annuler'
             />
             <input
-              className='LoginForm-boutonValider'
+              className='LoginForm-validateButton'
               type='submit'
               value='Valider'
               onClick={this.handleSubmit}

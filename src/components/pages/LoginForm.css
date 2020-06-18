@@ -73,7 +73,7 @@
   text-decoration: underline;
 }
 
-.LoginForm-boutonAnnuler {
+.LoginForm-cancelButton {
   background-color: #ef4536;
   color: white;
   font-size: 1rem;
@@ -86,7 +86,7 @@
   cursor: pointer;
 }
 
-.LoginForm-boutonValider {
+.LoginForm-validateButton {
   color: white;
   font-size: 1rem;
   font-weight: bold;
