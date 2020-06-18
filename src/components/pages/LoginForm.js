@@ -25,9 +25,7 @@ class LoginForm extends React.Component {
     render () {
       const { email, password, isChecked } = this.state
       return (
-
         <form className='login-form'>
-
           <div className='login-inside LoginForm-div'>
             <label className='LoginForm-label'>Email</label>
             <input
@@ -38,7 +36,6 @@ class LoginForm extends React.Component {
               required
             />
           </div>
-
           <div className='login-inside LoginForm-div'>
             <label className='LoginForm-label'>Mot de passe</label>
             <input
@@ -50,7 +47,6 @@ class LoginForm extends React.Component {
               required
             />
           </div>
-
           <div className='LoginForm-checkboxAlign LoginForm-div'>
             <input
               className='LoginForm-checkbox'
@@ -61,7 +57,6 @@ class LoginForm extends React.Component {
             />
             <label className='label-remember'>Se souvenir de moi</label>
           </div>
-
           <div className='LoginForm-div'>
             <input
               className='LoginForm-boutonAnnuler'

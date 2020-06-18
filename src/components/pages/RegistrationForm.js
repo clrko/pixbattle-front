@@ -34,8 +34,7 @@ class RegistrationForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault()
     if (!this.checkPassword()) {
-      // alert('Mauvais mot de passe')
-    } else { // Appel Axios
+    } else {
     }
   }
 
@@ -63,7 +62,6 @@ class RegistrationForm extends React.Component {
             <p className='character-validation-p'>Entre 3 et 15 caractères</p>
           </div>
         </div>
-
         <div className='login-inside LoginForm-div'>
           <label className='LoginForm-label'>Email</label>
           <input
@@ -75,7 +73,6 @@ class RegistrationForm extends React.Component {
             required
           />
         </div>
-
         <div className='login-inside LoginForm-div'>
           <label className='LoginForm-label'>Mot de passe</label>
           <input
@@ -92,7 +89,6 @@ class RegistrationForm extends React.Component {
             <p className='character-validation-p'>Entre 6 et 15 caractères</p>
           </div>
         </div>
-
         <div className='login-inside LoginForm-div CheckPassword-wrapper'>
           <label className='LoginForm-label'>Confirmer le mot de passe</label>
           <input
@@ -107,7 +103,6 @@ class RegistrationForm extends React.Component {
           />
           <div className='password-error-message'>Les mots de passe de correspondent pas</div>
         </div>
-
         <div className='LoginForm-checkboxAlign1 LoginForm-div'>
           <input
             className='LoginForm-checkbox'
@@ -119,7 +114,6 @@ class RegistrationForm extends React.Component {
           />
           <label className='label-UGC'>Conditions générales d'utilisations</label>
         </div>
-
         <div>
           <input
             className='LoginForm-boutonAnnuler'

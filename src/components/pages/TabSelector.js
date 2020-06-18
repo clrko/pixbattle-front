@@ -11,7 +11,6 @@ function TabSelector ({ activeId, onHandleChange }) {
       >
         S'inscrire
       </button>
-
       <button
         id='login'
         onClick={onHandleChange}
