@@ -1,7 +1,5 @@
 import { LOGIN, LOGOUT } from './action-types'
 
-// logout: { type: 'LOGOUT' }
-// login:  { type: 'LOGIN', userId, avatar, username }
 const userReducer = (state = null, action) => {
   switch (action.type) {
     case LOGIN: {
