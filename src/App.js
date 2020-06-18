@@ -1,8 +1,15 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 import LandingPage from './components/pages/LandingPage.js'
 import LoginRegistrationFormPage from './components/pages/LoginRegistrationFormPage.js'
+import MyProfile from './components/pages/MyProfile'
+import MyPictures from './components/pages/MyPictures'
+import MyRanking from './components/pages/MyRanking'
+import DropDown from './components/pages/DropDown'
+
 // import BattleCreationTheme from './components/pages/BattleCreationTheme'
+
+const Menu = withRouter(DropDown)
 
 const App = () => {
   return (
@@ -10,8 +17,12 @@ const App = () => {
       <Switch>
         <Route exact path='/' component={LandingPage} />
         <Route path='/LoginRegistration' component={LoginRegistrationFormPage} />
+        <Route path='/MyProfile' component={MyProfile} />
+        <Route path='/MyRanking' component={MyRanking} />
+        <Route path='/MyPictures' component={MyPictures} />
       </Switch>
       {/* <BattleCreationTheme /> */}
+      <Menu />
     </div>
   )
 }
