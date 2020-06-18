@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import LandingPagePitchBox from './LandingPagePitchBox'
-import logoLP from '../../Logo/logo.svg'
+import logoLP from '../../asset/logo/logo.svg'
 import './LandingPage.css'
 
 class LandingPage extends Component {

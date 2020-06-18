@@ -1,13 +1,9 @@
 import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { LOGIN } from '../../store/action-types'
 import './LoginForm.css'
-
-/* const mapStateToProps = state => {
-  const { userId, avatar, username } = state
-  return { userId, avatar, username }
-} */
 
 class LoginForm extends React.Component {
   state = {
@@ -26,9 +22,12 @@ class LoginForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    const { dispatch } = this.props
+    const { dispatch, history } = this.props
     axios.post(`${process.env.REACT_APP_SERVER_URL}/auth`, this.state)
-      .then(res => dispatch({ type: LOGIN, ...res.data }))
+      .then(res => {
+        dispatch({ type: LOGIN, ...res.data })
+        history.push('/battlecreationtheme') /* url à modifier pour mettre la page user profile */
+      })
   }
 
   render () {
@@ -84,13 +83,4 @@ class LoginForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  user: state
-})
-
-/* const mapStateToProps = state => ({
-  userId
-}
-) */
-
-export default connect(mapStateToProps)(LoginForm)
+export default connect()(withRouter(LoginForm))
