@@ -1,25 +1,20 @@
-import React from 'react'
+import React, { Component } from 'react'
 import LoginForm from './LoginForm'
 import RegistrationForm from './RegistrationForm'
 import TabSelector from './TabSelector'
-
 import './LoginRegistrationFormPage.css'
 
 const Error = () => (
   <p>Something went <strong>wrong</strong>!</p>
 )
 
-class LoginRegistrationFormPage extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      activeId: ''
-    }
-    this.handleChangeTab = this.handleChangeTab.bind(this)
+class LoginRegistrationFormPage extends Component {
+  state = {
+    activeId: ''
   }
 
-  handleChangeTab (event) {
-    const buttonId = event.target.id
+  handleChangeTab = e => {
+    const buttonId = e.target.id
     this.setState({ activeId: buttonId })
   }
 
@@ -27,7 +22,7 @@ class LoginRegistrationFormPage extends React.Component {
     this.setState({ activeId: 'registration' })
   }
 
-  getTabContent () {
+  getTabContent = () => {
     switch (this.state.activeId) {
       case 'registration':
         return <RegistrationForm />
@@ -40,12 +35,14 @@ class LoginRegistrationFormPage extends React.Component {
 
   render () {
     return (
-      <div className='LoginRegistrationFormPage-background'>
+      <div className='LoginRegistrationFormPage-FullPage'>
         <TabSelector
           onHandleChange={this.handleChangeTab}
           activeId={this.state.activeId}
         />
-        <div>{this.getTabContent()}</div>
+        <div className='LoginRegistrationFormPage-background'>
+          <div>{this.getTabContent()}</div>
+        </div>
       </div>
     )
   }
