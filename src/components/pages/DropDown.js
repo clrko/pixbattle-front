@@ -8,11 +8,13 @@ class DropDown extends React.Component {
 
   render () {
     return (
-      <select onChange={this.handleChange}>
-        <option value='MyProfile'>Mon Profil</option>
-        <option value='MyRanking'>Mon Classement</option>
-        <option value='MyPictures'>Mes Photos</option>
-      </select>
+      <div className='background-DropDown'>
+        <select className='DropDown' onChange={this.handleChange}>
+          <option value='MyProfile'>Mon Profil</option>
+          <option value='MyRanking'>Mon Classement</option>
+          <option value='MyPictures'>Mes Photos</option>
+        </select>
+      </div>
     )
   }
 }

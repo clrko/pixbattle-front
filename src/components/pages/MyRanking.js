@@ -1,10 +1,15 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
+import DropDown from './DropDown'
 import './MyRanking.css'
+
+const Menu = withRouter(DropDown)
 
 class MyRanking extends React.Component {
   render () {
     return (
-      <div>
+      <div className='background-MyRanking'>
+        <Menu />
         <div className='window-MyRanking'>
           <p>Mon Classement</p>
         </div>

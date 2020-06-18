@@ -1,15 +1,16 @@
 import React from 'react'
-import { Route, Switch, withRouter } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import LandingPage from './components/pages/LandingPage.js'
 import LoginRegistrationFormPage from './components/pages/LoginRegistrationFormPage.js'
 import MyProfile from './components/pages/MyProfile'
 import MyPictures from './components/pages/MyPictures'
 import MyRanking from './components/pages/MyRanking'
-import DropDown from './components/pages/DropDown'
+// import DropDown from './components/pages/DropDown'
+// import PageAll from './components/pages/PageAll'
 
 // import BattleCreationTheme from './components/pages/BattleCreationTheme'
 
-const Menu = withRouter(DropDown)
+// const Menu = withRouter(DropDown)
 
 const App = () => {
   return (
@@ -22,7 +23,8 @@ const App = () => {
         <Route path='/MyPictures' component={MyPictures} />
       </Switch>
       {/* <BattleCreationTheme /> */}
-      <Menu />
+      {/* <Menu /> */}
+      {/* <MyProfile /> */}
     </div>
   )
 }
