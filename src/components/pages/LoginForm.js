@@ -1,5 +1,4 @@
 import React from 'react'
-
 import './LoginForm.css'
 
 class LoginForm extends React.Component {
@@ -26,27 +25,50 @@ class LoginForm extends React.Component {
       const { email, password, isChecked } = this.state
       return (
         <form className='login-form'>
-
           <div className='login-inside LoginForm-div'>
             <label className='LoginForm-label'>Email</label>
-            <input className='LoginForm-input' type='email' value={email} onChange={this.handleChange} name='email' required />
+            <input
+              className='LoginForm-input'
+              type='email' value={email}
+              onChange={this.handleChange}
+              name='email'
+              required
+            />
           </div>
-
           <div className='login-inside LoginForm-div'>
             <label className='LoginForm-label'>Mot de passe</label>
-            <input className='LoginForm-input' type='password' value={password} onChange={this.handleChange} name='password' required />
+            <input
+              className='LoginForm-input'
+              type='password'
+              value={password}
+              onChange={this.handleChange}
+              name='password'
+              required
+            />
           </div>
-
           <div className='LoginForm-checkboxAlign LoginForm-div'>
-            <input className='LoginForm-checkbox' name='acceptedTerms' type='checkbox' checked={isChecked} onChange={this.handleCheckbox} />
+            <input
+              className='LoginForm-checkbox'
+              name='acceptedTerms'
+              type='checkbox'
+              checked={isChecked}
+              onChange={this.handleCheckbox}
+            />
             <label className='label-remember'>Se souvenir de moi</label>
           </div>
-
           <div className='LoginForm-div'>
-            <input className='LoginForm-boutonAnnuler' type='button' value='Annuler' />
-            <input className='LoginForm-boutonValider' type='submit' value='Valider' onClick={this.handleSubmit} />
+            <input
+              className='LoginForm-cancelButton'
+              type='button'
+              value='Annuler'
+            />
+            <input
+              className='LoginForm-validateButton'
+              type='submit'
+              value='Valider'
+              onClick={this.handleSubmit}
+            />
           </div>
-
         </form>
       )
     }
