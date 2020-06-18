@@ -4,6 +4,11 @@ import { connect } from 'react-redux'
 import { LOGIN } from '../../store/action-types'
 import './LoginForm.css'
 
+/* const mapStateToProps = state => {
+  const { userId, avatar, username } = state
+  return { userId, avatar, username }
+} */
+
 class LoginForm extends React.Component {
   state = {
     email: '',
@@ -12,7 +17,6 @@ class LoginForm extends React.Component {
   }
 
   handleChange = e => {
-    console.log('target', e.target.name)
     this.setState({ [e.target.name]: e.target.value })
   }
 
@@ -80,4 +84,13 @@ class LoginForm extends React.Component {
   }
 }
 
-export default connect()(LoginForm)
+const mapStateToProps = state => ({
+  user: state
+})
+
+/* const mapStateToProps = state => ({
+  userId
+}
+) */
+
+export default connect(mapStateToProps)(LoginForm)

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+// import { connect } from 'react-redux'
 import './BattleCreationPage.css'
 
 const themes = [
@@ -44,6 +45,11 @@ const themes = [
   }
 ]
 
+/* const mapStateToProps = state => {
+  const { userId, avatar, username } = state
+  return { userId, avatar, username }
+} */
+
 class BattleCreationTheme extends Component {
   constructor (props) {
     super(props)
@@ -64,6 +70,7 @@ class BattleCreationTheme extends Component {
         <div className='createBattleBanner'>Créer une battle</div>
         <div className='cardBattle'>
           <h1>1. Choisis un thème</h1>
+          <p>{this.userId} {this.avatar} {this.username}</p>
           <p>Prédéfini :</p> {/* Ajouter bouton pour sauvgarder dans le state du store le theme_id */}
           <div> {refreshed ? themes.map(theme => <button className='themeButton' key={theme.theme_id}>{theme.theme_name}</button>) : themes.slice(0, 5).map(theme => <button className='themeButton' key={theme.theme_id}>{theme.theme_name}</button>)}</div>
           <button className={refreshed ? 'refreshed' : 'refreshButton'} onClick={this.handleRefresh} type='button'>Plus de thèmes</button>
@@ -77,4 +84,4 @@ class BattleCreationTheme extends Component {
   }
 }
 
-export default BattleCreationTheme
+export default /* connect(mapStateToProps)(BattleCreationTheme) */ BattleCreationTheme
