@@ -1,17 +1,27 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import reducer from './store/index'
 import './index.css'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
-import './Fonts/FuturaBT-ExtraBlack.ttf'
-import './Fonts/FuturaPTMedium.otf'
+import './asset/fonts/FuturaBT-ExtraBlack.ttf'
+import './asset/fonts/FuturaPTMedium.otf'
+
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 )
