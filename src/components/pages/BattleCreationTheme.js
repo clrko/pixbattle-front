@@ -45,12 +45,8 @@ const themes = [
 ]
 
 class BattleCreationTheme extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      refreshed: false
-    }
-    this.handleRefresh = this.handleRefresh.bind(this)
+  state = {
+    refreshed: false
   }
 
   handleRefresh () {
