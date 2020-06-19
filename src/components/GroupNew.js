@@ -129,7 +129,7 @@ class GroupNew extends Component {
                   >
                     {email}
                     <button className='remove-email' onClick={() => this.handleRemoveEmail(email)}>
-                      <i className='fas fa-times-circle' />
+                      <i className='fas fa-times' />
                     </button>
                   </li>
                 ))
