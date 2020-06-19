@@ -7,8 +7,8 @@ import MyPictures from './components/pages/MyPictures'
 import MyRanking from './components/pages/MyRanking'
 // import DropDown from './components/pages/DropDown'
 // import PageAll from './components/pages/PageAll'
-
 // import BattleCreationTheme from './components/pages/BattleCreationTheme'
+import BattleCreationTheme from './components/pages/BattleCreationTheme'
 
 // const Menu = withRouter(DropDown)
 
@@ -21,6 +21,7 @@ const App = () => {
         <Route path='/MyProfile' component={MyProfile} />
         <Route path='/MyRanking' component={MyRanking} />
         <Route path='/MyPictures' component={MyPictures} />
+        <Route path='/battlecreationtheme' component={BattleCreationTheme} />
       </Switch>
       {/* <BattleCreationTheme /> */}
       {/* <Menu /> */}
