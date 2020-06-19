@@ -8,6 +8,8 @@ import './LandingPage.css'
 class LandingPage extends Component {
   state = {
     contentModal: 'loginRegister',
+    contentModal1: 'newGroup',
+    contentModal2: 'newBattleTheme',
     content:
       [
         { title: 'Groupe', text: 'Crée des groupes, invite tous tes amis, et relevez des défis pour voir qui sera le meilleur.' },
@@ -56,6 +58,8 @@ class LandingPage extends Component {
         </div>
         {/* <NavLink to='/LoginRegistration'> */}
         <ModalComponent typeOfContent={this.state.contentModal} className='pitch-button' />
+        <ModalComponent typeOfContent={this.state.contentModal1} className='pitch-button' />
+        <ModalComponent typeOfContent={this.state.contentModal2} className='pitch-button' />
         {/* <button id='loginRegister' className='pitch-button'>
             Jouer
           </button> */}

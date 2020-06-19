@@ -13,10 +13,14 @@
   height: 15vh;
   font-size: 1.3rem;
   border-radius: 25px 25px 0 0;
-  padding-left: 1rem;
+  padding: 1rem;
   color: #235789;
   display: flex;
   align-items: flex-end;
+}
+
+.modal-title {
+  font-weight: 400;
 }
 
 .modal-button {
