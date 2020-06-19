@@ -35,7 +35,7 @@
 }
 
 .fa-plus-circle {
-  font-size: 2rem;
+  font-size: 1.7rem;
   margin-left: 0.5rem;
 }
 
@@ -79,10 +79,10 @@
 }
 
 .emails-container {
-  height: 19vh;
-  width: 90%;
+  height: 35vh;
   overflow: scroll;
   padding: 0;
+  margin: 5% 0;
 }
 
 .emails-container::-webkit-scrollbar {
@@ -99,6 +99,19 @@
   color: #FAC748;
   line-height: 1.5rem;
   font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  padding: 1% 0;
+}
+
+.fa-times-circle {
+  color: red;
+  font-size: 1.7rem;
+}
+
+.remove-email {
+  background-color: transparent;
+  border: none;
 }
 
 .bottom-new-group {
