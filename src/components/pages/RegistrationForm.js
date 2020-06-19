@@ -1,6 +1,7 @@
 import React from 'react'
 
 import './LoginForm.css'
+import { Link } from 'react-router-dom'
 
 class RegistrationForm extends React.Component {
   state = {
@@ -62,7 +63,9 @@ class RegistrationForm extends React.Component {
 
         <div>
           <input className='LoginForm-boutonAnnuler' type='button' value='Annuler' />
-          <input className='LoginForm-boutonValider' type='submit' value='Valider' onClick={this.handleSubmit} />
+          <Link to='/profilePage'>
+            <input className='LoginForm-boutonValider' type='submit' value='Valider' onClick={this.handleSubmit} />
+          </Link>
         </div>
       </form>
     )
