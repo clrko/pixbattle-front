@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 import './GroupNew.css'
 
@@ -23,7 +24,8 @@ class GroupNew extends Component {
         allEmailsTemp.push(newEmail)
         this.setState({
           allEmails: allEmailsTemp,
-          count: this.state.count + 1
+          count: this.state.count + 1,
+          email: ''
         })
       } else if (this.state.allEmails.includes(this.state.email)) {
         alert('Tu as déjà invité cette personne')
@@ -38,19 +40,18 @@ class GroupNew extends Component {
   handleCreateGroup = (e) => {
     e.preventDefault()
     console.log(this.state.groupName)
-  }
-
-  handleSubmitForm = e => {
-    console.log(
-      'nom du groupe : ', this.state.groupName,
-      'liste des participants : ', this.state.allEmails
-    )
+    const { allEmails, groupName } = this.state
+    axios
+      .post(`${process.env.REACT_APP_SERVER_URL}group-creation`, allEmails.join(), groupName)
+      .then(res => {
+        console.log(res)
+      })
   }
 
   render () {
     return (
       <div className='NewGroup'>
-        <form onSubmit={this.handleSubmitForm} className='form-container'>
+        <form className='form-container'>
           <div className='group-container'>
             <p className='new-group-text'>Quel est le nom de ton groupe ?</p>
             <input
