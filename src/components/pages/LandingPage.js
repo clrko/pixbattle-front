@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import LandingPagePitchBox from './LandingPagePitchBox'
+import LoginRegistrationForm from './LoginRegistrationFormPage'
 import Modal from '../Modal'
 import logoLP from '../../asset/logo/logo.svg'
 import './LandingPage.css'
-import LoginRegistrationForm from './LoginRegistrationFormPage'
 
 class LandingPage extends Component {
   state = {

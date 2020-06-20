@@ -1,8 +1,8 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import classNames from 'classnames'
 import './LoginForm.css'
 import './RegistrationForm.css'
-import { NavLink } from 'react-router-dom'
 
 class RegistrationForm extends React.Component {
   state = {
