@@ -1,9 +1,14 @@
 .form-container {
-  padding: 0 1rem;
+  width: 40%;
+  height: 60vh;
+  margin: 5% auto;
+  background: #235789;
+  border-radius: 25px;
+  padding: 2%;
 }
 
 .group-container {
-  margin-top: 1rem;
+  margin: 4% 0;
 }
 
 .new-group-text {
@@ -13,18 +18,18 @@
 }
 
 .new-group-input {
-  width: 75%;
-  height: 5vh;
+  width: 90%;
+  height: 35px;
   border-radius: 50px;
-  border: none;
+  border: 3px solid transparent;
   outline: transparent;
-  padding: 0 1em;
+  padding: 0 0 0 1em;
   font-size: 1em;
   color: #235789;
 }
 
 .new-group-input:focus {
-  background-color: #FAC748;
+  border: solid 3px #FAC748;
 }
 
 .add-user {
@@ -36,7 +41,7 @@
 
 .fa-plus-circle {
   font-size: 1.7rem;
-  margin-left: 0.5rem;
+  margin-left: -2.5rem;
 }
 
 .email-abled {
@@ -68,18 +73,15 @@
   display: flex;
   flex-direction: column;
   line-height: 1rem;
+  margin-top: 1%;
 }
 
 .green {
   color: #73DB5A;
 }
 
-.group-emails {
-  line-height: 0rem;
-}
-
 .emails-container {
-  height: 35vh;
+  height: 15vh;
   overflow: scroll;
   padding: 0;
   margin: 5% 0;
@@ -152,4 +154,18 @@
 
 .create-disabled {
   background-color: lightgray;
+}
+
+.group-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 500px) {
+  .form-container {
+    width: 95%;
+    height: 100%;
+    border-radius: 0;
+  }
 }
