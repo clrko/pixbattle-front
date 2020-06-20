@@ -1,23 +1,20 @@
-.login-form {
-  background-color: #235789;
+.login-form,
+.register-form {
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 80vh;
-  width: 75vw;
-  border-radius: 15px;
-} 
+}
+
+.login-form {
+  margin-top: 15vh;
+}
 
 .login-inside {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.LoginForm-div {
-  padding: 5%;
+  width: 90%;
 }
 
 .LoginForm-label {
@@ -46,18 +43,10 @@
   cursor: pointer;
 }
 
-.LoginForm-checkboxAlign1 {
-  display: flex;
-  align-items: center;
-  margin-left: 6%;
-  margin-left: 15%;
-}
-
 .LoginForm-checkboxAlign {
   display: flex;
   align-items: center;
-  margin-left: 14%;
-  margin-right: 22%;
+  margin: 2% auto;
 }
 
 .label-remember {
@@ -96,4 +85,14 @@
   height: 40px;
   width: 90px;
   cursor: pointer;
+}
+
+@media screen and (max-heigth: 600px) {
+  .LoginForm-input {
+    height: 20px;
+  }
+
+  .LoginForm-label {
+    padding: 0;
+  }
 }

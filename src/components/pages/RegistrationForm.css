@@ -16,7 +16,7 @@
   display: none;
 }
 
-.LoginForm-passwordError + .password-error-message {
+.LoginForm-passwordError+.password-error-message {
   position: absolute;
   display: block;
   padding: 0.5em;

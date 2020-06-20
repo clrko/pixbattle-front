@@ -1,6 +1,5 @@
 import React from 'react'
-// import './TabSelector.css'
-import './ZZZTabSelector.css'
+import './TabSelector.css'
 
 function TabSelector ({ activeId, onHandleChange }) {
   return (

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-// import axios from 'axios'
+import axios from 'axios'
 // import store from '../store/userReducer'
-
+import ModalComponent from './ModalComponent'
 import './GroupNew.css'
 
 class GroupNew extends Component {
@@ -9,7 +9,8 @@ class GroupNew extends Component {
     groupName: '',
     email: '',
     count: 1,
-    allEmails: []
+    allEmails: [],
+    contentModal: 'newBattleTheme'
   }
 
   handleChange = (e) => {
@@ -52,11 +53,11 @@ class GroupNew extends Component {
     const { allEmails, groupName } = this.state
     // let currentValue = store.getState()
     console.log(allEmails, groupName)
-    // axios
-    //   .post(`${process.env.REACT_APP_SERVER_URL}group-creation`, allEmails.join(), groupName, currentValue)
-    //   .then(res => {
-    //     console.log(res, allEmails.join(), groupName, currentValue)
-    //   })
+    axios
+      .post(`${process.env.REACT_APP_SERVER_URL}group-creation`, allEmails.join(), groupName)
+      .then(res => {
+        console.log(res, allEmails.join(), groupName)
+      })
   }
 
   render () {
@@ -139,7 +140,7 @@ class GroupNew extends Component {
               <p className='members'>
                 Déjà {count} {count === 1 ? 'personne inscrite !' : 'personnes inscrites !'}
               </p>
-              <button
+              {/* <button
                 type='submit'
                 className={
                   count > 3
@@ -150,7 +151,11 @@ class GroupNew extends Component {
                 disabled={count < 3}
               >
                 Créé ta battle !
-              </button>
+              </button> */}
+              <ModalComponent
+                typeOfContent={this.state.contentModal}
+                className='pitch-button'
+              />
             </div>
           </div>
         </form>

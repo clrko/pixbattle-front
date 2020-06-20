@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import { NavLink } from 'react-router-dom'
 import LandingPagePitchBox from './LandingPagePitchBox'
 import ModalComponent from '../ModalComponent'
 import logoLP from '../../asset/logo/logo.svg'
@@ -7,18 +6,15 @@ import './LandingPage.css'
 
 class LandingPage extends Component {
   state = {
-    contentModal: 'loginRegister',
-    contentModal1: 'newGroup',
-    contentModal2: 'newBattleTheme',
     content:
       [
         { title: 'Groupe', text: 'Crée des groupes, invite tous tes amis, et relevez des défis pour voir qui sera le meilleur.' },
-        { title: 'Battle', text: 'Invite les membres de ton groupe et affrontez vous dans des battles plus créatives les unes que les autres!' },
+        { title: 'Battle', text: 'Invite les membres de ton groupe et affrontez-vous dans des battles plus créatives les unes que les autres!' },
         { title: 'Photo', text: 'Poste ta plus belle photo en fonction du thème pour remporter la victoire!' }
       ],
     contentMobile:
       [
-        { title: 'A toi de Jouer!', text: 'Invite tous tes amis dans des groupes! Crée des battles et poste la photo la plus créative pour voir qui sera le vainqueur!' }
+        { title: 'À toi de Jouer!', text: 'Invite tous tes amis dans des groupes! Crée des battles et poste la photo la plus créative pour voir qui sera le vainqueur!' }
       ]
   }
 
@@ -56,14 +52,7 @@ class LandingPage extends Component {
             }
           </div>
         </div>
-        {/* <NavLink to='/LoginRegistration'> */}
-        <ModalComponent typeOfContent={this.state.contentModal} className='pitch-button' />
-        <ModalComponent typeOfContent={this.state.contentModal1} className='pitch-button' />
-        <ModalComponent typeOfContent={this.state.contentModal2} className='pitch-button' />
-        {/* <button id='loginRegister' className='pitch-button'>
-            Jouer
-          </button> */}
-        {/* </NavLink> */}
+        <ModalComponent typeOfContent={this.state.contentModal} />
       </div>
     )
   }

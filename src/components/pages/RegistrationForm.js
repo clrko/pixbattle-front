@@ -1,8 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
-// import './LoginForm.css'
-// import './RegistrationForm.css'
-import './ZZZRegisterForm.css'
+import './LoginForm.css'
+import './RegistrationForm.css'
+import { NavLink } from 'react-router-dom'
 
 class RegistrationForm extends React.Component {
   state = {
@@ -116,17 +116,21 @@ class RegistrationForm extends React.Component {
           <label className='label-UGC'>Conditions générales d'utilisations</label>
         </div>
         <div>
-          <input
-            className='LoginForm-cancelButton'
-            type='button'
-            value='Annuler'
-          />
-          <input
-            className='LoginForm-validateButton'
-            type='submit'
-            value='Valider'
-            onClick={this.handleSubmit}
-          />
+          <NavLink to='/'>
+            <input
+              className='LoginForm-cancelButton'
+              type='button'
+              value='Annuler'
+            />
+          </NavLink>
+          <NavLink to='/profil'>
+            <input
+              className='LoginForm-validateButton'
+              type='submit'
+              value='Valider'
+              onClick={this.handleSubmit}
+            />
+          </NavLink>
         </div>
       </form>
     )

@@ -12,15 +12,15 @@
 }
 
 .pitch-button {
-  background-color:#FAC748;
-  border-radius:28px;
-  border:1px solid rgb(247, 193, 57);
-  cursor:pointer;
-  color:#3181C8;
-  font-family:Arial;
-  font-size:20px;
-  padding:12px 31px;
-  text-decoration:none;
+  background-color: #FAC748;
+  border-radius: 28px;
+  border: 1px solid rgb(247, 193, 57);
+  cursor: pointer;
+  color: #3181C8;
+  font-family: Arial;
+  font-size: 20px;
+  padding: 12px 31px;
+  text-decoration: none;
   margin: 2em auto 1em auto;
   display: flex;
   outline: none;
@@ -31,13 +31,15 @@
   color: #FAC748;
   padding: 5%;
   letter-spacing: 1px;
+  font-weight: 400;
 }
 
 .pitch-p {
   color: #FDFFFC;
+  padding-bottom: 3vh;
 }
 
-@media screen and (min-width: 320px) and  (max-width: 370px) {
+@media screen and (min-width: 320px) and (max-width: 370px) {
   .logoLp {
     width: 90%;
     margin-top: 0;
@@ -54,7 +56,7 @@
     border-radius: 25px;
     margin-top: 15%;
   }
-  
+
   .pitchBoxLandingPage-text {
     margin: 0 10%;
     text-align: center;
@@ -62,11 +64,11 @@
   }
 }
 
-@media screen and (min-width: 420px) and  (max-width: 1297px) {
+@media screen and (min-width: 420px) and (max-width: 1297px) {
   .pitchBoxLandingPage::-webkit-scrollbar {
     width: 5px;
   }
-  
+
   .pitchBoxLandingPage::-webkit-scrollbar-thumb {
     background-color: #FAC748;
   }
@@ -77,7 +79,7 @@
     display: flex;
     justify-content: space-evenly;
   }
-      
+
   .pitchBoxLandingPage {
     background-color: #235789;
     margin: 0 15px;
@@ -92,30 +94,30 @@
     text-align: center;
     font-size: 25px;
   }
-  
+
   .pitch-button {
-    background-color:#FAC748;
-    border-radius:28px;
-    border:1px solid rgb(247, 193, 57);
-    cursor:pointer;
-    color:#3181C8;
-    font-family:Arial;
-    font-size:20px;
-    padding:12px 31px;
-    text-decoration:none;
+    background-color: #FAC748;
+    border-radius: 28px;
+    border: 1px solid rgb(247, 193, 57);
+    cursor: pointer;
+    color: #3181C8;
+    font-family: Arial;
+    font-size: 20px;
+    padding: 12px 31px;
+    text-decoration: none;
     margin: 2em auto 1em auto;
     display: flex;
     outline: none;
     font-family: FuturaPTMedium;
   }
-  
+
   .pitch-h2 {
     color: #FAC748;
     padding: 5%;
     letter-spacing: 1px;
     margin-bottom: 1em;
   }
-  
+
   .pitch-p {
     color: #FDFFFC;
   }

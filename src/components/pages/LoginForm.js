@@ -1,10 +1,9 @@
 import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 import { LOGIN } from '../../store/action-types'
-// import './LoginForm.css'
-import './ZZZLoginForm.css'
+import './LoginForm.css'
 
 class LoginForm extends React.Component {
   state = {
@@ -72,12 +71,14 @@ class LoginForm extends React.Component {
             type='button'
             value='Annuler'
           />
-          <input
-            className='LoginForm-validateButton'
-            type='submit'
-            value='Valider'
-            onClick={this.handleSubmit}
-          />
+          <NavLink to='/profil'>
+            <input
+              className='LoginForm-validateButton'
+              type='submit'
+              value='Valider'
+              onClick={this.handleSubmit}
+            />
+          </NavLink>
         </div>
       </form>
     )
