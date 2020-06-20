@@ -20,19 +20,15 @@ class LoginForm extends React.Component {
     this.setState({ isChecked: e.target.checked })
   }
 
-  // handleCloseModal = e => {
-  //   e.preventDefault()
-  //   return this.props.onClose
-  // }
-
   handleSubmit = e => {
     e.preventDefault()
     const { dispatch, history } = this.props
     axios.post(`${process.env.REACT_APP_SERVER_URL}/auth`, this.state)
       .then(res => {
         dispatch({ type: LOGIN, ...res.data })
-        history.push('/battlecreationtheme')/* url à modifier pour mettre la page user profile */
+        history.push('/profil')/* url à modifier pour mettre la page user profile */
       })
+    // return this.props.onClose
   }
 
   render () {

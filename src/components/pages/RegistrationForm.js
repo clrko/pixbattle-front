@@ -32,11 +32,6 @@ class RegistrationForm extends React.Component {
     return (password === checkPassword)
   }
 
-  // handleCloseModal = e => {
-  //   e.preventDefault()
-  //   return this.props.onClose
-  // }
-
   handleSubmit = e => {
     e.preventDefault()
     if (!this.checkPassword()) {
