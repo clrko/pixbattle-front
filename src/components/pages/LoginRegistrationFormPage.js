@@ -24,9 +24,9 @@ class LoginRegistrationFormPage extends Component {
   getTabContent = () => {
     switch (this.state.activeId) {
       case 'registration':
-        return <RegistrationForm />
+        return <RegistrationForm onClose={this.props.onClose} />
       case 'login':
-        return <LoginForm />
+        return <LoginForm onClose={this.props.onClose} />
       default:
         return <Error />
     }

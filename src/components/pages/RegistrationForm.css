@@ -1,3 +1,7 @@
+.register-form {
+  margin: auto;
+}
+
 .LoginForm-passwordError {
   border: 1px #ef4536 solid;
 }

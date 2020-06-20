@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import LandingPagePitchBox from './LandingPagePitchBox'
-import ModalComponent from '../ModalComponent'
+import Modal from '../Modal'
 import logoLP from '../../asset/logo/logo.svg'
 import './LandingPage.css'
+import LoginRegistrationForm from './LoginRegistrationFormPage'
 
 class LandingPage extends Component {
   state = {
@@ -15,7 +16,13 @@ class LandingPage extends Component {
     contentMobile:
       [
         { title: 'À toi de Jouer!', text: 'Invite tous tes amis dans des groupes! Crée des battles et poste la photo la plus créative pour voir qui sera le vainqueur!' }
-      ]
+      ],
+    isOpen: false
+  }
+
+  handleOpenModal = e => {
+    e.preventDefault()
+    this.setState({ isOpen: !this.state.isOpen })
   }
 
   render () {
@@ -52,7 +59,12 @@ class LandingPage extends Component {
             }
           </div>
         </div>
-        <ModalComponent typeOfContent={this.state.contentModal} />
+        <button className='pitch-button' onClick={this.handleOpenModal}>
+          JOUER
+        </button>
+        <Modal isOpen={this.state.isOpen}>
+          <LoginRegistrationForm onClose={this.handleOpenModal} />
+        </Modal>
       </div>
     )
   }

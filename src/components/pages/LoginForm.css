@@ -22,7 +22,7 @@
   font-weight: bold;
   padding-left: 5%;
   padding-top: 4%;
-  padding-bottom: 4%;
+  padding-bottom: 2%;
 }
 
 .LoginForm-input {
@@ -41,6 +41,7 @@
   width: 20px;
   height: 20px;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .LoginForm-checkboxAlign {

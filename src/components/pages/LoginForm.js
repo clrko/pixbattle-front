@@ -20,13 +20,18 @@ class LoginForm extends React.Component {
     this.setState({ isChecked: e.target.checked })
   }
 
+  // handleCloseModal = e => {
+  //   e.preventDefault()
+  //   return this.props.onClose
+  // }
+
   handleSubmit = e => {
     e.preventDefault()
     const { dispatch, history } = this.props
     axios.post(`${process.env.REACT_APP_SERVER_URL}/auth`, this.state)
       .then(res => {
         dispatch({ type: LOGIN, ...res.data })
-        history.push('/battlecreationtheme') /* url à modifier pour mettre la page user profile */
+        history.push('/battlecreationtheme')/* url à modifier pour mettre la page user profile */
       })
   }
 
@@ -70,6 +75,7 @@ class LoginForm extends React.Component {
             className='LoginForm-cancelButton'
             type='button'
             value='Annuler'
+            onClick={this.props.onClose}
           />
           <NavLink to='/profil'>
             <input

@@ -32,9 +32,15 @@ class RegistrationForm extends React.Component {
     return (password === checkPassword)
   }
 
+  // handleCloseModal = e => {
+  //   e.preventDefault()
+  //   return this.props.onClose
+  // }
+
   handleSubmit = e => {
     e.preventDefault()
     if (!this.checkPassword()) {
+      // return this.props.isClose
     } else {
     }
   }
@@ -116,13 +122,12 @@ class RegistrationForm extends React.Component {
           <label className='label-UGC'>Conditions générales d'utilisations</label>
         </div>
         <div>
-          <NavLink to='/'>
-            <input
-              className='LoginForm-cancelButton'
-              type='button'
-              value='Annuler'
-            />
-          </NavLink>
+          <input
+            className='LoginForm-cancelButton'
+            type='button'
+            value='Annuler'
+            onClick={this.props.onClose}
+          />
           <NavLink to='/profil'>
             <input
               className='LoginForm-validateButton'

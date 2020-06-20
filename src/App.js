@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import LandingPage from './components/pages/LandingPage.js'
-import Profil from './components/Profil'
+import Profil from './components/pages/Profil'
 
 const App = () => {
   return (
