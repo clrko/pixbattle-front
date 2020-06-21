@@ -14,7 +14,7 @@ class NewGroupBattlePage extends Component {
   getContent = () => {
     switch (this.state.stepsNumbers) {
       case 0:
-        return <GroupNew changeStep={this.changeStepsNumber} />
+        return <GroupNew changeStep={this.changeStepsNumber} params={this.props.match.params.id} />
       case 1:
         return <BattleCreationTheme changeStep={this.changeStepsNumber} />
       case 2:

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 import axios from 'axios'
 import './GroupNew.css'
 
@@ -18,8 +19,20 @@ class GroupNew extends Component {
 
   handleChooseName = e => {
     e.preventDefault()
+    const { groupName } = this.state
     if (this.state.groupName.length > 0) {
-      this.setState({ isGroupName: true })
+      axios
+        .put(`${process.env.REACT_APP_SERVER_URL}/group/${this.props.params}`,
+          {
+            headers: {
+              'x-access-token': localStorage.getItem('token')
+            },
+            groupName
+          })
+        .then(res => {
+          console.log(res.data)
+          this.setState({ isGroupName: true })
+        })
     }
   }
 
@@ -30,14 +43,12 @@ class GroupNew extends Component {
       if (allEmails.includes(email) === false) {
         const allEmailsTemp = allEmails
         const newEmail = email.toLowerCase()
-        console.log(newEmail)
         allEmailsTemp.push(newEmail)
         this.setState({
           allEmails: allEmailsTemp,
           count: count + 1,
           email: ''
         })
-        console.log(allEmails)
       } else if (allEmails.includes(email)) {
         alert('Tu as déjà invité cette personne')
       } else {
@@ -58,22 +69,30 @@ class GroupNew extends Component {
   handleChangeSteps = e => {
     e.preventDefault()
     const { history } = this.props
-    const { allEmails, groupName } = this.state
-    console.log(allEmails, groupName)
+    const { allEmails } = this.state
     axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/group/${this.props.match.params.id}`,
+      .post(`${process.env.REACT_APP_SERVER_URL}/group/${this.props.params}`,
         {
           headers: {
             'x-access-token': localStorage.getItem('token')
           },
-          allEmails,
-          groupName
+          allEmails
         })
       .then(res => {
-        history.push('/newbattle/theme')
-        console.log(res.data)
+        history.push('/battlecreationtheme')
       })
     return this.props.changeStep(e)
+  }
+
+  handleCancelCreation = e => {
+    e.preventDefault()
+    this.setState({
+      groupName: '',
+      isGroupName: false,
+      email: '',
+      count: 1,
+      allEmails: []
+    })
   }
 
   render () {
@@ -164,25 +183,34 @@ class GroupNew extends Component {
                 ))
               }
             </ul>
-            <div className='bottom-new-group'>
-              <p className='members'>
-                Déjà {count} {count === 1 ? 'personne inscrite !' : 'personnes inscrites !'}
-              </p>
-              <button
-                type='submit'
-                className={
-                  count > 3
-                    ? 'create-group create-abled'
-                    : 'create-group create-disabled'
-                }
-                onClick={this.handleChangeSteps}
-                disabled={count < 3}
-              >
-                Créé ta battle !
-              </button>
-            </div>
+            <p className='members'>
+              Déjà {count} {count === 1 ? 'personne inscrite !' : 'personnes inscrites !'}
+            </p>
           </div>
         </div>
+        <div className='bottom-new-group'>
+          <NavLink to='/profile'>
+            <button
+              className='cancel-create-group'
+              onClick={this.handleCancelCreation}
+            >
+              Annuler
+            </button>
+          </NavLink>
+          <button
+            type='submit'
+            className={
+              count > 3
+                ? 'create-group create-abled'
+                : 'create-group create-disabled'
+            }
+            onClick={this.handleChangeSteps}
+            disabled={count < 3}
+          >
+            Valider
+          </button>
+        </div>
+
       </form>
     )
   }

@@ -16,7 +16,7 @@ const App = () => {
         <Route path='/profil' component={Profile} />
         <Route path='/battlecreationdeadline' component={BattleCreationDeadline} />
         <Route path='/battlecreationrule' component={BattleCreationRule} />
-        <Route path='/newbattle/theme' component={BattleCreationTheme} />
+        <Route path='/battlecreationtheme' component={BattleCreationTheme} />
         <Route path='/LoginRegistration' component={LoginRegistrationFormPage} />
         <Route path='/newgroup/:id' component={NewGroupBattlePage} />
         <Route path='/profile' component={Profile} />

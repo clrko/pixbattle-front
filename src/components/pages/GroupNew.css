@@ -136,12 +136,24 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 1vh;
 }
 
 .members {
   width: 50%;
   color: white;
   font-size: 0.8rem;
+}
+
+.cancel-create-group {
+  border-radius: 50px;
+  border: none;
+  color: white;
+  height: 5vh;
+  padding: 0 1rem;
+  font-size: 1rem;
+  outline: transparent;
+  background-color: red;
 }
 
 .create-group {
