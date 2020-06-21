@@ -48,6 +48,7 @@ class GroupNew extends Component {
 
   handleCreateGroup = (e) => {
     e.preventDefault()
+    const { history } = this.props
     const { allEmails, groupName } = this.state
     console.log(allEmails, groupName)
     axios
@@ -60,6 +61,7 @@ class GroupNew extends Component {
           groupName
         })
       .then(res => {
+        history.push('/newbattle/theme')
         console.log(res.data)
       })
   }
