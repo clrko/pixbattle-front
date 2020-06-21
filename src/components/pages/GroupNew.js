@@ -5,23 +5,32 @@ import './GroupNew.css'
 class GroupNew extends Component {
   state = {
     groupName: '',
+    isGroupName: false,
     email: '',
     count: 1,
     allEmails: [],
     contentModal: 'newBattleTheme'
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  handleAddEmail = (e) => {
+  handleChooseName = e => {
+    e.preventDefault()
+    if (this.state.groupName.length > 0) {
+      this.setState({ isGroupName: true })
+    }
+  }
+
+  handleAddEmail = e => {
     e.preventDefault()
     const { allEmails, email, count } = this.state
     if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       if (allEmails.includes(email) === false) {
         const allEmailsTemp = allEmails
-        const newEmail = email
+        const newEmail = email.toLowerCase()
+        console.log(newEmail)
         allEmailsTemp.push(newEmail)
         this.setState({
           allEmails: allEmailsTemp,
@@ -68,22 +77,34 @@ class GroupNew extends Component {
   }
 
   render () {
-    const { groupName, email, count, allEmails } = this.state
+    const { groupName, email, count, allEmails, isGroupName } = this.state
     return (
       <form className='form-container'>
         <div className='group-container'>
           <p className='new-group-text'>Quel est le nom de ton groupe ?</p>
-          <input
-            type='text'
-            className='new-group-input'
-            name='groupName'
-            onChange={this.handleChange}
-            placeholder='Nom du groupe'
-            value={groupName}
-            required
-            minLength='5'
-            maxLength='25'
-          />
+          <div className='container-add-group-name'>
+            <input
+              type='text'
+              className='new-group-input'
+              name='groupName'
+              onChange={this.handleChange}
+              placeholder='Nom du groupe'
+              value={groupName}
+              required
+              minLength='5'
+              maxLength='25'
+              disabled={isGroupName}
+            />
+            {
+              !isGroupName &&
+                <button
+                  className='button-add-group-name'
+                  onClick={this.handleChooseName}
+                >
+                Valider
+                </button>
+            }
+          </div>
           <p className={
             groupName.length < 5
               ? 'info'
@@ -93,71 +114,73 @@ class GroupNew extends Component {
             Entre 5 et 25 caractères
           </p>
         </div>
-        <div className='group-container'>
-          <p className='new-group-text'>Invite tes amis par mail</p>
-          <div className='group-input'>
-            <input
-              type='text'
-              className='new-group-input'
-              onChange={this.handleChange}
-              value={email}
-              name='email'
-              placeholder='Email'
-            />
-            <button
-              type='submit'
-              className='add-user'
-              onClick={this.handleAddEmail}
-              disabled={count >= 12}
-            >
-              <i className={
-                count < 12
-                  ? 'fas fa-plus-circle email-abled'
-                  : 'fas fa-plus-circle email-disabled'
-              }
+        <div style={!isGroupName ? { display: 'none' } : { display: 'inline' }}>
+          <div className='group-container'>
+            <p className='new-group-text'>Invite tes amis par mail</p>
+            <div className='group-input'>
+              <input
+                type='text'
+                className='new-group-input'
+                onChange={this.handleChange}
+                value={email}
+                name='email'
+                placeholder='Email'
               />
-            </button>
-          </div>
-          <p className={
-            allEmails.length < 3 ? 'info' : 'info green'
-          }
-          >
-            Entre 4 à 12 personnes
-          </p>
-        </div>
-        <div className='group-bottom'>
-          <ul className='emails-container'>
-            <li className='emails-list'>current_username</li>
-            {
-              allEmails.map((email, i) => (
-                <li
-                  className='emails-list'
-                  key={i}
-                >
-                  {email}
-                  <button className='remove-email' onClick={() => this.handleRemoveEmail(email)}>
-                    <i className='fas fa-times' />
-                  </button>
-                </li>
-              ))
+              <button
+                type='submit'
+                className='add-user'
+                onClick={this.handleAddEmail}
+                disabled={count >= 12}
+              >
+                <i className={
+                  count < 12
+                    ? 'fas fa-plus-circle email-abled'
+                    : 'fas fa-plus-circle email-disabled'
+                }
+                />
+              </button>
+            </div>
+            <p className={
+              allEmails.length < 3 ? 'info' : 'info green'
             }
-          </ul>
-          <div className='bottom-new-group'>
-            <p className='members'>
-              Déjà {count} {count === 1 ? 'personne inscrite !' : 'personnes inscrites !'}
-            </p>
-            <button
-              type='submit'
-              className={
-                count > 3
-                  ? 'create-group create-abled'
-                  : 'create-group create-disabled'
-              }
-              onClick={this.handleChangeSteps}
-              disabled={count < 3}
             >
-              Créé ta battle !
-            </button>
+              Entre 4 à 12 personnes
+            </p>
+          </div>
+          <div className='group-bottom'>
+            <ul className='emails-container'>
+              <li className='emails-list'>current_username</li>
+              {
+                allEmails.map((email, i) => (
+                  <li
+                    className='emails-list'
+                    key={i}
+                  >
+                    {email}
+                    <button className='remove-email' onClick={() => this.handleRemoveEmail(email)}>
+                      <i className='fas fa-times' />
+                    </button>
+                  </li>
+                ))
+              }
+            </ul>
+            <div className='bottom-new-group'>
+              <p className='members'>
+                Déjà {count} {count === 1 ? 'personne inscrite !' : 'personnes inscrites !'}
+              </p>
+              <button
+                type='submit'
+                className={
+                  count > 3
+                    ? 'create-group create-abled'
+                    : 'create-group create-disabled'
+                }
+                onClick={this.handleChangeSteps}
+                disabled={count < 3}
+              >
+                Créé ta battle !
+              </button>
+            </div>
           </div>
         </div>
       </form>

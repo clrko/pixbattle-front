@@ -4,7 +4,6 @@ import LoginRegistrationForm from './LoginRegistrationFormPage'
 import Modal from '../Modal'
 import logoLP from '../../asset/logo/logo.svg'
 import './LandingPage.css'
-import Profile from './Profile'
 
 class LandingPage extends Component {
   state = {
@@ -66,8 +65,6 @@ class LandingPage extends Component {
         <Modal isOpen={this.state.isOpen}>
           <LoginRegistrationForm onClose={this.handleOpenModal} />
         </Modal>
-
-        <Profile />
       </div>
     )
   }
