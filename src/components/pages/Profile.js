@@ -1,30 +1,37 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
-// import axios from 'axios'
+import axios from 'axios'
 
 class Profile extends Component {
-  // state = {
-  //   userId: 1
-  // }
+  state = {
+    userId: 1
+  }
 
-  // handleCreateGroupe = e => {
-  //   e.preventDefault()
-  //   const { userId } = this.state
-  //   axios
-  //     .post(`${process.env.REACT_APP_SERVER_URL}group-creation`, userId)
-  //     .then(res => {
-  //       console.log(res, userId)
-  //     })
-  // }
+  handleCreateGroupe = e => {
+    e.preventDefault()
+    const { history } = this.props
+    axios
+      .post(`${process.env.REACT_APP_SERVER_URL}/group-creation`,
+        {
+          headers: {
+            'x-access-token': localStorage.getItem('token')
+          }
+        },
+        console.log('pouet', localStorage.getItem('token'))
+      )
+      .then(res => {
+        const groupId = res.data.groupId
+        history.push({
+          pathname: `/newgroup/${groupId}`
+        })
+        console.log(groupId)
+      })
+  }
 
   render () {
     return (
       <div>
         hello
-        {/* <button type='submit' onClick={this.handleCreateGroupe} /> */}
-        <NavLink to='/newgroup'>
-          <button>Créer un groupe</button>
-        </NavLink>
+        <button type='submit' onClick={this.handleCreateGroupe} />
       </div>
     )
   }

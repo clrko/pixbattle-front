@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import axios from 'axios'
+import axios from 'axios'
 import './GroupNew.css'
 
 class GroupNew extends Component {
@@ -40,28 +40,32 @@ class GroupNew extends Component {
   }
 
   handleRemoveEmail = email => {
-    this.setState(({ allEmails }) => ({
-      allEmails: allEmails.filter(e => e !== email)
+    this.setState(({ allEmails, count }) => ({
+      allEmails: allEmails.filter(e => e !== email),
+      count: count - 1
     }))
   }
 
   handleChangeSteps = e => {
     e.preventDefault()
+    const { history } = this.props
+    const { allEmails, groupName } = this.state
+    console.log(allEmails, groupName)
+    axios
+      .post(`${process.env.REACT_APP_SERVER_URL}/group/${this.props.match.params.id}`,
+        {
+          headers: {
+            'x-access-token': localStorage.getItem('token')
+          },
+          allEmails,
+          groupName
+        })
+      .then(res => {
+        history.push('/newbattle/theme')
+        console.log(res.data)
+      })
     return this.props.changeStep(e)
   }
-
-  // handleCreateGroup = (e) => {
-  //   e.preventDefault()
-
-  //   const { allEmails, groupName } = this.state
-  //   // let currentValue = store.getState()
-  //   console.log(allEmails, groupName)
-  //   axios
-  //     .post(`${process.env.REACT_APP_SERVER_URL}group-creation`, allEmails.join(), groupName)
-  //     .then(res => {
-  //       console.log(res, allEmails.join(), groupName)
-  //     })
-  // }
 
   render () {
     const { groupName, email, count, allEmails } = this.state
