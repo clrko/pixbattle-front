@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-class Profil extends Component {
+class Profile extends Component {
   state = {
     userId: 1
   }
@@ -26,4 +26,4 @@ class Profil extends Component {
   }
 }
 
-export default Profil
+export default Profile

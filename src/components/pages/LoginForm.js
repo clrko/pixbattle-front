@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { NavLink, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { LOGIN } from '../../store/action-types'
 import './LoginForm.css'
 
@@ -21,14 +21,18 @@ class LoginForm extends React.Component {
   }
 
   handleSubmit = e => {
-    e.preventDefault()
-    const { dispatch, history } = this.props
-    axios.post(`${process.env.REACT_APP_SERVER_URL}/auth`, this.state)
-      .then(res => {
-        dispatch({ type: LOGIN, ...res.data })
-        history.push('/profil')/* url à modifier pour mettre la page user profile */
-      })
-    // return this.props.onClose
+    const { email, password } = this.state
+    if (email && password) {
+      e.preventDefault()
+      const { dispatch, history } = this.props
+      axios.post(`${process.env.REACT_APP_SERVER_URL}/auth`, this.state)
+        .then(res => {
+          dispatch({ type: LOGIN, ...res.data })
+          history.push('/profile')/* url à modifier pour mettre la page user profile */
+        })
+      return this.props.onClose(e)
+    }
+    alert('Il faut un email et un mot de passe')
   }
 
   render () {
@@ -73,14 +77,12 @@ class LoginForm extends React.Component {
             value='Annuler'
             onClick={this.props.onClose}
           />
-          <NavLink to='/profil'>
-            <input
-              className='LoginForm-validateButton'
-              type='submit'
-              value='Valider'
-              onClick={this.handleSubmit}
-            />
-          </NavLink>
+          <input
+            className='LoginForm-validateButton'
+            type='submit'
+            value='Valider'
+            onClick={this.handleSubmit}
+          />
         </div>
       </form>
     )
