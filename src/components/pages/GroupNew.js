@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import ModalComponent from './ModalComponent'
 import './GroupNew.css'
 
 class GroupNew extends Component {
@@ -41,21 +40,27 @@ class GroupNew extends Component {
   }
 
   handleRemoveEmail = email => {
-    this.setState(({ allEmails }) => ({
-      allEmails: allEmails.filter(e => e !== email)
+    this.setState(({ allEmails, count }) => ({
+      allEmails: allEmails.filter(e => e !== email),
+      count: count - 1
     }))
   }
 
   handleCreateGroup = (e) => {
     e.preventDefault()
-
     const { allEmails, groupName } = this.state
-    // let currentValue = store.getState()
     console.log(allEmails, groupName)
     axios
-      .post(`${process.env.REACT_APP_SERVER_URL}group-creation`, allEmails.join(), groupName)
+      .post(`${process.env.REACT_APP_SERVER_URL}/group/${this.props.match.params.id}`,
+        {
+          headers: {
+            'x-access-token': localStorage.getItem('token')
+          },
+          allEmails,
+          groupName
+        })
       .then(res => {
-        console.log(res, allEmails.join(), groupName)
+        console.log(res.data)
       })
   }
 
@@ -139,7 +144,7 @@ class GroupNew extends Component {
               <p className='members'>
                 Déjà {count} {count === 1 ? 'personne inscrite !' : 'personnes inscrites !'}
               </p>
-              {/* <button
+              <button
                 type='submit'
                 className={
                   count > 3
@@ -150,11 +155,7 @@ class GroupNew extends Component {
                 disabled={count < 3}
               >
                 Créé ta battle !
-              </button> */}
-              <ModalComponent
-                typeOfContent={this.state.contentModal}
-                className='pitch-button'
-              />
+              </button>
             </div>
           </div>
         </form>

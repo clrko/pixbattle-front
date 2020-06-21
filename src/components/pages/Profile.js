@@ -8,11 +8,22 @@ class Profile extends Component {
 
   handleCreateGroupe = e => {
     e.preventDefault()
-    const { userId } = this.state
+    const { history } = this.props
     axios
-      .post(`${process.env.REACT_APP_SERVER_URL}group-creation`, userId)
+      .post(`${process.env.REACT_APP_SERVER_URL}/group-creation`,
+        {
+          headers: {
+            'x-access-token': localStorage.getItem('token')
+          }
+        },
+        console.log('pouet', localStorage.getItem('token'))
+      )
       .then(res => {
-        console.log(res, userId)
+        const groupId = res.data.groupId
+        history.push({
+          pathname: `/newgroup/${groupId}`
+        })
+        console.log(groupId)
       })
   }
 
