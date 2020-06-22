@@ -14,7 +14,7 @@ class MyProfile extends React.Component {
         <Menu />
         <div className='window-MyProfile'>
           <div className='name-fa-star-MyProfile'>
-            <h1 className='name-MyProfile'>Lucas<i className='fa fa-star fa-lg' /></h1>
+            <h1 className='name-MyProfile'>Lucas<i className='fa fa-star fa-lg'><p className='p-victory-point'>20</p></i></h1>
           </div>
           <div className='div-avatar-Myprofile'>
             <img className='avatar-MyProfile' src={avatar} alt='avatar' />
