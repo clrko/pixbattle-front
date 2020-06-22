@@ -213,3 +213,9 @@ td.rdtYear:hover {
 .rdtTime td {
   cursor: default;
 }
+
+.rdt input {
+  width: 250px;
+  font-size: 16px;
+  padding: 2px 4px;
+}

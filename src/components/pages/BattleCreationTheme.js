@@ -75,7 +75,7 @@ class BattleCreationTheme extends Component {
       <div className='battleCreation-page'>
         <div className='battleCreation-banner'>Créer une battle</div>
         <div className='cardBattle'>
-          <h1>1. Choisis un thème</h1>
+          <h1 className='cardBattle-color'>1. Choisis un thème</h1>
           <div className='battleCreation-themeContainer'> {refreshed ? themes.map((theme, i) => <><input type='radio' name='themeButton' value={theme.theme_name} checked={selectedTheme === theme.theme_id} onChange={this.handleThemeChange} id={theme.theme_id} key={theme.theme_id} /><label htmlFor={theme.theme_id} className='battle-optionButton battle-btn' key={i}>{theme.theme_name}</label></>) : themes.slice(0, 5).map((theme, i) => <><input type='radio' name='themeButton' value={theme.theme_name} checked={selectedTheme === theme.theme_id} onChange={this.handleThemeChange} id={theme.theme_id} key={theme.theme_id} /><label htmlFor={theme.theme_id} className='battle-optionButton battle-btn' key={i}>{theme.theme_name}</label></>)}</div>
           <button className={refreshed ? 'refreshed' : 'refreshButton'} onClick={this.handleRefresh} type='button'>Plus de thèmes</button>
           <div className='battleCreation-btnContainer'>
