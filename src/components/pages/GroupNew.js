@@ -61,14 +61,13 @@ class GroupNew extends Component {
 
   handleRemoveEmail = email => {
     this.setState(({ allEmails, count }) => ({
-      allEmails: allEmails.filter(e => e !== email),
+      allEmails: allEmails.filter(em => em !== email),
       count: count - 1
     }))
   }
 
   handleChangeSteps = e => {
     e.preventDefault()
-    // const { history } = this.props
     const { allEmails } = this.state
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/group/${this.props.params}`,
@@ -80,7 +79,6 @@ class GroupNew extends Component {
         })
       .then(res => {
         console.log(res.data)
-        // history.push('/battlecreationtheme')
       })
     return this.props.changeStep(e)
   }
@@ -211,7 +209,6 @@ class GroupNew extends Component {
             Valider
           </button>
         </div>
-
       </form>
     )
   }
