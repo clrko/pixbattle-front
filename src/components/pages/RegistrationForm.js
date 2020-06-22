@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { REGISTERED } from '../../store/action-types'
+import { LOGIN } from '../../store/action-types'
 import classNames from 'classnames'
 import './LoginForm.css'
 import './RegistrationForm.css'
@@ -42,7 +42,7 @@ class RegistrationForm extends React.Component {
       const { dispatch, history } = this.props
       axios.post(`${process.env.REACT_APP_SERVER_URL}/register`, this.state)
         .then(res => {
-          dispatch({ type: REGISTERED, ...res.data })
+          dispatch({ type: LOGIN, ...res.data })
           history.push('/battlecreationtheme') /* url à modifier pour mettre la page user profile */
         })
     }
