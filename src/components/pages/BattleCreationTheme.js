@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { ADD_THEME } from '../../store/action-types'
 import './BattleCreation.css'
 
 const themes = [
@@ -46,24 +47,26 @@ const themes = [
 ]
 
 class BattleCreationTheme extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      refreshed: false,
-      selectedTheme: 0
-    }
-    this.handleRefresh = this.handleRefresh.bind(this)
-    this.handleThemeChange = this.handleThemeChange.bind(this)
+  state = {
+    refreshed: false,
+    selectedTheme: 0
   }
 
-  handleRefresh () {
+  handleRefresh = () => {
     this.setState({ refreshed: !this.state.refreshed })
   }
 
-  handleThemeChange (event) {
+  handleThemeChange = e => {
     this.setState({
-      selectedTheme: event.target.id
+      selectedTheme: e.target.id
     })
+  }
+
+  handleValidationClick = () => {
+    const selectedThemeId = { themeId: this.state.selectedTheme }
+    const { dispatch, history } = this.props
+    dispatch({ type: ADD_THEME, selectedThemeId })
+    history.push('/battlecreationrule')
   }
 
   render () {
@@ -77,7 +80,7 @@ class BattleCreationTheme extends Component {
           <button className={refreshed ? 'refreshed' : 'refreshButton'} onClick={this.handleRefresh} type='button'>Plus de thèmes</button>
           <div className='battleCreation-btnContainer'>
             <button className='battleCreation-cancelButton battle-btn' type='button'>Annuler</button> {/* Ajouter lien vers userpage */}
-            <NavLink to='/battlecreationrule'><button className='battleCreation-validateButton battle-btn' type='button'>Suivant</button></NavLink>
+            <button className='battleCreation-validateButton battle-btn' onClick={this.handleValidationClick} type='button'>Suivant</button>
           </div>
         </div>
       </div>
@@ -85,4 +88,4 @@ class BattleCreationTheme extends Component {
   }
 }
 
-export default BattleCreationTheme
+export default connect()(BattleCreationTheme)

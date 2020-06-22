@@ -45,6 +45,12 @@
 	display: none;
 }
 
+.battleCreation-deadlineContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .battleCreation-btnContainer {
   display: flex;
   justify-content: space-between;

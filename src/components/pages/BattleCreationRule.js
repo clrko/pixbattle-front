@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { ADD_RULES } from '../../store/action-types'
 import './BattleCreation.css'
 
 const rules = [
@@ -34,27 +36,30 @@ const rules = [
 ]
 
 class BattleCreationRule extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      selectedRules: []
-    }
-    this.handleClick = this.handleClick.bind(this)
+  state = {
+    selectedRules: []
   }
 
-  handleClick (event) {
-    if (this.state.selectedRules.includes(event.target.id)) {
+  handleOptionClick = e => {
+    if (this.state.selectedRules.includes(e.target.id)) {
       const listRulesTemp = [...this.state.selectedRules]
-      const index = listRulesTemp.findIndex(item => item === event.target.id)
+      const index = listRulesTemp.findIndex(item => item === e.target.id)
       listRulesTemp.splice(index, 1)
       this.setState({
         selectedRules: [...listRulesTemp]
       })
     } else {
       this.setState({
-        selectedRules: [...this.state.selectedRules, event.target.id]
+        selectedRules: [...this.state.selectedRules, e.target.id]
       })
     }
+  }
+
+  handleValidationClick = () => {
+    const rules = { ruleId: [...this.state.selectedRules] }
+    const { dispatch, history } = this.props
+    dispatch({ type: ADD_RULES, rules })
+    history.push('/battlecreationdeadline')
   }
 
   render () {
@@ -64,10 +69,10 @@ class BattleCreationRule extends Component {
         <div className='battleCreation-banner'>Créer une battle</div>
         <div className='cardBattle'>
           <h1>2. Personnalise la battle</h1>{/* classname ne marche pas  */}
-          <div className='battleCreation-ruleContainer'> {rules.map((rule, i) => <button type='button' className={selectedRules.includes(toString(rule.rule_id)) ? 'battle-optionButton-selected battle-btn' : 'battle-optionButton battle-btn'} onClick={this.handleClick} id={rule.rule_id} key={i}>{rule.rule_name}</button>)}</div>
+          <div className='battleCreation-ruleContainer'> {rules.map((rule, i) => <button type='button' className={selectedRules.includes(toString(rule.rule_id)) ? 'battle-optionButton-selected battle-btn' : 'battle-optionButton battle-btn'} onClick={this.handleOptionClick} id={rule.rule_id} key={i}>{rule.rule_name}</button>)}</div>
           <div className='battleCreation-btnContainer'>
             <NavLink to='/battlecreationtheme'><button className='battleCreation-cancelButton battle-btn' type='button'>Retour</button></NavLink> {/* Ajouter lien vers theme page */}
-            <NavLink to='/battlecreationdeadline'><button className='battleCreation-validateButton battle-btn' type='button'>Suivant</button></NavLink> {/* Ajotuer lien vers next page choix du temps */}
+            <button className='battleCreation-validateButton battle-btn' type='button' onClick={this.handleValidationClick}>Suivant</button>
           </div>
         </div>
       </div>
@@ -75,4 +80,4 @@ class BattleCreationRule extends Component {
   }
 }
 
-export default BattleCreationRule
+export default connect()(BattleCreationRule)
