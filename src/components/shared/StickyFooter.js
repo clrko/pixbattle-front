@@ -5,15 +5,15 @@ const StickyFooter = () => {
   return (
     <div className='div-StickyFooter'>
       <div className='div-camera-StickyFooter'>
-        <i class='fa fa-camera fa-lg' />
+        <i className='fa fa-camera fa-lg' />
         <p>Battles</p>
       </div>
       <div className='div-users-StickyFooter'>
-        <i class='fa fa-users fa-lg' />
+        <i className='fa fa-users fa-lg' />
         <p>Groupes</p>
       </div>
       <div className='div-user-StickyFooter'>
-        <i class='fa fa-user-circle fa-lg' />
+        <i className='fa fa-user-circle fa-lg' />
         <p>Profil</p>
       </div>
     </div>
