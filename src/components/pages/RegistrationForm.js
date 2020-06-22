@@ -37,8 +37,7 @@ class RegistrationForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    if (!this.checkPassword()) {
-    } else {
+    if (this.checkPassword()) {
       const { dispatch, history } = this.props
       axios.post(`${process.env.REACT_APP_SERVER_URL}/register`, this.state)
         .then(res => {
