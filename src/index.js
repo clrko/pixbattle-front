@@ -9,7 +9,6 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 import './asset/fonts/FuturaBT-ExtraBlack.ttf'
 import './asset/fonts/FuturaPTMedium.otf'
-// import 'font-awesome/css/font-awesome.min.css'
 
 const store = createStore(
   reducer,
