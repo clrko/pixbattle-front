@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 class Profile extends Component {
-  state = {
-    userId: 1
-  }
-
   handleCreateGroupe = e => {
     e.preventDefault()
     const { history } = this.props

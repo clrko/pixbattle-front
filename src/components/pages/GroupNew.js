@@ -68,7 +68,7 @@ class GroupNew extends Component {
 
   handleChangeSteps = e => {
     e.preventDefault()
-    const { history } = this.props
+    // const { history } = this.props
     const { allEmails } = this.state
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/group/${this.props.params}`,
@@ -79,7 +79,8 @@ class GroupNew extends Component {
           allEmails
         })
       .then(res => {
-        history.push('/battlecreationtheme')
+        console.log(res.data)
+        // history.push('/battlecreationtheme')
       })
     return this.props.changeStep(e)
   }
