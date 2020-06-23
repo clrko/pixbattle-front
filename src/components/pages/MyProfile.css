@@ -28,13 +28,13 @@
   font-size: 1.8rem;
 }
 
-.fa-star {
+.star-icon-MyProfile {
   color: #FAC748;
   padding-left: 15px;
   position: absolute;
 }
 
-.p-victory-point {
+.p-victory-point-MyProfile {
   position: relative;
   bottom: 25px;
   left: 12px;
