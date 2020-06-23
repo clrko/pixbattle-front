@@ -1,7 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
-import DropDown from './DropDown'
+import DropDown from '../shared/DropDown'
 import StickyFooter from '../shared/StickyFooter'
 import avatar from '../../asset/pictures/avatar_MyProfile.png'
 import './MyProfile.css'

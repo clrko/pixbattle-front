@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import DropDown from './DropDown'
+import DropDown from '../shared/DropDown'
 import './MyPictures.css'
 
 const Menu = withRouter(DropDown)
