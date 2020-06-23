@@ -55,24 +55,38 @@ class BattleCreationRule extends Component {
     }
   }
 
-  handleValidationClick = () => {
+  handleChangeSteps = e => {
     const rules = { ruleId: [...this.state.selectedRules] }
-    const { dispatch, history } = this.props
+    const { dispatch } = this.props
     dispatch({ type: ADD_RULES, rules })
-    history.push('/battlecreationdeadline')
+    return this.props.changeStep(e)
   }
 
   render () {
     const { selectedRules } = this.state
     return (
       <div className='battleCreation-page'>
-        <div className='battleCreation-banner'>Créer une battle</div>
         <div className='cardBattle'>
-          <h1 className='cardBattle-color'>2. Personnalise la battle</h1>{/* classname ne marche pas  */}
-          <div className='battleCreation-ruleContainer'> {rules.map((rule, i) => <button type='button' className={selectedRules.includes(toString(rule.rule_id)) ? 'battle-optionButton-selected battle-btn' : 'battle-optionButton battle-btn'} onClick={this.handleOptionClick} id={rule.rule_id} key={i}>{rule.rule_name}</button>)}</div>
+          <h1 className='cardBattle-color'>2. Personnalise la battle</h1>
+          <div className='battleCreation-ruleContainer'>
+            {rules.map((rule, i) => <button type='button' className={selectedRules.includes(toString(rule.rule_id)) ? 'battle-optionButton-selected battle-btn' : 'battle-optionButton battle-btn'} onClick={this.handleOptionClick} id={rule.rule_id} key={i}>{rule.rule_name}</button>)}
+          </div>
           <div className='battleCreation-btnContainer'>
-            <NavLink to='/battlecreationtheme'><button className='battleCreation-cancelButton battle-btn' type='button'>Retour</button></NavLink> {/* Ajouter lien vers theme page */}
-            <button className='battleCreation-validateButton battle-btn' type='button' onClick={this.handleValidationClick}>Suivant</button>
+            <NavLink to='/battlecreationtheme'>
+              <button
+                className='battleCreation-cancelButton battle-btn'
+                type='button'
+              >
+                Retour
+              </button>
+            </NavLink> {/* Ajouter lien vers theme page + redux */}
+            <button
+              className='battleCreation-validateButton battle-btn'
+              type='button'
+              onClick={this.handleChangeSteps}
+            >
+              Suivant
+            </button>
           </div>
         </div>
       </div>
