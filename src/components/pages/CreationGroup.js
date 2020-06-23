@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
 import axios from 'axios'
+import { ADD_GROUP } from '../../store/action-types'
 import './CreationGroup.css'
 
 class CreationGroup extends Component {
@@ -77,8 +79,11 @@ class CreationGroup extends Component {
           allEmails
         })
       .then(res => {
-        console.log(res.data)
+        console.log(res.data) /* Il faut renvoyer une notification à l'utilisateur soit les emails soit group créé */
       })
+    const currentGroupId = { groupId: this.props.params }
+    const { dispatch } = this.props
+    dispatch({ type: ADD_GROUP, currentGroupId })
     return this.props.changeStep(e)
   }
 
@@ -213,4 +218,4 @@ class CreationGroup extends Component {
   }
 }
 
-export default CreationGroup
+export default connect()(CreationGroup)
