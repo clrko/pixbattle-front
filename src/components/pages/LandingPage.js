@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
 import LandingPagePitchBox from './LandingPagePitchBox'
+import LoginRegistrationForm from './LoginRegistrationFormPage'
+import Modal from '../Modal'
 import logoLP from '../../asset/logo/logo.svg'
 import './LandingPage.css'
 
@@ -9,20 +10,26 @@ class LandingPage extends Component {
     content:
       [
         { title: 'Groupe', text: 'Crée des groupes, invite tous tes amis, et relevez des défis pour voir qui sera le meilleur.' },
-        { title: 'Battle', text: 'Invite les membres de ton groupe et affrontez vous dans des battles plus créatives les unes que les autres!' },
+        { title: 'Battle', text: 'Invite les membres de ton groupe et affrontez-vous dans des battles plus créatives les unes que les autres!' },
         { title: 'Photo', text: 'Poste ta plus belle photo en fonction du thème pour remporter la victoire!' }
       ],
     contentMobile:
       [
-        { title: 'A toi de Jouer!', text: 'Invite tous tes amis dans des groupes! Crée des battles et poste la photo la plus créative pour voir qui sera le vainqueur!' }
-      ]
+        { title: 'À toi de Jouer!', text: 'Invite tous tes amis dans des groupes! Crée des battles et poste la photo la plus créative pour voir qui sera le vainqueur!' }
+      ],
+    isOpen: false
+  }
+
+  handleOpenModal = e => {
+    e.preventDefault()
+    this.setState({ isOpen: !this.state.isOpen })
   }
 
   render () {
     return (
       <div className='landingPage'>
         <div className='logo-div'>
-          <img src={logoLP} className='logoLP' />
+          <img src={logoLP} className='logoLP' alt='Pix Battle Logo' />
         </div>
         <div className='mobile'>
           <div className='box-landing'>
@@ -34,7 +41,7 @@ class LandingPage extends Component {
         </div>
         <div className='desktop'>
           <div
-            classname='box-landing'
+            className='box-landing'
             style={{
               display: 'flex',
               maxWidth: '100%',
@@ -52,11 +59,12 @@ class LandingPage extends Component {
             }
           </div>
         </div>
-        <NavLink to='/LoginRegistration'>
-          <button className='pitch-button'>
-          Jouer
-          </button>
-        </NavLink>
+        <button className='pitch-button' onClick={this.handleOpenModal}>
+          JOUER
+        </button>
+        <Modal isOpen={this.state.isOpen}>
+          <LoginRegistrationForm onClose={this.handleOpenModal} />
+        </Modal>
       </div>
     )
   }
