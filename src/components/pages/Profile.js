@@ -11,15 +11,13 @@ class Profile extends Component {
           headers: {
             'x-access-token': localStorage.getItem('token')
           }
-        },
-        console.log('pouet', localStorage.getItem('token'))
+        }
       )
       .then(res => {
         const groupId = res.data.groupId
         history.push({
           pathname: `/newgroup/${groupId}`
         })
-        console.log(groupId)
       })
   }
 
