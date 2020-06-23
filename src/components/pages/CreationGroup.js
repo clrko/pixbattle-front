@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import axios from 'axios'
-import './GroupNew.css'
+import './CreationGroup.css'
 
-class GroupNew extends Component {
+class CreationGroup extends Component {
   state = {
     groupName: '',
     isGroupName: false,
@@ -213,4 +213,4 @@ class GroupNew extends Component {
   }
 }
 
-export default GroupNew
+export default CreationGroup

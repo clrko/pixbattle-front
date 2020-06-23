@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import LandingPagePitchBox from './LandingPagePitchBox'
-import LoginRegistrationForm from './LoginRegistrationFormPage'
+import FormContainer from './FormContainer'
 import Modal from '../shared/Modal'
 import logoLP from '../../asset/logo/logo.svg'
 import './LandingPage.css'
@@ -63,7 +63,7 @@ class LandingPage extends Component {
           JOUER
         </button>
         <Modal isOpen={this.state.isOpen}>
-          <LoginRegistrationForm onClose={this.handleOpenModal} />
+          <FormContainer onClose={this.handleOpenModal} />
         </Modal>
       </div>
     )

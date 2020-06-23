@@ -1,10 +1,10 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import classNames from 'classnames'
-import './LoginForm.css'
-import './RegistrationForm.css'
+import './FormLogin.css'
+import './FormRegistration.css'
 
-class RegistrationForm extends React.Component {
+class FormRegistration extends React.Component {
   state = {
     username: '',
     email: '',
@@ -137,4 +137,4 @@ class RegistrationForm extends React.Component {
   }
 }
 
-export default RegistrationForm
+export default FormRegistration

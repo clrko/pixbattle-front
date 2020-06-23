@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import BattleCreationDeadline from './BattleCreationDeadline'
-import BattleCreationRule from './BattleCreationRule'
-import BattleCreationTheme from './BattleCreationTheme'
-import GroupNew from './GroupNew'
-import Steps from './StepsNewGroupBattle'
+import CreationBattleDeadline from './CreationBattleDeadline'
+import CreationBattleRule from './CreationBattleRule'
+import CreationBattleTheme from './CreationBattleTheme'
+import CreationGroup from './CreationGroup'
+import Steps from './CreationStepper'
 
-class NewGroupBattlePage extends Component {
+class CreationSteps extends Component {
   state = {
     stepsTitles: ['Ton groupe', 'Ta battle: le thème', 'Ta battle: les options', 'Ta battle: la deadline'],
     stepsNumbers: 0
@@ -14,13 +14,13 @@ class NewGroupBattlePage extends Component {
   getContent = () => {
     switch (this.state.stepsNumbers) {
       case 0:
-        return <GroupNew changeStep={this.changeStepsNumber} params={this.props.match.params.id} />
+        return <CreationGroup changeStep={this.changeStepsNumber} params={this.props.match.params.id} />
       case 1:
-        return <BattleCreationTheme changeStep={this.changeStepsNumber} />
+        return <CreationBattleTheme changeStep={this.changeStepsNumber} />
       case 2:
-        return <BattleCreationRule changeStep={this.changeStepsNumber} />
+        return <CreationBattleRule changeStep={this.changeStepsNumber} />
       case 3:
-        return <BattleCreationDeadline changeStep={this.changeStepsNumber} />
+        return <CreationBattleDeadline changeStep={this.changeStepsNumber} />
       default:
         return <></>
     }
@@ -43,4 +43,4 @@ class NewGroupBattlePage extends Component {
   }
 }
 
-export default NewGroupBattlePage
+export default CreationSteps

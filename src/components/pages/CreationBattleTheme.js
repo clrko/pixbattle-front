@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { ADD_THEME } from '../../store/action-types'
-import './BattleCreation.css'
+import './CreationBattle.css'
 
 const themes = [
   {
@@ -46,7 +46,7 @@ const themes = [
   }
 ]
 
-class BattleCreationTheme extends Component {
+class CreationBattleTheme extends Component {
   state = {
     refreshed: false,
     selectedTheme: 0
@@ -106,4 +106,4 @@ class BattleCreationTheme extends Component {
   }
 }
 
-export default connect()(BattleCreationTheme)
+export default connect()(CreationBattleTheme)

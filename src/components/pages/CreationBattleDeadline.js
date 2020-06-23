@@ -4,10 +4,10 @@ import { connect } from 'react-redux'
 import DateTime from 'react-datetime'
 import { ADD_DEADLINE } from '../../store/action-types'
 import 'moment/locale/fr'
-import './BattleCreation.css'
-import './BattleCreationDeadline.css'
+import './CreationBattle.css'
+import './CreationBattleDeadline.css'
 
-const BattleCreationDeadline = (props) => {
+const CreationBattleDeadline = (props) => {
   const [selectedDate, setDateChange] = useState(new Date())
   const [selectedTime, setTimeChange] = useState('12:00 AM')
 
@@ -51,7 +51,7 @@ const BattleCreationDeadline = (props) => {
           </div>
         </div>
         <div className='battleCreation-btnContainer'>
-          <NavLink to='/battlecreationrule'>
+          <NavLink to='/battle-creation/rule'>
             <button
               className='battleCreation-cancelButton battle-btn'
               type='button'
@@ -72,4 +72,4 @@ const BattleCreationDeadline = (props) => {
   )
 }
 
-export default connect()(withRouter(BattleCreationDeadline))
+export default connect()(withRouter(CreationBattleDeadline))

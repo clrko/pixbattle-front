@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { ADD_RULES } from '../../store/action-types'
-import './BattleCreation.css'
+import './CreationBattle.css'
 
 const rules = [
   {
@@ -35,7 +35,7 @@ const rules = [
   }
 ]
 
-class BattleCreationRule extends Component {
+class CreationBattleRule extends Component {
   state = {
     selectedRules: []
   }
@@ -72,7 +72,7 @@ class BattleCreationRule extends Component {
             {rules.map((rule, i) => <button type='button' className={selectedRules.includes(toString(rule.rule_id)) ? 'battle-optionButton-selected battle-btn' : 'battle-optionButton battle-btn'} onClick={this.handleOptionClick} id={rule.rule_id} key={i}>{rule.rule_name}</button>)}
           </div>
           <div className='battleCreation-btnContainer'>
-            <NavLink to='/battlecreationtheme'>
+            <NavLink to='/battle-creation/theme'>
               <button
                 className='battleCreation-cancelButton battle-btn'
                 type='button'
@@ -94,4 +94,4 @@ class BattleCreationRule extends Component {
   }
 }
 
-export default connect()(BattleCreationRule)
+export default connect()(CreationBattleRule)
