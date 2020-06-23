@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { withRouter, NavLink } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { LOGIN } from '../../store/action-types'
 
 import classNames from 'classnames'
@@ -43,7 +43,7 @@ class RegistrationForm extends React.Component {
       axios.post(`${process.env.REACT_APP_SERVER_URL}/register`, this.state)
         .then(res => {
           dispatch({ type: LOGIN, ...res.data })
-          history.push('/battlecreationtheme') /* url à modifier pour mettre la page user profile */
+          history.push('/MyProfile')
         })
     }
     return this.props.onClose(e)
@@ -132,14 +132,12 @@ class RegistrationForm extends React.Component {
             value='Annuler'
             onClick={this.props.onClose}
           />
-          <NavLink to='/MyProfile'>
-            <input
-              className='LoginForm-validateButton'
-              type='submit'
-              value='Valider'
-              onClick={this.handleSubmit}
-            />
-          </NavLink>
+          <input
+            className='LoginForm-validateButton'
+            type='submit'
+            value='Valider'
+            onClick={this.handleSubmit}
+          />
         </div>
       </form>
     )
