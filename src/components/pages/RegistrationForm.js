@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import classNames from 'classnames'
 import './LoginForm.css'
 import './RegistrationForm.css'
@@ -34,6 +35,7 @@ class RegistrationForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault()
     if (!this.checkPassword()) {
+      return this.props.isClose(e)
     } else {
     }
   }
@@ -45,7 +47,7 @@ class RegistrationForm extends React.Component {
     const emailError = !this.checkEmail()
     const emailClass = classNames('LoginForm-input', { 'LoginForm-passwordError': emailError })
     return (
-      <form className='login-form'>
+      <form className='register-form'>
         <div className='login-inside LoginForm-div'>
           <label className='LoginForm-label'>Pseudo</label>
           <input
@@ -58,7 +60,7 @@ class RegistrationForm extends React.Component {
             maxLength='15'
             required
           />
-          <div className={this.state.username.length > 3 && 'character-validation'}>
+          <div className={this.state.username.length > 3 ? 'character-validation' : ''}>
             <p className='character-validation-p'>Entre 3 et 15 caractères</p>
           </div>
         </div>
@@ -85,7 +87,7 @@ class RegistrationForm extends React.Component {
             maxLength='15'
             required
           />
-          <div className={this.state.password.length > 5 && 'character-validation'}>
+          <div className={this.state.password.length > 5 ? 'character-validation' : ''}>
             <p className='character-validation-p'>Entre 6 et 15 caractères</p>
           </div>
         </div>
@@ -103,7 +105,7 @@ class RegistrationForm extends React.Component {
           />
           <div className='password-error-message'>Les mots de passe de correspondent pas</div>
         </div>
-        <div className='LoginForm-checkboxAlign1 LoginForm-div'>
+        <div className='LoginForm-checkboxAlign LoginForm-div'>
           <input
             className='LoginForm-checkbox'
             name='acceptedCGU'
@@ -119,13 +121,16 @@ class RegistrationForm extends React.Component {
             className='LoginForm-cancelButton'
             type='button'
             value='Annuler'
+            onClick={this.props.onClose}
           />
-          <input
-            className='LoginForm-validateButton'
-            type='submit'
-            value='Valider'
-            onClick={this.handleSubmit}
-          />
+          <NavLink to='/profil'>
+            <input
+              className='LoginForm-validateButton'
+              type='submit'
+              value='Valider'
+              onClick={this.handleSubmit}
+            />
+          </NavLink>
         </div>
       </form>
     )

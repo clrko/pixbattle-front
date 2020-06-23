@@ -1,0 +1,98 @@
+.battleCreation-page {
+	background-color: #3181C8;
+  width: 100vw;
+  height: 100%;
+	min-height: 100vh;
+}
+
+.battleCreation-banner {
+	background-color: #FDFFFC;
+	color: #235789;
+	padding: 30px 25px;
+}
+
+.cardBattle {
+	background-color: #235789;
+	color: #FDFFFC;
+	margin: 30px 25px;
+	padding: 30px 25px;
+  border-radius: 15px;
+  position: relative;
+  min-height: 480px;
+}
+
+.cardBattle h1 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.battleCreation-themeContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.battleCreation-themeContainer input {
+  visibility: hidden;
+}
+
+.battleCreation-themeContainer input:checked+label {
+  color: #FAC748;
+	background-color: #3181C8;
+}
+
+.refreshed {
+	display: none;
+}
+
+.battleCreation-btnContainer {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 30px;
+  bottom: 30px;
+  left: 25px;
+  right: 25px;
+}
+
+.battle-btn {
+  border-radius: 20px;
+  cursor: pointer;
+  font-family:Arial;
+  font-family: FuturaPTMedium;
+  font-size:15px;
+  border-style: none;
+  outline: none;
+  font-weight: bolder;
+  letter-spacing: 0.5px;
+}
+
+.battle-optionButton {
+	background-color: #FAC748;
+	color: #3181C8;
+  padding: 7px 10px;
+  margin: 7px 15px;
+  width: fit-content;
+}
+
+.battle-optionButton-selected {
+	background-color: #13293D;
+	color: #FDFFFC;
+  padding: 7px 10px;
+  margin: 7px 15px;
+  width: fit-content;
+}
+
+.battleCreation-cancelButton {
+  background-color: #ef4536;
+  color: white;
+  height: 40px;
+  width: 100px;
+}
+
+.battleCreation-validateButton {
+  color: white;
+  background-color: #73db5a;
+  height: 40px;
+  width: 100px;
+}
