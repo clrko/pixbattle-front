@@ -5,10 +5,10 @@ import { withRouter } from 'react-router-dom'
 import { LOGIN } from '../../store/action-types'
 
 import classNames from 'classnames'
-import './LoginForm.css'
-import './RegistrationForm.css'
+import './FormLogin.css'
+import './FormRegistration.css'
 
-class RegistrationForm extends React.Component {
+class FormRegistration extends React.Component {
   state = {
     username: '',
     email: '',
@@ -144,4 +144,4 @@ class RegistrationForm extends React.Component {
   }
 }
 
-export default connect()(withRouter(RegistrationForm))
+export default connect()(withRouter(FormRegistration))

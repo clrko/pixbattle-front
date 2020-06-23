@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
-import userReducer from './userReducer'
+import user from './userReducer'
+import battleCreation from './battleCreationReducer'
 
 export default combineReducers({
-  userReducer
+  user,
+  battleCreation
 })
