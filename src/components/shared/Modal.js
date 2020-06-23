@@ -8,7 +8,7 @@ class ModalComponent extends Component {
       <div className='modal-overlay-div'>
         <div className='ModalComponent'>
           <div className='modal-title-container'>
-            {LogoCamera}
+            <img className='logo-mini' src={LogoCamera} alt='logo pix battle min' />
           </div>
           {this.props.children}
         </div>
