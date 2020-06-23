@@ -1,5 +1,9 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import axios from 'axios'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import { LOGIN } from '../../store/action-types'
+
 import classNames from 'classnames'
 import './FormLogin.css'
 import './FormRegistration.css'
@@ -34,10 +38,15 @@ class FormRegistration extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    if (!this.checkPassword()) {
-      return this.props.isClose(e)
-    } else {
+    if (this.checkPassword()) {
+      const { dispatch, history } = this.props
+      axios.post(`${process.env.REACT_APP_SERVER_URL}/register`, this.state)
+        .then(res => {
+          dispatch({ type: LOGIN, ...res.data })
+          history.push('/MyProfile')
+        })
     }
+    return this.props.onClose(e)
   }
 
   render () {
@@ -123,18 +132,16 @@ class FormRegistration extends React.Component {
             value='Annuler'
             onClick={this.props.onClose}
           />
-          <NavLink to='/MyProfile'>
-            <input
-              className='LoginForm-validateButton'
-              type='submit'
-              value='Valider'
-              onClick={this.handleSubmit}
-            />
-          </NavLink>
+          <input
+            className='LoginForm-validateButton'
+            type='submit'
+            value='Valider'
+            onClick={this.handleSubmit}
+          />
         </div>
       </form>
     )
   }
 }
 
-export default FormRegistration
+export default connect()(withRouter(FormRegistration))
