@@ -1,5 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
+import axios from 'axios'
 import DropDown from './DropDown'
 import StickyFooter from '../shared/StickyFooter'
 import avatar from '../../asset/pictures/avatar_MyProfile.png'
@@ -8,6 +9,27 @@ import './MyProfile.css'
 const Menu = withRouter(DropDown)
 
 class MyProfile extends React.Component {
+  handleCreateGroupe = e => {
+    e.preventDefault()
+    const { history } = this.props
+    axios
+      .post(`${process.env.REACT_APP_SERVER_URL}/group-creation`,
+        {
+          headers: {
+            'x-access-token': localStorage.getItem('token')
+          }
+        },
+        console.log('pouet', localStorage.getItem('token'))
+      )
+      .then(res => {
+        const groupId = res.data.groupId
+        history.push({
+          pathname: `/newgroup/${groupId}`
+        })
+        console.log(groupId)
+      })
+  }
+
   render () {
     return (
       <div className='background-MyProfile'>
@@ -25,7 +47,7 @@ class MyProfile extends React.Component {
             <p className='p-group-MyProfile'>2 groupes</p>
             <p className='p-friend-MyProfile'>18 amis</p>
           </div>
-          <button className='button-createdNewGroup-MyProfile'>Créer un nouveau groupe</button>
+          <button className='button-createdNewGroup-MyProfile' onClick={this.handleCreateGroupe}>Créer un nouveau groupe</button>
         </div>
         <StickyFooter />
       </div>
