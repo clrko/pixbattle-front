@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import LoginForm from './LoginForm'
 import RegistrationForm from './RegistrationForm'
 import TabSelector from './TabSelector'
-import './LoginRegistrationFormPage.css'
 
 const Error = () => (
   <p>Something went <strong>wrong</strong>!</p>
@@ -25,9 +24,9 @@ class LoginRegistrationFormPage extends Component {
   getTabContent = () => {
     switch (this.state.activeId) {
       case 'registration':
-        return <RegistrationForm />
+        return <RegistrationForm onClose={this.props.onClose} />
       case 'login':
-        return <LoginForm />
+        return <LoginForm onClose={this.props.onClose} />
       default:
         return <Error />
     }
@@ -41,7 +40,7 @@ class LoginRegistrationFormPage extends Component {
           activeId={this.state.activeId}
         />
         <div className='LoginRegistrationFormPage-background'>
-          <div>{this.getTabContent()}</div>
+          {this.getTabContent()}
         </div>
       </div>
     )

@@ -21,13 +21,19 @@ class LoginForm extends React.Component {
   }
 
   handleSubmit = e => {
-    e.preventDefault()
-    const { dispatch, history } = this.props
-    axios.post(`${process.env.REACT_APP_SERVER_URL}/auth`, this.state)
-      .then(res => {
-        dispatch({ type: LOGIN, ...res.data })
-        history.push('/battlecreationtheme') /* url à modifier pour mettre la page user profile */
-      })
+    const { email, password } = this.state
+    if (email && password) {
+      e.preventDefault()
+      const { dispatch, history } = this.props
+      axios.post(`${process.env.REACT_APP_SERVER_URL}/auth`, this.state)
+        .then(res => {
+          localStorage.setItem('token', res.headers['x-access-token'])
+          dispatch({ type: LOGIN, ...res.data })
+          history.push('/MyProfile')
+        })
+      return this.props.onClose(e)
+    }
+    alert('Il faut un email et un mot de passe')
   }
 
   render () {
@@ -70,6 +76,7 @@ class LoginForm extends React.Component {
             className='LoginForm-cancelButton'
             type='button'
             value='Annuler'
+            onClick={this.props.onClose}
           />
           <input
             className='LoginForm-validateButton'

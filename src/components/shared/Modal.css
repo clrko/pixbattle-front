@@ -1,0 +1,79 @@
+.modal-overlay-div {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, .65);
+}
+
+.ModalComponent {
+  background-color: #235789;
+  width: 50%;
+  height: 90%;
+  margin: auto;
+  border-radius: 25px;
+  outline: transparent;
+  margin-top: 2rem;
+}
+
+.modal-title-container {
+  background-color: white;
+  height: 10vh;
+  font-size: 1.3rem;
+  border-radius: 25px 25px 0 0;
+  padding: 1rem;
+  color: #235789;
+  display: flex;
+  justify-content: center;
+}
+
+.modal-button {
+  background-color: transparent;
+  border: none;
+  outline: transparent;
+  color: #235789;
+  font-size: 1.3rem;
+  position: fixed;
+  top: 7%;
+  right: 30%;
+}
+
+@media screen and (max-width: 1025px) {
+  .ModalComponent {
+    width: 70%;
+    height: 90%;
+  }
+
+  .modal-button {
+    top: 5%;
+    right: 20%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .ModalComponent {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    margin-top: 0;
+  }
+
+  .modal-title-container {
+    border-radius: 0;
+  }
+
+  .modal-button {
+    top: 2%;
+    right: 3%;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .modal-title-container {
+    height: 4vh;
+  }
+}
