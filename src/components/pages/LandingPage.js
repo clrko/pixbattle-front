@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import LandingPagePitchBox from './LandingPagePitchBox'
 import LoginRegistrationForm from './LoginRegistrationFormPage'
-import Modal from '../Modal'
+import Modal from '../shared/Modal'
 import logoLP from '../../asset/logo/logo.svg'
 import './LandingPage.css'
 

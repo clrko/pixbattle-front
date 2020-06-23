@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import LogoCamera from '../asset/logo/logo-camera.svg'
+import LogoCamera from '../../asset/logo/logo-camera.svg'
 import './Modal.css'
 
 class ModalComponent extends Component {
