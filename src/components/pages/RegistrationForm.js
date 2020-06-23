@@ -46,7 +46,7 @@ class RegistrationForm extends React.Component {
           history.push('/battlecreationtheme') /* url à modifier pour mettre la page user profile */
         })
     }
-    return this.props.isClose(e)
+    return this.props.onClose(e)
   }
 
   render () {
