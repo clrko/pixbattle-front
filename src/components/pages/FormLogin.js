@@ -3,9 +3,9 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { LOGIN } from '../../store/action-types'
-import './LoginForm.css'
+import './FormLogin.css'
 
-class LoginForm extends React.Component {
+class FormLogin extends React.Component {
   state = {
     email: '',
     password: '',
@@ -90,4 +90,4 @@ class LoginForm extends React.Component {
   }
 }
 
-export default connect()(withRouter(LoginForm))
+export default connect()(withRouter(FormLogin))

@@ -1,2 +1,7 @@
 export const LOGIN = 'LOGIN'
 export const LOGOUT = 'LOGOUT'
+export const ADD_GROUP = 'ADD_GROUP'
+export const ADD_THEME = 'ADD_THEME'
+export const ADD_RULES = 'ADD_RULES'
+export const ADD_DEADLINE = 'ADD_DEADLINE'
+export const REMOVE_ALL = 'REMOVE_ALL'

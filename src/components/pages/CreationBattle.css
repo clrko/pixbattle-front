@@ -5,20 +5,17 @@
 	min-height: 100vh;
 }
 
-.battleCreation-banner {
-	background-color: #FDFFFC;
-	color: #235789;
-	padding: 30px 25px;
-}
-
 .cardBattle {
 	background-color: #235789;
-	color: #FDFFFC;
 	margin: 30px 25px;
 	padding: 30px 25px;
   border-radius: 15px;
   position: relative;
   min-height: 480px;
+}
+
+.cardBattle-color {
+  color: #FDFFFC;
 }
 
 .cardBattle h1 {
@@ -36,13 +33,23 @@
   visibility: hidden;
 }
 
-.battleCreation-themeContainer input:checked+label {
+.battleCreation-themeContainer input:checked~label {
   color: #FAC748;
 	background-color: #3181C8;
 }
 
 .refreshed {
 	display: none;
+}
+
+.refreshButton {
+  margin:0 auto;
+}
+
+.battleCreation-deadlineContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .battleCreation-btnContainer {
@@ -53,6 +60,10 @@
   bottom: 30px;
   left: 25px;
   right: 25px;
+}
+
+.battleCreation-dateTimeContainer {
+  margin: 2rem 0;
 }
 
 .battle-btn {

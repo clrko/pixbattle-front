@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import LoginForm from './LoginForm'
-import RegistrationForm from './RegistrationForm'
-import TabSelector from './TabSelector'
+import FormLogin from './FormLogin'
+import FormRegistration from './FormRegistration'
+import FormSelector from './FormSelector'
 
 const Error = () => (
   <p>Something went <strong>wrong</strong>!</p>
 )
 
-class LoginRegistrationFormPage extends Component {
+class FormContainer extends Component {
   state = {
     activeId: ''
   }
@@ -24,9 +24,9 @@ class LoginRegistrationFormPage extends Component {
   getTabContent = () => {
     switch (this.state.activeId) {
       case 'registration':
-        return <RegistrationForm onClose={this.props.onClose} />
+        return <FormRegistration onClose={this.props.onClose} />
       case 'login':
-        return <LoginForm onClose={this.props.onClose} />
+        return <FormLogin onClose={this.props.onClose} />
       default:
         return <Error />
     }
@@ -35,7 +35,7 @@ class LoginRegistrationFormPage extends Component {
   render () {
     return (
       <div className='LoginRegistrationFormPage-FullPage'>
-        <TabSelector
+        <FormSelector
           onHandleChange={this.handleChangeTab}
           activeId={this.state.activeId}
         />
@@ -47,4 +47,4 @@ class LoginRegistrationFormPage extends Component {
   }
 }
 
-export default LoginRegistrationFormPage
+export default FormContainer

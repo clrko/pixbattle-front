@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Stepper from 'react-stepper-horizontal'
 
-class StepsNewGroupBattle extends Component {
+class CreationStepper extends Component {
   render () {
     const { title, number } = this.props
     return (
@@ -24,4 +24,4 @@ class StepsNewGroupBattle extends Component {
   }
 }
 
-export default StepsNewGroupBattle
+export default CreationStepper
