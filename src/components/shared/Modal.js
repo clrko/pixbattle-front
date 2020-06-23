@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import LogoCamera from '../asset/logo/logo-camera.svg'
+import LogoCamera from '../../asset/logo/logo-camera.svg'
 import './Modal.css'
 
 class ModalComponent extends Component {
@@ -8,7 +8,7 @@ class ModalComponent extends Component {
       <div className='modal-overlay-div'>
         <div className='ModalComponent'>
           <div className='modal-title-container'>
-            {LogoCamera}
+            <img className='logo-mini' src={LogoCamera} alt='logo pix battle min' />
           </div>
           {this.props.children}
         </div>

@@ -132,7 +132,7 @@ class RegistrationForm extends React.Component {
             value='Annuler'
             onClick={this.props.onClose}
           />
-          <NavLink to='/profil'>
+          <NavLink to='/MyProfile'>
             <input
               className='LoginForm-validateButton'
               type='submit'

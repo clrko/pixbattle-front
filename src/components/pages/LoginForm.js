@@ -29,7 +29,7 @@ class LoginForm extends React.Component {
         .then(res => {
           localStorage.setItem('token', res.headers['x-access-token'])
           dispatch({ type: LOGIN, ...res.data })
-          history.push('/profile')
+          history.push('/MyProfile')
         })
       return this.props.onClose(e)
     }

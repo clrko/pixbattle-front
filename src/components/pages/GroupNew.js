@@ -30,7 +30,6 @@ class GroupNew extends Component {
             groupName
           })
         .then(res => {
-          console.log(res.data)
           this.setState({ isGroupName: true })
         })
     }
