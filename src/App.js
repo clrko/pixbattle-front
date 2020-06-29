@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import CreationBattleDeadline from './components/pages/CreationBattleDeadline'
 import CreationBattleRule from './components/pages/CreationBattleRule'
 import CreationBattleTheme from './components/pages/CreationBattleTheme'
+import Gallery from './components/shared/Gallery'
 import LandingPage from './components/pages/LandingPage'
 import FormContainer from './components/pages/FormContainer'
 import MyProfile from './components/pages/MyProfile'
@@ -18,6 +19,7 @@ const App = () => {
         <Route path='/battle-creation/deadline' component={CreationBattleDeadline} />
         <Route path='/battle-creation/rule' component={CreationBattleRule} />
         <Route path='/battle-creation/theme' component={CreationBattleTheme} />
+        <Route path='/gallery' component={Gallery} />
         <Route path='/LoginRegistration' component={FormContainer} />
         <Route path='/MyProfile' component={MyProfile} />
         <Route path='/MyRanking' component={MyRanking} />
