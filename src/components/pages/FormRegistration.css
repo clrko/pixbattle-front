@@ -36,3 +36,9 @@
 .CheckPassword-wrapper {
   position: relative;
 }
+
+@media (max-width: 1395px) and (max-heigth: 765px) {
+  .LoginForm-label {
+    padding-top: 2%;
+  }
+}
