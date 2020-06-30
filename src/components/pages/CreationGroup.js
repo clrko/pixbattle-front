@@ -60,11 +60,14 @@ class CreationGroup extends Component {
     }
   }
 
-  handleRemoveEmail = email => {
-    this.setState(({ allEmails, count }) => ({
-      allEmails: allEmails.filter(em => em !== email),
+  handleRemoveEmail = e => {
+    const { count } = this.state
+    const email = e.target.name
+    const allEmailsTemp = [...this.state.allEmails]
+    this.setState({
+      allEmails: allEmailsTemp.filter(em => em !== email),
       count: count - 1
-    }))
+    })
   }
 
   handleChangeSteps = e => {
@@ -101,7 +104,7 @@ class CreationGroup extends Component {
   render () {
     const { groupName, email, count, allEmails, isGroupName } = this.state
     return (
-      <form className='form-container'>
+      <div className='form-container'>
         <div className='group-container'>
           <p className='new-group-text'>Quel est le nom de ton groupe ?</p>
           <div className='container-add-group-name'>
@@ -179,9 +182,7 @@ class CreationGroup extends Component {
                     key={i}
                   >
                     {email}
-                    <button className='remove-email' onClick={() => this.handleRemoveEmail(email)}>
-                      <i className='fas fa-times' />
-                    </button>
+                    <input type='button' value='X' name={email} className='remove-email' onClick={this.handleRemoveEmail} />
                   </li>
                 ))
               }
@@ -213,7 +214,7 @@ class CreationGroup extends Component {
             Valider
           </button>
         </div>
-      </form>
+      </div>
     )
   }
 }
