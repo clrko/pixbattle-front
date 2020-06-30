@@ -1,13 +1,19 @@
 .countdown {
-  letter-spacing: 3px;
+  letter-spacing: 2px;
+}
 
+.countdown span{
+  letter-spacing: 3px;
+  background-color: #FAC748;
 }
 
 .picture {
     width: 264px;
+    height: 320px;
 }
 
 .uploadPicture {
   background-color: #FAC748;
   width: 264px;
+  height: 320px;
 }
