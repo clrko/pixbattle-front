@@ -46,7 +46,6 @@ class MyProfile extends React.Component {
             <p className='p-picture-MyProfile'>12 photos</p>
             <p className='p-group-MyProfile'>2 groupes</p>
             <p className='p-friend-MyProfile'>18 amis</p>
-
             <button className='button-createdNewGroup-MyProfile' onClick={this.handleCreateGroupe}>Créer un nouveau groupe</button>
           </div>
         </div>
