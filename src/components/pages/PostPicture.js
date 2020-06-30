@@ -1,13 +1,21 @@
 import React from 'react'
 import CloudUpload from '../../asset/pictures/cloud-computing.png'
 import Countdown from 'react-countdown'
-// import ImageUploader from 'react-images-upload';
 import './PostPicture.css'
 
 class PostPicture extends React.Component {
     state = {
       uploadPicture: CloudUpload
     }
+
+    // handleSubmit = e => {
+    //   e.preventDefault()
+    //     const { dispatch, history } = this.props
+    //     axios.post(`${process.env.REACT_APP_SERVER_URL}/`, this.state)
+    //       .then(res => {
+    //         dispatch({ type: , ...res.data })
+    //       })
+    // }
 
   handleChange = (event) => {
     this.setState({

@@ -14,7 +14,7 @@ import PostPicture from './components/pages/PostPicture'
 const App = () => {
   return (
     <div>
-      <PostPicture timeTillDate='05 26 2019, 6:00 am' timeFormat='MM DD YYYY, h:mm a' />
+      <PostPicture />
       {/* <Switch>
         <Route exact path='/' component={LandingPage} />
         <Route path='/battle-creation/deadline' component={CreationBattleDeadline} />
