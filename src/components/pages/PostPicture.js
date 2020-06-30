@@ -5,25 +5,13 @@ import Countdown from 'react-countdown'
 import './PostPicture.css'
 
 class PostPicture extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      pictures: [],
+    state = {
       uploadPicture: CloudUpload
     }
-    this.onDrop = this.onDrop.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-  }
 
-  handleChange (event) {
+  handleChange = (event) => {
     this.setState({
       uploadPicture: URL.createObjectURL(event.target.files[0])
-    })
-  }
-
-  onDrop (picture) {
-    this.setState({
-      pictures: this.state.pictures.concat(picture)
     })
   }
 
@@ -31,13 +19,6 @@ class PostPicture extends React.Component {
     return (
       <div>
         <Countdown className='countdown' date={Date.now() + 100000} />
-        {/* <ImageUploader
-                withIcon={false}
-                buttonText='Upload'
-                onChange={this.onDrop}
-                imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                maxFileSize={5242880}
-            /> */}
         <div className='uploadPicture'>
           <img className='picture' src={this.state.uploadPicture} alt='user-avatar' type='file' onChange={this.handleChange} />
           <input className='file' type='file' onChange={this.handleChange} />
