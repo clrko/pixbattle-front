@@ -1,3 +1,5 @@
+* {-moz-box-sizing: border-box; box-sizing: border-box;}
+
 .background-MyProfile {
   width: 100%;
   height: 100vh;
@@ -7,6 +9,18 @@
   justify-content: center;
   align-items: center;
 }
+/* 
+.window-MyProfile {
+  background-color: #235789;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 65vh;
+  width: 75vw;
+  border-radius: 15px;
+} */
 
 .window-MyProfile {
   background-color: #235789;
@@ -15,13 +29,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: 80vh;
   width: 75vw;
   border-radius: 15px;
+  padding: 20px;
 }
 
 .name-fa-star-MyProfile {
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 .name-MyProfile {
@@ -47,14 +61,17 @@
 }
 
 .avatar-MyProfile {
-  max-width: 200px;
+  max-width: 150px;
 }
 
 .div-informations-MyProfile {
   color: #FAC748;
-  margin-top: 30px;
+  margin-top: 15px;
   font-size: 1.2rem;
+  display: flex;
   font-weight: bold;
+  flex-direction: column;
+  align-items: center;
 }
 
 .div-informations-MyProfile p {
@@ -64,10 +81,10 @@
 .button-createdNewGroup-MyProfile {
   background-color: #FAC748;
   color: #235789;
-  margin-top: 40px;
+  margin-top: 30px;
   font-size: 0.9rem;
   font-weight: bold;
-  width: 70%;
+  width: 100%;
   height: 30px;
   border-radius: 20px;
   border: none;

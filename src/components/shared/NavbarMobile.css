@@ -1,40 +1,47 @@
 .div-NavbarMobile {
   width: 100%;
-  height: 20vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: -80px;
+  margin-bottom: 10px;
 }
 
 .logo-NavbarMobile {
   max-width: 150px;
+  padding-left: 4px;
 }
 
 .links-NavbarMobile {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 120px;
+  width: 140px;
+  margin-right: 20px;
 }
 
 .avatar-NavbarMobile {
-  max-width: 40px;
+  max-width: 40%;
+  padding: 10px;
 }
 
 .star-icon-NavbarMobile {
   color: #FAC748;
   font-size: 1.8rem;
+  margin-right: 26px;
+  display: flex;
+  align-items: center;
 }
 
 .p-victory-point-NavbarMobile {
   position: relative;
-  bottom: 20px;
+  right: 24px;
   color: black;
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 .fa-sign-out-alt {
   font-size: 2.5rem;
   cursor: pointer;
-  color: white;
+  color: black;
 }

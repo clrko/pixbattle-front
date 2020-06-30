@@ -8,15 +8,9 @@ const NavbarMobile = () => {
     <div className='div-NavbarMobile'>
       <img src={logoLP} className='logo-NavbarMobile' alt='Pix Battle Logo' />
       <div className='links-NavbarMobile'>
-        <div>
-          <img className='avatar-NavbarMobile' src={avatar} alt='avatar' />
-        </div>
-        <div>
-          <i className='fa fa-star star-icon-NavbarMobile'><p className='p-victory-point-NavbarMobile'>20</p></i>
-        </div>
-        <div>
-          <i class='fas fa-sign-out-alt' />
-        </div>
+        <img className='avatar-NavbarMobile' src={avatar} alt='avatar' />
+        <i className='fa fa-star star-icon-NavbarMobile'><p className='p-victory-point-NavbarMobile'>20</p></i>
+        <i class='fas fa-sign-out-alt' />
       </div>
     </div>
   )
