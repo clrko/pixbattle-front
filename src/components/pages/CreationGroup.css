@@ -120,8 +120,9 @@
   padding: 1% 0;
 }
 
-.remove-email .fa-times {
+.remove-email {
   color: red;
+  font-weight: 600;
   font-size: 1rem;
   margin-right: 2px;
 }
