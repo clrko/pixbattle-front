@@ -1,4 +1,7 @@
-* {-moz-box-sizing: border-box; box-sizing: border-box;}
+* {
+  -moz-box-sizing: border-box; 
+  box-sizing: border-box;
+}
 
 .background-MyProfile {
   width: 100%;
@@ -9,18 +12,6 @@
   justify-content: center;
   align-items: center;
 }
-/* 
-.window-MyProfile {
-  background-color: #235789;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  height: 65vh;
-  width: 75vw;
-  border-radius: 15px;
-} */
 
 .window-MyProfile {
   background-color: #235789;
@@ -32,10 +23,6 @@
   width: 75vw;
   border-radius: 15px;
   padding: 20px;
-}
-
-.name-fa-star-MyProfile {
-  /* margin-top: 20px; */
 }
 
 .name-MyProfile {
@@ -90,4 +77,10 @@
   border: none;
   outline: 0;
   cursor: pointer;
+}
+
+@media screen and (min-width: 600px) {
+  .window-MyProfile {
+    width: 30vw;
+  }
 }

@@ -64,3 +64,9 @@
   color: #235789;
   font-size: 2rem;
 }
+
+@media screen and (min-width: 600px) {
+  .div-StickyFooter {
+    display: none;
+  }
+}
