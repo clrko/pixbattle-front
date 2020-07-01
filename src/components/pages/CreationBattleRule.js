@@ -41,15 +41,15 @@ class CreationBattleRule extends Component {
   }
 
   handleOptionClick = e => {
-    if (this.state.selectedRules.some(rule => rule.rule_id === e.target.id)) {
+    if (this.state.selectedRules.some(selectedRule => selectedRule.rule_id === parseInt(e.target.id))) {
       const listRulesTemp = [...this.state.selectedRules]
-      const index = listRulesTemp.findIndex(item => item.rule_id === e.target.id)
+      const index = listRulesTemp.findIndex(item => item.rule_id === parseInt(e.target.id))
       listRulesTemp.splice(index, 1)
       this.setState({
         selectedRules: [...listRulesTemp]
       })
     } else {
-      const selectedRuleIndex = rules.findIndex(item => item.rule_id === e.target.id)
+      const selectedRuleIndex = rules.findIndex(item => item.rule_id === parseInt(e.target.id))
       this.setState({
         selectedRules: [...this.state.selectedRules, rules[selectedRuleIndex]]
       })
@@ -57,20 +57,20 @@ class CreationBattleRule extends Component {
   }
 
   handleChangeSteps = e => {
-    const rules = { rules: [...this.state.selectedRules] }
+    const rules = [...this.state.selectedRules]
     const { dispatch } = this.props
     dispatch({ type: ADD_RULES, rules })
     return this.props.changeStep(e)
   }
 
   render () {
-    const { selectedRules } = this.state
+    /* const { selectedRules } = this.state */
     return (
       <div className='battleCreation-page'>
         <div className='cardBattle'>
           <h1 className='cardBattle-color'>2. Personnalise la battle</h1>
           <div className='battleCreation-ruleContainer'>
-            {rules.map((rule, i) => <button type='button' className={selectedRules.some(selectedRule => selectedRule.rule_id === rule.rule_id) ? 'battle-optionButton-selected battle-btn' : 'battle-optionButton battle-btn'} onClick={this.handleOptionClick} id={rule.rule_id} key={i}>{rule.rule_name}</button>)}
+            {rules.map((rule, i) => <button type='button' className='battle-optionButton battle-btn' onClick={this.handleOptionClick} id={rule.rule_id} key={i}>{rule.rule_name}</button>)}
           </div>
           <div className='battleCreation-btnContainer'>
             <NavLink to='/battle-creation/theme'>
