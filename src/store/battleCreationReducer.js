@@ -1,7 +1,10 @@
-import { ADD_THEME, ADD_RULES, ADD_DEADLINE, REMOVE_ALL } from './action-types'
+import { ADD_GROUP, ADD_THEME, ADD_RULES, ADD_DEADLINE, REMOVE_ALL } from './action-types'
 
 const battleCreationReducer = (state = [], action) => {
   switch (action.type) {
+    case ADD_GROUP: {
+      return [...state, action.currentGroupId]
+    }
     case ADD_THEME: {
       return [...state, action.selectedThemeId]
     }
