@@ -41,22 +41,23 @@ class CreationBattleRule extends Component {
   }
 
   handleOptionClick = e => {
-    if (this.state.selectedRules.includes(e.target.id)) {
+    if (this.state.selectedRules.some(rule => rule.rule_id === e.target.id)) {
       const listRulesTemp = [...this.state.selectedRules]
-      const index = listRulesTemp.findIndex(item => item === e.target.id)
+      const index = listRulesTemp.findIndex(item => item.rule_id === e.target.id)
       listRulesTemp.splice(index, 1)
       this.setState({
         selectedRules: [...listRulesTemp]
       })
     } else {
+      const selectedRuleIndex = rules.findIndex(item => item.rule_id === e.target.id)
       this.setState({
-        selectedRules: [...this.state.selectedRules, e.target.id]
+        selectedRules: [...this.state.selectedRules, rules[selectedRuleIndex]]
       })
     }
   }
 
   handleChangeSteps = e => {
-    const rules = { ruleId: [...this.state.selectedRules] }
+    const rules = { rules: [...this.state.selectedRules] }
     const { dispatch } = this.props
     dispatch({ type: ADD_RULES, rules })
     return this.props.changeStep(e)
@@ -69,7 +70,7 @@ class CreationBattleRule extends Component {
         <div className='cardBattle'>
           <h1 className='cardBattle-color'>2. Personnalise la battle</h1>
           <div className='battleCreation-ruleContainer'>
-            {rules.map((rule, i) => <button type='button' className={selectedRules.includes(toString(rule.rule_id)) ? 'battle-optionButton-selected battle-btn' : 'battle-optionButton battle-btn'} onClick={this.handleOptionClick} id={rule.rule_id} key={i}>{rule.rule_name}</button>)}
+            {rules.map((rule, i) => <button type='button' className={selectedRules.some(selectedRule => selectedRule.rule_id === rule.rule_id) ? 'battle-optionButton-selected battle-btn' : 'battle-optionButton battle-btn'} onClick={this.handleOptionClick} id={rule.rule_id} key={i}>{rule.rule_name}</button>)}
           </div>
           <div className='battleCreation-btnContainer'>
             <NavLink to='/battle-creation/theme'>

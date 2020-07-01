@@ -8,7 +8,10 @@ class CreationBattleTheme extends Component {
   state = {
     themes: [],
     refreshed: false,
-    selectedTheme: 0
+    selectedTheme: {
+      themeId: 0,
+      themeName: ''
+    }
   }
 
   handleRefresh = () => {
@@ -16,15 +19,18 @@ class CreationBattleTheme extends Component {
   }
 
   handleThemeChange = e => {
+    const selectedTheme = Object.assign({}, this.state.selectedTheme)
+    selectedTheme.themeId = e.target.id
+    selectedTheme.themeName = e.target.value
     this.setState({
-      selectedTheme: e.target.id
+      selectedTheme: selectedTheme
     })
   }
 
   handleChangeSteps = e => {
-    const selectedThemeId = { themeId: this.state.selectedTheme }
+    const selectedTheme = this.state.selectedTheme
     const { dispatch } = this.props
-    dispatch({ type: ADD_THEME, selectedThemeId })
+    dispatch({ type: ADD_THEME, selectedTheme })
     return this.props.changeStep(e)
   }
 
@@ -47,7 +53,7 @@ class CreationBattleTheme extends Component {
         <div className='cardBattle'>
           <h1 className='cardBattle-color'>1. Choisis un thème</h1>
           <div className='battleCreation-themeContainer'>
-            {refreshed ? themes.map((theme, i) => <><input type='radio' name='themeButton' value={theme.theme_name} checked={selectedTheme === theme.theme_id} onChange={this.handleThemeChange} id={theme.theme_id} key={theme.theme_id} /><label htmlFor={theme.theme_id} className='battle-optionButton battle-btn' key={i}>{theme.theme_name}</label></>) : themes.slice(0, 5).map((theme, i) => <><input type='radio' name='themeButton' value={theme.theme_name} checked={selectedTheme === theme.theme_id} onChange={this.handleThemeChange} id={theme.theme_id} key={theme.theme_id} /><label htmlFor={theme.theme_id} className='battle-optionButton battle-btn' key={i}>{theme.theme_name}</label></>)}
+            {refreshed ? themes.map((theme, i) => <><input type='radio' name='themeButton' value={theme.theme_name} checked={selectedTheme.themeId === theme.theme_id} onChange={this.handleThemeChange} id={theme.theme_id} key={theme.theme_id} /><label htmlFor={theme.theme_id} className='battle-optionButton battle-btn' key={i}>{theme.theme_name}</label></>) : themes.slice(0, 5).map((theme, i) => <><input type='radio' name='themeButton' value={theme.theme_name} checked={selectedTheme.themeId === theme.theme_id} onChange={this.handleThemeChange} id={theme.theme_id} key={theme.theme_id} /><label htmlFor={theme.theme_id} className='battle-optionButton battle-btn' key={i}>{theme.theme_name}</label></>)}
           </div>
           <button
             className={refreshed ? 'refreshed' : 'refreshButton'}

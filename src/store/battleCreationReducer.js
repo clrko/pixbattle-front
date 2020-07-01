@@ -6,7 +6,7 @@ const battleCreationReducer = (state = [], action) => {
       return [...state, action.currentGroupId]
     }
     case ADD_THEME: {
-      return [...state, action.selectedThemeId]
+      return [...state, action.selectedTheme]
     }
     case ADD_RULES:
       return [...state, action.rules]
