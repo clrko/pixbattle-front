@@ -6,7 +6,8 @@ import axios from 'axios'
 
 class PostPicture extends React.Component {
     state = {
-      previewPicture: CloudUpload
+      previewPicture: CloudUpload,
+      selectedFile: CloudUpload
     }
 
     //   getGroupInfo = () => {
@@ -46,32 +47,58 @@ class PostPicture extends React.Component {
     //       })
     // }
 
-  fileSelectHandler = (event) => {
-    event.preventDefault()
+    // fileSelectHandler = (event) => {
+    //   event.preventDefault()
+    //   const file = event.target.files[0]
+    //   this.setState({
+    //     previewPicture: URL.createObjectURL(file),
+    //     file: file
+    //   })
+    // }
+
+    // fileUploadHandler = (e) => {
+    //   e.preventDefault()
+    //   const fd = new FormData()
+    //   // const blob = new Blob
+    //   fd.append('file', this.state.file)
+    //   axios.post('http://localhost:4242/addpicture', fd, {
+    //     method: 'post',
+    //     body: JSON.stringify(fd),
+    //     headers: { 'Content-type': 'application/json' }
+    //   })
+    //     .then(res => {
+    //       console.log(res.status)
+    //     })
+
+  //     .catch(error => {
+  //       console.log(error)
+  //     })
+  // }
+  onClickHandler = () => {
+    const data = new FormData()
+    data.append('file', this.state.selectedFile)
+    axios.post('http://localhost:4242/battle-post/addpicture', data, {
+      // receive two    parameter endpoint url ,form data
+    })
+      .then(res => { // then print response status
+        console.log(res.statusText)
+      })
+  }
+  // fileSelectHandler = (event) => {
+  //   event.preventDefault()
+  //   const file = event.target.files[0]
+  //   this.setState({
+  //     previewPicture: URL.createObjectURL(file),
+  //     file: file
+  //   })
+  // }
+
+  onChangeHandler = event => {
     const file = event.target.files[0]
     this.setState({
-      previewPicture: URL.createObjectURL(file),
-      file: file
+      selectedFile: URL.createObjectURL(file),
+      loaded: 0
     })
-  }
-
-  fileUploadHandler = (e) => {
-    e.preventDefault()
-    const fd = new FormData()
-    // const blob = new Blob
-    fd.append('file', this.state.file)
-    axios.post('http://localhost:4242/addpicture', fd, {
-      method: 'post',
-      body: JSON.stringify(fd),
-      headers: { 'Content-type': 'application/json' }
-    })
-      .then(res => {
-        console.log(res.status)
-      })
-
-      .catch(error => {
-        console.log(error)
-      })
   }
 
   render () {
@@ -80,13 +107,17 @@ class PostPicture extends React.Component {
         <div className='countdown'>
           <Countdown date={Date.now() + 100000} />
         </div>
+        {/*
         <div className='previewPicture'>
           <img className='picture' src={this.state.previewPicture} alt='preview-picture' />
           <input className='file' type='file' handleOnChange={this.fileSelectHandler} />
         </div>
         <button handleOnClick={this.fileUploadHandler}>
             Envoyer
-        </button>
+        </button> */}
+        <img className='picture' src={this.state.selectedFile} alt='preview-picture' />
+        <input type='file' name='file' handleonChange={this.onChangeHandler} />
+        <button type='button' class='btn btn-success btn-block' handleonClick={this.onClickHandler}>Upload</button>
       </div>
     )
   }
