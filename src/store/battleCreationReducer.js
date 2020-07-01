@@ -8,8 +8,9 @@ const battleCreationReducer = (state = [], action) => {
     case ADD_THEME: {
       return [...state, action.selectedTheme]
     }
-    case ADD_RULES:
+    case ADD_RULES: {
       return [...state, action.rules]
+    }
     case ADD_DEADLINE: {
       const { selectedDeadline } = action
       return [...state, selectedDeadline]

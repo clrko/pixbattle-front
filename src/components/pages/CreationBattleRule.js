@@ -1,42 +1,13 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
+import axios from 'axios'
 import { ADD_RULES } from '../../store/action-types'
 import './CreationBattle.css'
 
-const rules = [
-  {
-    rule_id: 1,
-    rule_name: 'Capture d\'écran'
-  },
-  {
-    rule_id: 2,
-    rule_name: 'Retouches'
-  },
-  {
-    rule_id: 3,
-    rule_name: 'Appareil photo'
-  },
-  {
-    rule_id: 4,
-    rule_name: 'Faire poser une personne'
-  },
-  {
-    rule_id: 5,
-    rule_name: 'Smartphone'
-  },
-  {
-    rule_id: 6,
-    rule_name: 'Ajout de texte'
-  },
-  {
-    rule_id: 7,
-    rule_name: 'Ajout d\'illustration'
-  }
-]
-
 class CreationBattleRule extends Component {
   state = {
+    rules: [],
     selectedRules: []
   }
 
@@ -49,9 +20,9 @@ class CreationBattleRule extends Component {
         selectedRules: [...listRulesTemp]
       })
     } else {
-      const selectedRuleIndex = rules.findIndex(item => item.rule_id === parseInt(e.target.id))
+      const selectedRuleIndex = this.state.rules.findIndex(item => item.rule_id === parseInt(e.target.id))
       this.setState({
-        selectedRules: [...this.state.selectedRules, rules[selectedRuleIndex]]
+        selectedRules: [...this.state.selectedRules, this.state.rules[selectedRuleIndex]]
       })
     }
   }
@@ -63,8 +34,20 @@ class CreationBattleRule extends Component {
     return this.props.changeStep(e)
   }
 
+  componentDidMount () {
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/battle-creation/rules`,
+      {
+        headers: {
+          'x-access-token': localStorage.getItem('token')
+        }
+      })
+      .then(res => {
+        this.setState({ rules: res.data })
+      })
+  }
+
   render () {
-    /* const { selectedRules } = this.state */
+    const { rules } = this.state
     return (
       <div className='battleCreation-page'>
         <div className='cardBattle'>
