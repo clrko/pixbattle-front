@@ -217,5 +217,10 @@ td.rdtYear:hover {
 .rdt input {
   width: 250px;
   font-size: 16px;
-  padding: 2px 4px;
+  padding: 8px 4px;
+  border-radius: 20px;
+  border: none;
+  text-align: center;
+  color: #235789;
+  font-weight: bold;
 }
