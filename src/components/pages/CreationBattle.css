@@ -60,6 +60,7 @@
   width: 40px;
   background-color: #FAC748;
   border: 2px solid #FAC748;
+  cursor: pointer;
 }
 
 .p-refreshButton {
