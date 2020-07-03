@@ -70,11 +70,38 @@ class PostPicture extends React.Component {
     //       console.log(res.status)
     //     })
 
-  //     .catch(error => {
-  //       console.log(error)
-  //     })
-  // }
-  onClickHandler = () => {
+    //     .catch(error => {
+    //       console.log(error)
+    //     })
+    // }
+
+    // fileSelectHandler = (event) => {
+    //   event.preventDefault()
+    //   const file = event.target.files[0]
+    //   this.setState({
+    //     previewPicture: URL.createObjectURL(file),
+    //     file: file
+    //   })
+    // }
+
+    //  {/*
+    //       <div className='previewPicture'>
+    //         <img className='picture' src={this.state.previewPicture} alt='preview-picture' />
+    //         <input className='file' type='file' handleOnChange={this.fileSelectHandler} />
+    //       </div>
+    //       <button handleOnClick={this.fileUploadHandler}>
+    //           Envoyer
+    //       </button> */}
+
+  handleChange = event => {
+    const file = event.target.files[0]
+    this.setState({
+      selectedFile: URL.createObjectURL(file),
+      loaded: 0
+    })
+  }
+
+  handleClick = () => {
     const data = new FormData()
     data.append('file', this.state.selectedFile)
     axios.post('http://localhost:4242/battle-post/addpicture', data, {
@@ -84,22 +111,6 @@ class PostPicture extends React.Component {
         console.log(res.statusText)
       })
   }
-  // fileSelectHandler = (event) => {
-  //   event.preventDefault()
-  //   const file = event.target.files[0]
-  //   this.setState({
-  //     previewPicture: URL.createObjectURL(file),
-  //     file: file
-  //   })
-  // }
-
-  onChangeHandler = event => {
-    const file = event.target.files[0]
-    this.setState({
-      selectedFile: URL.createObjectURL(file),
-      loaded: 0
-    })
-  }
 
   render () {
     return (
@@ -107,17 +118,9 @@ class PostPicture extends React.Component {
         <div className='countdown'>
           <Countdown date={Date.now() + 100000} />
         </div>
-        {/*
-        <div className='previewPicture'>
-          <img className='picture' src={this.state.previewPicture} alt='preview-picture' />
-          <input className='file' type='file' handleOnChange={this.fileSelectHandler} />
-        </div>
-        <button handleOnClick={this.fileUploadHandler}>
-            Envoyer
-        </button> */}
         <img className='picture' src={this.state.selectedFile} alt='preview-picture' />
-        <input type='file' name='file' handleonChange={this.onChangeHandler} />
-        <button type='button' class='btn btn-success btn-block' handleonClick={this.onClickHandler}>Upload</button>
+        <input type='file' name='file' onChange={this.handleChange} />
+        <button type='button' class='btn btn-success btn-block' onClick={this.handleClick}>Upload</button>
       </div>
     )
   }
