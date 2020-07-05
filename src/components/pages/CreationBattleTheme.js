@@ -55,13 +55,15 @@ class CreationBattleTheme extends Component {
           <div className='battleCreation-themeContainer'>
             {refreshed ? themes.map((theme, i) => <><input type='radio' name='themeButton' value={theme.theme_name} checked={selectedTheme.themeId === theme.theme_id} onChange={this.handleThemeChange} id={theme.theme_id} key={theme.theme_id} /><label htmlFor={theme.theme_id} className='battle-optionButton battle-btn' key={i}>{theme.theme_name}</label></>) : themes.slice(0, 5).map((theme, i) => <><input type='radio' name='themeButton' value={theme.theme_name} checked={selectedTheme.themeId === theme.theme_id} onChange={this.handleThemeChange} id={theme.theme_id} key={theme.theme_id} /><label htmlFor={theme.theme_id} className='battle-optionButton battle-btn' key={i}>{theme.theme_name}</label></>)}
           </div>
-          <button
-            className={refreshed ? 'refreshed' : 'refreshButton'}
-            onClick={this.handleRefresh}
-            type='button'
-          >
-            Plus de thèmes
-          </button>
+          <div className='div-button-refreshed'>
+            <button
+              className={refreshed ? 'refreshed' : 'refreshButton'}
+              onClick={this.handleRefresh}
+              type='button'
+            >
+              <p className='p-refreshButton'>+</p>
+            </button>
+          </div>
           <div className='battleCreation-btnContainer'>
             <button
               className='battleCreation-cancelButton battle-btn'
