@@ -1,10 +1,19 @@
-import React from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Redirect, Link } from 'react-router-dom'
 import logoLP from '../../asset/logo/logo.svg'
 import avatar from '../../asset/pictures/avatar_MyProfile.png'
 import './NavbarMobile.css'
 
 const NavbarMobile = () => {
+  const [redirect, setRedirect] = useState(false)
+
+  const handleLogOut = () => {
+    localStorage.removeItem('token')
+    setRedirect(!redirect)
+  }
+
+  if (redirect) { return <Redirect to='/' /> }
+
   return (
     <div className='div-NavbarMobile'>
       <Link to='/MyProfile' className='link-logo'><img src={logoLP} className='logo-NavbarMobile' alt='Pix Battle Logo' /></Link>
@@ -12,9 +21,9 @@ const NavbarMobile = () => {
         <img className='avatar-NavbarMobile' src={avatar} alt='avatar' />
         <i className='fa fa-star star-icon-NavbarMobile'><p className='p-victory-point-NavbarMobile'>20</p></i>
         <div className='Logout'>
-          <NavLink to='/'><p className='p-Logout'>Déconnexion</p></NavLink>
+          <p className='p-Logout' onClick={handleLogOut}>Déconnexion</p>
         </div>
-        <i class='fas fa-sign-out-alt' />
+        <i class='fas fa-sign-out-alt' onClick={handleLogOut} />
       </div>
     </div>
   )
