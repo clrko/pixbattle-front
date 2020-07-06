@@ -97,13 +97,14 @@ class PostPicture extends React.Component {
     const file = event.target.files[0]
     this.setState({
       selectedFile: URL.createObjectURL(file),
+      file,
       loaded: 0
     })
   }
 
   handleClick = () => {
     const data = new FormData()
-    data.append('file', this.state.selectedFile)
+    data.append('file', this.state.file)
     axios.post('http://localhost:4242/battle-post/addpicture', data, {
       // receive two    parameter endpoint url ,form data
     })
