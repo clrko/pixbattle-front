@@ -36,13 +36,13 @@ class MyProfile extends React.Component {
         <Menu />
         <div className='window-MyProfile'>
           <div className='name-fa-star-MyProfile'>
-            <h1 className='name-MyProfile'>Lucas<i className='fa fa-star fa-lg star-icon-MyProfile'><p className='p-victory-point-MyProfile'>20</p></i></h1>
+            <h1 className='name-MyProfile'>Lucas<i className='fas fa-trophy star-icon-MyProfile'><p className='p-victory-point-MyProfile'>20</p></i></h1>
           </div>
           <div className='div-avatar-Myprofile'>
             <img className='avatar-MyProfile' src={avatar} alt='avatar' />
           </div>
           <div className='div-informations-MyProfile'>
-            <p className='p-victory-MyProfile'>4 victoires</p>
+            <h1 className='h1-title-MyProfile'>Statistiques</h1>
             <p className='p-picture-MyProfile'>12 photos</p>
             <p className='p-group-MyProfile'>2 groupes</p>
             <p className='p-friend-MyProfile'>18 amis</p>
