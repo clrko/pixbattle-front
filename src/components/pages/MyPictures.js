@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import NavbarMobile from '../shared/NavbarMobile'
+import Navbar from '../shared/Navbar'
 import DropDown from '../shared/DropDown'
 import StickyFooter from '../shared/StickyFooter'
 import './MyPictures.css'
@@ -11,7 +11,7 @@ class MyPictures extends React.Component {
   render () {
     return (
       <div className='background-MyPictures'>
-        <NavbarMobile />
+        <Navbar />
         <Menu />
         <div className='window-MyPictures'>
           <p>Mes Photos</p>
