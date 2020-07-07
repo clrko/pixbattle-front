@@ -93,14 +93,20 @@
 
 .medal1 {
   color: #b2b2b2;
+  position: relative;
+  bottom: 16px;
 }
 
 .medal2 {
   color: #f5d435;
+  position: relative;
+  bottom: 16px;
 }
 
 .medal3 {
   color: #bc8585;
+  position: relative;
+  bottom: 16px;
 }
 
 .first-position {
