@@ -20,6 +20,7 @@ const App = () => {
         <Route path='/battle-creation/deadline' component={CreationBattleDeadline} />
         <Route path='/battle-creation/rule' component={CreationBattleRule} />
         <Route path='/battle-creation/theme' component={CreationBattleTheme} />
+        <Route path='/battle-creation/summary' component={CreationBattleSummary} />
         <Route path='/LoginRegistration' component={FormContainer} />
         <Route path='/MyProfile' component={MyProfile} />
         <Route path='/MyRanking' component={MyRanking} />

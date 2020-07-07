@@ -1,55 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import axios from 'axios'
 import { ADD_THEME } from '../../store/action-types'
 import './CreationBattle.css'
 
-const themes = [
-  {
-    theme_id: 26,
-    theme_name: 'Petit bonheur'
-  },
-  {
-    theme_id: 33,
-    theme_name: 'Lecture'
-  },
-  {
-    theme_id: 147,
-    theme_name: 'Tricolore'
-  },
-  {
-    theme_id: 133,
-    theme_name: 'Chiffres et nombres'
-  },
-  {
-    theme_id: 97,
-    theme_name: 'De l’autre côté'
-  },
-  {
-    theme_id: 110,
-    theme_name: 'Froid'
-  },
-  {
-    theme_id: 83,
-    theme_name: 'Petit trésor'
-  },
-  {
-    theme_id: 56,
-    theme_name: 'Balle & ballon'
-  },
-  {
-    theme_id: 20,
-    theme_name: 'Miroir'
-  },
-  {
-    theme_id: 143,
-    theme_name: 'Arbre'
-  }
-]
-
 class CreationBattleTheme extends Component {
   state = {
+    themes: [],
     refreshed: false,
-    selectedTheme: 0
+    selectedTheme: {
+      themeId: 0,
+      themeName: ''
+    }
   }
 
   handleRefresh = () => {
@@ -57,26 +19,41 @@ class CreationBattleTheme extends Component {
   }
 
   handleThemeChange = e => {
+    const selectedTheme = Object.assign({}, this.state.selectedTheme)
+    selectedTheme.themeId = e.target.id
+    selectedTheme.themeName = e.target.value
     this.setState({
-      selectedTheme: e.target.id
+      selectedTheme: selectedTheme
     })
   }
 
   handleChangeSteps = e => {
-    const selectedThemeId = { themeId: this.state.selectedTheme }
+    const selectedTheme = this.state.selectedTheme
     const { dispatch } = this.props
-    dispatch({ type: ADD_THEME, selectedThemeId })
+    dispatch({ type: ADD_THEME, selectedTheme })
     return this.props.changeStep(e)
   }
 
+  componentDidMount () {
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/battle-creation/themes`,
+      {
+        headers: {
+          'x-access-token': localStorage.getItem('token')
+        }
+      })
+      .then(res => {
+        this.setState({ themes: res.data })
+      })
+  }
+
   render () {
-    const { refreshed, selectedTheme } = this.state
+    const { themes, refreshed, selectedTheme } = this.state
     return (
       <div className='battleCreation-page'>
         <div className='cardBattle'>
           <h1 className='cardBattle-color'>1. Choisis un thème</h1>
           <div className='battleCreation-themeContainer'>
-            {refreshed ? themes.map((theme, i) => <><input type='radio' name='themeButton' value={theme.theme_name} checked={selectedTheme === theme.theme_id} onChange={this.handleThemeChange} id={theme.theme_id} key={theme.theme_id} /><label htmlFor={theme.theme_id} className='battle-optionButton battle-btn' key={i}>{theme.theme_name}</label></>) : themes.slice(0, 5).map((theme, i) => <><input type='radio' name='themeButton' value={theme.theme_name} checked={selectedTheme === theme.theme_id} onChange={this.handleThemeChange} id={theme.theme_id} key={theme.theme_id} /><label htmlFor={theme.theme_id} className='battle-optionButton battle-btn' key={i}>{theme.theme_name}</label></>)}
+            {refreshed ? themes.map((theme, i) => <><input type='radio' name='themeButton' value={theme.theme_name} checked={selectedTheme.themeId === theme.theme_id} onChange={this.handleThemeChange} id={theme.theme_id} key={theme.theme_id} /><label htmlFor={theme.theme_id} className='battle-optionButton battle-btn' key={i}>{theme.theme_name}</label></>) : themes.slice(0, 5).map((theme, i) => <><input type='radio' name='themeButton' value={theme.theme_name} checked={selectedTheme.themeId === theme.theme_id} onChange={this.handleThemeChange} id={theme.theme_id} key={theme.theme_id} /><label htmlFor={theme.theme_id} className='battle-optionButton battle-btn' key={i}>{theme.theme_name}</label></>)}
           </div>
           <div className='div-button-refreshed'>
             <button
