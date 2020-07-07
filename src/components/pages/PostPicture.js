@@ -4,7 +4,7 @@ import axios from 'axios'
 import CloudUpload from '../../asset/pictures/cloud-computing.png'
 import Countdown from 'react-countdown'
 import DropDown from '../shared/DropDown'
-import NavbarMobile from '../shared/NavbarMobile'
+import Navbar from '../shared/Navbar'
 import StickyFooter from '../shared/StickyFooter'
 import './PostPicture.css'
 import './MyProfile.css'
@@ -123,7 +123,7 @@ class PostPicture extends React.Component {
   render () {
     return (
       <div className='background-MyProfile'>
-        <NavbarMobile />
+        <Navbar />
         <Menu />
         <div className='window-MyProfile'>
           <div className='countdown'>
