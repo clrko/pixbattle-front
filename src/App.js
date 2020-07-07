@@ -8,6 +8,7 @@ import FormContainer from './components/pages/FormContainer'
 import MyProfile from './components/pages/MyProfile'
 import MyPictures from './components/pages/MyPictures'
 import MyRanking from './components/pages/MyRanking'
+import Podium from './components/pages/Podium'
 import CreationSteps from './components/pages/CreationSteps'
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
         <Route path='/MyProfile' component={MyProfile} />
         <Route path='/MyRanking' component={MyRanking} />
         <Route path='/MyPictures' component={MyPictures} />
+        <Route path='/Podium' component={Podium} />
         <Route path='/newgroup/:id' component={CreationSteps} />
       </Switch>
     </div>

@@ -1,0 +1,178 @@
+.DropDown-Podium {
+  background-color: white;
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5%;
+}
+
+.div-AvatarPodium {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.div-center-AvatarPodium {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AvatarPodium {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.div-p-fas {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.p-AvatarPodium {
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.AvatarPodium .fa-star {
+  color: #FAC748;
+  padding-left: 6px;
+  font-size: 1.3rem;
+}
+
+.div-img-Avatar1 {
+  border-radius: 50%;
+  border: solid 8px #b2b2b2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+.div-img-Avatar2 {
+  border-radius: 50%;
+  border: solid 8px #f5d435;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+.div-img-Avatar3 {
+  border-radius: 50%;
+  border: solid 8px #bc8585;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+.div-img-Avatar1 img {
+  width: 80px;
+}
+
+.div-img-Avatar2 img {
+  width: 80px;
+}
+
+.div-img-Avatar3 img {
+  width: 80px;
+}
+
+.AvatarPodium .fa-medal {
+  font-size: 2.5rem;
+}
+
+.medal1 {
+  color: #b2b2b2;
+}
+
+.medal2 {
+  color: #f5d435;
+}
+
+.medal3 {
+  color: #bc8585;
+}
+
+.first-position {
+  margin-bottom: 60px;
+  z-index: 1;
+}
+
+.second-position {
+  position: relative;
+  left: 35px;
+}
+
+.third-position {
+  position: relative;
+  right: 35px;
+}
+
+.h1-div-congratulations {
+  font-size: 1.3rem;
+}
+
+.button-div-congratulations {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.div-attendee-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #235789;
+  border-radius: 18px;
+  /* margin-top: 20px; */
+  width: 80%;
+  height: 140px;
+  overflow: auto;
+}
+/* 
+.div-attendee-list, .p-div-participant, .img-attendee-list, .fa-start-attendee-list { 
+  margin: 0 15px;
+} */
+
+.p-div-participant {
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.div-participant {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 5px 0;
+  width: 100%;
+}
+
+.img-attendee-list {
+  max-width: 35px;
+  border-radius: 50%;
+}
+
+.fa-start-attendee-list {
+  color: #FAC748;
+  font-size: 1.8rem;
+}
+
+.margin-div-participant {
+  margin: 0 15px;
+}
+
+.margin-fa-start-attendee-list {
+  margin-left: auto;
+  padding-right: 10px;
+}
