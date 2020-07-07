@@ -131,7 +131,7 @@ class PostPicture extends React.Component {
           </div>
           <img className='picture' src={this.state.selectedFile} alt='preview-picture' />
           <input type='file' name='file' onChange={this.handleChange} />
-          <button type='button' class='btn btn-success btn-block' onClick={this.handleClick}>Upload</button>
+          <button className='upload-ButtonPostpicture' type='button' onClick={this.handleClick}>Upload</button>
         </div>
         <StickyFooter />
       </div>

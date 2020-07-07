@@ -10,10 +10,22 @@
 .picture {
     width: 264px;
     height: 320px;
+    background-color: #FAC748;
 }
 
 .uploadPicture {
   background-color: #FAC748;
   width: 264px;
   height: 320px;
+}
+
+.upload-ButtonPostpicture {
+  border-radius: 50px;
+  border: none;
+  color: white;
+  height: 5vh;
+  padding: 0 1rem;
+  font-size: 1rem;
+  outline: transparent;
+  background-color: #FAC748;
 }
