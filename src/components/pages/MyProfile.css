@@ -1,3 +1,8 @@
+* {
+  -moz-box-sizing: border-box; 
+  box-sizing: border-box;
+}
+
 .background-MyProfile {
   width: 100%;
   height: 100vh;
@@ -15,26 +20,22 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: 80vh;
   width: 75vw;
   border-radius: 15px;
-}
-
-.name-fa-star-MyProfile {
-  margin-top: 20px;
+  padding: 20px;
 }
 
 .name-MyProfile {
   font-size: 1.8rem;
 }
 
-.fa-star {
+.star-icon-MyProfile {
   color: #FAC748;
   padding-left: 15px;
   position: absolute;
 }
 
-.p-victory-point {
+.p-victory-point-MyProfile {
   position: relative;
   bottom: 25px;
   left: 12px;
@@ -47,14 +48,17 @@
 }
 
 .avatar-MyProfile {
-  max-width: 200px;
+  max-width: 150px;
 }
 
 .div-informations-MyProfile {
   color: #FAC748;
-  margin-top: 30px;
+  margin-top: 15px;
   font-size: 1.2rem;
+  display: flex;
   font-weight: bold;
+  flex-direction: column;
+  align-items: center;
 }
 
 .div-informations-MyProfile p {
@@ -64,13 +68,19 @@
 .button-createdNewGroup-MyProfile {
   background-color: #FAC748;
   color: #235789;
-  margin-top: 40px;
+  margin-top: 30px;
   font-size: 0.9rem;
   font-weight: bold;
-  width: 70%;
+  width: 100%;
   height: 30px;
   border-radius: 20px;
   border: none;
   outline: 0;
   cursor: pointer;
+}
+
+@media screen and (min-width: 600px) {
+  .window-MyProfile {
+    width: 30vw;
+  }
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import DropDown from '../shared/DropDown'
+import NavbarMobile from '../shared/NavbarMobile'
 import StickyFooter from '../shared/StickyFooter'
 import avatar from '../../asset/pictures/avatar_MyProfile.png'
 import './MyProfile.css'
@@ -31,10 +32,11 @@ class MyProfile extends React.Component {
   render () {
     return (
       <div className='background-MyProfile'>
+        <NavbarMobile />
         <Menu />
         <div className='window-MyProfile'>
           <div className='name-fa-star-MyProfile'>
-            <h1 className='name-MyProfile'>Lucas<i className='fa fa-star fa-lg'><p className='p-victory-point'>20</p></i></h1>
+            <h1 className='name-MyProfile'>Lucas<i className='fa fa-star fa-lg star-icon-MyProfile'><p className='p-victory-point-MyProfile'>20</p></i></h1>
           </div>
           <div className='div-avatar-Myprofile'>
             <img className='avatar-MyProfile' src={avatar} alt='avatar' />
@@ -44,8 +46,8 @@ class MyProfile extends React.Component {
             <p className='p-picture-MyProfile'>12 photos</p>
             <p className='p-group-MyProfile'>2 groupes</p>
             <p className='p-friend-MyProfile'>18 amis</p>
+            <button className='button-createdNewGroup-MyProfile' onClick={this.handleCreateGroupe}>Créer un nouveau groupe</button>
           </div>
-          <button className='button-createdNewGroup-MyProfile' onClick={this.handleCreateGroupe}>Créer un nouveau groupe</button>
         </div>
         <StickyFooter />
       </div>
