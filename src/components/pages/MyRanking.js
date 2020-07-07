@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import NavbarMobile from '../shared/NavbarMobile'
+import Navbar from '../shared/Navbar'
 import DropDown from '../shared/DropDown'
 import StickyFooter from '../shared/StickyFooter'
 import './MyRanking.css'
@@ -11,7 +11,7 @@ class MyRanking extends React.Component {
   render () {
     return (
       <div className='background-MyRanking'>
-        <NavbarMobile />
+        <Navbar />
         <Menu />
         <div className='window-MyRanking'>
           <p>Mon Classement</p>

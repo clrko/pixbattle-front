@@ -2,7 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import DropDown from '../shared/DropDown'
-import NavbarMobile from '../shared/NavbarMobile'
+import Navbar from '../shared/Navbar'
 import StickyFooter from '../shared/StickyFooter'
 import avatar from '../../asset/pictures/avatar_MyProfile.png'
 import './MyProfile.css'
@@ -10,6 +10,24 @@ import './MyProfile.css'
 const Menu = withRouter(DropDown)
 
 class MyProfile extends React.Component {
+  componentDidMount () {
+    this.handleInfosProfile()
+  }
+
+  handleInfosProfile = () => {
+    axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/profile`,
+        {
+          headers: {
+            'x-access-token': localStorage.getItem('token')
+          }
+        }
+      )
+      .then(res => {
+        console.log(res.data)
+      })
+  }
+
   handleCreateGroupe = e => {
     e.preventDefault()
     const { history } = this.props
@@ -32,7 +50,7 @@ class MyProfile extends React.Component {
   render () {
     return (
       <div className='background-MyProfile'>
-        <NavbarMobile />
+        <Navbar />
         <Menu />
         <div className='window-MyProfile'>
           <div className='name-fa-star-MyProfile'>

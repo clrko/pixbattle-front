@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import logoLP from '../../asset/logo/logo.svg'
 import avatar from '../../asset/pictures/avatar_MyProfile.png'
-import './NavbarMobile.css'
+import './Navbar.css'
 
-const NavbarMobile = () => {
+const Navbar = () => {
   const [redirect, setRedirect] = useState(false)
 
   const handleLogOut = () => {
@@ -29,4 +29,4 @@ const NavbarMobile = () => {
   )
 }
 
-export default NavbarMobile
+export default Navbar
