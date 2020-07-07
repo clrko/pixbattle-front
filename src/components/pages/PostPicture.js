@@ -1,8 +1,15 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
+import axios from 'axios'
 import CloudUpload from '../../asset/pictures/cloud-computing.png'
 import Countdown from 'react-countdown'
+import DropDown from '../shared/DropDown'
+import NavbarMobile from '../shared/NavbarMobile'
+import StickyFooter from '../shared/StickyFooter'
 import './PostPicture.css'
-import axios from 'axios'
+import './MyProfile.css'
+
+const Menu = withRouter(DropDown)
 
 class PostPicture extends React.Component {
     state = {
@@ -115,13 +122,18 @@ class PostPicture extends React.Component {
 
   render () {
     return (
-      <div>
-        <div className='countdown'>
-          <Countdown date={Date.now() + 100000} />
+      <div className='background-MyProfile'>
+        <NavbarMobile />
+        <Menu />
+        <div className='window-MyProfile'>
+          <div className='countdown'>
+            <Countdown date={Date.now() + 100000} />
+          </div>
+          <img className='picture' src={this.state.selectedFile} alt='preview-picture' />
+          <input type='file' name='file' onChange={this.handleChange} />
+          <button type='button' class='btn btn-success btn-block' onClick={this.handleClick}>Upload</button>
         </div>
-        <img className='picture' src={this.state.selectedFile} alt='preview-picture' />
-        <input type='file' name='file' onChange={this.handleChange} />
-        <button type='button' class='btn btn-success btn-block' onClick={this.handleClick}>Upload</button>
+        <StickyFooter />
       </div>
     )
   }
