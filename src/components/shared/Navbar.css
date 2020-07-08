@@ -42,6 +42,7 @@
 
 .p-victory-point-NavbarMobile {
   position: relative;
+  bottom: 6px;
   right: 24px;
   color: black;
   font-size: 0.8rem;

@@ -22,6 +22,53 @@
   margin-bottom: 20px;
 }
 
+.cardBattle-summary {
+	background-color: #3181C8;
+	margin: 30px 25px;
+	padding: 30px 25px;
+  border-radius: 15px;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardBattle-summary h1 {
+  margin: 10px auto;
+}
+
+.cardBattle-summary h2 {
+  font-size: 17px;
+  margin: 20px auto;
+  color: #FDFFFC;
+}
+
+.cardBattle-summary p {
+  width: fit-content;
+  margin: 5px auto;
+}
+
+.cardBattle-summary button {
+  margin-bottom: 0;
+  background-color: #FAC748;
+  color: #3181C8;
+  padding: 7px 10px;
+  width: -moz-fit-content;
+  height: fit-content;
+  text-align: center;
+  margin: 8px;
+}
+
+.cardBattle-summary-options {
+  border-radius: 20px;
+  font-family:Arial;
+  font-family: FuturaPTMedium;
+  font-size:15px;
+  border-style: none;
+  outline: none;
+  font-weight: bolder;
+  letter-spacing: 0.5px;
+}
+
 .battleCreation-themeContainer {
   display: flex;
   /* flex-direction: column; */
@@ -114,11 +161,8 @@
 	background-color: #FAC748;
   color: #3181C8;
   padding: 7px 10px;
-  /* margin: 7px 15px; */
   width: -moz-fit-content;
-  /* width: 150px; */
   height: fit-content;
-  margin: auto;
   text-align: center;
   margin: 8px;
 }
@@ -143,4 +187,15 @@
   background-color: #73db5a;
   height: 40px;
   width: 100px;
+}
+
+@media screen and (min-width: 500px) {
+  .cardBattle {
+    width: 500px;
+    margin: 50px auto;
+  }
+
+  .cardBattle-summary {
+    margin: 50px 50px;
+  }
 }
