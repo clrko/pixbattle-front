@@ -23,7 +23,7 @@ const Navbar = () => {
         <div className='Logout'>
           <p className='p-Logout' onClick={handleLogOut}>Déconnexion</p>
         </div>
-        <i class='fas fa-sign-out-alt' onClick={handleLogOut} />
+        <i className='fas fa-sign-out-alt' onClick={handleLogOut} />
       </div>
     </div>
   )

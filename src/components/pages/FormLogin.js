@@ -20,17 +20,26 @@ class FormLogin extends React.Component {
     this.setState({ isChecked: e.target.checked })
   }
 
-  handleSubmit = e => {
+  handleSubmit = async (e) => {
     const { email, password } = this.state
     if (email && password) {
       e.preventDefault()
       const { dispatch, history } = this.props
-      axios.post(`${process.env.REACT_APP_SERVER_URL}/auth`, this.state)
+      await axios
+        .post(`${process.env.REACT_APP_SERVER_URL}/auth`, this.state)
         .then(res => {
           localStorage.setItem('token', res.headers['x-access-token'])
           dispatch({ type: LOGIN, ...res.data })
           history.push('/MyProfile')
         })
+      await axios
+        .post(`${process.env.REACT_APP_SERVER_URL}/profile`,
+          {
+            headers: {
+              'x-access-token': localStorage.getItem('token')
+            }
+          })
+        .then(res => console.log('pouet', res.data))
       return this.props.onClose(e)
     }
     alert('Il faut un email et un mot de passe')

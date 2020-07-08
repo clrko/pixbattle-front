@@ -33,7 +33,13 @@ const MyProfile = ({ user }) => {
         })
       })
   }
-  
+
+  // handleGetInfosUser = () => {
+  //   axios
+  //     .get(`${process.env.REACT_APP_SERVER_URL}/profile`)
+  //     .then(res => console.log('pouet'))
+  // }
+
   return (
     <div className='background-MyProfile'>
       <Navbar />
