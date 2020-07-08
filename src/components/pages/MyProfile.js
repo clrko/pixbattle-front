@@ -14,10 +14,9 @@ const mapStateToProps = state => {
   return { user }
 }
 
-const MyProfile = ({ user }) => {
+const MyProfile = ({ user, history }) => {
   const handleCreateGroupe = e => {
     e.preventDefault()
-    const { history } = this.props
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/group-creation`,
         {
@@ -33,7 +32,6 @@ const MyProfile = ({ user }) => {
         })
       })
   }
-  
   return (
     <div className='background-MyProfile'>
       <Navbar />

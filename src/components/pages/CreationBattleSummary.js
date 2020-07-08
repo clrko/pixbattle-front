@@ -8,23 +8,20 @@ const mapStateToProps = state => {
   return { battleCreation }
 }
 
-const CreationBattleSummary = ({ battleCreation }) => {
+const CreationBattleSummary = ({ battleCreation, dispatch }) => {
   const handleClick = e => {
     axios.post(`${process.env.REACT_APP_SERVER_URL}/battle-creation`,
       {
         headers: {
           'x-access-token': localStorage.getItem('token')
         },
-        body: {
-          groupId: parseInt(battleCreation[0].groupId),
-          themeId: parseInt(battleCreation[1].themeId),
-          rulesId: battleCreation[2].map(rule => rule.rule_id),
-          deadline: battleCreation[3]
-        }
+        groupId: parseInt(battleCreation[0].groupId),
+        themeId: parseInt(battleCreation[1].themeId),
+        rulesId: battleCreation[2].map(rule => rule.rule_id),
+        deadline: battleCreation[3]
       }
     ).then(res => {
       if (res.status === 201) {
-        const { dispatch } = this.props
         dispatch({ type: REMOVE_ALL })
       }
     })
