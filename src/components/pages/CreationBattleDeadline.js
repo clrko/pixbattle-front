@@ -11,7 +11,7 @@ import './CreationBattleDeadline.css'
 
 const CreationBattleDeadline = (props) => {
   const [selectedDate, setDateChange] = useState(new Date())
-  const [selectedTime, setTimeChange] = useState('12:00 AM')
+  const [selectedTime, setTimeChange] = useState('01:00:00')
   const [isOpen, setIsOpen] = useState(false)
 
   const handleDateChange = e => {
@@ -19,11 +19,11 @@ const CreationBattleDeadline = (props) => {
   }
 
   const handleTimeChange = e => {
-    setTimeChange(e)
+    setTimeChange(e.format('LTS'))
   }
 
   const handleSubmit = e => {
-    const selectedDeadline = [selectedDate.format('YYYY-MM-DD'), selectedTime.format('h:mm a')].join(' ')
+    const selectedDeadline = [selectedDate.format('YYYY-MM-DD'), selectedTime].join(' ')
     const { dispatch } = props
     dispatch({ type: ADD_DEADLINE, selectedDeadline })
     setIsOpen(!isOpen)
@@ -53,7 +53,7 @@ const CreationBattleDeadline = (props) => {
               value={selectedTime}
               onChange={handleTimeChange}
               dateFormat={false} locale='fr'
-              timeFormat='h:mm a'
+              timeFormat='HH:mm:ss'
               timeIntervals={15}
             />
           </div>
