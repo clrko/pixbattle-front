@@ -1,4 +1,5 @@
 import React from 'react'
+
 // import { Route, Switch } from 'react-router-dom'
 // import CreationBattleDeadline from './components/pages/CreationBattleDeadline'
 // import CreationBattleRule from './components/pages/CreationBattleRule'
@@ -12,6 +13,9 @@ import React from 'react'
 // import MyRanking from './components/pages/MyRanking'
 import PostPicture from './components/pages/PostPicture'
 
+// import MyBattles from './components/pages/MyBattles'
+// import MyGroups from './components/pages/MyGroups'
+
 const App = () => {
   return (
     <div>
@@ -23,6 +27,8 @@ const App = () => {
         <Route path='/battle-creation/theme' component={CreationBattleTheme} />
         <Route path='/battle-creation/summary' component={CreationBattleSummary} />
         <Route path='/LoginRegistration' component={FormContainer} />
+        <Route path='/MyBattles' component={MyBattles} />
+        <Route path='/MyGroups' component={MyGroups} />
         <Route path='/MyProfile' component={MyProfile} />
         <Route path='/MyRanking' component={MyRanking} />
         <Route path='/MyPictures' component={MyPictures} />
