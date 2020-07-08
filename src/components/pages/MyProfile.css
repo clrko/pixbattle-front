@@ -32,13 +32,14 @@
 .star-icon-MyProfile {
   color: #FAC748;
   padding-left: 15px;
+  font-size: 2.2rem;
   position: absolute;
 }
 
 .p-victory-point-MyProfile {
   position: relative;
-  bottom: 25px;
-  left: 12px;
+  bottom: 31px;
+  left: 10px;
   color: black;
   font-size: 1rem;
 }
@@ -63,6 +64,12 @@
 
 .div-informations-MyProfile p {
   padding: 1px
+}
+
+.h1-title-MyProfile {
+  font-size: 1.1em;
+  padding-bottom: 10px;
+  color: white;
 }
 
 .button-createdNewGroup-MyProfile {

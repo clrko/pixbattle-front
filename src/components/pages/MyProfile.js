@@ -33,6 +33,7 @@ const MyProfile = ({ user }) => {
         })
       })
   }
+  
   return (
     <div className='background-MyProfile'>
       <Navbar />

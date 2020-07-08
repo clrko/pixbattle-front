@@ -19,7 +19,7 @@ const Navbar = () => {
       <Link to='/MyProfile' className='link-logo'><img src={logoLP} className='logo-NavbarMobile' alt='Pix Battle Logo' /></Link>
       <div className='links-NavbarMobile'>
         <img className='avatar-NavbarMobile' src={avatar} alt='avatar' />
-        <i className='fa fa-star star-icon-NavbarMobile'><p className='p-victory-point-NavbarMobile'>20</p></i>
+        <i className='fas fa-trophy star-icon-NavbarMobile'><p className='p-victory-point-NavbarMobile'>20</p></i>
         <div className='Logout'>
           <p className='p-Logout' onClick={handleLogOut}>Déconnexion</p>
         </div>
