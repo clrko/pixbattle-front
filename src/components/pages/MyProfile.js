@@ -1,33 +1,20 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 import axios from 'axios'
 import DropDown from '../shared/DropDown'
 import Navbar from '../shared/Navbar'
 import StickyFooter from '../shared/StickyFooter'
-import avatar from '../../asset/pictures/avatar_MyProfile.png'
 import './MyProfile.css'
 
 const Menu = withRouter(DropDown)
 
+const mapStateToProps = state => {
+  const { user } = state
+  return { user }
+}
+
 class MyProfile extends React.Component {
-  componentDidMount () {
-    this.handleInfosProfile()
-  }
-
-  handleInfosProfile = () => {
-    axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/profile`,
-        {
-          headers: {
-            'x-access-token': localStorage.getItem('token')
-          }
-        }
-      )
-      .then(res => {
-        console.log(res.data)
-      })
-  }
-
   handleCreateGroupe = e => {
     e.preventDefault()
     const { history } = this.props
@@ -54,10 +41,10 @@ class MyProfile extends React.Component {
         <Menu />
         <div className='window-MyProfile'>
           <div className='name-fa-star-MyProfile'>
-            <h1 className='name-MyProfile'>Lucas<i className='fa fa-star fa-lg star-icon-MyProfile'><p className='p-victory-point-MyProfile'>20</p></i></h1>
+            <h1 className='name-MyProfile'>{this.props.user.username}<i className='fa fa-star fa-lg star-icon-MyProfile'><p className='p-victory-point-MyProfile'>20</p></i></h1>
           </div>
           <div className='div-avatar-Myprofile'>
-            <img className='avatar-MyProfile' src={avatar} alt='avatar' />
+            <img className='avatar-MyProfile' src={this.props.user.avatar} alt='avatar' />
           </div>
           <div className='div-informations-MyProfile'>
             <p className='p-victory-MyProfile'>4 victoires</p>
@@ -73,4 +60,4 @@ class MyProfile extends React.Component {
   }
 }
 
-export default MyProfile
+export default connect(mapStateToProps)(MyProfile)
