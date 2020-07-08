@@ -142,54 +142,6 @@ class Podium extends React.Component {
                 <i class='fas fa-star fa-start-attendee-list' />
               </div>
             </div>
-            {/* <div className='div-participant'>
-              <p className='p-div-participant'>2.</p>
-              <img className='img-attendee-list' src={avatar4} alt='avatar'></img>
-              <p className='p-div-participant'>Nicolas</p>
-              <div className='div-star-attendee-list'>
-                <i class="fas fa-star fa-start-attendee-list"></i>
-              </div>
-            </div>
-            <div className='div-participant'>
-              <p className='p-div-participant'>3.</p>
-              <img className='img-attendee-list' src={avatar4} alt='avatar'></img>
-              <p className='p-div-participant'>Gérard</p>
-              <div>
-                <i class="fas fa-star fa-start-attendee-list"></i>
-              </div>
-            </div>
-            <div className='div-participant'>
-              <p className='p-div-participant'>4.</p>
-              <img className='img-attendee-list' src={avatar4} alt='avatar'></img>
-              <p className='p-div-participant'>Pierre</p>
-              <div>
-                <i class="fas fa-star fa-start-attendee-list"></i>
-              </div>
-            </div>
-            <div className='div-participant'>
-              <p className='p-div-participant'>5.</p>
-              <img className='img-attendee-list' src={avatar4} alt='avatar'></img>
-              <p className='p-div-participant'>Antoine</p>
-              <div>
-                <i class="fas fa-star fa-start-attendee-list"></i>
-              </div>
-            </div>
-            <div className='div-participant'>
-              <p className='p-div-participant'>6.</p>
-              <img className='img-attendee-list' src={avatar4} alt='avatar'></img>
-              <p className='p-div-participant'>Aristide</p>
-              <div>
-                <i class="fas fa-star fa-start-attendee-list"></i>
-              </div>
-            </div>
-            <div className='div-participant'>
-              <p className='p-div-participant'>7.</p>
-              <img className='img-attendee-list' src={avatar4} alt='avatar'></img>
-              <p className='p-div-participant'>Florient</p>
-              <div>
-                <i class="fas fa-star fa-start-attendee-list"></i>
-              </div>
-            </div> */}
           </div>
         </div>
         <StickyFooter />
