@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import { REMOVE_ALL } from '../../store/action-types'
 
@@ -10,6 +11,7 @@ const mapStateToProps = state => {
 
 const CreationBattleSummary = ({ battleCreation }) => {
   const handleClick = e => {
+    const { history } = this.props
     axios.post(`${process.env.REACT_APP_SERVER_URL}/battle-creation`,
       {
         headers: {
@@ -28,6 +30,10 @@ const CreationBattleSummary = ({ battleCreation }) => {
         dispatch({ type: REMOVE_ALL })
       }
     })
+    // .then(res => {
+    //   history.push('/PostPicture')
+    // })
+    history.push('/PostPicture')
   }
 
   return (
@@ -44,4 +50,4 @@ const CreationBattleSummary = ({ battleCreation }) => {
   )
 }
 
-export default connect(mapStateToProps)(CreationBattleSummary)
+export default connect(mapStateToProps)(withRouter(CreationBattleSummary))
