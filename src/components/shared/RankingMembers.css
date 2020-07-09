@@ -12,20 +12,59 @@
   margin-top: 3px;
 }
 
+.div-participants-RankingMembers {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 4px 0;
+  width: 100%;
+}
+
+.margin-div-participant-RankingMembers {
+  margin: 0 15px;
+}
+
+.p-div-participant-RankingMembers {
+  font-size: 1.4em;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-align: left;
+}
+
+.margin-div-participant-RankingMembers {
+  /* margin: 0 15px; */
+  width: 6%;
+}
+
+.img-attendee-list-RankingMembers {
+  max-width: 2.5em;
+  border-radius: 50%;
+}
+
+.margin-p-div-participant-RankingMembers {
+  margin-left: 10%;
+}
+
+.p-margin-div-participant-RankingMembers {
+  font-size: 1.4em;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-align: left;
+}
+
 .margin-fa-trophy-RankingMembers {
   margin-left: auto;
-  padding-right: 10px;
 }
 
 .fa-trophy-RankingMembers {
   color: #FAC748;
-  font-size: 1.8rem;
+  font-size: 1.8em;
   display: flex;
 }
 
-.p-user-victories-trophy {
+.p-user-victories-trophy-RankingMembers {
   position: relative;
   color: black;
-  font-size: 1rem;
+  font-size: 0.5em;
   right: 21px;
 }
