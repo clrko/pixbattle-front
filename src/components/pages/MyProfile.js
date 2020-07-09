@@ -32,6 +32,7 @@ const MyProfile = ({ user, profileInfos, history }) => {
         })
       })
   }
+
   if (profileInfos === null) {
     return <p>loading...</p>
   }
@@ -44,7 +45,7 @@ const MyProfile = ({ user, profileInfos, history }) => {
         <div className='name-fa-star-MyProfile'>
           <h1 className='name-MyProfile'>{user.username}
             <i className='fa fa-star fa-lg star-icon-MyProfile'>
-              <p className='p-victory-point-MyProfile'>{profileInfos.infos.victories}</p>
+              <p className='p-victory-point-MyProfile'>{!profileInfos.infos ? '0' : profileInfos.infos.victories}</p>
             </i>
           </h1>
         </div>
