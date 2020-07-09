@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { LOGIN } from '../../store/action-types'
+import { LOGIN, GET_INFOS } from '../../store/action-types'
 import './FormLogin.css'
 
 class FormLogin extends React.Component {
@@ -39,7 +39,10 @@ class FormLogin extends React.Component {
               'x-access-token': localStorage.getItem('token')
             }
           })
-        .then(res => console.log('pouet', res.data))
+        .then(res => {
+          dispatch({ type: GET_INFOS, ...res.data })
+          console.log(res.data)
+        })
       return this.props.onClose(e)
     }
     alert('Il faut un email et un mot de passe')
