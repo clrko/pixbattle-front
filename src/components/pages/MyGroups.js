@@ -3,18 +3,18 @@ import { withRouter } from 'react-router-dom'
 import Navbar from '../shared/Navbar'
 import DropDown from '../shared/DropDown'
 import StickyFooter from '../shared/StickyFooter'
-import './MyRanking.css'
+import './MyGroups.css'
 
 const Menu = withRouter(DropDown)
 
-class MyRanking extends React.Component {
+class MyGroups extends React.Component {
   render () {
     return (
-      <div className='background-MyRanking'>
+      <div className='background-MyGroups'>
         <Navbar />
         <Menu />
-        <div className='window-MyRanking'>
-          <p>Mon Classement</p>
+        <div className='window-MyGroups'>
+          <p>Mes Groupes</p>
         </div>
         <StickyFooter />
       </div>
@@ -22,4 +22,4 @@ class MyRanking extends React.Component {
   }
 }
 
-export default MyRanking
+export default MyGroups

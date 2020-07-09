@@ -3,13 +3,17 @@ import { ADD_GROUP, ADD_THEME, ADD_RULES, ADD_DEADLINE, REMOVE_ALL } from './act
 const battleCreationReducer = (state = [], action) => {
   switch (action.type) {
     case ADD_GROUP: {
-      return [...state, action.currentGroupId]
+      const { currentGroupId } = action
+      return [...state, currentGroupId]
     }
     case ADD_THEME: {
-      return [...state, action.selectedThemeId]
+      const { selectedTheme } = action
+      return [...state, selectedTheme]
     }
-    case ADD_RULES:
-      return [...state, action.rules]
+    case ADD_RULES: {
+      const { rules } = action
+      return [...state, rules]
+    }
     case ADD_DEADLINE: {
       const { selectedDeadline } = action
       return [...state, selectedDeadline]

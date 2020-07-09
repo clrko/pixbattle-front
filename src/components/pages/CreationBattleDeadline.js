@@ -3,27 +3,35 @@ import { NavLink, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import DateTime from 'react-datetime'
 import { ADD_DEADLINE } from '../../store/action-types'
+import Modal from '../shared/Modal'
+import CreationBattleSummary from './CreationBattleSummary'
 import 'moment/locale/fr'
 import './CreationBattle.css'
 import './CreationBattleDeadline.css'
 
 const CreationBattleDeadline = (props) => {
   const [selectedDate, setDateChange] = useState(new Date())
-  const [selectedTime, setTimeChange] = useState('12:00 AM')
+  const [selectedTime, setTimeChange] = useState('01:00:00')
+  const [isOpen, setIsOpen] = useState(false)
 
   const handleDateChange = e => {
     setDateChange(e)
   }
 
   const handleTimeChange = e => {
-    setTimeChange(e)
+    setTimeChange(e.format('LTS'))
   }
 
   const handleSubmit = e => {
-    const selectedDeadline = [selectedDate.format('YYYY-MM-DD'), selectedTime.format('h:mm a')].join(' ')
-    const { dispatch, history } = props
+    const selectedDeadline = [selectedDate.format('YYYY-MM-DD'), selectedTime].join(' ')
+    const { dispatch } = props
     dispatch({ type: ADD_DEADLINE, selectedDeadline })
-    history.push('/MyProfile')
+    setIsOpen(!isOpen)
+  }
+
+  const handleOpenModal = e => {
+    e.preventDefault()
+    setIsOpen(!isOpen)
   }
 
   return (
@@ -45,7 +53,7 @@ const CreationBattleDeadline = (props) => {
               value={selectedTime}
               onChange={handleTimeChange}
               dateFormat={false} locale='fr'
-              timeFormat='h:mm a'
+              timeFormat='HH:mm:ss'
               timeIntervals={15}
             />
           </div>
@@ -66,6 +74,9 @@ const CreationBattleDeadline = (props) => {
           >
             Valider
           </button>
+          <Modal isOpen={isOpen}>
+            <CreationBattleSummary onClose={handleOpenModal} />
+          </Modal>
         </div>
       </div>
     </div>

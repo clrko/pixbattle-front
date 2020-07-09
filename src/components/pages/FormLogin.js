@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { LOGIN } from '../../store/action-types'
+import { LOGIN, GET_INFOS } from '../../store/action-types'
 import './FormLogin.css'
 
 class FormLogin extends React.Component {
@@ -20,16 +20,27 @@ class FormLogin extends React.Component {
     this.setState({ isChecked: e.target.checked })
   }
 
-  handleSubmit = e => {
+  handleSubmit = async (e) => {
     const { email, password } = this.state
     if (email && password) {
       e.preventDefault()
       const { dispatch, history } = this.props
-      axios.post(`${process.env.REACT_APP_SERVER_URL}/auth`, this.state)
+      await axios
+        .post(`${process.env.REACT_APP_SERVER_URL}/auth`, this.state)
         .then(res => {
           localStorage.setItem('token', res.headers['x-access-token'])
           dispatch({ type: LOGIN, ...res.data })
           history.push('/MyProfile')
+        })
+      await axios
+        .post(`${process.env.REACT_APP_SERVER_URL}/profile`,
+          {
+            headers: {
+              'x-access-token': localStorage.getItem('token')
+            }
+          })
+        .then(res => {
+          dispatch({ type: GET_INFOS, ...res.data })
         })
       return this.props.onClose(e)
     }

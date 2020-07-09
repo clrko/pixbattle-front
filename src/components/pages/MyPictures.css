@@ -1,6 +1,5 @@
 .background-MyPictures {
   width: 100%;
-  height: 100vh;
   background-color: #3181C8;
   display: flex;
   flex-direction: column;
@@ -14,9 +13,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 80vh;
+  justify-content: flex-start;
   width: 75vw;
+  height: 66vh;
   border-radius: 15px;
-  font-size: 2rem;
+  padding: 20px;
   }

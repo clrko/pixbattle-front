@@ -15,6 +15,7 @@ class DropDown extends React.Component {
           <option value='/MyProfile'>Mon Profil</option>
           <option value='/MyRanking'>Mon Classement</option>
           <option value='/MyPictures'>Mes Photos</option>
+          <option value='/Podium'>Mon Podium</option>
         </select>
       </div>
     )
