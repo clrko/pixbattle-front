@@ -55,7 +55,6 @@ class FormRegistration extends React.Component {
           })
         .then(res => {
           dispatch({ type: GET_INFOS, ...res.data })
-          console.log('héhé')
         })
     }
     return this.props.onClose(e)
