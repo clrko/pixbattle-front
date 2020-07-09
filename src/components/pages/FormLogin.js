@@ -41,7 +41,6 @@ class FormLogin extends React.Component {
           })
         .then(res => {
           dispatch({ type: GET_INFOS, ...res.data })
-          console.log(res.data)
         })
       return this.props.onClose(e)
     }
