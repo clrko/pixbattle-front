@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Redirect, Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import logoLP from '../../asset/logo/logo.svg'
 import './Navbar.css'
-import { connect } from 'react-redux'
 
 const mapStateToProps = state => {
   const { user, profileInfos } = state
