@@ -12,6 +12,7 @@ import MyGroups from './components/pages/MyGroups'
 import MyProfile from './components/pages/MyProfile'
 import MyPictures from './components/pages/MyPictures'
 import MyRanking from './components/pages/MyRanking'
+import Podium from './components/pages/Podium'
 import PostPicture from './components/pages/PostPicture'
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
         <Route path='/MyProfile' component={MyProfile} />
         <Route path='/MyRanking' component={MyRanking} />
         <Route path='/MyPictures' component={MyPictures} />
+        <Route path='/Podium' component={Podium} />
         <Route path='/newgroup/:id' component={CreationSteps} />
         <Route path='/PostPicture' component={PostPicture} />
       </Switch>

@@ -3,7 +3,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: -80px;
   margin-bottom: 10px;
 }
 
@@ -31,6 +30,7 @@
 .avatar-NavbarMobile {
   max-width: 40%;
   padding: 10px;
+  border-radius: 100px;
 }
 
 .star-icon-NavbarMobile {
@@ -44,7 +44,7 @@
 .p-victory-point-NavbarMobile {
   position: relative;
   bottom: 6px;
-  right: 24px;
+  right: 20px;
   color: black;
   font-size: 0.8rem;
 }
@@ -67,7 +67,7 @@
     align-items: center;
     margin-left: 30px;
   }
-  
+
   .logo-NavbarMobile {
     max-width: 220px;
     padding-left: 4px;
@@ -89,7 +89,7 @@
     font-size: 2.8rem;
     margin-right: 26px;
   }
-  
+
   .p-victory-point-NavbarMobile {
     top: 2px;
     right: 37px;
