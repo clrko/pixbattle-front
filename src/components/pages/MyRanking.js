@@ -1,7 +1,8 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import Navbar from '../shared/Navbar'
 import DropDown from '../shared/DropDown'
+import Navbar from '../shared/Navbar'
+import RankingMembers from '../shared/RankingMembers'
 import StickyFooter from '../shared/StickyFooter'
 import './MyRanking.css'
 
@@ -13,9 +14,7 @@ class MyRanking extends React.Component {
       <div className='background-MyRanking'>
         <Navbar />
         <Menu />
-        <div className='window-MyRanking'>
-          <p>Mon Classement</p>
-        </div>
+        <RankingMembers />
         <StickyFooter />
       </div>
     )
