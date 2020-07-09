@@ -1,12 +1,12 @@
 import React from 'react'
 import './Gallery.css'
 
-const Gallery = (props) => {
+const Gallery = props => {
   return (
     <div className='Gallery'>
-      {props.images.map((img, i) => (
-        <div className='gallery-img-container' key={i}>
-          <img src={img} alt='' className='gallery-image' />
+      {props.photos.map((photo) => (
+        <div className='gallery-img-container' key={photo.photo_id}>
+          <img src={photo.photo_url} alt='' className='gallery-image' />
         </div>
       ))}
     </div>
