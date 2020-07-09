@@ -1,21 +1,22 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import './StickyFooter.css'
 
 const StickyFooter = () => {
   return (
     <div className='div-StickyFooter'>
-      <div className='div-camera-StickyFooter'>
+      <NavLink to='/MyBattles' className='div-camera-StickyFooter'>
         <i className='fa fa-camera' />
         <p>Battles</p>
-      </div>
-      <div className='div-users-StickyFooter'>
+      </NavLink>
+      <NavLink to='/MyGroups' className='div-users-StickyFooter'>
         <i className='fa fa-users' />
         <p>Groupes</p>
-      </div>
-      <div className='div-user-StickyFooter'>
+      </NavLink>
+      <NavLink to='/MyProfile' className='div-user-StickyFooter'>
         <i className='fa fa-user-circle' />
         <p>Profil</p>
-      </div>
+      </NavLink>
     </div>
   )
 }
