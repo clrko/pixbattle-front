@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
+import BattleVote from './components/pages/BattleVote'
 import CreationBattleDeadline from './components/pages/CreationBattleDeadline'
 import CreationBattleRule from './components/pages/CreationBattleRule'
 import CreationBattleTheme from './components/pages/CreationBattleTheme'
@@ -12,7 +13,6 @@ import MyGroups from './components/pages/MyGroups'
 import MyProfile from './components/pages/MyProfile'
 import MyPictures from './components/pages/MyPictures'
 import MyRanking from './components/pages/MyRanking'
-import Vote from './components/pages/Vote'
 import Podium from './components/pages/Podium'
 
 const App = () => {
@@ -32,7 +32,7 @@ const App = () => {
         <Route path='/MyPictures' component={MyPictures} />
         <Route path='/Podium' component={Podium} />
         <Route path='/newgroup/:id' component={CreationSteps} />
-        <Route path='/vote' component={Vote} />
+        <Route path='/vote' component={BattleVote} />
       </Switch>
     </div>
   )

@@ -3,7 +3,7 @@ import axios from 'axios'
 import Gallery from '../shared/Gallery'
 import Footer from '../shared/StickyFooter'
 
-class Vote extends Component {
+class BattleVote extends Component {
   state = {
     photos: []
   }
@@ -33,4 +33,4 @@ class Vote extends Component {
   }
 }
 
-export default Vote
+export default BattleVote
