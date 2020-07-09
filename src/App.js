@@ -1,26 +1,23 @@
 import React from 'react'
-
-// import { Route, Switch } from 'react-router-dom'
-// import CreationBattleDeadline from './components/pages/CreationBattleDeadline'
-// import CreationBattleRule from './components/pages/CreationBattleRule'
-// import CreationBattleTheme from './components/pages/CreationBattleTheme'
-// import CreationBattleSummary from './components/pages/CreationBattleSummary'
-// import CreationSteps from './components/pages/CreationSteps'
-// import LandingPage from './components/pages/LandingPage'
-// import FormContainer from './components/pages/FormContainer'
-// import MyProfile from './components/pages/MyProfile'
-// import MyPictures from './components/pages/MyPictures'
-// import MyRanking from './components/pages/MyRanking'
+import { Route, Switch } from 'react-router-dom'
+import CreationBattleDeadline from './components/pages/CreationBattleDeadline'
+import CreationBattleRule from './components/pages/CreationBattleRule'
+import CreationBattleTheme from './components/pages/CreationBattleTheme'
+import CreationBattleSummary from './components/pages/CreationBattleSummary'
+import CreationSteps from './components/pages/CreationSteps'
+import LandingPage from './components/pages/LandingPage'
+import FormContainer from './components/pages/FormContainer'
+import MyBattles from './components/pages/MyBattles'
+import MyGroups from './components/pages/MyGroups'
+import MyProfile from './components/pages/MyProfile'
+import MyPictures from './components/pages/MyPictures'
+import MyRanking from './components/pages/MyRanking'
 import PostPicture from './components/pages/PostPicture'
-
-// import MyBattles from './components/pages/MyBattles'
-// import MyGroups from './components/pages/MyGroups'
 
 const App = () => {
   return (
     <div>
-      <PostPicture />
-      {/* <Switch>
+      <Switch>
         <Route exact path='/' component={LandingPage} />
         <Route path='/battle-creation/deadline' component={CreationBattleDeadline} />
         <Route path='/battle-creation/rule' component={CreationBattleRule} />
@@ -34,7 +31,7 @@ const App = () => {
         <Route path='/MyPictures' component={MyPictures} />
         <Route path='/newgroup/:id' component={CreationSteps} />
         <Route path='/PostPicture' component={PostPicture} />
-      </Switch> */}
+      </Switch>
     </div>
   )
 }
