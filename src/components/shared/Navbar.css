@@ -30,6 +30,7 @@
 .avatar-NavbarMobile {
   max-width: 40%;
   padding: 10px;
+  border-radius: 100px;
 }
 
 .star-icon-NavbarMobile {
@@ -66,7 +67,7 @@
     align-items: center;
     margin-left: 30px;
   }
-  
+
   .logo-NavbarMobile {
     max-width: 220px;
     padding-left: 4px;
@@ -88,7 +89,7 @@
     font-size: 2.8rem;
     margin-right: 26px;
   }
-  
+
   .p-victory-point-NavbarMobile {
     top: 2px;
     right: 37px;
