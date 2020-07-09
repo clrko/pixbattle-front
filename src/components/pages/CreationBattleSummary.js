@@ -2,16 +2,16 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
-import { REMOVE_ALL } from '../../store/action-types'
+// import { REMOVE_ALL } from '../../store/action-types'
 
 const mapStateToProps = state => {
   const { battleCreation } = state
   return { battleCreation }
 }
 
-const CreationBattleSummary = ({ battleCreation, dispatch }) => {
+const CreationBattleSummary = ({ battleCreation, dispatch, history }) => {
   const handleClick = e => {
-    const { history } = this.props
+    // const { history } = this.props
     axios.post(`${process.env.REACT_APP_SERVER_URL}/battle-creation`,
       {
         headers: {
@@ -24,13 +24,13 @@ const CreationBattleSummary = ({ battleCreation, dispatch }) => {
       }
     ).then(res => {
       if (res.status === 201) {
-        dispatch({ type: REMOVE_ALL })
+        // dispatch({ type: REMOVE_ALL })
+        history.push('/PostPicture')
       }
     })
     // .then(res => {
     //   history.push('/PostPicture')
     // })
-    history.push('/PostPicture')
   }
 
   return (

@@ -23,6 +23,7 @@ const CreationBattleDeadline = (props) => {
   }
 
   const handleSubmit = e => {
+    console.log(selectedDate.format('YYYY-MM-DD'))
     const selectedDeadline = [selectedDate.format('YYYY-MM-DD'), selectedTime].join(' ')
     const { dispatch } = props
     dispatch({ type: ADD_DEADLINE, selectedDeadline })
