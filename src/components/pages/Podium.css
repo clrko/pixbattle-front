@@ -134,6 +134,17 @@
   height: 170px;
   margin-top: 3px;
   overflow: auto;
+  border: 6px solid #235789;
+}
+
+
+.div-attendee-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.div-attendee-list::-webkit-scrollbar-thumb {
+  background-color: #FAC748;
+  border-radius: 10px;
 }
 
 .p-div-participant {
