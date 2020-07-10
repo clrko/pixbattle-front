@@ -219,7 +219,7 @@ class ListRankingMembers extends React.Component {
 
   render () {
     return (
-      <div className='window-RankingMembers'>
+      <div className='window-RankingMembers scrollbar-ListRankingMembers'>
         {this.state.user.map((user, i) => (
           <div key={i} className='div-participants-RankingMembers'>
             <div className='margin-div-participant-RankingMembers'>

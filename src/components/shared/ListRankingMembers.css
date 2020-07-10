@@ -10,6 +10,16 @@
   border-radius: 15px;
   overflow: auto;
   margin-top: 3px;
+  border: 6px solid #235789;
+}
+
+.scrollbar-ListRankingMembers::-webkit-scrollbar {
+  width: 5px;
+}
+
+.scrollbar-ListRankingMembers::-webkit-scrollbar-thumb {
+  background-color: #FAC748;
+  border-radius: 10px;
 }
 
 .div-participants-RankingMembers {
@@ -52,18 +62,23 @@
 }
 
 .margin-fa-trophy-RankingMembers {
-  margin-left: auto;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 15px;
 }
 
 .fa-trophy-RankingMembers {
   color: #FAC748;
   font-size: 1.8em;
-  display: flex;
+  position: relative;
+  top: 7px;
 }
 
 .p-user-victories-trophy-RankingMembers {
   position: relative;
   color: black;
-  font-size: 0.5em;
-  right: 21px;
+  font-size: 0.5em; 
+  bottom: 28px;
+  text-align: center;
 }
