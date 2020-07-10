@@ -8,7 +8,6 @@ import CreationSteps from './components/pages/CreationSteps'
 import LandingPage from './components/pages/LandingPage'
 import FormContainer from './components/pages/FormContainer'
 import MyBattles from './components/pages/MyBattles'
-import MyBattlesCardList from './components/pages/MyBattlesCardList'
 import MyGroups from './components/pages/MyGroups'
 import MyProfile from './components/pages/MyProfile'
 import MyPictures from './components/pages/MyPictures'
@@ -18,7 +17,6 @@ import Podium from './components/pages/Podium'
 const App = () => {
   return (
     <div>
-      <MyBattlesCardList /> {/* A enlever */}
       <Switch>
         <Route exact path='/' component={LandingPage} />
         <Route path='/battle-creation/deadline' component={CreationBattleDeadline} />
@@ -27,7 +25,6 @@ const App = () => {
         <Route path='/battle-creation/summary' component={CreationBattleSummary} />
         <Route path='/LoginRegistration' component={FormContainer} />
         <Route path='/MyBattles' component={MyBattles} />
-        <Route path='/MyBattlesCardList' component={MyBattlesCardList} /> {/* a enlever  */}
         <Route path='/MyGroups' component={MyGroups} />
         <Route path='/MyProfile' component={MyProfile} />
         <Route path='/MyRanking' component={MyRanking} />
