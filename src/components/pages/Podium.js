@@ -14,60 +14,61 @@ const Menu = withRouter(DropDown)
 
 class Podium extends React.Component {
   state = {
-    user: [{
-      id: 1,
-      username: 'Marie',
-      avatar: avatar3,
-      victories: 9
-    },
-    {
-      id: 2,
-      username: 'Jean',
-      avatar: avatar2,
-      victories: 7
-    },
-    {
-      id: 3,
-      username: 'Paul',
-      avatar: avatar,
-      victories: 6
-    },
-    {
-      id: 4,
-      username: 'Aristide',
-      avatar: avatar4,
-      victories: 5
-    },
-    {
-      id: 5,
-      username: 'Marion',
-      avatar: avatar2,
-      victories: 3
-    },
-    {
-      id: 6,
-      username: 'Zoé',
-      avatar: avatar3,
-      victories: 2
-    },
-    {
-      id: 7,
-      username: 'Lola',
-      avatar: avatar3,
-      victories: 1
-    },
-    {
-      id: 8,
-      username: 'Julien',
-      avatar: avatar4,
-      victories: 0
-    },
-    {
-      id: 9,
-      username: 'Auxence',
-      avatar: avatar,
-      victories: 0
-    }
+    user: [
+      {
+        id: 1,
+        username: 'Marie',
+        avatar: avatar3,
+        victories: 9
+      },
+      {
+        id: 2,
+        username: 'Jean',
+        avatar: avatar2,
+        victories: 7
+      },
+      {
+        id: 3,
+        username: 'Paul',
+        avatar: avatar,
+        victories: 6
+      },
+      {
+        id: 4,
+        username: 'Aristide',
+        avatar: avatar4,
+        victories: 5
+      },
+      {
+        id: 5,
+        username: 'Marion',
+        avatar: avatar2,
+        victories: 3
+      },
+      {
+        id: 6,
+        username: 'Zoé',
+        avatar: avatar3,
+        victories: 2
+      },
+      {
+        id: 7,
+        username: 'Lola',
+        avatar: avatar3,
+        victories: 1
+      },
+      {
+        id: 8,
+        username: 'Julien',
+        avatar: avatar4,
+        victories: 0
+      },
+      {
+        id: 9,
+        username: 'Auxence',
+        avatar: avatar,
+        victories: 0
+      }
     ]
   }
 

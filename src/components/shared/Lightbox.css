@@ -1,0 +1,206 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.container .card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 5px;
+  height: 300px;
+  overflow: hidden;
+  width: calc(25% - 10px);
+}
+
+.container .card img {
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+}
+
+.container .card .cardInfo {
+  position: absolute;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 40%;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, .5);
+  justify-content: flex-end;
+  opacity: 0;
+  transition: 0.5s ease;
+}
+
+.container .card .cardInfo button {
+  margin-top: 20px;
+  border: none;
+  outline: none;
+  background: #3181c8;
+  color: #fac748;
+  font-size: 18px;
+  text-shadow: 0 0 1px #000, 0.5px 1px #000, 1px 1px 1px #000;
+  width: 80px;
+  height: 25px;
+  border-radius: 5px;
+  transform: translate(-400px);
+  transition: 0.5s ease;
+  transition-delay: 0.5s;
+}
+
+.container .card:hover .cardInfo {
+  opacity: 1;
+}
+
+.container .card:hover .cardInfo button {
+  transform: translate(0);
+  transition: 0.5s ease;
+  transition-delay: 0.5s;
+}
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  z-index: 5;
+  background: rgba(0, 0, 0, .9);
+  display: none;
+}
+
+.lightbox .carousel {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  top: calc(50% - 20px);
+  background: rgba(255, 255, 255, .5);
+  border-radius: 50%;
+  z-index: 6;
+}
+
+.lightbox .carousel .span {
+  position: absolute;
+  height: 3px;
+  width: 10px;
+  left: calc(50% - 1.5px);
+  display: block;
+  background: rgba(0, 0, 0, .8);
+  border-radius: 10px;
+}
+
+.lightbox .carousel.left {
+  left: 5px;
+}
+
+.lightbox .carousel.right {
+  right: 0;
+  right: 5px;
+}
+
+.lightbox .carousel.left span:nth-child(1) {
+  transform: rotate(-30deg);
+  transform-origin: left;
+}
+
+.lightbox .carousel.left span:nth-child(2) {
+  transform: rotate(30deg);
+  transform-origin: left;
+}
+
+.lightbox .carousel.right span:nth-child(1) {
+  transform: rotate(-30deg);
+  transform-origin: right;
+}
+
+.lightbox .carousel.right span:nth-child(2) {
+  transform: rotate(30deg);
+  transform-origin: right;
+}
+
+.lightbox .carousel:hover {
+  background: rgba(49, 129, 200, .7);
+}
+
+.lightbox .carousel:hover span {
+  background: #fff;
+}
+
+.lightbox .close {
+  background: rgba(255, 255, 255, .5);
+  height: 20px;
+  width: 60px;
+  text-align: center;
+  margin-top: 10px;
+  border-radius: 20px;
+  line-height: 20px;
+  color: #000;
+  transition: 0.5s;
+  z-index: 6;
+  cursor: pointer;
+}
+
+.lightbox .close:hover {
+  background: rgba(49, 129, 200, .7);
+  color: rgba(250, 199, 72);
+}
+
+.lightbox img {
+  position: absolute;
+  height: 70%;
+  width: 70%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  border: 1px solid rgb(0, 0, 0);
+}
+
+@media screen and (max-width:450px) {
+  .container .card {
+    width: 100%
+  }
+}
+
+@media screen and (max-width:450px) {
+  .container .card {
+    width: 100%
+  }
+}
+
+.leftArrow {
+  width: 0px;
+  height: 0px;
+  /*background-color: red;*/
+  border-top: 10px solid transparent;
+  border-right: 10px solid rgba(250, 199, 72);
+  border-bottom: 10px solid transparent;
+  /*border-left: 10px solid gray;*/
+}
+
+.rightArrow {
+  width: 0px;
+  height: 0px;
+  /*background-color: red;*/
+  border-top: 10px solid transparent;
+  /*border-right: 10px solid rgba(250, 199, 72);*/
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid rgba(250, 199, 72);
+}
