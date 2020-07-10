@@ -1,3 +1,7 @@
+.register-form {
+  margin: auto;
+}
+
 .LoginForm-passwordError {
   border: 1px #ef4536 solid;
 }
@@ -16,7 +20,7 @@
   display: none;
 }
 
-.LoginForm-passwordError + .password-error-message {
+.LoginForm-passwordError+.password-error-message {
   position: absolute;
   display: block;
   padding: 0.5em;
@@ -31,4 +35,10 @@
 
 .CheckPassword-wrapper {
   position: relative;
+}
+
+@media (max-width: 1395px) and (max-heigth: 765px) {
+  .LoginForm-label {
+    padding-top: 2%;
+  }
 }

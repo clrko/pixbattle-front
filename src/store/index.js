@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux'
-import userReducer from './userReducer'
+import user from './userReducer'
+import battleCreation from './battleCreationReducer'
+import profileInfos from './profileInfosReducer'
 
 export default combineReducers({
-  userReducer
+  user,
+  battleCreation,
+  profileInfos
 })

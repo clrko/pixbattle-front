@@ -1,7 +1,7 @@
 import React from 'react'
-import './TabSelector.css'
+import './FormSelector.css'
 
-function TabSelector ({ activeId, onHandleChange }) {
+function FormSelector ({ activeId, onHandleChange }) {
   return (
     <div className='TabSelector'>
       <button
@@ -22,4 +22,4 @@ function TabSelector ({ activeId, onHandleChange }) {
   )
 }
 
-export default TabSelector
+export default FormSelector

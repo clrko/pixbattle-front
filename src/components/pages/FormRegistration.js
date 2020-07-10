@@ -1,10 +1,14 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
-import classNames from 'classnames'
-import './LoginForm.css'
-import './RegistrationForm.css'
+import axios from 'axios'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import { LOGIN, GET_INFOS } from '../../store/action-types'
 
-class RegistrationForm extends React.Component {
+import classNames from 'classnames'
+import './FormLogin.css'
+import './FormRegistration.css'
+
+class FormRegistration extends React.Component {
   state = {
     username: '',
     email: '',
@@ -32,11 +36,28 @@ class RegistrationForm extends React.Component {
     return (password === checkPassword)
   }
 
-  handleSubmit = e => {
+  handleSubmit = async (e) => {
     e.preventDefault()
-    if (!this.checkPassword()) {
-    } else {
+    if (this.checkPassword()) {
+      const { dispatch, history } = this.props
+      await axios.post(`${process.env.REACT_APP_SERVER_URL}/register`, this.state)
+        .then(res => {
+          localStorage.setItem('token', res.headers['x-access-token'])
+          dispatch({ type: LOGIN, ...res.data })
+          history.push('/MyProfile')
+        })
+      await axios
+        .post(`${process.env.REACT_APP_SERVER_URL}/profile`,
+          {
+            headers: {
+              'x-access-token': localStorage.getItem('token')
+            }
+          })
+        .then(res => {
+          dispatch({ type: GET_INFOS, ...res.data })
+        })
     }
+    return this.props.onClose(e)
   }
 
   render () {
@@ -46,7 +67,7 @@ class RegistrationForm extends React.Component {
     const emailError = !this.checkEmail()
     const emailClass = classNames('LoginForm-input', { 'LoginForm-passwordError': emailError })
     return (
-      <form className='login-form'>
+      <form className='register-form'>
         <div className='login-inside LoginForm-div'>
           <label className='LoginForm-label'>Pseudo</label>
           <input
@@ -59,7 +80,7 @@ class RegistrationForm extends React.Component {
             maxLength='15'
             required
           />
-          <div className={this.state.username.length > 3 && 'character-validation'}>
+          <div className={this.state.username.length > 3 ? 'character-validation' : ''}>
             <p className='character-validation-p'>Entre 3 et 15 caractères</p>
           </div>
         </div>
@@ -86,7 +107,7 @@ class RegistrationForm extends React.Component {
             maxLength='15'
             required
           />
-          <div className={this.state.password.length > 5 && 'character-validation'}>
+          <div className={this.state.password.length > 5 ? 'character-validation' : ''}>
             <p className='character-validation-p'>Entre 6 et 15 caractères</p>
           </div>
         </div>
@@ -104,7 +125,7 @@ class RegistrationForm extends React.Component {
           />
           <div className='password-error-message'>Les mots de passe de correspondent pas</div>
         </div>
-        <div className='LoginForm-checkboxAlign1 LoginForm-div'>
+        <div className='LoginForm-checkboxAlign LoginForm-div'>
           <input
             className='LoginForm-checkbox'
             name='acceptedCGU'
@@ -120,6 +141,7 @@ class RegistrationForm extends React.Component {
             className='LoginForm-cancelButton'
             type='button'
             value='Annuler'
+            onClick={this.props.onClose}
           />
           <input
             className='LoginForm-validateButton'
@@ -133,4 +155,4 @@ class RegistrationForm extends React.Component {
   }
 }
 
-export default RegistrationForm
+export default connect()(withRouter(FormRegistration))
