@@ -30,17 +30,17 @@ class FormLogin extends React.Component {
         .then(res => {
           localStorage.setItem('token', res.headers['x-access-token'])
           dispatch({ type: LOGIN, ...res.data })
-          history.push('/MyProfile')
         })
       await axios
-        .post(`${process.env.REACT_APP_SERVER_URL}/profile`,
+        .get(`${process.env.REACT_APP_SERVER_URL}/profile`,
           {
             headers: {
-              'x-access-token': localStorage.getItem('token')
+              authorization: `Bearer ${localStorage.getItem('token')}`
             }
           })
         .then(res => {
           dispatch({ type: GET_INFOS, ...res.data })
+          history.push('/MyProfile')
         })
       return this.props.onClose(e)
     }
