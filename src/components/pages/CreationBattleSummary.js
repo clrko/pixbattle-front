@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import { REMOVE_ALL } from '../../store/action-types'
 
@@ -8,23 +9,28 @@ const mapStateToProps = state => {
   return { battleCreation }
 }
 
-const CreationBattleSummary = ({ battleCreation, dispatch }) => {
+const CreationBattleSummary = ({ battleCreation, dispatch, history, onClose }) => {
   const handleClick = e => {
     axios.post(`${process.env.REACT_APP_SERVER_URL}/battle-creation`,
       {
-        headers: {
-          'x-access-token': localStorage.getItem('token')
-        },
         groupId: parseInt(battleCreation[0].groupId),
         themeId: parseInt(battleCreation[1].themeId),
         rulesId: battleCreation[2].map(rule => rule.rule_id),
         deadline: battleCreation[3]
+      },
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('token')}`
+        }
       }
     ).then(res => {
       if (res.status === 201) {
+        console.log('res.data est', res.data)
+        history.push('/PostPicture', res.data) /* voir le format de donnée, dedans il y a le battle id */
         dispatch({ type: REMOVE_ALL })
       }
     })
+    return onClose(e)
   }
 
   return (
@@ -41,4 +47,4 @@ const CreationBattleSummary = ({ battleCreation, dispatch }) => {
   )
 }
 
-export default connect(mapStateToProps)(CreationBattleSummary)
+export default connect(mapStateToProps)(withRouter(CreationBattleSummary))

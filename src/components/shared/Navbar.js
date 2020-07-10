@@ -17,7 +17,7 @@ const Navbar = ({ user, profileInfos }) => {
     setRedirect(!redirect)
   }
 
-  if (redirect) { return <Redirect to='/' /> }
+  if (redirect || !user) { return <Redirect to='/' /> }
 
   return (
     <div className='div-NavbarMobile'>

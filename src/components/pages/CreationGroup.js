@@ -25,11 +25,11 @@ class CreationGroup extends Component {
     if (this.state.groupName.length > 0) {
       axios
         .put(`${process.env.REACT_APP_SERVER_URL}/group/${this.props.params}`,
+          { groupName },
           {
             headers: {
-              'x-access-token': localStorage.getItem('token')
-            },
-            groupName
+              authorization: `Bearer ${localStorage.getItem('token')}`
+            }
           })
         .then(res => {
           this.setState({ isGroupName: true })
@@ -75,11 +75,11 @@ class CreationGroup extends Component {
     const { allEmails } = this.state
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/group/${this.props.params}`,
+        { allEmails },
         {
           headers: {
-            'x-access-token': localStorage.getItem('token')
-          },
-          allEmails
+            authorization: `Bearer ${localStorage.getItem('token')}`
+          }
         })
       .then(res => {
         console.log(res.data) /* Il faut renvoyer une notification à l'utilisateur soit les emails soit group créé */

@@ -14,6 +14,7 @@ import MyProfile from './components/pages/MyProfile'
 import MyPictures from './components/pages/MyPictures'
 import MyRanking from './components/pages/MyRanking'
 import Podium from './components/pages/Podium'
+import PostPicture from './components/pages/PostPicture'
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
         <Route path='/MyPictures' component={MyPictures} />
         <Route path='/Podium' component={Podium} />
         <Route path='/newgroup/:id' component={CreationSteps} />
+        <Route path='/PostPicture' component={PostPicture} />
         <Route path='/vote' component={BattleVote} />
       </Switch>
     </div>
