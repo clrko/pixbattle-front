@@ -7,7 +7,8 @@ const Lightbox = ({ photos }) => {
   const [photoId, setPhotoId] = useState('')
   const [cardIndex, setIndex] = useState(0)
   const [dispImgStyle, setStyle] = useState({ display: 'none' })
-  const [votes, setVotes] = useState({ photoId: '', vote: '' })
+  const [vote, setVote] = useState([{ photoId: '', vote: '' }])
+  const [allVotes, setAllVotes] = useState([])
 
   const showPhotoUrl = (event) => {
     setDisp(photos[Number(event.target.id)].photo_url)
@@ -54,10 +55,14 @@ const Lightbox = ({ photos }) => {
     )
   })
 
-  const getVotes = e => {
+  const getVote = e => {
     e.preventDefault()
-    setVotes({ photoId: photoId, vote: e.target.value })
-    console.log(votes)
+    setVote([{ photoId: photoId, vote: e.target.value }])
+    if (allVotes.length !== 0) {
+      setAllVotes(allVotes => [...allVotes, vote])
+    }
+    setAllVotes(vote)
+    console.log(allVotes)
   }
 
   return (
@@ -78,13 +83,13 @@ const Lightbox = ({ photos }) => {
         <div className='lightbox-img-container'>
           <img src={dispImg} alt={dispImg} className='lightbox-img' />
         </div>
-        <form className='btn-vote-container'>
-          <label for='one' className='label-vote'>
+        <div className='btn-vote-container'>
+          <label className='label-vote'>
             <input
               type='radio'
               value='1'
-              checked={votes === '1'}
-              onChange={getVotes}
+              checked={vote === '1'}
+              onChange={getVote}
               id='one'
               name='one'
               className='input-vote'
@@ -93,12 +98,12 @@ const Lightbox = ({ photos }) => {
               <i className='fas fa-star' />
             </div>
           </label>
-          <label for='two' className='label-vote'>
+          <label className='label-vote'>
             <input
               type='radio'
               value='2'
-              checked={votes === '2'}
-              onChange={getVotes}
+              checked={vote === '2'}
+              onChange={getVote}
               id='two'
               name='two'
               className='input-vote'
@@ -108,12 +113,12 @@ const Lightbox = ({ photos }) => {
               <i className='fas fa-star' />
             </div>
           </label>
-          <label for='three' className='label-vote'>
+          <label className='label-vote'>
             <input
               type='radio'
               value='3'
-              checked={votes === '3'}
-              onChange={getVotes}
+              checked={vote === '3'}
+              onChange={getVote}
               id='three'
               name='three'
               className='input-vote'
@@ -124,7 +129,7 @@ const Lightbox = ({ photos }) => {
               <i className='fas fa-star' />
             </div>
           </label>
-        </form>
+        </div>
       </section>
     </>
   )

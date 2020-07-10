@@ -4,6 +4,7 @@ import FormContainer from './FormContainer'
 import Modal from '../shared/Modal'
 import logoLP from '../../asset/logo/logo.svg'
 import './LandingPage.css'
+import BattleVote from './BattleVote'
 
 class LandingPage extends Component {
   state = {
@@ -65,6 +66,7 @@ class LandingPage extends Component {
         <Modal isOpen={this.state.isOpen}>
           <FormContainer onClose={this.handleOpenModal} />
         </Modal>
+        <BattleVote />
       </div>
     )
   }
