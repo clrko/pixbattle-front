@@ -1,9 +1,11 @@
 .background-pageTitle {
   background-color: white;
+  color: #3181C8;
   width: 100%;
   height: 8vh;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 5%;
+  font-size: 16px;
 }

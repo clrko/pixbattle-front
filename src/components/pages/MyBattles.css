@@ -9,6 +9,7 @@
 
 .MyBattles-cardList {
   background-color: #235789;
+  border: 5px solid #235789;
   align-self: center;
   margin: 0 auto;
   color: white;

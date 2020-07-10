@@ -9,7 +9,7 @@ const MyBattles = () => {
   return (
     <div className='MyBattles-background'>
       <Navbar />
-      <PageHeader pageTitle='My Battles' />
+      <PageHeader pageTitle='Mes Battles' />
       <MyBattlesCardList />
       <StickyFooter />
     </div>
