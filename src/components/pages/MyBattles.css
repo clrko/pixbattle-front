@@ -13,19 +13,31 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
   width: 70vw;
   height: 66vh;
   border-radius: 15px;
   padding: 15px;
-  }
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: 5px;
+  scrollbar-color: #FAC748;
+}
+
+.MyBattles-cardList::-webkit-scrollbar {
+  width: 5px;
+}
+
+.MyBattles-cardList::-webkit-scrollbar-thumb {
+  background-color: #FAC748;
+  border-radius: 20px;
+}
 
 .MyBattles-card {
   background-color: #3181C8;
   display: flex;
   flex-direction: column;
   padding: 15px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   border-radius: 20px;
   width: 100%;
 }
@@ -35,7 +47,11 @@
   position: relative;
   left: 90%;
   top: -20%;
-  margin-bottom: -5%;
+  margin-bottom: -8%;
+}
+
+.MyBattles-notAdmin {
+  display: none;
 }
 
 .MyBattles-card-title {
@@ -47,6 +63,7 @@
 .MyBattles-card-time {
   color: #FAC748;
   font-size: 14px;
+  margin-bottom: 5px;
 }
 
 .MyBattles-card-button {
@@ -59,6 +76,8 @@
   padding: 5px 10px;
   text-align: center;
   font-weight: bold;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .MyBattles-card-group {
