@@ -1,8 +1,4 @@
 import React from 'react'
-// import avatar from '../../asset/pictures/avatar_MyProfile.png'
-// import avatar2 from '../../asset/pictures/avatar2.png'
-// import avatar3 from '../../asset/pictures/avatar3.png'
-// import avatar4 from '../../asset/pictures/avatar4.png'
 import avatar5 from '../../asset/pictures/avatar5.png'
 import avatar6 from '../../asset/pictures/avatar6.png'
 import avatar8 from '../../asset/pictures/avatar8.png'
