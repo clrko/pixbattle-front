@@ -78,7 +78,7 @@ class Podium extends React.Component {
       .post(`${process.env.REACT_APP_SERVER_URL}/group-creation`,
         {
           headers: {
-            'x-access-token': localStorage.getItem('token')
+            authorization: `Bearer ${localStorage.getItem('token')}`
           }
         }
       )

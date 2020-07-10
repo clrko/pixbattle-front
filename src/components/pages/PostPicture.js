@@ -112,15 +112,23 @@ class PostPicture extends React.Component {
   handleClick = () => {
     const data = new FormData()
     data.append('file', this.state.file)
-    axios.post('http://localhost:4242/battle-post/addpicture', data, {
-      // receive two    parameter endpoint url ,form data
-    })
+    axios.post('http://localhost:4242/battle-post/addpicture', data,
+      {
+        battleId: this.props.location.state
+      },
+      {
+        // receive two    parameter endpoint url ,form data
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
       .then(res => { // then print response status
         console.log(res.statusText)
       })
   }
 
   render () {
+    console.log('this.this.props.location est', this.props.location.state)
     return (
       <div className='background-MyProfile'>
         <Navbar />
