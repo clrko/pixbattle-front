@@ -6,9 +6,9 @@ class MyBattlesCardList extends Component {
     return (
       <div className='MyBattles-cardList'>
         <div className='MyBattles-card'>
-          <h2 className='MyBattles-card-title'>Thèmes: Reflets</h2>
-          <p>Temps écoulé</p>
-          <p>Progress bar</p>
+          <h2 className='MyBattles-card-title'>Thème: Reflets</h2>
+          <i className='fas fa-crown MyBattles-crown' />
+          <p className='MyBattles-card-time'>Temps écoulé !</p>
           <button className='MyBattles-card-button'>Vote</button>
           <p className='MyBattles-card-group'>Team Pix battle</p>
         </div>
