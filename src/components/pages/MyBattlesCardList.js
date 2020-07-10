@@ -1,17 +1,39 @@
 import React, { Component } from 'react'
+import MyBattlesCard from './MyBattlesCard'
 import './MyBattles.css'
+
+const battleInfos = [
+  {
+    battleTheme: 'Thème : Reflets',
+    battleTimeMessage: 'Temps écoulé !',
+    battleStatus: 'Vote',
+    battleGroup: 'Team Pix battle'
+  },
+  {
+    battleTheme: 'Thème : Flower Power',
+    battleTimeMessage: 'Encore 6h 25min 35sec',
+    battleStatus: 'Poste ta photo',
+    battleGroup: 'Wilders'
+  },
+  {
+    battleTheme: 'Thème : Empilement',
+    battleTimeMessage: 'Temps écoulé !',
+    battleStatus: 'Resultats',
+    battleGroup: 'Team Pix battle'
+  },
+  {
+    battleTheme: 'Thème : Rayures',
+    battleTimeMessage: 'Temps écoulé !',
+    battleStatus: 'Vote',
+    battleGroup: 'Team Hello'
+  }
+]
 
 class MyBattlesCardList extends Component {
   render () {
     return (
       <div className='MyBattles-cardList'>
-        <div className='MyBattles-card'>
-          <h2 className='MyBattles-card-title'>Thème: Reflets</h2>
-          <i className='fas fa-crown MyBattles-crown' />
-          <p className='MyBattles-card-time'>Temps écoulé !</p>
-          <button className='MyBattles-card-button'>Vote</button>
-          <p className='MyBattles-card-group'>Team Pix battle</p>
-        </div>
+        {battleInfos.map((battle, i) => <MyBattlesCard battleTheme={battle.battleTheme} battleTimeMessage={battle.battleTimeMessage} battleStatus={battle.battleStatus} battleGroup={battle.battleGroup} key={i} />)}
       </div>
     )
   }
