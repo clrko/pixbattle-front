@@ -33,9 +33,9 @@ import avatar36 from '../../asset/pictures/avatar36.png'
 import avatar37 from '../../asset/pictures/avatar37.png'
 import avatar38 from '../../asset/pictures/avatar38.png'
 import avatar39 from '../../asset/pictures/avatar39.png'
-import './RankingMembers.css'
+import './ListRankingMembers.css'
 
-class RankingMembers extends React.Component {
+class ListRankingMembers extends React.Component {
   state = {
     user: [
       {
@@ -245,4 +245,4 @@ class RankingMembers extends React.Component {
   }
 }
 
-export default RankingMembers
+export default ListRankingMembers
