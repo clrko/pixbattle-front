@@ -91,15 +91,6 @@ class PostPicture extends React.Component {
     //   })
     // }
 
-    //  {/*
-    //       <div className='previewPicture'>
-    //         <img className='picture' src={this.state.previewPicture} alt='preview-picture' />
-    //         <input className='file' type='file' handleOnChange={this.fileSelectHandler} />
-    //       </div>
-    //       <button handleOnClick={this.fileUploadHandler}>
-    //           Envoyer
-    //       </button> */}
-
   handleChange = event => {
     const file = event.target.files[0]
     this.setState({
