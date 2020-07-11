@@ -19,6 +19,7 @@ import PostPicture from './components/pages/PostPicture'
 const App = () => {
   return (
     <div>
+      <MyBattles />
       <Switch>
         <Route exact path='/' component={LandingPage} />
         <Route path='/battle-creation/deadline' component={CreationBattleDeadline} />
