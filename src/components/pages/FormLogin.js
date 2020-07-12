@@ -5,6 +5,11 @@ import { withRouter } from 'react-router-dom'
 import { LOGIN, GET_INFOS } from '../../store/action-types'
 import './FormLogin.css'
 
+const mapStateToProps = state => {
+  const { user } = state
+  return { user }
+}
+
 class FormLogin extends React.Component {
   state = {
     email: '',
@@ -40,7 +45,7 @@ class FormLogin extends React.Component {
           })
         .then(res => {
           dispatch({ type: GET_INFOS, ...res.data })
-          history.push('/MyProfile')
+          history.push(`/${this.props.user.username}`)
         })
       return this.props.onClose(e)
     }
@@ -101,4 +106,4 @@ class FormLogin extends React.Component {
   }
 }
 
-export default connect()(withRouter(FormLogin))
+export default connect(mapStateToProps)(withRouter(FormLogin))

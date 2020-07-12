@@ -25,14 +25,14 @@ const App = () => {
         <Route path='/battle-creation/theme' component={CreationBattleTheme} />
         <Route path='/battle-creation/summary' component={CreationBattleSummary} />
         <Route path='/group-creation/group-created/:id' component={CreationSteps} />
-        <Route path='/:username' component={MyProfile} />
-        <Route path='/:username/battles' component={MyBattles} />
+        <Route exact path='/:username' component={MyProfile} />
         <Route path='/:username/groups' component={MyGroups} />
         <Route path='/:username/ranking' component={MyRanking} />
         <Route path='/:username/pictures' component={MyPictures} />
-        <Route path='/battles/:id/results' component={Podium} />
-        <Route path='/battles/:id/post-picture' component={PostPicture} />
-        <Route path='/battles/:id/vote' component={BattleVote} />
+        <Route exact path='/:username/battles' component={MyBattles} />
+        <Route path='/:username/battles/:id/results' component={Podium} />
+        <Route path='/:username/battles/:id/post-picture' component={PostPicture} />
+        <Route path='/:username/battles/:id/vote' component={BattleVote} />
       </Switch>
     </div>
   )
