@@ -6,7 +6,6 @@ import CreationBattleRule from './components/pages/CreationBattleRule'
 import CreationBattleTheme from './components/pages/CreationBattleTheme'
 import CreationBattleSummary from './components/pages/CreationBattleSummary'
 import CreationSteps from './components/pages/CreationSteps'
-import FormContainer from './components/pages/FormContainer'
 import LandingPage from './components/pages/LandingPage'
 import MyBattles from './components/pages/MyBattles'
 import MyGroups from './components/pages/MyGroups'
@@ -25,16 +24,15 @@ const App = () => {
         <Route path='/battle-creation/rule' component={CreationBattleRule} />
         <Route path='/battle-creation/theme' component={CreationBattleTheme} />
         <Route path='/battle-creation/summary' component={CreationBattleSummary} />
-        <Route path='/LoginRegistration' component={FormContainer} />
-        <Route path='/MyBattles' component={MyBattles} />
-        <Route path='/MyGroups' component={MyGroups} />
-        <Route path='/MyProfile' component={MyProfile} />
-        <Route path='/MyRanking' component={MyRanking} />
-        <Route path='/MyPictures' component={MyPictures} />
-        <Route path='/Podium' component={Podium} />
-        <Route path='/newgroup/:id' component={CreationSteps} />
-        <Route path='/PostPicture' component={PostPicture} />
-        <Route path='/vote' component={BattleVote} />
+        <Route path='/group-creation/group-created/:id' component={CreationSteps} />
+        <Route path='/:username' component={MyProfile} />
+        <Route path='/:username/battles' component={MyBattles} />
+        <Route path='/:username/groups' component={MyGroups} />
+        <Route path='/:username/ranking' component={MyRanking} />
+        <Route path='/:username/pictures' component={MyPictures} />
+        <Route path='/battles/:id/results' component={Podium} />
+        <Route path='/battles/:id/post-picture' component={PostPicture} />
+        <Route path='/battles/:id/vote' component={BattleVote} />
       </Switch>
     </div>
   )

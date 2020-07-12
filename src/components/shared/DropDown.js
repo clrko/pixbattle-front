@@ -12,10 +12,10 @@ class DropDown extends React.Component {
     return (
       <div className='background-DropDown'>
         <select value={selectedOption} className='DropDown' onChange={this.handleChange}>
-          <option value='/MyProfile'>Mon Profil</option>
-          <option value='/MyRanking'>Mon Classement</option>
-          <option value='/MyPictures'>Mes Photos</option>
-          <option value='/Podium'>Mon Podium</option>
+          <option value='/:username'>Mon Profil</option>
+          <option value='/:username/ranking'>Mon Classement</option>
+          <option value='/:username/pictures'>Mes Photos</option>
+          <option value='/battles/:id/results'>Mon Podium</option>
         </select>
       </div>
     )
