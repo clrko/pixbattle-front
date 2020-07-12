@@ -6,8 +6,8 @@ import CreationBattleRule from './components/pages/CreationBattleRule'
 import CreationBattleTheme from './components/pages/CreationBattleTheme'
 import CreationBattleSummary from './components/pages/CreationBattleSummary'
 import CreationSteps from './components/pages/CreationSteps'
-import LandingPage from './components/pages/LandingPage'
 import FormContainer from './components/pages/FormContainer'
+import LandingPage from './components/pages/LandingPage'
 import MyBattles from './components/pages/MyBattles'
 import MyGroups from './components/pages/MyGroups'
 import MyProfile from './components/pages/MyProfile'
@@ -19,7 +19,6 @@ import PostPicture from './components/pages/PostPicture'
 const App = () => {
   return (
     <div>
-      <MyBattles />
       <Switch>
         <Route exact path='/' component={LandingPage} />
         <Route path='/battle-creation/deadline' component={CreationBattleDeadline} />
