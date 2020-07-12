@@ -1,34 +1,10 @@
 import React from 'react'
+import './MyBattlesProgressBar.css'
 
-const MyBattlesProgressBar = (props) => {
-  const { completed } = props
-  const containerStyles = {
-    height: 5,
-    width: '100%',
-    backgroundColor: '#e0e0de',
-    borderRadius: 50
-  }
-
-  const fillerStyles = {
-    height: '100%',
-    width: `${completed}%`,
-    backgroundColor: '#FAC748',
-    borderRadius: 'inherit',
-    textAlign: 'right',
-    transition: 'width 1s ease-in-out'
-  }
-
-  const labelStyles = {
-    padding: 5,
-    color: 'white',
-    fontWeight: 'bold'
-  }
-
+const MyBattlesProgressBar = ({ completed }) => {
   return (
-    <div style={containerStyles}>
-      <div style={fillerStyles}>
-        <span style={labelStyles}>{`${completed}%`}</span>
-      </div>
+    <div className='containerStyles'>
+      <div className='fillerStyles' style={{ width: `${completed}%`, transition: `${completed}% 1s ease-in-out` }} />
     </div>
   )
 }
