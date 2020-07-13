@@ -86,7 +86,7 @@ class Podium extends React.Component {
       .then(res => {
         const groupId = res.data.groupId
         history.push({
-          pathname: `/newgroup/${groupId}`
+          pathname: `/group-creation/group-created/${groupId}`
         })
       })
   }
