@@ -25,8 +25,6 @@ const CreationBattleSummary = ({ battleCreation, dispatch, history, onClose }) =
       }
     ).then(res => {
       if (res.status === 201) {
-        console.log('res.data est', res.data)
-        console.log('res.data est', res.data.battleId)
         history.push(`/battles/${res.data.battleId}/post-picture`, {
           battleId: res.data.battleId,
           groupId: parseInt(battleCreation[0].groupId)
