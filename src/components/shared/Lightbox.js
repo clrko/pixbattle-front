@@ -7,7 +7,7 @@ const Lightbox = ({ photos }) => {
   const [photoId, setPhotoId] = useState('')
   const [cardIndex, setIndex] = useState(0)
   const [dispImgStyle, setStyle] = useState({ display: 'none' })
-  const [vote, setVote] = useState([{ photoId: '', vote: '' }])
+  const [vote, setVote] = useState({ photoId: '', vote: '' })
   const [allVotes, setAllVotes] = useState([])
 
   const showPhotoUrl = (event) => {
@@ -57,11 +57,8 @@ const Lightbox = ({ photos }) => {
 
   const getVote = e => {
     e.preventDefault()
-    setVote([{ photoId: photoId, vote: e.target.value }])
-    if (allVotes.length !== 0) {
-      setAllVotes(allVotes => [...allVotes, vote])
-    }
-    setAllVotes(vote)
+    setVote({ photoId: photoId, vote: e.target.value })
+    setAllVotes(allVotes => [...allVotes, vote])
     console.log(allVotes)
   }
 
