@@ -1,25 +1,19 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
+import MyBattlesCardList from './MyBattlesCardList'
 import Navbar from '../shared/Navbar'
-import DropDown from '../shared/DropDown'
+import PageHeader from '../shared/PageHeader.js'
 import StickyFooter from '../shared/StickyFooter'
 import './MyBattles.css'
 
-const Menu = withRouter(DropDown)
-
-class MyBattles extends React.Component {
-  render () {
-    return (
-      <div className='background-MyBattles'>
-        <Navbar />
-        <Menu />
-        <div className='window-MyBattles'>
-          <p>Mes Battles</p>
-        </div>
-        <StickyFooter />
-      </div>
-    )
-  }
+const MyBattles = () => {
+  return (
+    <div className='MyBattles-background'>
+      <Navbar />
+      <PageHeader pageTitle='Mes Battles' />
+      <MyBattlesCardList />
+      <StickyFooter />
+    </div>
+  )
 }
 
 export default MyBattles
