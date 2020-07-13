@@ -158,7 +158,7 @@ class CreationGroup extends Component {
               >
                 <i className={
                   count < 12
-                    ? 'fas fa-plus-circle email-abled'
+                    ? 'fas fa-plus-circle email-enabled'
                     : 'fas fa-plus-circle email-disabled'
                 }
                 />
@@ -204,11 +204,11 @@ class CreationGroup extends Component {
             type='submit'
             className={
               count > 3
-                ? 'create-group create-abled'
+                ? 'create-group create-enabled'
                 : 'create-group create-disabled'
             }
             onClick={this.handleChangeSteps}
-            disabled={count >= 3}
+            disabled={count < 3}
           >
             Valider
           </button>
