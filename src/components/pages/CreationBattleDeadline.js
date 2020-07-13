@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { NavLink, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import DateTime from 'react-datetime'
+import moment from 'moment'
 import { ADD_DEADLINE } from '../../store/action-types'
 import Modal from '../shared/Modal'
 import CreationBattleSummary from './CreationBattleSummary'
@@ -10,7 +11,7 @@ import './CreationBattle.css'
 import './CreationBattleDeadline.css'
 
 const CreationBattleDeadline = (props) => {
-  const [selectedDate, setDateChange] = useState(new Date())
+  const [selectedDate, setDateChange] = useState(moment())
   const [selectedTime, setTimeChange] = useState('01:00:00')
   const [isOpen, setIsOpen] = useState(false)
 

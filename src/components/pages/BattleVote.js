@@ -9,7 +9,7 @@ class BattleVote extends Component {
   }
 
   getPhotos = () => {
-    axios.post(`${process.env.REACT_APP_SERVER_URL}/gallery/battle`,
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/gallery/battle`,
       {
         battleId: 1
       }

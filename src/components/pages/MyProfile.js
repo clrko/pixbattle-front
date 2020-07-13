@@ -51,7 +51,7 @@ const MyProfile = ({ user, profileInfos, history }) => {
           </h1>
         </div>
         <div className='div-avatar-Myprofile'>
-          <img className='avatar-MyProfile' src={user.avatar} alt='avatar' placeholder='https://oasys.ch/wp-content/uploads/2019/03/photo-avatar-profil.png' />
+          <img className='avatar-MyProfile' src={user.avatar} alt='avatar' placeholder='https://oasys.ch/wp-content/uploads/2019/03/photo-avatar-profil.png' />{console.log(user.avatar)}
         </div>
         <div className='div-informations-MyProfile'>
           <p className='p-picture-MyProfile'>{profileInfos.nbPhotos[0].nb_photos} photos postées</p>
