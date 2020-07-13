@@ -44,7 +44,11 @@
   "standard": {
     "ignore": [
       "src/serviceWorker.js"
-    ]
+    ],
+    "parser": "babel-eslint",
+    "env": {
+      "browser": true
+    }
   },
   "eslintConfig": {
     "extends": "react-app"
