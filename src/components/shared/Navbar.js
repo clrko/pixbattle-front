@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
-import { Redirect, Link } from 'react-router-dom'
+import React from 'react'
+import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { LOGOUT } from '../../store/action-types'
 import logoLP from '../../asset/logo/logo.svg'
 import './Navbar.css'
 
@@ -9,15 +10,12 @@ const mapStateToProps = state => {
   return { user, profileInfos }
 }
 
-const Navbar = ({ user, profileInfos }) => {
-  const [redirect, setRedirect] = useState(false)
-
+const Navbar = ({ user, profileInfos, dispatch, history }) => {
   const handleLogOut = () => {
     localStorage.removeItem('token')
-    setRedirect(!redirect)
+    history.push('/')
+    dispatch({ type: LOGOUT })
   }
-
-  if (redirect || !user) { return <Redirect to='/' /> }
 
   return (
     <div className='div-NavbarMobile'>
@@ -34,4 +32,4 @@ const Navbar = ({ user, profileInfos }) => {
   )
 }
 
-export default connect(mapStateToProps)(Navbar)
+export default connect(mapStateToProps)(withRouter(Navbar))
