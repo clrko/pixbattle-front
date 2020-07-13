@@ -20,7 +20,6 @@ const DropDown = ({ user, history, match }) => {
         <option value={`/${user.username}`}>Mon Profil</option>
         <option value={`/${user.username}/ranking`}>Mon Classement</option>
         <option value={`/${user.username}/pictures`}>Mes Photos</option>
-        {/* <option value='/battles/:id/results'>Mon Podium</option> */} {/* composant à expliciter  */}
       </select>
     </div>
   )
