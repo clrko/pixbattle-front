@@ -13,7 +13,7 @@ import MyProfile from './components/pages/MyProfile'
 import MyPictures from './components/pages/MyPictures'
 import MyRanking from './components/pages/MyRanking'
 import Podium from './components/pages/Podium'
-import PostPicture from './components/pages/PostPicture'
+import BattlePost from './components/pages/BattlePost'
 
 const App = () => {
   return (
@@ -31,7 +31,7 @@ const App = () => {
         <Route path='/:username/pictures' component={MyPictures} />
         <Route exact path='/:username/battles' component={MyBattles} />
         <Route path='/:username/battles/:id/results' component={Podium} />
-        <Route path='/battles/:id/post-picture' component={PostPicture} />
+        <Route path='/battles/:id/post-picture' component={BattlePost} />
         <Route path='/battles/:id/vote' component={BattleVote} />
       </Switch>
     </div>

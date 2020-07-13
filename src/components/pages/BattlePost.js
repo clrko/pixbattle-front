@@ -2,16 +2,15 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import CloudUpload from '../../asset/pictures/cloud-computing.png'
-// import Countdown from 'react-countdown'
 import DropDown from '../shared/DropDown'
 import Navbar from '../shared/Navbar'
 import StickyFooter from '../shared/StickyFooter'
-import './PostPicture.css'
+import './BattlePost.css'
 import './MyProfile.css'
 
 const Menu = withRouter(DropDown)
 
-class PostPicture extends React.Component {
+class BattlePost extends React.Component {
     state = {
       previewPicture: CloudUpload,
       selectedFile: CloudUpload
@@ -34,13 +33,9 @@ class PostPicture extends React.Component {
     data.append('groupId', groupId)
     axios.post('http://localhost:4242/battle-post/addpicture', data,
       {
-        // receive two parameter endpoint url ,form data
         headers: {
           authorization: `Bearer ${localStorage.getItem('token')}`
         }
-      })
-      .then(res => { // then print response status
-        console.log(res.statusText)
       })
       .catch(() => {
         alert('Error while uploading the picture! Try again please.')
@@ -54,9 +49,7 @@ class PostPicture extends React.Component {
         <Navbar />
         <Menu />
         <div className='window-MyProfile'>
-          <div className='countdown'>
-            {/* <Countdown date={Date.now() + 100000} /> */}
-          </div>
+          <div className='countdown' />
           <img className='picture' src={this.state.selectedFile} alt='preview-picture' />
           <input type='file' name='file' onChange={this.handleChange} />
           <button className='upload-ButtonPostpicture' type='button' onClick={this.handleClick}>Upload</button>
@@ -67,4 +60,4 @@ class PostPicture extends React.Component {
   }
 }
 
-export default PostPicture
+export default BattlePost
