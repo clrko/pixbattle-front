@@ -188,19 +188,15 @@
 .leftArrow {
   width: 0px;
   height: 0px;
-  /*background-color: red;*/
   border-top: 10px solid transparent;
   border-right: 10px solid rgba(250, 199, 72);
   border-bottom: 10px solid transparent;
-  /*border-left: 10px solid gray;*/
 }
 
 .rightArrow {
   width: 0px;
   height: 0px;
-  /*background-color: red;*/
   border-top: 10px solid transparent;
-  /*border-right: 10px solid rgba(250, 199, 72);*/
   border-bottom: 10px solid transparent;
   border-left: 10px solid rgba(250, 199, 72);
 }
