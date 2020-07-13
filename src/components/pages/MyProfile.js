@@ -28,7 +28,7 @@ const MyProfile = ({ user, profileInfos, history }) => {
       .then(res => {
         const groupId = res.data.groupId
         history.push({
-          pathname: `/newgroup/${groupId}`
+          pathname: `/group-creation/group-created/${groupId}`
         })
       })
   }
