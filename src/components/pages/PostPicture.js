@@ -42,6 +42,9 @@ class PostPicture extends React.Component {
       .then(res => { // then print response status
         console.log(res.statusText)
       })
+      .catch(() => {
+        alert('Error while uploading the picture! Try again please.')
+      })
   }
 
   render () {
