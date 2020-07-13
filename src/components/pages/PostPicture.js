@@ -103,12 +103,12 @@ class PostPicture extends React.Component {
   handleClick = () => {
     const data = new FormData()
     data.append('file', this.state.file)
+    const { battleId, groupId } = this.props.location.state
+    data.append('battleId', battleId)
+    data.append('groupId', groupId)
     axios.post('http://localhost:4242/battle-post/addpicture', data,
       {
-        battleId: this.props.location.state
-      },
-      {
-        // receive two    parameter endpoint url ,form data
+        // receive two parameter endpoint url ,form data
         headers: {
           authorization: `Bearer ${localStorage.getItem('token')}`
         }
