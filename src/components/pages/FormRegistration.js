@@ -3,10 +3,14 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { LOGIN, GET_INFOS } from '../../store/action-types'
-
 import classNames from 'classnames'
 import './FormLogin.css'
 import './FormRegistration.css'
+
+const mapStateToProps = state => {
+  const { user } = state
+  return { user }
+}
 
 class FormRegistration extends React.Component {
   state = {
@@ -15,6 +19,10 @@ class FormRegistration extends React.Component {
     password: '',
     checkPassword: '',
     isChecked: false
+  }
+
+  componentDidMount () {
+    console.log(this.state.user)
   }
 
   handleChange = e => {
@@ -40,14 +48,14 @@ class FormRegistration extends React.Component {
     e.preventDefault()
     if (this.checkPassword()) {
       const { dispatch, history } = this.props
-      await axios.post(`${process.env.REACT_APP_SERVER_URL}/register`, this.state)
+      await axios
+        .post(`${process.env.REACT_APP_SERVER_URL}/register`, this.state)
         .then(res => {
           localStorage.setItem('token', res.headers['x-access-token'])
           dispatch({ type: LOGIN, ...res.data })
-          history.push('/MyProfile')
         })
       await axios
-        .post(`${process.env.REACT_APP_SERVER_URL}/profile`,
+        .get(`${process.env.REACT_APP_SERVER_URL}/profile`,
           {
             headers: {
               authorization: `Bearer ${localStorage.getItem('token')}`
@@ -55,6 +63,7 @@ class FormRegistration extends React.Component {
           })
         .then(res => {
           dispatch({ type: GET_INFOS, ...res.data })
+          history.push(`/${this.props.user.username}`)
         })
     }
     return this.props.onClose(e)
@@ -155,4 +164,4 @@ class FormRegistration extends React.Component {
   }
 }
 
-export default connect()(withRouter(FormRegistration))
+export default connect(mapStateToProps)(withRouter(FormRegistration))
