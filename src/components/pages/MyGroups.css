@@ -1,21 +1,21 @@
 .background-MyGroups {
-    width: 100%;
-    background-color: #3181C8;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .window-MyGroups {
-    background-color: #235789;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    width: 75vw;
-    height: 66vh;
-    border-radius: 15px;
-    padding: 20px;
-    }
+  width: 100%;
+  background-color: #3181C8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.window-MyGroups {
+  background-color: #235789;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 75vw;
+  height: 66vh;
+  border-radius: 15px;
+  padding: 20px;
+}
