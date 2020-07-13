@@ -21,10 +21,6 @@ class FormRegistration extends React.Component {
     isChecked: false
   }
 
-  componentDidMount () {
-    console.log(this.state.user)
-  }
-
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value })
   }
