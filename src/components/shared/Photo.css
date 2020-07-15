@@ -6,12 +6,6 @@
   margin: 15px;
 }
 
-.photo-container {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
-}
-
 .photo-container .fa-star {
   position: relative;
   top: -10px;
