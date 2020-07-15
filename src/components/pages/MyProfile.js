@@ -6,7 +6,6 @@ import DropDown from '../shared/DropDown'
 import Navbar from '../shared/Navbar'
 import StickyFooter from '../shared/StickyFooter'
 import './MyProfile.css'
-import BattleVote from './BattleVote'
 
 const Menu = withRouter(DropDown)
 
@@ -61,7 +60,6 @@ const MyProfile = ({ user, profileInfos, history }) => {
         </div>
       </div>
       <StickyFooter />
-      <BattleVote />
     </div>
   )
 }

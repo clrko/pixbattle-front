@@ -68,7 +68,7 @@ class BattlePost extends React.Component {
         <Menu />
         <div className='window-MyProfile'>
           <div className='countdown' />
-          <img className='picture' src={this.state.selectedFile} alt='preview-picture' />
+          <img className='picture' src={this.state.selectedFile} alt='preview' />
           <input type='file' name='file' onChange={this.handleChange} />
           <button className='upload-ButtonPostpicture' type='button' onClick={this.handleClick}>Upload</button>
         </div>

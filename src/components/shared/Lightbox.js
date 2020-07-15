@@ -87,22 +87,26 @@ const Lightbox = ({ photos }) => {
   }
 
   const handleVotes = () => {
-    axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/battle-vote`,
-        {
-          photoId1: allVotes[0].photoId,
-          vote1: allVotes[0].vote,
-          photoId2: allVotes[1].photoId,
-          vote2: allVotes[1].vote,
-          photoId3: allVotes[2].photoId,
-          vote3: allVotes[2].vote
-        },
-        {
-          headers: {
-            authorization: `Bearer ${localStorage.getItem('token')}`
-          }
-        })
-      .then(res => console.log(res))
+    if (allVotes.length === 3) {
+      axios
+        .post(`${process.env.REACT_APP_SERVER_URL}/battle-vote`,
+          {
+            photoId1: allVotes[0].photoId,
+            vote1: allVotes[0].vote,
+            photoId2: allVotes[1].photoId,
+            vote2: allVotes[1].vote,
+            photoId3: allVotes[2].photoId,
+            vote3: allVotes[2].vote
+          },
+          {
+            headers: {
+              authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+          })
+        .then(res => console.log(res))
+    } else {
+      alert(`Tu dois encore voter pour ${3 - allVotes.length} photo(s) pour valider.`)
+    }
   }
 
   const selectedPhoto = allVotes.find(vote => {
