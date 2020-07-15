@@ -5,17 +5,9 @@
   overflow: scroll;
   background-color: #235789;
   margin: auto;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
   align-content: flex-start;
-}
-
-.gallery-image {
-  border-radius: 10px;
-  width: 130px;
-  height: 130px;
-  object-fit: cover;
-  margin: 15px;
 }
 
 .lightbox {

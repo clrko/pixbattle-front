@@ -4,7 +4,7 @@ import axios from 'axios'
 import classnames from 'classnames'
 import './Lightbox.css'
 
-const Lightbox = ({ photos }) => {
+const Lightbox = ({ photos, currentUserVotes }) => {
   const [dispImg, setDisp] = useState('')
   const [photoId, setPhotoId] = useState('')
   const [cardIndex, setIndex] = useState(0)
@@ -118,7 +118,7 @@ const Lightbox = ({ photos }) => {
       <section className='Gallery'>
         {photos.map((photo, i) => (
           <div className='gallery-img-container' key={photo.photo_id}>
-            <Photo photo={photo} handleClick={showPhotoUrl} id={i} />
+            <Photo photo={photo} handleClick={showPhotoUrl} id={i} currentUserVotes={currentUserVotes} />
           </div>
         ))}
         <button onClick={handleVotes}>valider les votes</button>
