@@ -11,7 +11,7 @@ const MyBattlesCardList = ({ userId, userBattleInformation, getCompletedPercenta
         battleStatus={getBattleStatus(battle.status_name)}
         battleGroup={battle.group_name}
         userAdmin={battle.admin_user_id === userId}
-        completed={getCompletedPercentage(battle.deadline, battle.create_date)}
+        completed={getCompletedPercentage(battle.create_date, battle.deadline)}
         battleTimeMessage={getBattleTimeMessage(battle.deadline)}
       />)}
   </div>
