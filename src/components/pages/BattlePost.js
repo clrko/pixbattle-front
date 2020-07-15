@@ -22,7 +22,6 @@ class BattlePost extends React.Component {
 
   handleInfosBattle = () => {
     const { battleId, groupId } = this.props.match.params
-    console.log('params', this.props.match.params.id, 'props.locarion', groupId)
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/battle-post/${groupId}/${battleId}`,
         {
