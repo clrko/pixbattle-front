@@ -58,16 +58,16 @@
   margin-left: -2.5rem;
 }
 
-.email-abled {
+.email-enabled {
   color: #73DB5A;
   transition: all 0.2s ease-in-out;
 }
 
-.email-abled:hover {
+.email-enabled:hover {
   transform: scale(1.1);
 }
 
-.email-abled:active {
+.email-enabled:active {
   transform: scale(0.9);
 }
 
@@ -166,16 +166,16 @@
   outline: transparent;
 }
 
-.create-abled {
+.create-enabled {
   background-color: #73DB5A;
   transition: all 0.2s ease-in-out;
 }
 
-.create-abled:hover {
+.create-enabled:hover {
   transform: scale(1.1);
 }
 
-.create-abled:active {
+.create-enabled:active {
   transform: scale(0.9);
 }
 

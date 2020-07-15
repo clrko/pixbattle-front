@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import { ADD_THEME } from '../../store/action-types'
@@ -48,12 +48,32 @@ class CreationBattleTheme extends Component {
 
   render () {
     const { themes, refreshed, selectedTheme } = this.state
+    const displayedThemes = refreshed ? themes : themes.slice(0, 5)
     return (
       <div className='battleCreation-page'>
         <div className='cardBattle'>
           <h1 className='cardBattle-color'>1. Choisis un thème</h1>
           <div className='battleCreation-themeContainer'>
-            {refreshed ? themes.map((theme, i) => <><input type='radio' name='themeButton' value={theme.theme_name} checked={selectedTheme.themeId === theme.theme_id} onChange={this.handleThemeChange} id={theme.theme_id} key={theme.theme_id} /><label htmlFor={theme.theme_id} className='battle-optionButton battle-btn' key={i}>{theme.theme_name}</label></>) : themes.slice(0, 5).map((theme, i) => <><input type='radio' name='themeButton' value={theme.theme_name} checked={selectedTheme.themeId === theme.theme_id} onChange={this.handleThemeChange} id={theme.theme_id} key={theme.theme_id} /><label htmlFor={theme.theme_id} className='battle-optionButton battle-btn' key={i}>{theme.theme_name}</label></>)}
+            {
+              displayedThemes.map(theme => (
+                <Fragment key={theme.theme_id}>
+                  <input
+                    type='radio'
+                    name='themeButton'
+                    value={theme.theme_name}
+                    checked={selectedTheme.themeId === theme.theme_id}
+                    onChange={this.handleThemeChange}
+                    id={theme.theme_id}
+                  />
+                  <label
+                    htmlFor={theme.theme_id}
+                    className='battle-optionButton battle-btn'
+                  >
+                    {theme.theme_name}
+                  </label>
+                </Fragment>
+              ))
+            }
           </div>
           <div className='div-button-refreshed'>
             <button
