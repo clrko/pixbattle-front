@@ -43,7 +43,6 @@ class BattlePost extends React.Component {
   }
 
   render () {
-    console.log('this.this.props.location est', this.props.location.state)
     return (
       <div className='background-MyProfile'>
         <Navbar />
