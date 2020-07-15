@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-// import axios from 'axios'
+import Photo from './Photo'
+import axios from 'axios'
 import classnames from 'classnames'
 import './Lightbox.css'
 
@@ -48,27 +49,13 @@ const Lightbox = ({ photos }) => {
     }
   }
 
-  const card = photos.map((obj, ind) => {
-    return (
-      <div className='gallery-img-container' key={obj.photo_id}>
-        <img src={obj.photo_url} onClick={showPhotoUrl} id={ind} alt='' className='gallery-image' />
-      </div>
-    )
-  })
-
-  // si photo déjà voté, vote différent est remplacé dans le tableau des votes OK
-  // si un vote est déjà présent dans le tableau
-  // maximum 3 votes dans le tableau
-
   const getVote = e => {
     e.preventDefault()
     const newVote = { photoId: photoId, vote: e.target.value }
     setVote(newVote)
-
     const selectedVoteIndex = allVotes.findIndex(vote => {
       return vote.vote === newVote.vote
     })
-
     if (selectedVoteIndex !== -1 && photoId !== allVotes[selectedVoteIndex].photoId) {
       const replace = window.confirm('ce vote existe déjà, le remplacer ?')
       if (replace) {
@@ -99,6 +86,25 @@ const Lightbox = ({ photos }) => {
     }
   }
 
+  const handleVotes = () => {
+    axios
+      .post(`${process.env.REACT_APP_SERVER_URL}/battle-vote`,
+        {
+          photoId1: allVotes[0].photoId,
+          vote1: allVotes[0].vote,
+          photoId2: allVotes[1].photoId,
+          vote2: allVotes[1].vote,
+          photoId3: allVotes[2].photoId,
+          vote3: allVotes[2].vote
+        },
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+      .then(res => console.log(res))
+  }
+
   const selectedPhoto = allVotes.find(vote => {
     return vote.photoId === photoId
   })
@@ -106,7 +112,12 @@ const Lightbox = ({ photos }) => {
   return (
     <>
       <section className='Gallery'>
-        {card}
+        {photos.map((photo, i) => (
+          <div className='gallery-img-container' key={photo.photo_id}>
+            <Photo photo={photo} handleClick={showPhotoUrl} id={i} />
+          </div>
+        ))}
+        <button onClick={handleVotes}>valider les votes</button>
       </section>
       <section className='lightbox' style={dispImgStyle}>
         <div className='close' onClick={closeDisp}>
