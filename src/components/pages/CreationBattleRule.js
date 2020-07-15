@@ -35,7 +35,7 @@ class CreationBattleRule extends Component {
   }
 
   componentDidMount () {
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/battle-creation/rules`,
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/battle/battle-creation/rules`,
       {
         headers: {
           authorization: `Bearer ${localStorage.getItem('token')}`

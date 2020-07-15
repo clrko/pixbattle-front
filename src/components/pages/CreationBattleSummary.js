@@ -11,7 +11,7 @@ const mapStateToProps = state => {
 
 const CreationBattleSummary = ({ battleCreation, dispatch, history, onClose }) => {
   const handleClick = e => {
-    axios.post(`${process.env.REACT_APP_SERVER_URL}/battle-creation`,
+    axios.post(`${process.env.REACT_APP_SERVER_URL}/battle/battle-creation`,
       {
         groupId: parseInt(battleCreation[0].groupId),
         themeId: parseInt(battleCreation[1].themeId),
