@@ -31,7 +31,7 @@ const App = () => {
         <Route path='/:username/pictures' component={MyPictures} />
         <Route exact path='/:username/battles' component={MyBattles} />
         <Route path='/:username/battles/:id/results' component={Podium} />
-        <Route path='/battles/:id/post-picture' component={BattlePost} />
+        <Route path='/groups/:groupId/battles/:battleId/post-picture' component={BattlePost} />
         <Route path='/battles/:id/vote' component={BattleVote} />
       </Switch>
     </div>

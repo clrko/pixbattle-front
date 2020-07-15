@@ -11,10 +11,29 @@ import './MyProfile.css'
 const Menu = withRouter(DropDown)
 
 class BattlePost extends React.Component {
-    state = {
-      previewPicture: CloudUpload,
-      selectedFile: CloudUpload
-    }
+  state = {
+    previewPicture: CloudUpload,
+    selectedFile: CloudUpload
+  }
+
+  componentDidMount () {
+    this.handleInfosBattle()
+  }
+
+  handleInfosBattle = () => {
+    const { battleId, groupId } = this.props.match.params
+    console.log('params', this.props.match.params.id, 'props.locarion', groupId)
+    axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/battle-post/${groupId}/${battleId}`,
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        }
+      ).then(res => {
+        console.log(res.data)
+      })
+  }
 
   handleChange = event => {
     const file = event.target.files[0]
