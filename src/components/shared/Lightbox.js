@@ -64,23 +64,39 @@ const Lightbox = ({ photos }) => {
     e.preventDefault()
     const newVote = { photoId: photoId, vote: e.target.value }
     setVote(newVote)
-    setAllVotes(allVotes => {
-      const selectedPhotoIndex = allVotes.findIndex(vote => {
-        return vote.photoId === photoId
-      })
-      if (selectedPhotoIndex === -1) {
-        return [...allVotes, newVote]
-      } else {
-        const allVotesTemp = [...allVotes]
-        const selectedVote = allVotes[selectedPhotoIndex].vote
-        if (selectedVote === newVote.vote) {
-          allVotesTemp.splice(selectedPhotoIndex, 1)
-        } else {
-          allVotesTemp.splice(selectedPhotoIndex, 1, newVote)
-        }
-        return allVotesTemp
-      }
+
+    const selectedVoteIndex = allVotes.findIndex(vote => {
+      return vote.vote === newVote.vote
     })
+
+    if (selectedVoteIndex !== -1 && photoId !== allVotes[selectedVoteIndex].photoId) {
+      const replace = window.confirm('ce vote existe déjà, le remplacer ?')
+      if (replace) {
+        setAllVotes(allVotes => {
+          const allVotesTemp = allVotes.filter(vote => vote.photoId !== photoId)
+          allVotesTemp.splice(selectedVoteIndex, 1, newVote)
+          return allVotesTemp
+        })
+      }
+    } else {
+      setAllVotes(allVotes => {
+        const selectedPhotoIndex = allVotes.findIndex(vote => {
+          return vote.photoId === photoId
+        })
+        if (selectedPhotoIndex === -1) {
+          return [...allVotes, newVote]
+        } else {
+          const allVotesTemp = [...allVotes]
+          const selectedVote = allVotes[selectedPhotoIndex].vote
+          if (selectedVote === newVote.vote) {
+            allVotesTemp.splice(selectedPhotoIndex, 1)
+          } else {
+            allVotesTemp.splice(selectedPhotoIndex, 1, newVote)
+          }
+          return allVotesTemp
+        }
+      })
+    }
   }
 
   const selectedPhoto = allVotes.find(vote => {
