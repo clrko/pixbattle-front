@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 // import axios from 'axios'
+import classnames from 'classnames'
 import './Lightbox.css'
 
 const Lightbox = ({ photos }) => {
@@ -10,11 +11,11 @@ const Lightbox = ({ photos }) => {
   const [vote, setVote] = useState({ photoId: '', vote: '' })
   const [allVotes, setAllVotes] = useState([])
 
-  const showPhotoUrl = (event) => {
-    setDisp(photos[Number(event.target.id)].photo_url)
-    setIndex(Number(event.target.id))
+  const showPhotoUrl = e => {
+    setDisp(photos[Number(e.target.id)].photo_url)
+    setIndex(Number(e.target.id))
     setStyle({ display: 'flex' })
-    setPhotoId(photos[Number(event.target.id)].photo_id)
+    setPhotoId(photos[Number(e.target.id)].photo_id)
   }
 
   const closeDisp = () => {
@@ -55,12 +56,36 @@ const Lightbox = ({ photos }) => {
     )
   })
 
+  // si photo déjà voté, vote différent est remplacé dans le tableau des votes OK
+  // si un vote est déjà présent dans le tableau
+  // maximum 3 votes dans le tableau
+
   const getVote = e => {
     e.preventDefault()
-    setVote({ photoId: photoId, vote: e.target.value })
-    setAllVotes(allVotes => [...allVotes, vote])
-    console.log(allVotes)
+    const newVote = { photoId: photoId, vote: e.target.value }
+    setVote(newVote)
+    setAllVotes(allVotes => {
+      const selectedPhotoIndex = allVotes.findIndex(vote => {
+        return vote.photoId === photoId
+      })
+      if (selectedPhotoIndex === -1) {
+        return [...allVotes, newVote]
+      } else {
+        const allVotesTemp = [...allVotes]
+        const selectedVote = allVotes[selectedPhotoIndex].vote
+        if (selectedVote === newVote.vote) {
+          allVotesTemp.splice(selectedPhotoIndex, 1)
+        } else {
+          allVotesTemp.splice(selectedPhotoIndex, 1, newVote)
+        }
+        return allVotesTemp
+      }
+    })
   }
+
+  const selectedPhoto = allVotes.find(vote => {
+    return vote.photoId === photoId
+  })
 
   return (
     <>
@@ -81,7 +106,7 @@ const Lightbox = ({ photos }) => {
           <img src={dispImg} alt={dispImg} className='lightbox-img' />
         </div>
         <div className='btn-vote-container'>
-          <label className='label-vote'>
+          <label className={classnames('label-vote', { 'label-vote-active': selectedPhoto && selectedPhoto.vote === '1' })}>
             <input
               type='radio'
               value='1'
@@ -95,7 +120,7 @@ const Lightbox = ({ photos }) => {
               <i className='fas fa-star' />
             </div>
           </label>
-          <label className='label-vote'>
+          <label className={classnames('label-vote', { 'label-vote-active': selectedPhoto && selectedPhoto.vote === '2' })}>
             <input
               type='radio'
               value='2'
@@ -110,7 +135,7 @@ const Lightbox = ({ photos }) => {
               <i className='fas fa-star' />
             </div>
           </label>
-          <label className='label-vote'>
+          <label className={classnames('label-vote', { 'label-vote-active': selectedPhoto && selectedPhoto.vote === '3' })}>
             <input
               type='radio'
               value='3'

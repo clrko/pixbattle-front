@@ -115,3 +115,7 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+
+.label-vote-active {
+  background-color: red;
+}
