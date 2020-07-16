@@ -1,3 +1,25 @@
+.battlePost-info-div {
+margin: 1px;
+}
+
+.battlePost-info {
+  background-color: #FAC748;
+  color: #3181C8;
+  cursor: pointer;
+  font-family:Arial;
+  font-family: FuturaPTMedium;
+  border-style: none;
+  outline: none;
+  font-weight: bolder;
+  letter-spacing: 0.5px;
+  border-radius: 50px;
+  border: none;
+  height: 5vh;
+  padding: 0 1rem;
+  font-size: 1rem;
+  outline: transparent;
+}
+
 .countdown {
   letter-spacing: 2px;
 }

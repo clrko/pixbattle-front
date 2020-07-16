@@ -65,9 +65,11 @@ class BattlePost extends React.Component {
         <Navbar />
         <Menu />
         <div className='window-MyProfile'>
-          <div>
-            <p>{this.state.BattlePostInfo.rule_name}</p>
-            <p>{this.state.BattlePostInfo.theme_name}</p>
+          <div className='battlePost-info-div'>
+            <h2 className='cardBattle-color'>Thème</h2>
+            <p className='battlePost-info'>{this.state.BattlePostInfo.theme_name}</p>
+            <h2 className='cardBattle-color'>Contraintes</h2>
+            <p className='battlePost-info'>{this.state.BattlePostInfo.rule_name}</p>
           </div>
           <div className='countdown' />
           <img className='picture' src={this.state.selectedFile} alt='preview' />
