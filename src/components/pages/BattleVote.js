@@ -21,7 +21,7 @@ class BattleVote extends Component {
 
   getStatusUser = () => {
     axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/battle-vote/status-user`,
+      .post(`${process.env.REACT_APP_SERVER_URL}/battle/battle-vote/status-user`,
         {
           battleId: 1
         },

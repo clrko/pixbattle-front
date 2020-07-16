@@ -23,7 +23,7 @@ class BattlePost extends React.Component {
   handleInfosBattle = () => {
     const { battleId, groupId } = this.props.match.params
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/battle-post/${groupId}/${battleId}`,
+      .get(`${process.env.REACT_APP_SERVER_URL}/battle/battle-post/${groupId}/${battleId}`,
         {
           headers: {
             authorization: `Bearer ${localStorage.getItem('token')}`
@@ -49,7 +49,7 @@ class BattlePost extends React.Component {
     const { battleId, groupId } = this.props.location.state
     data.append('battleId', battleId)
     data.append('groupId', groupId)
-    axios.post(`${process.env.REACT_APP_SERVER_URL}/battle-post/addpicture`, data,
+    axios.post(`${process.env.REACT_APP_SERVER_URL}/battle/battle-post/addpicture`, data,
       {
         headers: {
           authorization: `Bearer ${localStorage.getItem('token')}`

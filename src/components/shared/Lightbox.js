@@ -130,7 +130,7 @@ const Lightbox = ({ photos, currentUserVotes }) => {
   const handleVotes = () => {
     if (allVotes.length === 3 && window.confirm('Ces choix sont définitifs, es-tu sûr-e de vouloir les valider ?')) {
       axios
-        .post(`${process.env.REACT_APP_SERVER_URL}/battle-vote`,
+        .post(`${process.env.REACT_APP_SERVER_URL}/battle/battle-vote`,
           {
             photoId1: allVotes[0].photoId,
             vote1: allVotes[0].vote,

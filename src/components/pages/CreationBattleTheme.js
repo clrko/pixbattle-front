@@ -35,7 +35,7 @@ class CreationBattleTheme extends Component {
   }
 
   componentDidMount () {
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/battle-creation/themes`,
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/battle/battle-creation/themes`,
       {
         headers: {
           authorization: `Bearer ${localStorage.getItem('token')}`
