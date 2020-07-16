@@ -11,6 +11,7 @@ const Lightbox = ({ photos, currentUserVotes }) => {
   const [dispImgStyle, setStyle] = useState({ display: 'none' })
   const [vote, setVote] = useState({ photoId: '', vote: '' })
   const [allVotes, setAllVotes] = useState([])
+  const [numberOfVotes, setNumberOfVotes] = useState(3 - allVotes.length)
 
   const showPhotoUrl = e => {
     setDisp(photos[Number(e.target.id)].photo_url)
@@ -69,6 +70,7 @@ const Lightbox = ({ photos, currentUserVotes }) => {
         nextVotes.splice(samePhotoSameVoteIdx, 1)
         return nextVotes
       })
+      setNumberOfVotes(numberOfVotes - 1)
       // 2. si je trouve un vote pour la même photo avec un score différent
     } else if (samePhotoDiffVoteIdx !== -1) {
       // le nouveau vote peut déjà être associé à une autre photo
@@ -121,11 +123,12 @@ const Lightbox = ({ photos, currentUserVotes }) => {
       // 4. si la photo n'a pas encore de vote et que ce vote n'est pas encore attribué
     } else {
       setAllVotes(allVotes => [...allVotes, newVote])
+      setNumberOfVotes(numberOfVotes - 1)
     }
   }
 
   const handleVotes = () => {
-    if (allVotes.length === 3) {
+    if (allVotes.length === 3 && window.confirm('Ces choix sont définitifs, es-tu sûr-e de vouloir les valider ?')) {
       axios
         .post(`${process.env.REACT_APP_SERVER_URL}/battle-vote`,
           {
@@ -152,14 +155,13 @@ const Lightbox = ({ photos, currentUserVotes }) => {
   })
 
   return (
-    <>
+    <div className='gallery-lightbox-container'>
       <section className='Gallery'>
         {photos.map((photo, i) => (
           <div className='gallery-img-container' key={photo.photo_id}>
             <Photo photo={photo} handleClick={showPhotoUrl} id={i} currentUserVotes={currentUserVotes} />
           </div>
         ))}
-        <button onClick={handleVotes}>valider les votes</button>
       </section>
       <section className='lightbox' style={dispImgStyle}>
         <div className='close' onClick={closeDisp}>
@@ -174,55 +176,68 @@ const Lightbox = ({ photos, currentUserVotes }) => {
         <div className='lightbox-img-container'>
           <img src={dispImg} alt={dispImg} className='lightbox-img' />
         </div>
-        <div className='btn-vote-container'>
-          <label className={classnames('label-vote', { 'label-vote-active': selectedPhoto && selectedPhoto.vote === '1' })}>
-            <input
-              type='radio'
-              value='1'
-              checked={vote === '1'}
-              onChange={getVote}
-              id='one'
-              name='one'
-              className='input-vote'
-            />
-            <div className='stars-container'>
-              <i className='fas fa-star' />
+        {
+          currentUserVotes.length === 0 &&
+            <div>
+              <div className='btn-vote-container'>
+                <label className={classnames('label-vote', { 'label-vote-active': selectedPhoto && selectedPhoto.vote === '1' })}>
+                  <input
+                    type='radio'
+                    value='1'
+                    checked={vote === '1'}
+                    onChange={getVote}
+                    id='one'
+                    name='one'
+                    className='input-vote'
+                  />
+                  <div className='stars-container'>
+                    <i className='fas fa-star' />
+                  </div>
+                </label>
+                <label className={classnames('label-vote', { 'label-vote-active': selectedPhoto && selectedPhoto.vote === '2' })}>
+                  <input
+                    type='radio'
+                    value='2'
+                    checked={vote === '2'}
+                    onChange={getVote}
+                    id='two'
+                    name='two'
+                    className='input-vote'
+                  />
+                  <div className='stars-container'>
+                    <i className='fas fa-star' />
+                    <i className='fas fa-star' />
+                  </div>
+                </label>
+                <label className={classnames('label-vote', { 'label-vote-active': selectedPhoto && selectedPhoto.vote === '3' })}>
+                  <input
+                    type='radio'
+                    value='3'
+                    checked={vote === '3'}
+                    onChange={getVote}
+                    id='three'
+                    name='three'
+                    className='input-vote'
+                  />
+                  <div className='stars-container'>
+                    <i className='fas fa-star' />
+                    <i className='fas fa-star' />
+                    <i className='fas fa-star' />
+                  </div>
+                </label>
+              </div>
+              <p className='number-of-votes'>Il te reste {numberOfVotes} votes</p>
             </div>
-          </label>
-          <label className={classnames('label-vote', { 'label-vote-active': selectedPhoto && selectedPhoto.vote === '2' })}>
-            <input
-              type='radio'
-              value='2'
-              checked={vote === '2'}
-              onChange={getVote}
-              id='two'
-              name='two'
-              className='input-vote'
-            />
-            <div className='stars-container'>
-              <i className='fas fa-star' />
-              <i className='fas fa-star' />
-            </div>
-          </label>
-          <label className={classnames('label-vote', { 'label-vote-active': selectedPhoto && selectedPhoto.vote === '3' })}>
-            <input
-              type='radio'
-              value='3'
-              checked={vote === '3'}
-              onChange={getVote}
-              id='three'
-              name='three'
-              className='input-vote'
-            />
-            <div className='stars-container'>
-              <i className='fas fa-star' />
-              <i className='fas fa-star' />
-              <i className='fas fa-star' />
-            </div>
-          </label>
-        </div>
+        }
       </section>
-    </>
+      <div className='vote-status'>
+        {
+          currentUserVotes.length === 0
+            ? <button onClick={handleVotes}>valider les votes</button>
+            : <p>Vous ave déjà voté pour cette battle !</p>
+        }
+      </div>
+    </div>
   )
 }
 
