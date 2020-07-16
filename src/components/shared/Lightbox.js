@@ -67,6 +67,7 @@ const Lightbox = ({ photos, currentUserVotes }) => {
       setAllVotes(allVotes => {
         const nextVotes = [...allVotes]
         nextVotes.splice(samePhotoSameVoteIdx, 1)
+        setNumberOfVotes(numberOfVotes + 1)
         return nextVotes
       })
     } else if (samePhotoDiffVoteIdx !== -1) {
@@ -74,7 +75,7 @@ const Lightbox = ({ photos, currentUserVotes }) => {
         v => v.vote === newVote.vote
       )
       if (sameVoteIdx !== -1) {
-        if (window.confirm('Remplacer le vote ?')) {
+        if (window.confirm('Ce vote est déjà attribué, veux-tu l\'utiliser pour cette photo ?')) {
           setAllVotes(allVotes => {
             const nextVotes = [...allVotes]
             nextVotes.splice(sameVoteIdx, 1)
@@ -95,7 +96,7 @@ const Lightbox = ({ photos, currentUserVotes }) => {
         })
       }
     } else if (diffPhotoSameVoteIdx !== -1) {
-      if (window.confirm('Remplacer le vote ?')) {
+      if (window.confirm('Ce vote est déjà attribué, veux-tu l\'utiliser pour cette photo ?')) {
         setAllVotes(allVotes => {
           const nextVotes = [...allVotes]
           nextVotes.splice(diffPhotoSameVoteIdx, 1)
@@ -110,7 +111,7 @@ const Lightbox = ({ photos, currentUserVotes }) => {
   }
 
   const handleVotes = () => {
-    if (allVotes.length === 3 && window.confirm('Ces choix sont définitifs, es-tu sûr-e de vouloir les valider ?')) {
+    if (allVotes.length === 3 && window.confirm('Ces votes sont définitifs, es-tu sûr-e de vouloir les valider ?')) {
       axios
         .post(`${process.env.REACT_APP_SERVER_URL}/battle/battle-vote`,
           {
@@ -128,7 +129,7 @@ const Lightbox = ({ photos, currentUserVotes }) => {
           })
         .then(res => console.log(res))
     } else {
-      alert(`Tu dois encore voter pour ${3 - allVotes.length} photo(s) pour valider.`)
+      alert(`Tu dois encore voter pour ${3 - allVotes.length} photos pour valider tes votes.`)
     }
     return window.location.reload(true)
   }
