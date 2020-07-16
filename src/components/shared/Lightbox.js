@@ -1,65 +1,23 @@
 import React, { useState } from 'react'
+import Photo from './Photo'
+import axios from 'axios'
+import classnames from 'classnames'
 import './Lightbox.css'
 
-const imagesData = [
-  {
-    image: 'https://images.unsplash.com/photo-1593642634443-44adaa06623a',
-    alt: 'img1',
-    index: '0'
-  },
-
-  {
-    image: 'https://images.unsplash.com/photo-1553206352-6fd0a4ae2ef8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-    alt: 'img2',
-    index: '2'
-  },
-
-  {
-    image: 'https://images.unsplash.com/photo-1587717415723-8c89fe42c76c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-    alt: 'img3',
-    index: '3'
-  },
-
-  {
-    image: 'https://images.unsplash.com/photo-1594080051162-74b97d619668?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-    alt: 'img4',
-    index: '4'
-  },
-
-  {
-    image: 'https://images.unsplash.com/photo-1576159600424-0a1129d00ad1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-    alt: 'img5',
-    index: '5'
-  },
-
-  {
-    image: 'https://images.unsplash.com/photo-1594225258155-d1442fa3f82d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-    alt: 'img6',
-    index: '6'
-  },
-
-  {
-    image: 'https://images.unsplash.com/photo-1594105011432-81b594b0e3cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-    alt: 'img7',
-    index: '7'
-  },
-
-  {
-    image: 'https://images.unsplash.com/photo-1590582445822-f67302414028?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-    alt: 'img8',
-    index: '8'
-  }
-]
-
-const Lightbox = () => {
+const Lightbox = ({ photos, currentUserVotes }) => {
   const [dispImg, setDisp] = useState('')
+  const [photoId, setPhotoId] = useState('')
   const [cardIndex, setIndex] = useState(0)
   const [dispImgStyle, setStyle] = useState({ display: 'none' })
+  const [vote, setVote] = useState({ photoId: '', vote: '' })
+  const [allVotes, setAllVotes] = useState([])
+  const [numberOfVotes, setNumberOfVotes] = useState(3 - allVotes.length)
 
-  const showImage = (event) => {
-    setDisp(imagesData[Number(event.target.id)].image)
-    setIndex(Number(event.target.id))
+  const showPhotoUrl = e => {
+    setDisp(photos[Number(e.target.id)].photo_url)
+    setIndex(Number(e.target.id))
     setStyle({ display: 'flex' })
+    setPhotoId(photos[Number(e.target.id)].photo_id)
   }
 
   const closeDisp = () => {
@@ -68,54 +26,218 @@ const Lightbox = () => {
 
   const prevShow = () => {
     if (cardIndex === 0) {
-      setIndex(imagesData.length - 1)
-      setDisp(imagesData[imagesData.length - 1].image)
+      setIndex(photos.length - 1)
+      setDisp(photos[photos.length - 1].photo_url)
+      setPhotoId(photos[photos.length - 1].photo_id)
     } else {
       const d = cardIndex - 1
-      setDisp(imagesData[d].image)
+      setDisp(photos[d].photo_url)
       setIndex(d)
+      setPhotoId(photos[d].photo_id)
     }
   }
 
   const nextShow = () => {
-    if (cardIndex === imagesData.length - 1) {
+    if (cardIndex === photos.length - 1) {
       setIndex(0)
-      setDisp(imagesData[0].image)
+      setDisp(photos[0].photo_url)
+      setPhotoId(photos[0].photo_id)
     } else {
       const i = cardIndex + 1
-      setDisp(imagesData[i].image)
+      setDisp(photos[i].photo_url)
       setIndex(i)
+      setPhotoId(photos[i].photo_id)
     }
   }
 
-  const card = imagesData.map(function (obj, ind) {
-    return (
-      <div className='card' key={ind}>
-        <img src={obj.image} height='200px' width='200px' alt={obj.alt} onClick={showImage} id={ind} />
-      </div>
+  const getVote = e => {
+    e.preventDefault()
+    const newVote = { photoId: photoId, vote: e.target.value }
+    setVote(newVote)
+    const samePhotoSameVoteIdx = allVotes.findIndex(
+      v => v.photoId === photoId && v.vote === newVote.vote
     )
+    const samePhotoDiffVoteIdx = allVotes.findIndex(
+      v => v.photoId === photoId && v.vote !== newVote.vote
+    )
+    const diffPhotoSameVoteIdx = allVotes.findIndex(
+      v => v.photoId !== photoId && v.vote === newVote.vote
+    )
+    // 1. si je trouve un vote pour la même photo avec le même score => je le supprime
+    if (samePhotoSameVoteIdx !== -1) {
+      setAllVotes(allVotes => {
+        const nextVotes = [...allVotes]
+        nextVotes.splice(samePhotoSameVoteIdx, 1)
+        return nextVotes
+      })
+      setNumberOfVotes(numberOfVotes - 1)
+      // 2. si je trouve un vote pour la même photo avec un score différent
+    } else if (samePhotoDiffVoteIdx !== -1) {
+      // le nouveau vote peut déjà être associé à une autre photo
+      // ici on cherche le vote associé à l'autre photo
+      const sameVoteIdx = allVotes.findIndex(
+        v => v.vote === newVote.vote
+      )
+      // s'il est associé à une autre photo
+      if (sameVoteIdx !== -1) {
+        // => proposer de remplacer (supprimer vote de l'autre photo et supprimer vote de cette photo et ajouter le nouveau sur cette photo)
+        if (window.confirm('Remplacer le vote ?')) {
+          setAllVotes(allVotes => {
+            const nextVotes = [...allVotes]
+            // supprimer vote de l'autre photo
+            nextVotes.splice(sameVoteIdx, 1)
+            // supprimer vote de cette photo
+            // on est obligé de recalculer l'index après le 1er splice
+            const samePhotoDiffVoteIdx2 = nextVotes.findIndex(
+              v => v.photoId === photoId && v.vote !== newVote.vote
+            )
+            nextVotes.splice(samePhotoDiffVoteIdx2, 1)
+            // ajouter le nouveau sur cette photo
+            nextVotes.push(newVote)
+            return nextVotes
+          })
+        }
+        // s'il n'est pas associé à une autre photo
+      } else {
+        setAllVotes(allVotes => {
+          const nextVotes = [...allVotes]
+          // supprimer vote de cette photo
+          nextVotes.splice(samePhotoDiffVoteIdx, 1)
+          // ajouter le nouveau sur cette photo
+          nextVotes.push(newVote)
+          return nextVotes
+        })
+      }
+      // 3. si je trouve un vote pour une autre photo avec le même score
+    } else if (diffPhotoSameVoteIdx !== -1) {
+      if (window.confirm('Remplacer le vote ?')) {
+        setAllVotes(allVotes => {
+          const nextVotes = [...allVotes]
+          // supprimer vote de l'autre photo
+          nextVotes.splice(diffPhotoSameVoteIdx, 1)
+          // ajouter le nouveau sur cette photo
+          nextVotes.push(newVote)
+          return nextVotes
+        })
+      }
+      // 4. si la photo n'a pas encore de vote et que ce vote n'est pas encore attribué
+    } else {
+      setAllVotes(allVotes => [...allVotes, newVote])
+      setNumberOfVotes(numberOfVotes - 1)
+    }
+  }
+
+  const handleVotes = () => {
+    if (allVotes.length === 3 && window.confirm('Ces choix sont définitifs, es-tu sûr-e de vouloir les valider ?')) {
+      axios
+        .post(`${process.env.REACT_APP_SERVER_URL}/battle-vote`,
+          {
+            photoId1: allVotes[0].photoId,
+            vote1: allVotes[0].vote,
+            photoId2: allVotes[1].photoId,
+            vote2: allVotes[1].vote,
+            photoId3: allVotes[2].photoId,
+            vote3: allVotes[2].vote
+          },
+          {
+            headers: {
+              authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+          })
+        .then(res => console.log(res))
+    } else {
+      alert(`Tu dois encore voter pour ${3 - allVotes.length} photo(s) pour valider.`)
+    }
+  }
+
+  const selectedPhoto = allVotes.find(vote => {
+    return vote.photoId === photoId
   })
 
   return (
-    <>
-      <section className='container'>
-        {card}
+    <div className='gallery-lightbox-container'>
+      <section className='Gallery'>
+        {photos.map((photo, i) => (
+          <div className='gallery-img-container' key={photo.photo_id}>
+            <Photo photo={photo} handleClick={showPhotoUrl} id={i} currentUserVotes={currentUserVotes} />
+          </div>
+        ))}
       </section>
       <section className='lightbox' style={dispImgStyle}>
-        <div className='close' onClick={closeDisp}>close</div>
+        <div className='close' onClick={closeDisp}>
+          <i className='fas fa-times' />
+        </div>
         <div className='carousel left' onClick={prevShow}>
-          <span /><span />
+          <i className='fas fa-chevron-left' />
         </div>
-        <div className='leftArrow' />
         <div className='carousel right' onClick={nextShow}>
-          <span /><span />
+          <i className='fas fa-chevron-right' />
         </div>
-        <div className='rightArrow' />
-        <div>
-          <img src={dispImg} alt={dispImg} />
+        <div className='lightbox-img-container'>
+          <img src={dispImg} alt={dispImg} className='lightbox-img' />
         </div>
+        {
+          currentUserVotes.length === 0 &&
+            <div>
+              <div className='btn-vote-container'>
+                <label className={classnames('label-vote', { 'label-vote-active': selectedPhoto && selectedPhoto.vote === '1' })}>
+                  <input
+                    type='radio'
+                    value='1'
+                    checked={vote === '1'}
+                    onChange={getVote}
+                    id='one'
+                    name='one'
+                    className='input-vote'
+                  />
+                  <div className='stars-container'>
+                    <i className='fas fa-star' />
+                  </div>
+                </label>
+                <label className={classnames('label-vote', { 'label-vote-active': selectedPhoto && selectedPhoto.vote === '2' })}>
+                  <input
+                    type='radio'
+                    value='2'
+                    checked={vote === '2'}
+                    onChange={getVote}
+                    id='two'
+                    name='two'
+                    className='input-vote'
+                  />
+                  <div className='stars-container'>
+                    <i className='fas fa-star' />
+                    <i className='fas fa-star' />
+                  </div>
+                </label>
+                <label className={classnames('label-vote', { 'label-vote-active': selectedPhoto && selectedPhoto.vote === '3' })}>
+                  <input
+                    type='radio'
+                    value='3'
+                    checked={vote === '3'}
+                    onChange={getVote}
+                    id='three'
+                    name='three'
+                    className='input-vote'
+                  />
+                  <div className='stars-container'>
+                    <i className='fas fa-star' />
+                    <i className='fas fa-star' />
+                    <i className='fas fa-star' />
+                  </div>
+                </label>
+              </div>
+              <p className='number-of-votes'>Il te reste {numberOfVotes} votes</p>
+            </div>
+        }
       </section>
-    </>
+      <div className='vote-status'>
+        {
+          currentUserVotes.length === 0
+            ? <button onClick={handleVotes}>valider les votes</button>
+            : <p>Vous ave déjà voté pour cette battle !</p>
+        }
+      </div>
+    </div>
   )
 }
 
