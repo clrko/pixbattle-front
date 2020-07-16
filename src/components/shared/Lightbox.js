@@ -130,6 +130,7 @@ const Lightbox = ({ photos, currentUserVotes }) => {
     } else {
       alert(`Tu dois encore voter pour ${3 - allVotes.length} photo(s) pour valider.`)
     }
+    return window.location.reload(true)
   }
 
   const selectedPhoto = allVotes.find(vote => {
