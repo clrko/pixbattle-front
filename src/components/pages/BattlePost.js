@@ -13,7 +13,8 @@ const Menu = withRouter(DropDown)
 class BattlePost extends React.Component {
   state = {
     previewPicture: CloudUpload,
-    selectedFile: CloudUpload
+    selectedFile: CloudUpload,
+    BattlePostInfo: ''
   }
 
   componentDidMount () {
@@ -29,9 +30,7 @@ class BattlePost extends React.Component {
             authorization: `Bearer ${localStorage.getItem('token')}`
           }
         }
-      ).then(res => {
-        console.log(res.data)
-      })
+      ).then(res => this.setState({ BattlePostInfo: res.data.battleInfos[0] }))
   }
 
   handleChange = event => {
@@ -66,6 +65,10 @@ class BattlePost extends React.Component {
         <Navbar />
         <Menu />
         <div className='window-MyProfile'>
+          <div>
+            <p>{this.state.BattlePostInfo.rule_name}</p>
+            <p>{this.state.BattlePostInfo.theme_name}</p>
+          </div>
           <div className='countdown' />
           <img className='picture' src={this.state.selectedFile} alt='preview' />
           <input type='file' name='file' onChange={this.handleChange} />
