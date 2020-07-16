@@ -53,36 +53,74 @@ const Lightbox = ({ photos, currentUserVotes }) => {
     e.preventDefault()
     const newVote = { photoId: photoId, vote: e.target.value }
     setVote(newVote)
-    const selectedVoteIndex = allVotes.findIndex(vote => {
-      return vote.vote === newVote.vote
-    })
-    if (selectedVoteIndex !== -1 && photoId !== allVotes[selectedVoteIndex].photoId) {
-      const replace = window.confirm('ce vote existe déjà, le remplacer ?')
-      if (replace) {
+    const samePhotoSameVoteIdx = allVotes.findIndex(
+      v => v.photoId === photoId && v.vote === newVote.vote
+    )
+    const samePhotoDiffVoteIdx = allVotes.findIndex(
+      v => v.photoId === photoId && v.vote !== newVote.vote
+    )
+    const diffPhotoSameVoteIdx = allVotes.findIndex(
+      v => v.photoId !== photoId && v.vote === newVote.vote
+    )
+    // 1. si je trouve un vote pour la même photo avec le même score => je le supprime
+    if (samePhotoSameVoteIdx !== -1) {
+      setAllVotes(allVotes => {
+        const nextVotes = [...allVotes]
+        nextVotes.splice(samePhotoSameVoteIdx, 1)
+        return nextVotes
+      })
+      // 2. si je trouve un vote pour la même photo avec un score différent
+    } else if (samePhotoDiffVoteIdx !== -1) {
+      // le nouveau vote peut déjà être associé à une autre photo
+      // ici on cherche le vote associé à l'autre photo
+      const sameVoteIdx = allVotes.findIndex(
+        v => v.vote === newVote.vote
+      )
+      // s'il est associé à une autre photo
+      if (sameVoteIdx !== -1) {
+        // => proposer de remplacer (supprimer vote de l'autre photo et supprimer vote de cette photo et ajouter le nouveau sur cette photo)
+        if (window.confirm('Remplacer le vote ?')) {
+          setAllVotes(allVotes => {
+            const nextVotes = [...allVotes]
+            // supprimer vote de l'autre photo
+            nextVotes.splice(sameVoteIdx, 1)
+            // supprimer vote de cette photo
+            // on est obligé de recalculer l'index après le 1er splice
+            const samePhotoDiffVoteIdx2 = nextVotes.findIndex(
+              v => v.photoId === photoId && v.vote !== newVote.vote
+            )
+            nextVotes.splice(samePhotoDiffVoteIdx2, 1)
+            // ajouter le nouveau sur cette photo
+            nextVotes.push(newVote)
+            return nextVotes
+          })
+        }
+        // s'il n'est pas associé à une autre photo
+      } else {
         setAllVotes(allVotes => {
-          const allVotesTemp = allVotes.filter(vote => vote.photoId !== photoId)
-          allVotesTemp.splice(selectedVoteIndex, 1, newVote)
-          return allVotesTemp
+          const nextVotes = [...allVotes]
+          // supprimer vote de cette photo
+          nextVotes.splice(samePhotoDiffVoteIdx, 1)
+          // ajouter le nouveau sur cette photo
+          nextVotes.push(newVote)
+          return nextVotes
         })
       }
-    } else {
-      setAllVotes(allVotes => {
-        const selectedPhotoIndex = allVotes.findIndex(vote => {
-          return vote.photoId === photoId
+      // 3. si je trouve un vote pour une autre photo avec le même score
+    } else if (diffPhotoSameVoteIdx !== -1) {
+      if (window.confirm('Remplacer le vote ?')) {
+        setAllVotes(allVotes => {
+          const nextVotes = [...allVotes]
+          // supprimer vote de l'autre photo
+          nextVotes.splice(diffPhotoSameVoteIdx, 1)
+          // ajouter le nouveau sur cette photo
+          nextVotes.push(newVote)
+          return nextVotes
         })
-        if (selectedPhotoIndex === -1) {
-          return [...allVotes, newVote]
-        } else {
-          const allVotesTemp = [...allVotes]
-          const selectedVote = allVotes[selectedPhotoIndex].vote
-          if (selectedVote === newVote.vote) {
-            allVotesTemp.splice(selectedPhotoIndex, 1)
-          } else {
-            allVotesTemp.splice(selectedPhotoIndex, 1, newVote)
-          }
-          return allVotesTemp
-        }
-      })
+      }
+      // 4. si la photo n'a pas encore de vote et que ce vote n'est pas encore attribué
+    } else {
+      setAllVotes(allVotes => [...allVotes, newVote])
     }
   }
 
