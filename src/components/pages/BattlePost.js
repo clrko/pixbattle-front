@@ -22,7 +22,6 @@ class BattlePost extends React.Component {
 
   handleInfosBattle = () => {
     const { battleId, groupId } = this.props.match.params
-    console.log('params', this.props.match.params.id, 'props.locarion', groupId)
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/battle-post/${groupId}/${battleId}`,
         {
@@ -68,7 +67,7 @@ class BattlePost extends React.Component {
         <Menu />
         <div className='window-MyProfile'>
           <div className='countdown' />
-          <img className='picture' src={this.state.selectedFile} alt='preview-picture' />
+          <img className='picture' src={this.state.selectedFile} alt='preview' />
           <input type='file' name='file' onChange={this.handleChange} />
           <button className='upload-ButtonPostpicture' type='button' onClick={this.handleClick}>Upload</button>
         </div>

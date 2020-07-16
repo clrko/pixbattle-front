@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Gallery from '../shared/Gallery'
-import Footer from '../shared/StickyFooter'
+// import Footer from '../shared/StickyFooter'
+import Lightbox from '../shared/Lightbox'
 
 class BattleVote extends Component {
   state = {
-    photos: []
+    photos: [],
+    currentUserVotes: []
   }
 
   getPhotos = () => {
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/gallery/battle`,
+    axios.post(`${process.env.REACT_APP_SERVER_URL}/gallery/battle`,
       {
         battleId: 1
       }
@@ -18,16 +19,33 @@ class BattleVote extends Component {
     })
   }
 
+  getStatusUser = () => {
+    axios
+      .post(`${process.env.REACT_APP_SERVER_URL}/battle-vote/status-user`,
+        {
+          battleId: 1
+        },
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+      .then(res => {
+        this.setState({ currentUserVotes: res.data })
+      })
+  }
+
   componentDidMount () {
     this.getPhotos()
+    this.getStatusUser()
   }
 
   render () {
-    const { photos } = this.state
+    const { photos, currentUserVotes } = this.state
     return (
       <div>
-        <Gallery photos={photos} />
-        <Footer />
+        <Lightbox photos={photos} currentUserVotes={currentUserVotes} />
+        {/* <Footer /> */}
       </div>
     )
   }
