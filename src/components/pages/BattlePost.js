@@ -50,7 +50,7 @@ class BattlePost extends React.Component {
     const { battleId, groupId } = this.props.location.state
     data.append('battleId', battleId)
     data.append('groupId', groupId)
-    axios.post('http://localhost:4242/battle-post/addpicture', data,
+    axios.post(`${process.env.REACT_APP_SERVER_URL}/battle-post/addpicture`, data,
       {
         headers: {
           authorization: `Bearer ${localStorage.getItem('token')}`
