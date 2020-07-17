@@ -26,6 +26,15 @@
   scrollbar-color: #FAC748;
 }
 
+.MyGroups-cardList::-webkit-scrollbar {
+  width: 5px;
+}
+
+.MyGroups-cardList::-webkit-scrollbar-thumb {
+  background-color: #FAC748;
+  border-radius: 20px;
+}
+
 .MyGroups-card {
   background-color: #3181C8;
   display: flex;
