@@ -13,7 +13,7 @@ const mapStateToProps = state => {
   return { user }
 }
 
-const MyBattles = ({ user, history }) => {
+const MyBattles = ({ user, history, location }) => {
   const [userBattleInformation, setUserBattleInformation] = useState([])
 
   useEffect(() => {
@@ -21,8 +21,9 @@ const MyBattles = ({ user, history }) => {
   }, [])
 
   const getUserBattleInformation = () => {
+    const backRoute = (location.state) ? `my-battles/${location.state.groupId}` : 'my-battles'
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/battle/my-battles`,
+      .get(`${process.env.REACT_APP_SERVER_URL}/battle/${backRoute}`,
         {
           headers: {
             authorization: `Bearer ${localStorage.getItem('token')}`

@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
+import MyGroupsCardList from './MyGroupsCardList.js'
 import Navbar from '../shared/Navbar'
 import PageHeader from '../shared/PageHeader.js'
 import StickyFooter from '../shared/StickyFooter'
 import './MyGroups.css'
-import MyGroupsCardList from './MyGroupsCardList.js'
 
 const mapStateToProps = state => {
   const { user } = state
   return { user }
 }
 
-const MyGroups = ({ user }) => {
+const MyGroups = ({ user, history }) => {
   const [userGroupInformation, setUserGroupInformation] = useState([])
 
   useEffect(() => {
@@ -57,6 +57,12 @@ const MyGroups = ({ user }) => {
     return `${importedGroupMemberCount} membres`
   }
 
+  const handleClick = selectedGroupId => {
+    history.push(`/${user.username}/battles`, {
+      groupId: selectedGroupId
+    })
+  }
+
   return (
     <div className='background-MyGroups'>
       <Navbar />
@@ -67,10 +73,11 @@ const MyGroups = ({ user }) => {
         getOngoingBattlesMessage={getOngoingBattlesMessage}
         getFinishedBattlesMessage={getFinishedBattlesMessage}
         getGroupMemberMessage={getGroupMemberMessage}
+        handleClick={handleClick}
       />
       <StickyFooter />
     </div>
   )
 }
-/* Ne pas oublier d'ajouter le handleclick */
+
 export default connect(mapStateToProps)(MyGroups)
