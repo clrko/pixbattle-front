@@ -4,7 +4,7 @@ import axios from 'axios'
 import classnames from 'classnames'
 import './Lightbox.css'
 
-const Lightbox = ({ photos, currentUserVotes, history }) => {
+const Lightbox = ({ photos, currentUserVotes }) => {
   const [dispImg, setDisp] = useState('')
   const [photoId, setPhotoId] = useState('')
   const [cardIndex, setIndex] = useState(0)
