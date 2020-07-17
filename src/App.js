@@ -32,8 +32,7 @@ const App = () => {
         <Route exact path='/:username/battles' component={MyBattles} />
         <Route path='/:username/battles/:id/results' component={Podium} />
         <Route path='/groups/:groupId/battles/:battleId/post-picture' component={BattlePost} />
-        {/* <Route path='/battles/:id/vote' component={BattleVote} /> */}
-        <Route path='/battles/vote' component={BattleVote} />
+        <Route path='/groups/:groupId/battles/:battleId/vote' component={BattleVote} />
       </Switch>
     </div>
   )
