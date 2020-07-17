@@ -101,32 +101,32 @@ class Podium extends React.Component {
             <div className='AvatarPodium second-position'>
               <div className='div-p-fas'>
                 <p className='p-AvatarPodium'>{this.state.user[1].username}</p>
-                <i class='fas fa-star'><p className='p-user-victories-podium'>{this.state.user[1].victories}</p></i>
+                <i className='fas fa-star'><p className='p-user-victories-podium'>{this.state.user[1].victories}</p></i>
               </div>
               <div className='div-img-Avatar2'>
                 <img className='img-avatar-position' src={this.state.user[1].avatar} alt='avatar' />
               </div>
-              <i class='fas fa-medal medal2' />
+              <i className='fas fa-medal medal2' />
             </div>
             <div className='AvatarPodium first-position'>
               <div className='div-p-fas'>
                 <p className='p-AvatarPodium'>{this.state.user[0].username}</p>
-                <i class='fas fa-star'><p className='p-user-victories-podium'>{this.state.user[0].victories}</p></i>
+                <i className='fas fa-star'><p className='p-user-victories-podium'>{this.state.user[0].victories}</p></i>
               </div>
               <div className='div-img-Avatar1'>
                 <img className='img-avatar-position' src={this.state.user[0].avatar} alt='avatar' />
               </div>
-              <i class='fas fa-medal medal1'><p /></i>
+              <i className='fas fa-medal medal1'><p /></i>
             </div>
             <div className='AvatarPodium third-position'>
               <div className='div-p-fas'>
                 <p className='p-AvatarPodium'>{this.state.user[2].username}</p>
-                <i class='fas fa-star'><p className='p-user-victories-podium'>{this.state.user[2].victories}</p></i>
+                <i className='fas fa-star'><p className='p-user-victories-podium'>{this.state.user[2].victories}</p></i>
               </div>
               <div className='div-img-Avatar3'>
                 <img className='img-avatar-position' src={this.state.user[2].avatar} alt='avatar' />
               </div>
-              <i class='fas fa-medal medal3' />
+              <i className='fas fa-medal medal3' />
             </div>
           </div>
           <div className='div-congratulations'>
@@ -146,7 +146,7 @@ class Podium extends React.Component {
                   <p className='p-div-participant'>{user.username}</p>
                 </div>
                 <div className='margin-fa-star-attendee-list'>
-                  <i class='fas fa-star fa-star-attendee-list'><p className='p-user-victories'>{user.victories}</p></i>
+                  <i className='fas fa-star fa-star-attendee-list'><p className='p-user-victories'>{user.victories}</p></i>
                 </div>
               </div>
             ))}

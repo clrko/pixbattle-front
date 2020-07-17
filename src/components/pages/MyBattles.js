@@ -83,9 +83,12 @@ const MyBattles = ({ user, history }) => {
           groupId: selectedGroupId
         })
         break
-      /* case 'completed':
-        history.push(`baseURL, {})
-        break */
+      case 'completed':
+        history.push(`/groups/${selectedGroupId}/battles/${selectedBattleId}/results`, {
+          battleId: selectedBattleId,
+          groupId: selectedGroupId
+        })
+        break
       default:
         window.location.reload(true)
         break
