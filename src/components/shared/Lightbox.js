@@ -63,64 +63,47 @@ const Lightbox = ({ photos, currentUserVotes }) => {
     const diffPhotoSameVoteIdx = allVotes.findIndex(
       v => v.photoId !== photoId && v.vote === newVote.vote
     )
-    // 1. si je trouve un vote pour la même photo avec le même score => je le supprime
     if (samePhotoSameVoteIdx !== -1) {
       setAllVotes(allVotes => {
         const nextVotes = [...allVotes]
         nextVotes.splice(samePhotoSameVoteIdx, 1)
+        setNumberOfVotes(numberOfVotes + 1)
         return nextVotes
       })
-      setNumberOfVotes(numberOfVotes - 1)
-      // 2. si je trouve un vote pour la même photo avec un score différent
     } else if (samePhotoDiffVoteIdx !== -1) {
-      // le nouveau vote peut déjà être associé à une autre photo
-      // ici on cherche le vote associé à l'autre photo
       const sameVoteIdx = allVotes.findIndex(
         v => v.vote === newVote.vote
       )
-      // s'il est associé à une autre photo
       if (sameVoteIdx !== -1) {
-        // => proposer de remplacer (supprimer vote de l'autre photo et supprimer vote de cette photo et ajouter le nouveau sur cette photo)
-        if (window.confirm('Remplacer le vote ?')) {
+        if (window.confirm('Ce vote est déjà attribué, veux-tu l\'utiliser pour cette photo ?')) {
           setAllVotes(allVotes => {
             const nextVotes = [...allVotes]
-            // supprimer vote de l'autre photo
             nextVotes.splice(sameVoteIdx, 1)
-            // supprimer vote de cette photo
-            // on est obligé de recalculer l'index après le 1er splice
             const samePhotoDiffVoteIdx2 = nextVotes.findIndex(
               v => v.photoId === photoId && v.vote !== newVote.vote
             )
             nextVotes.splice(samePhotoDiffVoteIdx2, 1)
-            // ajouter le nouveau sur cette photo
             nextVotes.push(newVote)
             return nextVotes
           })
         }
-        // s'il n'est pas associé à une autre photo
       } else {
         setAllVotes(allVotes => {
           const nextVotes = [...allVotes]
-          // supprimer vote de cette photo
           nextVotes.splice(samePhotoDiffVoteIdx, 1)
-          // ajouter le nouveau sur cette photo
           nextVotes.push(newVote)
           return nextVotes
         })
       }
-      // 3. si je trouve un vote pour une autre photo avec le même score
     } else if (diffPhotoSameVoteIdx !== -1) {
-      if (window.confirm('Remplacer le vote ?')) {
+      if (window.confirm('Ce vote est déjà attribué, veux-tu l\'utiliser pour cette photo ?')) {
         setAllVotes(allVotes => {
           const nextVotes = [...allVotes]
-          // supprimer vote de l'autre photo
           nextVotes.splice(diffPhotoSameVoteIdx, 1)
-          // ajouter le nouveau sur cette photo
           nextVotes.push(newVote)
           return nextVotes
         })
       }
-      // 4. si la photo n'a pas encore de vote et que ce vote n'est pas encore attribué
     } else {
       setAllVotes(allVotes => [...allVotes, newVote])
       setNumberOfVotes(numberOfVotes - 1)
@@ -128,7 +111,7 @@ const Lightbox = ({ photos, currentUserVotes }) => {
   }
 
   const handleVotes = () => {
-    if (allVotes.length === 3 && window.confirm('Ces choix sont définitifs, es-tu sûr-e de vouloir les valider ?')) {
+    if (allVotes.length === 3 && window.confirm('Ces votes sont définitifs, es-tu sûr-e de vouloir les valider ?')) {
       axios
         .post(`${process.env.REACT_APP_SERVER_URL}/battle/battle-vote`,
           {
@@ -146,8 +129,9 @@ const Lightbox = ({ photos, currentUserVotes }) => {
           })
         .then(res => console.log(res))
     } else {
-      alert(`Tu dois encore voter pour ${3 - allVotes.length} photo(s) pour valider.`)
+      alert(`Tu dois encore voter pour ${3 - allVotes.length} photos pour valider tes votes.`)
     }
+    return window.location.reload(true)
   }
 
   const selectedPhoto = allVotes.find(vote => {
