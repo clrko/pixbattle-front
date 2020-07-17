@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 // import { connect } from 'react-redux'
 // import Navbar from '../shared/Navbar'
 import PageHeader from '../shared/PageHeader.js'
@@ -12,7 +13,7 @@ import MyGroupsCardList from './MyGroupsCardList.js'
 } */
 
 const MyGroups = (/* { user } */) => {
-  const userGroupInformation = [
+/*   const userGroupInformation = [
     {
       group_id: 1,
       group_name: 'Team Pix Battle',
@@ -38,6 +39,26 @@ const MyGroups = (/* { user } */) => {
       groupMembers: 4
     }
   ]
+ */
+  const [userGroupInformation, setUserGroupInformation] = useState([])
+
+  useEffect(() => {
+    getUserGroupInformation()
+  }, [])
+
+  const getUserGroupInformation = () => {
+    axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/group/my-groups`,
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        }
+      )
+      .then(res => {
+        setUserGroupInformation(res.data)
+      })
+  }
 
   const getOngoingBattlesMessage = importedOngoingBattleCount => {
     if (importedOngoingBattleCount > 1) {
