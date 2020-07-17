@@ -4,7 +4,7 @@ import axios from 'axios'
 import classnames from 'classnames'
 import './Lightbox.css'
 
-const Lightbox = ({ photos, currentUserVotes }) => {
+const Lightbox = ({ photos, currentUserVotes, history }) => {
   const [dispImg, setDisp] = useState('')
   const [photoId, setPhotoId] = useState('')
   const [cardIndex, setIndex] = useState(0)
@@ -218,7 +218,7 @@ const Lightbox = ({ photos, currentUserVotes }) => {
         {
           currentUserVotes.length === 0
             ? <button onClick={handleVotes}>valider les votes</button>
-            : <p>Vous ave déjà voté pour cette battle !</p>
+            : <p>Tu as déjà voté pour cette battle !</p>
         }
       </div>
     </div>

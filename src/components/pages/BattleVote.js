@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Footer from '../shared/StickyFooter'
+// import Footer from '../shared/StickyFooter'
 import Lightbox from '../shared/Lightbox'
-import Navbar from '../shared/Navbar'
+// import Navbar from '../shared/Navbar'
 
 class BattleVote extends Component {
   state = {
@@ -47,9 +47,9 @@ class BattleVote extends Component {
     const { photos, currentUserVotes } = this.state
     return (
       <div>
-        <Navbar />
+        {/* <Navbar /> */}
         <Lightbox photos={photos} currentUserVotes={currentUserVotes} />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     )
   }
