@@ -1,22 +1,26 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
-import Navbar from '../shared/Navbar'
-import DropDown from '../shared/DropDown'
-import StickyFooter from '../shared/StickyFooter'
+// import Navbar from '../shared/Navbar'
+import PageHeader from '../shared/PageHeader.js'
+// import StickyFooter from '../shared/StickyFooter'
 import './MyGroups.css'
-
-const Menu = withRouter(DropDown)
 
 class MyGroups extends React.Component {
   render () {
     return (
       <div className='background-MyGroups'>
-        <Navbar />
-        <Menu />
-        <div className='window-MyGroups'>
-          <p>Mes Groupes</p>
+        {/* <Navbar /> */}
+        <PageHeader pageTitle='Mes Groupes' />
+        <div className='MyGroups-cardList'>
+          <div className='MyGroups-card'>
+            <h2 className='MyGroups-card-title'>Team Pix Battle</h2>
+            {/* <i className={userAdmin ? 'fas fa-crown MyGroups-crown' : 'MyGroups-notAdmin'} /> */}
+            <p className='MyGroups-card-battle'>1 battle en cours</p>
+            <p className='MyGroups-card-battle'>2 battles termines</p>
+            <p className='MyGroups-card-member'>8 membres</p>
+            <button className='MyGroups-card-button'>Voir</button>
+          </div>
         </div>
-        <StickyFooter />
+        {/* <StickyFooter /> */}
       </div>
     )
   }

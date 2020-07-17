@@ -18,6 +18,7 @@ import BattlePost from './components/pages/BattlePost'
 const App = () => {
   return (
     <div>
+      <MyGroups />
       <Switch>
         <Route exact path='/' component={LandingPage} />
         <Route path='/battle-creation/deadline' component={CreationBattleDeadline} />
@@ -26,7 +27,7 @@ const App = () => {
         <Route path='/battle-creation/summary' component={CreationBattleSummary} />
         <Route path='/group-creation/group-created/:id' component={CreationSteps} />
         <Route exact path='/:username' component={MyProfile} />
-        <Route path='/:username/groups' component={MyGroups} />
+        {/* <Route path='/:username/groups' component={MyGroups} /> */}
         <Route path='/:username/ranking' component={MyRanking} />
         <Route path='/:username/pictures' component={MyPictures} />
         <Route exact path='/:username/battles' component={MyBattles} />
