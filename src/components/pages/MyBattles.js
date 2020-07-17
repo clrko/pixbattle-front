@@ -38,6 +38,9 @@ const MyBattles = ({ user, history }) => {
     const today = moment().local()
     const deadline = moment(importedDeadline)
     const createDate = moment(importedCreateDate)
+    if (today > deadline) {
+      return 100
+    }
     const differenceToToday = today.diff(createDate, 'seconds')
     const differenceToDeadline = deadline.diff(createDate, 'seconds')
     return (differenceToToday / differenceToDeadline) * 100
@@ -46,6 +49,9 @@ const MyBattles = ({ user, history }) => {
   const getBattleTimeMessage = importedDeadline => {
     const deadline = moment(importedDeadline)
     const today = moment().local()
+    if (today > deadline) {
+      return 'Va vite voir les resultats'
+    }
     const durationTodayToDeadline = moment.duration(deadline.diff(today))
     return `Il te reste ${durationTodayToDeadline.humanize()}`
   }
