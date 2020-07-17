@@ -1,5 +1,5 @@
 .battlePost-info-div {
-margin: 1px;
+margin-bottom: 2px;
 }
 
 .battlePost-info {
@@ -18,6 +18,12 @@ margin: 1px;
   padding: 0 1rem;
   font-size: 1rem;
   outline: transparent;
+  text-align: center;
+}
+
+.battlePost-rules {
+  color: #FDFFFC;
+  text-align: center;
 }
 
 .countdown {
@@ -38,7 +44,7 @@ margin: 1px;
 .uploadPicture {
   background-color: #FAC748;
   width: 264px;
-  height: 320px;
+  /* height: 320px; */
 }
 
 .upload-ButtonPostpicture {
