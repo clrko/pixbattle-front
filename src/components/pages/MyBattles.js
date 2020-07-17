@@ -63,11 +63,27 @@ const MyBattles = ({ user, history }) => {
     }
   }
 
-  const handleClick = (selectedGroupId, selectedBattleId) => {
-    history.push(`/groups/${selectedGroupId}/battles/${selectedBattleId}/post-picture`, {
-      battleId: selectedBattleId,
-      groupId: selectedGroupId
-    })
+  const handleClick = (selectedGroupId, selectedBattleId, importedStatus) => {
+    switch (importedStatus) {
+      case 'post':
+        history.push(`/groups/${selectedGroupId}/battles/${selectedBattleId}/post-picture`, {
+          battleId: selectedBattleId,
+          groupId: selectedGroupId
+        })
+        break
+      case 'vote':
+        history.push(`/groups/${selectedGroupId}/battles/${selectedBattleId}/vote`, {
+          battleId: selectedBattleId,
+          groupId: selectedGroupId
+        })
+        break
+      /* case 'completed':
+        history.push(`baseURL, {})
+        break */
+      default:
+        window.location.reload(true)
+        break
+    }
   }
 
   return (

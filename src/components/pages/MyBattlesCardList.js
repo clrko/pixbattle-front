@@ -13,7 +13,7 @@ const MyBattlesCardList = ({ userId, userBattleInformation, getCompletedPercenta
         userAdmin={battle.admin_user_id === userId}
         completed={getCompletedPercentage(battle.create_date, battle.deadline)}
         battleTimeMessage={getBattleTimeMessage(battle.deadline)}
-        handleClick={() => handleClick(battle.group_id, battle.battle_id)}
+        handleClick={() => handleClick(battle.group_id, battle.battle_id, battle.status_name)}
       />)}
   </div>
 )
