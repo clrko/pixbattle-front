@@ -15,9 +15,13 @@ const Photo = ({ photo, id, handleClick, currentUserVotes }) => {
 
   return (
     <div className='photo-container'>
-      {
-        currentVote !== null ? <i className='fas fa-star' /> : <></>
-      }
+      <div className='stars-container-photo'>
+        {
+          currentVote !== null ? new Array(currentVote).fill(0).map((_, i) => (
+            <i key={i} className='fas fa-star' />
+          )) : <div className='empty-stars-container' />
+        }
+      </div>
       <img src={photo.photo_url} onClick={handleClick} id={id} alt={photo.photo_url} className='gallery-image' />
     </div>
   )

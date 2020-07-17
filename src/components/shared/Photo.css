@@ -4,11 +4,22 @@
   height: 130px;
   object-fit: cover;
   margin: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
 .photo-container .fa-star {
+  font-size: 2rem;
+}
+
+.empty-stars-container {
+  width: 162px;
+  height: 32px;
+}
+
+.stars-container-photo,
+.empty-stars-container {
   position: relative;
-  top: -10px;
-  left: 45px;
-  font-size: 2rem !important;
+  top: 30px;
+  left: 10px;
 }
