@@ -12,7 +12,7 @@ const MyGroupsCardList = ({ userId, userGroupInformation, getOngoingBattlesMessa
         ongoingBattles={getOngoingBattlesMessage(group.ongoingBattles)}
         finishedBattles={getFinishedBattlesMessage(group.finishedBattles)}
         groupMembers={getGroupMemberMessage(group.groupMembers)}
-        handleClick={() => handleClick(group.group_id)}
+        handleClick={() => handleClick(group.group_id, group.group_name)}
       />
     )}
   </div>

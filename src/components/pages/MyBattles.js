@@ -99,7 +99,7 @@ const MyBattles = ({ user, history, location }) => {
   return (
     <div className='MyBattles-background'>
       <Navbar />
-      <PageHeader pageTitle='Mes Battles' />
+      <PageHeader pageTitle={location.state ? `Mes Battles - Groupe ${location.state.groupName}` : 'Mes Battles'} />
       <MyBattlesCardList
         userId={user.userId}
         userBattleInformation={userBattleInformation}

@@ -57,9 +57,10 @@ const MyGroups = ({ user, history }) => {
     return `${importedGroupMemberCount} membres`
   }
 
-  const handleClick = selectedGroupId => {
+  const handleClick = (selectedGroupId, selectedGroupName) => {
     history.push(`/${user.username}/battles`, {
-      groupId: selectedGroupId
+      groupId: selectedGroupId,
+      groupName: selectedGroupName
     })
   }
 
