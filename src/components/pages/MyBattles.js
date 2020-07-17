@@ -13,7 +13,7 @@ const mapStateToProps = state => {
   return { user }
 }
 
-const MyBattles = ({ user }) => {
+const MyBattles = ({ user, history }) => {
   const [userBattleInformation, setUserBattleInformation] = useState([])
 
   useEffect(() => {
@@ -38,6 +38,9 @@ const MyBattles = ({ user }) => {
     const today = moment().local()
     const deadline = moment(importedDeadline)
     const createDate = moment(importedCreateDate)
+    if (today > deadline) {
+      return 100
+    }
     const differenceToToday = today.diff(createDate, 'seconds')
     const differenceToDeadline = deadline.diff(createDate, 'seconds')
     return (differenceToToday / differenceToDeadline) * 100
@@ -46,6 +49,9 @@ const MyBattles = ({ user }) => {
   const getBattleTimeMessage = importedDeadline => {
     const deadline = moment(importedDeadline)
     const today = moment().local()
+    if (today > deadline) {
+      return 'Va vite voir les resultats'
+    }
     const durationTodayToDeadline = moment.duration(deadline.diff(today))
     return `Il te reste ${durationTodayToDeadline.humanize()}`
   }
@@ -63,6 +69,32 @@ const MyBattles = ({ user }) => {
     }
   }
 
+  const handleClick = (selectedGroupId, selectedBattleId, importedStatus) => {
+    switch (importedStatus) {
+      case 'post':
+        history.push(`/groups/${selectedGroupId}/battles/${selectedBattleId}/post-picture`, {
+          battleId: selectedBattleId,
+          groupId: selectedGroupId
+        })
+        break
+      case 'vote':
+        history.push(`/groups/${selectedGroupId}/battles/${selectedBattleId}/vote`, {
+          battleId: selectedBattleId,
+          groupId: selectedGroupId
+        })
+        break
+      case 'completed':
+        history.push(`/groups/${selectedGroupId}/battles/${selectedBattleId}/results`, {
+          battleId: selectedBattleId,
+          groupId: selectedGroupId
+        })
+        break
+      default:
+        window.location.reload(true)
+        break
+    }
+  }
+
   return (
     <div className='MyBattles-background'>
       <Navbar />
@@ -73,6 +105,7 @@ const MyBattles = ({ user }) => {
         getCompletedPercentage={getCompletedPercentage}
         getBattleTimeMessage={getBattleTimeMessage}
         getBattleStatus={getBattleStatus}
+        handleClick={handleClick}
       />
       <StickyFooter />
     </div>

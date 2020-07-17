@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 // import Footer from '../shared/StickyFooter'
 import Lightbox from '../shared/Lightbox'
+// import Navbar from '../shared/Navbar'
 
 class BattleVote extends Component {
   state = {
@@ -10,9 +11,10 @@ class BattleVote extends Component {
   }
 
   getPhotos = () => {
+    const { battleId } = this.props.location.state
     axios.post(`${process.env.REACT_APP_SERVER_URL}/gallery/battle`,
       {
-        battleId: 1
+        battleId: battleId
       }
     ).then(res => {
       this.setState({ photos: res.data })
@@ -20,10 +22,11 @@ class BattleVote extends Component {
   }
 
   getStatusUser = () => {
+    const { battleId } = this.props.location.state
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/battle/battle-vote/status-user`,
         {
-          battleId: 1
+          battleId: battleId
         },
         {
           headers: {
@@ -44,6 +47,7 @@ class BattleVote extends Component {
     const { photos, currentUserVotes } = this.state
     return (
       <div>
+        {/* <Navbar /> */}
         <Lightbox photos={photos} currentUserVotes={currentUserVotes} />
         {/* <Footer /> */}
       </div>

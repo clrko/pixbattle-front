@@ -218,7 +218,7 @@ const Lightbox = ({ photos, currentUserVotes }) => {
         {
           currentUserVotes.length === 0
             ? <button onClick={handleVotes}>valider les votes</button>
-            : <p>Vous ave déjà voté pour cette battle !</p>
+            : <p>Tu as déjà voté pour cette battle !</p>
         }
       </div>
     </div>
