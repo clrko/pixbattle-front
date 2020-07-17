@@ -13,7 +13,7 @@ const mapStateToProps = state => {
   return { user }
 }
 
-const MyBattles = ({ user }) => {
+const MyBattles = ({ user, history }) => {
   const [userBattleInformation, setUserBattleInformation] = useState([])
 
   useEffect(() => {
@@ -63,6 +63,13 @@ const MyBattles = ({ user }) => {
     }
   }
 
+  const handleClick = (selectedGroupId, selectedBattleId) => {
+    history.push(`/groups/${selectedGroupId}/battles/${selectedBattleId}/post-picture`, {
+      battleId: selectedBattleId,
+      groupId: selectedGroupId
+    })
+  }
+
   return (
     <div className='MyBattles-background'>
       <Navbar />
@@ -73,6 +80,7 @@ const MyBattles = ({ user }) => {
         getCompletedPercentage={getCompletedPercentage}
         getBattleTimeMessage={getBattleTimeMessage}
         getBattleStatus={getBattleStatus}
+        handleClick={handleClick}
       />
       <StickyFooter />
     </div>
