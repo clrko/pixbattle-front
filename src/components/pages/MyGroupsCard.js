@@ -1,29 +1,15 @@
 import React from 'react'
-import MyBattlesProgressBar from './MyBattlesProgressBar'
 import './MyGroups.css'
 
-/* const MyBattlesCard = ({ battleTheme, battleTimeMessage, battleStatus, battleGroup, userAdmin, completed, handleClick }) => {
+const MyGroupsCard = ({ groupName, userAdmin, ongoingBattles, finishedBattles, groupMembers }) => {
   return (
-    <div className='MyBattles-card'>
-      <h2 className='MyBattles-card-title'>{battleTheme}</h2>
-      <i className={userAdmin ? 'fas fa-crown MyBattles-crown' : 'MyBattles-notAdmin'} />
-      <p className='MyBattles-card-time'>{battleTimeMessage}</p>
-      <MyBattlesProgressBar completed={completed} />
-      <button className='MyBattles-card-button' onClick={handleClick}>{battleStatus}</button>
-      <p className='MyBattles-card-group'>{battleGroup}</p>
-    </div>
-  )
-} */
-
-const MyGroupsCard = ({ battleTheme, battleTimeMessage, battleStatus, battleGroup, userAdmin, completed, handleClick }) => {
-  return (
-    <div className='MyBattles-card'>
-      <h2 className='MyBattles-card-title'>{battleTheme}</h2>
-      <i className={userAdmin ? 'fas fa-crown MyBattles-crown' : 'MyBattles-notAdmin'} />
-      <p className='MyBattles-card-time'>{battleTimeMessage}</p>
-      <MyBattlesProgressBar completed={completed} />
-      <button className='MyBattles-card-button' onClick={handleClick}>{battleStatus}</button>
-      <p className='MyBattles-card-group'>{battleGroup}</p>
+    <div className='MyGroups-card'>
+      <h2 className='MyGroups-card-title'>{groupName}</h2>
+      <i className={userAdmin ? 'fas fa-crown MyGroups-crown' : 'MyGroups-notAdmin'} />
+      <p className='MyGroups-card-battle'>{ongoingBattles}</p>
+      <p className='MyGroups-card-battle'>{finishedBattles}</p>
+      <p className='MyGroups-card-member'>{groupMembers}</p>
+      <button className='MyGroups-card-button'>Voir</button>
     </div>
   )
 }
