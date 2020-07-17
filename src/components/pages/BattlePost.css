@@ -1,20 +1,17 @@
 .battlePost-info-div {
-margin-bottom: 2px;
+  margin-bottom: 10px;
 }
 
 .battlePost-info {
   background-color: #FAC748;
   color: #3181C8;
   cursor: pointer;
-  font-family:Arial;
   font-family: FuturaPTMedium;
   border-style: none;
-  outline: none;
   font-weight: bolder;
   letter-spacing: 0.5px;
   border-radius: 50px;
   border: none;
-  height: 5vh;
   padding: 0 1rem;
   font-size: 1rem;
   outline: transparent;
@@ -37,14 +34,13 @@ margin-bottom: 2px;
 
 .picture {
   width: 264px;
-  height: 320px;
   background-color: #FAC748;
+  border-radius: 10px;
 }
 
 .uploadPicture {
   background-color: #FAC748;
   width: 264px;
-  /* height: 320px; */
 }
 
 .upload-ButtonPostpicture {
