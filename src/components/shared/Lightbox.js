@@ -45,6 +45,10 @@ const Lightbox = ({ photos }) => {
     }
   }
 
+  if (photos.length === 0) {
+    return <p>Tu n'as pas encore posté de photo</p>
+  }
+
   return (
     <div className='gallery-lightbox-container'>
       {
