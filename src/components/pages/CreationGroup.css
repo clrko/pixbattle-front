@@ -136,7 +136,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1vh;
+  margin-top: 3vh;
 }
 
 .members {
@@ -146,29 +146,37 @@
 }
 
 .cancel-create-group {
-  border-radius: 50px;
-  border: none;
+  height: 40px;
+  width: 100px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: FuturaPTMedium;
+  font-size: 15px;
+  border-style: none;
+  outline: none;
+  font-weight: bolder;
+  letter-spacing: 0.5px;
   color: white;
-  height: 5vh;
-  padding: 0 1rem;
-  font-size: 1rem;
-  outline: transparent;
   background-color: red;
 }
 
 .create-group {
-  border-radius: 50px;
-  border: none;
-  color: white;
-  height: 5vh;
-  padding: 0 1rem;
-  font-size: 1rem;
-  outline: transparent;
+  height: 40px;
+  width: 100px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: FuturaPTMedium;
+  font-size: 15px;
+  border-style: none;
+  outline: none;
+  font-weight: bolder;
+  letter-spacing: 0.5px;
 }
 
 .create-enabled {
   background-color: #73DB5A;
   transition: all 0.2s ease-in-out;
+  color: white;
 }
 
 .create-enabled:hover {
@@ -191,8 +199,11 @@
 
 @media screen and (max-width: 500px) {
   .form-container {
-    width: 95%;
-    height: 100%;
-    border-radius: 0;
+    width: 87%;
+    height: 90%;
+    border-radius: 15px;
+    min-height: 480px;
+    padding: 30px 25px;
+    margin: 30px 25px;
   }
 }
