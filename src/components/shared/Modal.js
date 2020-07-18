@@ -3,10 +3,6 @@ import logoLP from '../../asset/logo/logo.svg'
 import './Modal.css'
 
 class ModalComponent extends Component {
-  componentDidMount () {
-
-  }
-
   render () {
     let modal = (
       <div className='modal-overlay-div'>
