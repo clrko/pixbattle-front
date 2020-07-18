@@ -98,7 +98,6 @@
   height: 15vh;
   overflow: scroll;
   padding: 0;
-  margin: 5% 0;
 }
 
 .emails-container::-webkit-scrollbar {
@@ -136,7 +135,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 3vh;
+  margin-top: 1vh;
 }
 
 .members {
@@ -202,8 +201,8 @@
     width: 87%;
     height: 90%;
     border-radius: 15px;
-    min-height: 480px;
-    padding: 30px 25px;
-    margin: 30px 25px;
+    min-height: 400px;
+    padding: 3px 25px;
+    margin: 20px 25px;
   }
 }

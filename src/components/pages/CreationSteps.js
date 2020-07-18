@@ -4,6 +4,8 @@ import CreationBattleRule from './CreationBattleRule'
 import CreationBattleTheme from './CreationBattleTheme'
 import CreationGroup from './CreationGroup'
 import Steps from './CreationStepper'
+import StickyFooter from '../shared/StickyFooter'
+import Navbar from '../shared/Navbar'
 
 class CreationSteps extends Component {
   state = {
@@ -33,11 +35,13 @@ class CreationSteps extends Component {
   render () {
     return (
       <div>
+        <Navbar />
         <Steps
           title={this.state.stepsTitles}
           number={this.state.stepsNumbers}
         />
         {this.getContent()}
+        <StickyFooter />
       </div>
     )
   }
