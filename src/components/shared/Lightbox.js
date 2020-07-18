@@ -139,87 +139,89 @@ const Lightbox = ({ photos, currentUserVotes }) => {
   })
 
   return (
-    <div className='gallery-lightbox-container'>
-      <section className='Gallery'>
-        {photos.map((photo, i) => (
-          <div className='gallery-img-container' key={photo.photo_id}>
-            <Photo photo={photo} handleClick={showPhotoUrl} id={i} currentUserVotes={currentUserVotes} />
-          </div>
-        ))}
-      </section>
-      <section className='lightbox' style={dispImgStyle}>
-        <div className='close' onClick={closeDisp}>
-          <i className='fas fa-times' />
-        </div>
-        <div className='carousel left' onClick={prevShow}>
-          <i className='fas fa-chevron-left' />
-        </div>
-        <div className='carousel right' onClick={nextShow}>
-          <i className='fas fa-chevron-right' />
-        </div>
-        <div className='lightbox-img-container'>
-          <img src={dispImg} alt={dispImg} className='lightbox-img' />
-        </div>
-        {
-          currentUserVotes.length === 0 &&
-            <div>
-              <div className='btn-vote-container'>
-                <label className={classnames('label-vote', { 'label-vote-active': selectedPhoto && selectedPhoto.vote === '1' })}>
-                  <input
-                    type='radio'
-                    value='1'
-                    checked={vote === '1'}
-                    onChange={getVote}
-                    id='one'
-                    name='one'
-                    className='input-vote'
-                  />
-                  <div className='stars-container'>
-                    <i className='fas fa-star' />
-                  </div>
-                </label>
-                <label className={classnames('label-vote', { 'label-vote-active': selectedPhoto && selectedPhoto.vote === '2' })}>
-                  <input
-                    type='radio'
-                    value='2'
-                    checked={vote === '2'}
-                    onChange={getVote}
-                    id='two'
-                    name='two'
-                    className='input-vote'
-                  />
-                  <div className='stars-container'>
-                    <i className='fas fa-star' />
-                    <i className='fas fa-star' />
-                  </div>
-                </label>
-                <label className={classnames('label-vote', { 'label-vote-active': selectedPhoto && selectedPhoto.vote === '3' })}>
-                  <input
-                    type='radio'
-                    value='3'
-                    checked={vote === '3'}
-                    onChange={getVote}
-                    id='three'
-                    name='three'
-                    className='input-vote'
-                  />
-                  <div className='stars-container'>
-                    <i className='fas fa-star' />
-                    <i className='fas fa-star' />
-                    <i className='fas fa-star' />
-                  </div>
-                </label>
-              </div>
-              <p className='number-of-votes'>Il te reste {numberOfVotes} votes</p>
+    <div>
+      <div className='gallery-lightbox-container'>
+        <section className='Gallery'>
+          {photos.map((photo, i) => (
+            <div className='gallery-img-container' key={photo.photo_id}>
+              <Photo photo={photo} handleClick={showPhotoUrl} id={i} currentUserVotes={currentUserVotes} />
             </div>
-        }
-      </section>
-      <div className='vote-status'>
-        {
-          currentUserVotes.length === 0
-            ? <button onClick={handleVotes}>valider les votes</button>
-            : <p>Tu as déjà voté pour cette battle !</p>
-        }
+          ))}
+        </section>
+        <section className='lightbox' style={dispImgStyle}>
+          <div className='close' onClick={closeDisp}>
+            <i className='fas fa-times' />
+          </div>
+          <div className='carousel left' onClick={prevShow}>
+            <i className='fas fa-chevron-left' />
+          </div>
+          <div className='carousel right' onClick={nextShow}>
+            <i className='fas fa-chevron-right' />
+          </div>
+          <div className='lightbox-img-container'>
+            <img src={dispImg} alt={dispImg} className='lightbox-img' />
+          </div>
+          {
+            currentUserVotes.length === 0 &&
+              <div>
+                <div className='btn-vote-container'>
+                  <label className={classnames('label-vote', { 'label-vote-active': selectedPhoto && selectedPhoto.vote === '1' })}>
+                    <input
+                      type='radio'
+                      value='1'
+                      checked={vote === '1'}
+                      onChange={getVote}
+                      id='one'
+                      name='one'
+                      className='input-vote'
+                    />
+                    <div className='stars-container'>
+                      <i className='fas fa-star' />
+                    </div>
+                  </label>
+                  <label className={classnames('label-vote', { 'label-vote-active': selectedPhoto && selectedPhoto.vote === '2' })}>
+                    <input
+                      type='radio'
+                      value='2'
+                      checked={vote === '2'}
+                      onChange={getVote}
+                      id='two'
+                      name='two'
+                      className='input-vote'
+                    />
+                    <div className='stars-container'>
+                      <i className='fas fa-star' />
+                      <i className='fas fa-star' />
+                    </div>
+                  </label>
+                  <label className={classnames('label-vote', { 'label-vote-active': selectedPhoto && selectedPhoto.vote === '3' })}>
+                    <input
+                      type='radio'
+                      value='3'
+                      checked={vote === '3'}
+                      onChange={getVote}
+                      id='three'
+                      name='three'
+                      className='input-vote'
+                    />
+                    <div className='stars-container'>
+                      <i className='fas fa-star' />
+                      <i className='fas fa-star' />
+                      <i className='fas fa-star' />
+                    </div>
+                  </label>
+                </div>
+                <p className='number-of-votes'>Il te reste {numberOfVotes} votes</p>
+              </div>
+          }
+        </section>
+        <div className='vote-status'>
+          {
+            currentUserVotes.length === 0
+              ? <button onClick={handleVotes}>valider les votes</button>
+              : <p>Tu as déjà voté pour cette battle !</p>
+          }
+        </div>
       </div>
     </div>
   )
