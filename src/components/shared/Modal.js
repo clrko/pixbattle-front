@@ -3,13 +3,20 @@ import logoLP from '../../asset/logo/logo.svg'
 import './Modal.css'
 
 class ModalComponent extends Component {
+  componentDidMount () {
+
+  }
+
   render () {
     let modal = (
       <div className='modal-overlay-div'>
         <div className='ModalComponent'>
-          <div className='modal-title-container'>
-            <img src={logoLP} alt='logo pix battle min' />
-          </div>
+          {
+            this.props.children._owner.type.name === 'LandingPage' &&
+              <div className='modal-title-container'>
+                <img src={logoLP} alt='logo pix battle min' />
+              </div>
+          }
           {this.props.children}
         </div>
       </div>

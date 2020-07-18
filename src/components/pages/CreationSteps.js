@@ -3,9 +3,9 @@ import CreationBattleDeadline from './CreationBattleDeadline'
 import CreationBattleRule from './CreationBattleRule'
 import CreationBattleTheme from './CreationBattleTheme'
 import CreationGroup from './CreationGroup'
+import Navbar from '../shared/Navbar'
 import Steps from './CreationStepper'
 import StickyFooter from '../shared/StickyFooter'
-import Navbar from '../shared/Navbar'
 
 class CreationSteps extends Component {
   state = {
