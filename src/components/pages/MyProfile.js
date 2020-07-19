@@ -1,13 +1,10 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import DropDown from '../shared/DropDown'
 import Navbar from '../shared/Navbar'
 import StickyFooter from '../shared/StickyFooter'
 import './MyProfile.css'
-
-const Menu = withRouter(DropDown)
 
 const mapStateToProps = state => {
   const { user, profileInfos } = state
@@ -40,7 +37,7 @@ const MyProfile = ({ user, profileInfos, history }) => {
   return (
     <div className='background-MyProfile'>
       <Navbar />
-      <Menu />
+      <DropDown />
       <div className='window-MyProfile'>
         <div className='name-fa-star-MyProfile'>
           <h1 className='name-MyProfile'>{user.username}
