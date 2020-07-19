@@ -232,7 +232,7 @@ class ListRankingMembers extends React.Component {
               <p className='p-margin-div-participant-RankingMembers'>{user.username}</p>
             </div>
             <div className='margin-fa-trophy-RankingMembers'>
-              <i class='fas fa-trophy fa-trophy-RankingMembers'><p className='p-user-victories-trophy-RankingMembers'>{user.victories}</p></i>
+              <i className='fas fa-trophy fa-trophy-RankingMembers'><p className='p-user-victories-trophy-RankingMembers'>{user.victories}</p></i>
             </div>
           </div>
         ))}
