@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Timer from 'react-compound-timer'
 import './BattlePostTimer.css'
 
-const BattlePostTimer = ({ deadline }) => {
+const BattlePostTimer = ({ deadline, history, battleId, groupId }) => {
   const startDate = new Date()
   const endDate = new Date(deadline)
-  const difference = (endDate.getTime() - startDate.getTime())
+  const difference = (endDate.getTime() - startDate.getTime() + 2)
+  console.log(difference)
+
+  useEffect(() => {
+    if (difference === 0) {
+      history.push(`/groups/${groupId}/battles/${battleId}/vote`)
+    }
+  }, [])
 
   if (!deadline) {
     return <p>loading...</p>

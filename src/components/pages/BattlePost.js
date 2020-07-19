@@ -66,6 +66,7 @@ class BattlePost extends React.Component {
 
   render () {
     const { battlePostInfo, deadline, selectedFile } = this.state
+    const { battleId, groupId } = this.props.match.params
     return (
       <div className='background-MyProfile'>
         <Navbar />
@@ -77,7 +78,7 @@ class BattlePost extends React.Component {
               <p className='battlePost-info'>{battlePostInfo.rule_name}</p>
             </div>
           </div>
-          <BattlePostTimer deadline={deadline} />
+          <BattlePostTimer deadline={deadline} groupId={groupId} battleId={battleId} />
           <div>
             <div className='countdown' />
             <img className='picture' src={selectedFile} alt='preview' />
