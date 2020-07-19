@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import BattlePostTimer from './BattlePostTimer'
 import CloudUpload from '../../asset/pictures/cloud-computing.png'
 import DropDown from '../shared/DropDown'
 import Navbar from '../shared/Navbar'
@@ -11,7 +12,8 @@ class BattlePost extends React.Component {
   state = {
     previewPicture: CloudUpload,
     selectedFile: CloudUpload,
-    BattlePostInfo: ''
+    battlePostInfo: '',
+    deadline: ''
   }
 
   componentDidMount () {
@@ -27,7 +29,10 @@ class BattlePost extends React.Component {
             authorization: `Bearer ${localStorage.getItem('token')}`
           }
         }
-      ).then(res => this.setState({ BattlePostInfo: res.data.battleInfos[0] }))
+      ).then(res => this.setState({
+        battlePostInfo: res.data.battleInfos[0],
+        deadline: res.data.battleInfos[0].deadline.replace('T', ' ').substr(0, 19)
+      }))
   }
 
   handleChange = event => {
@@ -57,21 +62,26 @@ class BattlePost extends React.Component {
   }
 
   render () {
+    const { battlePostInfo, deadline, selectedFile } = this.state
+    const { battleId, groupId } = this.props.match.params
     return (
       <div className='background-MyProfile'>
         <Navbar />
         <DropDown />
-        <div className='window-MyProfile'>
+        <div className='window-MyProfile battle-post-container'>
           <div className='battlePost-info-div'>
-            <h3 className='battlePost-rules'>Thème:</h3>
-            <p className='battlePost-info'>{this.state.BattlePostInfo.theme_name}</p>
-            <h3 className='battlePost-rules'>Contraintes:</h3>
-            <p className='battlePost-info'>{this.state.BattlePostInfo.rule_name}</p>
+            <div className='battle-post-infos'>
+              <h4 className='battlePost-rules'>Contraintes:</h4>
+              <p className='battlePost-info'>{battlePostInfo.rule_name}</p>
+            </div>
           </div>
-          <div className='countdown' />
-          <img className='picture' src={this.state.selectedFile} alt='preview' />
-          <input type='file' name='file' onChange={this.handleChange} />
-          <button className='upload-ButtonPostpicture' type='button' onClick={this.handleClick}>Upload</button>
+          <BattlePostTimer deadline={deadline} groupId={groupId} battleId={battleId} />
+          <div>
+            <div className='countdown' />
+            <img className='picture' src={selectedFile} alt='preview' />
+            <input type='file' name='file' className='choose-file-btn' onChange={this.handleChange} />
+            <button className='upload-ButtonPostpicture' type='button' onClick={this.handleClick}>Upload</button>
+          </div>
         </div>
         <StickyFooter />
       </div>
