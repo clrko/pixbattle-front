@@ -208,7 +208,7 @@ class CreationGroup extends Component {
                 : 'create-group create-disabled'
             }
             onClick={this.handleChangeSteps}
-            disabled={count < 3}
+            disabled={count < 4}
           >
             Valider
           </button>
