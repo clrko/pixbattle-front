@@ -5,8 +5,8 @@ import './BattlePostTimer.css'
 const BattlePostTimer = ({ deadline, history, battleId, groupId }) => {
   const startDate = new Date()
   const endDate = new Date(deadline)
-  const difference = (endDate.getTime() - startDate.getTime() + 2)
-  console.log(difference)
+  const utc = startDate.getTime() + (startDate.getTimezoneOffset() * 60000)
+  const difference = (endDate.getTime() - utc)
 
   useEffect(() => {
     if (difference === 0) {
