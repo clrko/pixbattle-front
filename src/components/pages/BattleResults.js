@@ -7,9 +7,9 @@ import avatar from '../../asset/pictures/avatar_MyProfile.png'
 import avatar2 from '../../asset/pictures/avatar2.png'
 import avatar3 from '../../asset/pictures/avatar3.png'
 import avatar4 from '../../asset/pictures/avatar4.png'
-import './Podium.css'
+import './BattleResults.css'
 
-class Podium extends React.Component {
+class BattleResults extends React.Component {
   state = {
     user: [
       {
@@ -155,4 +155,4 @@ class Podium extends React.Component {
   }
 }
 
-export default Podium
+export default BattleResults
