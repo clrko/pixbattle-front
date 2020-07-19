@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import './DropDown.css'
 
 const mapStateToProps = state => {
@@ -7,7 +8,7 @@ const mapStateToProps = state => {
   return { user }
 }
 
-const DropDown = ({ user, history, match }) => {
+const DropDownMyProfile = ({ user, history, match }) => {
   const handleChange = e => {
     history.push(e.target.value)
   }
@@ -25,4 +26,4 @@ const DropDown = ({ user, history, match }) => {
   )
 }
 
-export default connect(mapStateToProps)(DropDown)
+export default connect(mapStateToProps)(withRouter(DropDownMyProfile))
