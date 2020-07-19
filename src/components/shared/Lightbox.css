@@ -1,14 +1,26 @@
 .gallery-lightbox-container {
   background-color: #235789;
-  height: 90vh;
-  width: 100%;
+  width: 87%;
+  border-radius: 15px;
+  height: 450px;
+  padding: 3px 25px;
+  margin: 20px 25px;
   overflow: scroll;
   margin: auto;
 }
 
+.gallery-lightbox-container::-webkit-scrollbar {
+  width: 5px;
+}
+
+.gallery-lightbox-container::-webkit-scrollbar-thumb {
+  background-color: #FAC748;
+  border-radius: 10px;
+}
+
 .Gallery {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
   align-content: flex-start;
 }
