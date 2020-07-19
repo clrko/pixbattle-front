@@ -2,6 +2,15 @@
   margin-bottom: 10px;
 }
 
+.battle-post-container {
+  width: 85%;
+  height: 67vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+}
+
 .battlePost-info {
   background-color: #FAC748;
   color: #3181C8;
@@ -18,24 +27,39 @@
   text-align: center;
 }
 
+.battle-post-infos {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0.5rem 0;
+}
+
 .battlePost-rules {
   color: #FDFFFC;
   text-align: center;
+  margin-right: 1rem;
 }
 
 .countdown {
   letter-spacing: 2px;
 }
 
-.countdown span{
+.countdown span {
   letter-spacing: 3px;
   background-color: #FAC748;
 }
 
 .picture {
-  width: 264px;
+  width: 85%;
   background-color: #FAC748;
   border-radius: 10px;
+  margin: auto;
+  object-fit: contain;
+}
+
+.choose-file-btn {
+  background-color: transparent;
+  border: none;
+  color: white;
 }
 
 .uploadPicture {
