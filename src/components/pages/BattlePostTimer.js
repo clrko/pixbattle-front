@@ -17,33 +17,31 @@ const BattlePostTimer = ({ deadline }) => {
         initialTime={difference}
         direction='backward'
       >
-        <>
-          <div className='battle-post-timer-container'>
-            <div className='battle-post-timer-count'>
-              <Timer.Days />
-              <hr />
-              <p>jours</p>
-            </div>
-            <span>:</span>
-            <div className='battle-post-timer-count'>
-              <Timer.Hours />
-              <hr />
-              <p>heures</p>
-            </div>
-            <span>:</span>
-            <div className='battle-post-timer-count'>
-              <Timer.Minutes />
-              <hr />
-              <p>min</p>
-            </div>
-            <span>:</span>
-            <div className='battle-post-timer-count'>
-              <Timer.Seconds />
-              <hr />
-              <p>sec</p>
-            </div>
+        <div className='battle-post-timer-container'>
+          <div className='battle-post-timer-count'>
+            <Timer.Days />
+            <hr />
+            <p>jours</p>
           </div>
-        </>
+          <span>:</span>
+          <div className='battle-post-timer-count'>
+            <Timer.Hours />
+            <hr />
+            <p>heures</p>
+          </div>
+          <span>:</span>
+          <div className='battle-post-timer-count'>
+            <Timer.Minutes />
+            <hr />
+            <p>min</p>
+          </div>
+          <span>:</span>
+          <div className='battle-post-timer-count'>
+            <Timer.Seconds />
+            <hr />
+            <p>sec</p>
+          </div>
+        </div>
       </Timer>
     </div>
   )
