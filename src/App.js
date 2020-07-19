@@ -12,7 +12,7 @@ import MyGroups from './components/pages/MyGroups'
 import MyProfile from './components/pages/MyProfile'
 import MyPictures from './components/pages/MyPictures'
 import MyRanking from './components/pages/MyRanking'
-import Podium from './components/pages/Podium'
+import BattleResults from './components/pages/BattleResults'
 import BattlePost from './components/pages/BattlePost'
 
 const App = () => {
@@ -30,7 +30,7 @@ const App = () => {
         <Route path='/:username/ranking' component={MyRanking} />
         <Route path='/:username/pictures' component={MyPictures} />
         <Route exact path='/:username/battles' component={MyBattles} />
-        <Route path='/groups/:groupId/battles/:battleId/results' component={Podium} />
+        <Route path='/groups/:groupId/battles/:battleId/results' component={BattleResults} />
         <Route path='/groups/:groupId/battles/:battleId/post-picture' component={BattlePost} />
         <Route path='/groups/:groupId/battles/:battleId/vote' component={BattleVote} />
       </Switch>

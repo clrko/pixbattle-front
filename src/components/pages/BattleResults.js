@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import { withRouter } from 'react-router-dom'
 import DropDown from '../shared/DropDown'
 import Navbar from '../shared/Navbar'
 import StickyFooter from '../shared/StickyFooter'
@@ -8,11 +7,9 @@ import avatar from '../../asset/pictures/avatar_MyProfile.png'
 import avatar2 from '../../asset/pictures/avatar2.png'
 import avatar3 from '../../asset/pictures/avatar3.png'
 import avatar4 from '../../asset/pictures/avatar4.png'
-import './Podium.css'
+import './BattleResults.css'
 
-const Menu = withRouter(DropDown)
-
-class Podium extends React.Component {
+class BattleResults extends React.Component {
   state = {
     user: [
       {
@@ -95,7 +92,7 @@ class Podium extends React.Component {
     return (
       <div>
         <Navbar />
-        <Menu />
+        <DropDown />
         <div className='div-AvatarPodium'>
           <div className='div-center-AvatarPodium'>
             <div className='AvatarPodium second-position'>
@@ -158,4 +155,4 @@ class Podium extends React.Component {
   }
 }
 
-export default Podium
+export default BattleResults
