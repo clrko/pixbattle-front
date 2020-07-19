@@ -1,5 +1,4 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import CloudUpload from '../../asset/pictures/cloud-computing.png'
 import DropDown from '../shared/DropDown'
@@ -7,8 +6,6 @@ import Navbar from '../shared/Navbar'
 import StickyFooter from '../shared/StickyFooter'
 import './BattlePost.css'
 import './MyProfile.css'
-
-const Menu = withRouter(DropDown)
 
 class BattlePost extends React.Component {
   state = {
@@ -64,7 +61,7 @@ class BattlePost extends React.Component {
     return (
       <div className='background-MyProfile'>
         <Navbar />
-        <Menu />
+        <DropDown />
         <div className='window-MyProfile'>
           <div className='countdown' />
           <img className='picture' src={this.state.selectedFile} alt='preview' />
