@@ -10,7 +10,8 @@ import './MyProfile.css'
 class BattlePost extends React.Component {
   state = {
     previewPicture: CloudUpload,
-    selectedFile: CloudUpload
+    selectedFile: CloudUpload,
+    BattlePostInfo: ''
   }
 
   componentDidMount () {
@@ -26,9 +27,7 @@ class BattlePost extends React.Component {
             authorization: `Bearer ${localStorage.getItem('token')}`
           }
         }
-      ).then(res => {
-        console.log(res.data)
-      })
+      ).then(res => this.setState({ BattlePostInfo: res.data.battleInfos[0] }))
   }
 
   handleChange = event => {
@@ -63,6 +62,12 @@ class BattlePost extends React.Component {
         <Navbar />
         <DropDown />
         <div className='window-MyProfile'>
+          <div className='battlePost-info-div'>
+            <h3 className='battlePost-rules'>Thème:</h3>
+            <p className='battlePost-info'>{this.state.BattlePostInfo.theme_name}</p>
+            <h3 className='battlePost-rules'>Contraintes:</h3>
+            <p className='battlePost-info'>{this.state.BattlePostInfo.rule_name}</p>
+          </div>
           <div className='countdown' />
           <img className='picture' src={this.state.selectedFile} alt='preview' />
           <input type='file' name='file' onChange={this.handleChange} />

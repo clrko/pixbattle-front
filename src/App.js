@@ -26,7 +26,7 @@ const App = () => {
         <Route path='/battle-creation/summary' component={CreationBattleSummary} />
         <Route path='/group-creation/group-created/:id' component={CreationSteps} />
         <Route exact path='/:username' component={MyProfile} />
-        <Route path='/:username/groups' component={MyGroups} />
+        <Route eaxct path='/:username/groups' component={MyGroups} />
         <Route path='/:username/ranking' component={MyRanking} />
         <Route path='/:username/pictures' component={MyPictures} />
         <Route exact path='/:username/battles' component={MyBattles} />
