@@ -1,16 +1,19 @@
 import React from 'react'
 import axios from 'axios'
-import { withRouter } from 'react-router-dom'
-import DropDown from '../shared/DropDown'
-import Navbar from '../shared/Navbar'
-import StickyFooter from '../shared/StickyFooter'
+// import { withRouter } from 'react-router-dom'
+// import DropDown from '../shared/DropDown'
+// import Navbar from '../shared/Navbar'
+// import StickyFooter from '../shared/StickyFooter'
 import './Podium.css'
 
-const Menu = withRouter(DropDown)
+// const Menu = withRouter(DropDown)
 
 class Podium extends React.Component {
   state = {
-    users: []
+    users: '',
+    scores: '',
+    victories: '',
+    allInfos: ''
   }
 
   componentDidMount () {
@@ -18,14 +21,31 @@ class Podium extends React.Component {
   }
 
   getResults = () => {
-    const { battleId } = this.props.match.params
+    const { battleId, groupId } = this.props.match.params
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/battle/${battleId}/results`)
+      .get(`${process.env.REACT_APP_SERVER_URL}/battle/${groupId}/${battleId}/results`)
       .then(res =>
         this.setState({
-          user: res.data
-        })
+          users: res.data.infosUsers,
+          scores: res.data.sortedScores,
+          victories: res.data.victories
+        }, () => this.allInfos(), console.log('function', this.allInfos()))
       )
+  }
+
+  allInfos = () => {
+    const infos = [...this.state.users]
+    const scores = [...this.state.scores]
+    const allInfosTemp = []
+    infos.find((info, i) => {
+      if (info.user_id === scores[i].user_id) {
+        const id = scores[i].user_id
+        console.log(id)
+        allInfosTemp.push(info, scores[i])
+      }
+      return allInfosTemp
+    })
+    this.setState({ allInfos: allInfosTemp })
   }
 
   handleCreateGroupe = e => {
@@ -48,17 +68,18 @@ class Podium extends React.Component {
   }
 
   render () {
-    const { user } = this.state
+    const { users, allInfos } = this.state
 
-    if (user === undefined) {
+    if (users === undefined) {
       return <p>loading...</p>
     }
 
     return (
       <div>
-        <Navbar />
-        <Menu />
-        <div className='div-AvatarPodium'>
+        {/* <Navbar />
+        <Menu /> */}
+        {allInfos && console.log('state', allInfos)}
+        {/* <div className='div-AvatarPodium'>
           <div className='div-center-AvatarPodium'>
             <div className='AvatarPodium second-position'>
               <div className='div-p-fas'>
@@ -113,8 +134,8 @@ class Podium extends React.Component {
               </div>
             ))}
           </div>
-        </div>
-        <StickyFooter />
+        </div> */}
+        {/* <StickyFooter /> */}
       </div>
     )
   }
