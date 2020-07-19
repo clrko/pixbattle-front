@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import './DropDown.css'
 
@@ -25,4 +26,4 @@ const DropDown = ({ user, history, match }) => {
   )
 }
 
-export default connect(mapStateToProps)(DropDown)
+export default connect(mapStateToProps)(withRouter(DropDown))

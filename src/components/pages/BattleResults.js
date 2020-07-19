@@ -1,14 +1,11 @@
 import React from 'react'
 import axios from 'axios'
-// import { withRouter } from 'react-router-dom'
 // import DropDown from '../shared/DropDown'
 // import Navbar from '../shared/Navbar'
 // import StickyFooter from '../shared/StickyFooter'
-import './Podium.css'
+import './BattleResults.css'
 
-// const Menu = withRouter(DropDown)
-
-class Podium extends React.Component {
+class BattleResults extends React.Component {
   state = {
     users: '',
     scores: '',
@@ -141,4 +138,4 @@ class Podium extends React.Component {
   }
 }
 
-export default Podium
+export default BattleResults
