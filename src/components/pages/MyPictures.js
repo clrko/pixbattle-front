@@ -25,7 +25,7 @@ class MyPictures extends Component {
 
   getPhotos = () => {
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/gallery/${this.props.user.userId}`,
+      .get(`${process.env.REACT_APP_SERVER_URL}/gallery/user/${this.props.user.userId}`,
         {
           headers: {
             authorization: `Bearer ${localStorage.getItem('token')}`
