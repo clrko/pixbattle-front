@@ -5,12 +5,14 @@ const Photo = ({ photo, id, handleClick, currentUserVotes }) => {
   const [currentVote, setCurrentVote] = useState(null)
 
   useEffect(() => {
-    currentUserVotes.find(vote => {
-      if (vote.photo_id === id) {
-        setCurrentVote(vote.vote)
-      }
-      return currentVote
-    })
+    if (currentUserVotes) {
+      currentUserVotes.find(vote => {
+        if (vote.photo_id === id) {
+          setCurrentVote(vote.vote)
+        }
+        return currentVote
+      })
+    }
   })
 
   return (
