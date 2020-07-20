@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { LOGIN, GET_INFOS } from '../../store/action-types'
+import { LOGIN } from '../../store/action-types'
 import classNames from 'classnames'
 import './FormLogin.css'
 import './FormRegistration.css'
@@ -46,25 +46,15 @@ class FormRegistration extends React.Component {
     return (password === checkPassword)
   }
 
-  handleSubmit = async (e) => {
+  handleSubmit = e => {
     e.preventDefault()
     if (this.checkPassword() && this.checkEmail() && this.checkUsername()) {
       const { dispatch, history } = this.props
-      await axios
+      axios
         .post(`${process.env.REACT_APP_SERVER_URL}/register`, this.state)
         .then(res => {
           localStorage.setItem('token', res.headers['x-access-token'])
           dispatch({ type: LOGIN, ...res.data })
-        })
-      await axios
-        .get(`${process.env.REACT_APP_SERVER_URL}/profile`,
-          {
-            headers: {
-              authorization: `Bearer ${localStorage.getItem('token')}`
-            }
-          })
-        .then(res => {
-          dispatch({ type: GET_INFOS, ...res.data })
           history.push(`/${this.props.user.username}`)
         })
     } else {
