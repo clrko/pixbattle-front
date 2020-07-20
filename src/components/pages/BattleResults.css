@@ -1,0 +1,199 @@
+.div-AvatarPodium {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.div-center-AvatarPodium {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.AvatarPodium {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.div-p-fas {
+  display: flex;
+  flex-direction: row;
+}
+
+.p-AvatarPodium {
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.AvatarPodium .fa-star {
+  color: #FAC748;
+  padding-left: 6px;
+  font-size: 1.4rem;
+}
+
+.div-img-Avatar1 {
+  border-radius: 50%;
+  border: solid 8px #f5d435;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+.div-img-Avatar2 {
+  border-radius: 50%;
+  border: solid 8px #b2b2b2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+.div-img-Avatar3 {
+  border-radius: 50%;
+  border: solid 8px #bc8585;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+.div-img-Avatar1 img {
+  width: 80px;
+}
+
+.div-img-Avatar2 img {
+  width: 80px;
+}
+
+.div-img-Avatar3 img {
+  width: 80px;
+}
+
+.AvatarPodium .fa-medal {
+  font-size: 2.5rem;
+}
+
+.medal1 {
+  color: #f5d435;
+  position: relative;
+  bottom: 16px;
+}
+
+.medal2 {
+  color: #b2b2b2;
+  position: relative;
+  bottom: 16px;
+}
+
+.medal3 {
+  color: #bc8585;
+  position: relative;
+  bottom: 16px;
+}
+
+.first-position {
+  z-index: 1;
+  position: relative;
+  bottom: 25px;
+}
+
+.second-position {
+  position: relative;
+  left: 35px;
+}
+
+.third-position {
+  position: relative;
+  right: 35px;
+}
+
+.h1-div-congratulations {
+  font-size: 1.3rem;
+}
+
+.button-div-congratulations {
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+
+.div-attendee-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #235789;
+  border-radius: 18px;
+  width: 80%;
+  height: 170px;
+  margin-top: 3px;
+  overflow: auto;
+  border: 6px solid #235789;
+}
+
+
+.div-attendee-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.div-attendee-list::-webkit-scrollbar-thumb {
+  background-color: #FAC748;
+  border-radius: 10px;
+}
+
+.p-div-participant {
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-align: left;
+}
+
+.div-participant {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 4px 0;
+  width: 100%;
+}
+
+.img-attendee-list {
+  max-width: 35px;
+  border-radius: 50%;
+}
+
+.fa-star-attendee-list {
+  color: #FAC748;
+  font-size: 1.8rem;
+  display: flex;
+}
+
+.margin-div-participant {
+  margin: 0 15px;
+}
+
+.margin-fa-star-attendee-list {
+  margin-left: auto;
+  padding-right: 10px;
+}
+
+.p-user-victories-podium {
+  color: black;
+  font-size: 0.9rem;
+  position: relative;
+  bottom: 17px;
+  left: 8px;
+}
+
+.p-user-victories {
+  position: relative;
+  color: black;
+  font-size: 1rem;
+  right: 21px;
+  top: 7px;
+}

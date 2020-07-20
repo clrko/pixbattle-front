@@ -1,0 +1,137 @@
+.gallery-lightbox-container {
+  background-color: #235789;
+  width: 87%;
+  border-radius: 15px;
+  height: 450px;
+  padding: 3px 25px;
+  margin: 20px 25px;
+  overflow: scroll;
+  margin: auto;
+}
+
+.gallery-lightbox-container::-webkit-scrollbar {
+  width: 5px;
+}
+
+.gallery-lightbox-container::-webkit-scrollbar-thumb {
+  background-color: #FAC748;
+  border-radius: 10px;
+}
+
+.Gallery {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  z-index: 5;
+  background: rgba(0, 0, 0, .9);
+  display: none;
+}
+
+.lightbox .carousel {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  z-index: 6;
+}
+
+.lightbox .carousel.left {
+  left: -10vw;
+  position: relative;
+  top: 46vh;
+}
+
+.lightbox .carousel.right {
+  right: -59vw;
+  position: relative;
+  top: 46vh;
+}
+
+.lightbox .close {
+  height: 20px;
+  width: 60px;
+  text-align: center;
+  margin-top: 10px;
+  z-index: 6;
+  cursor: pointer;
+}
+
+.lightbox-img {
+  position: absolute;
+  height: 70%;
+  width: 95%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+}
+
+.fa-chevron-left,
+.fa-chevron-right {
+  color: white;
+  font-size: 3rem;
+}
+
+.fa-times {
+  color: white;
+  font-size: 2rem;
+}
+
+.btn-vote-container {
+  position: relative;
+  left: -18vw;
+  top: 87vh;
+  display: flex;
+}
+
+.input-vote {
+  display: none;
+}
+
+.label-vote {
+  margin: 0 1vw;
+  background-color: #235785;
+  height: 70px;
+  width: 70px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-vote {
+  margin: 0 2vw;
+}
+
+.fa-star {
+  color: #FAC745;
+  font-size: 1.2rem;
+}
+
+.stars-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.label-vote-active {
+  background-color: red;
+}
+
+.vote-status {
+  text-align: center;
+  color: white;
+}
+
+.number-of-votes {
+  color: white;
+}

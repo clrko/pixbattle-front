@@ -1,0 +1,28 @@
+.TabSelector {
+  display: flex;
+  height: 10vh;
+}
+
+.TabSelector button {
+  border: 2px solid transparent;
+  background: white;
+  color: #235789;
+  font-size: 1rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 50%;
+}
+
+.TabSelector button {
+  border-bottom: 2px solid #eee;
+}
+
+.TabSelector button.active {
+  border-bottom: 4px solid #FAC748;
+  color: #FAC748;
+}
+
+.TabSelector button:focus {
+  outline: none;
+}

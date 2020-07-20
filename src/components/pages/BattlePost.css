@@ -1,0 +1,79 @@
+.battlePost-info-div {
+  margin-bottom: 10px;
+}
+
+.battle-post-container {
+  width: 85%;
+  height: 67vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.battlePost-info {
+  background-color: #FAC748;
+  color: #3181C8;
+  cursor: pointer;
+  font-family: FuturaPTMedium;
+  border-style: none;
+  font-weight: bolder;
+  letter-spacing: 0.5px;
+  border-radius: 50px;
+  border: none;
+  padding: 0 1rem;
+  font-size: 1rem;
+  outline: transparent;
+  text-align: center;
+}
+
+.battle-post-infos {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0.5rem 0;
+}
+
+.battlePost-rules {
+  color: #FDFFFC;
+  text-align: center;
+  margin-right: 1rem;
+}
+
+.countdown {
+  letter-spacing: 2px;
+}
+
+.countdown span {
+  letter-spacing: 3px;
+  background-color: #FAC748;
+}
+
+.picture {
+  width: 85%;
+  background-color: #FAC748;
+  border-radius: 10px;
+  margin: auto;
+  object-fit: contain;
+}
+
+.choose-file-btn {
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+
+.uploadPicture {
+  background-color: #FAC748;
+  width: 264px;
+}
+
+.upload-ButtonPostpicture {
+  border-radius: 50px;
+  border: none;
+  color: white;
+  height: 5vh;
+  padding: 0 1rem;
+  font-size: 1rem;
+  outline: transparent;
+  background-color: #FAC748;
+}

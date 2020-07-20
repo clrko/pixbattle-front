@@ -1,0 +1,94 @@
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.background-MyProfile {
+  width: 100%;
+  background-color: #3181C8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.window-MyProfile {
+  background-color: #235789;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 75vw;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.name-MyProfile {
+  font-size: 1.8rem;
+}
+
+.star-icon-MyProfile {
+  color: #FAC748;
+  padding-left: 15px;
+  font-size: 2.2rem;
+  position: absolute;
+}
+
+.p-victory-point-MyProfile {
+  position: relative;
+  bottom: 24px;
+  left: 15px;
+  color: black;
+  font-size: 1rem;
+}
+
+.div-avatar-Myprofile {
+  margin-top: 30px;
+}
+
+.avatar-MyProfile {
+  max-width: 150px;
+  border-radius: 100px;
+}
+
+.div-informations-MyProfile {
+  color: #FAC748;
+  margin-top: 15px;
+  font-size: 1.2rem;
+  display: flex;
+  font-weight: bold;
+  flex-direction: column;
+  align-items: center;
+}
+
+.div-informations-MyProfile p {
+  padding: 1px
+}
+
+.h1-title-MyProfile {
+  font-size: 1.1em;
+  padding-bottom: 10px;
+  color: white;
+}
+
+.button-createdNewGroup-MyProfile {
+  background-color: #FAC748;
+  color: #235789;
+  margin-top: 30px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  width: 100%;
+  height: 30px;
+  border-radius: 20px;
+  border: none;
+  outline: 0;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 600px) {
+  .window-MyProfile {
+    width: 30vw;
+  }
+}
