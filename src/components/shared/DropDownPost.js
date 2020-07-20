@@ -19,8 +19,8 @@ class DropDownPost extends React.Component {
     return (
       <div className='background-DropDown'>
         <select value={selectedOption} className='DropDown' onChange={this.handleChange}>
-          <option value='/groups/:groupId/battles/:battleId/post-picture'>Poster</option>
-          <option value='/groups/:groupId/battles/:battleId/post-picture/participants'>Participants</option>
+          <option value={`/groups/${match.params.groupId}/battles/${match.params.battleId}/post-picture`}>Poster</option>
+          <option value={`/groups/${match.params.groupId}/battles/${match.params.battleId}/post-picture/participants`}>Participants</option>
         </select>
       </div>
     )
