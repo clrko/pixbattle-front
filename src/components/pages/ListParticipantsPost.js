@@ -109,9 +109,6 @@ class ListParticipantsPost extends React.Component {
       <div className='window-ListParticipantsPost scrollbar-ListParticipantsPost'>
         {this.state.user.map((user, i) => (
           <div key={i} className='div-participants-ListParticipantsPost'>
-            {/* <div className='margin-div-participant-RankingMembers'>
-              <p className='p-div-participant-RankingMembers'>{user.id}.</p>
-            </div> */}
             <div className='margin-div-participant-ListParticipantsPost'>
               <img className='img-attendee-list-ListParticipantsPost' src={user.avatar} alt='avatar' />
             </div>
