@@ -14,25 +14,26 @@ import MyPictures from './components/pages/MyPictures'
 import MyRanking from './components/pages/MyRanking'
 import Podium from './components/pages/Podium'
 import PostPicture from './components/pages/PostPicture'
+import PrivateRoute from './components/shared/PrivateRoute'
 
 const App = () => {
   return (
     <div>
       <Switch>
         <Route exact path='/' component={LandingPage} />
-        <Route path='/battle-creation/deadline' component={CreationBattleDeadline} />
-        <Route path='/battle-creation/rule' component={CreationBattleRule} />
-        <Route path='/battle-creation/theme' component={CreationBattleTheme} />
-        <Route path='/battle-creation/summary' component={CreationBattleSummary} />
-        <Route path='/group-creation/group-created/:id' component={CreationSteps} />
-        <Route exact path='/:username' component={MyProfile} />
-        <Route path='/:username/groups' component={MyGroups} />
-        <Route path='/:username/ranking' component={MyRanking} />
-        <Route path='/:username/pictures' component={MyPictures} />
-        <Route exact path='/:username/battles' component={MyBattles} />
-        <Route path='/:username/battles/:id/results' component={Podium} />
-        <Route path='/battles/:id/post-picture' component={PostPicture} />
-        <Route path='/battles/:id/vote' component={BattleVote} />
+        <PrivateRoute path='/battle-creation/deadline' component={CreationBattleDeadline} />
+        <PrivateRoute path='/battle-creation/rule' component={CreationBattleRule} />
+        <PrivateRoute path='/battle-creation/theme' component={CreationBattleTheme} />
+        <PrivateRoute path='/battle-creation/summary' component={CreationBattleSummary} />
+        <PrivateRoute path='/group-creation/group-created/:id' component={CreationSteps} />
+        <PrivateRoute exact path='/:username' component={MyProfile} />
+        <PrivateRoute path='/:username/groups' component={MyGroups} />
+        <PrivateRoute path='/:username/ranking' component={MyRanking} />
+        <PrivateRoute path='/:username/pictures' component={MyPictures} />
+        <PrivateRoute exact path='/:username/battles' component={MyBattles} />
+        <PrivateRoute path='/:username/battles/:id/results' component={Podium} />
+        <PrivateRoute path='/battles/:id/post-picture' component={PostPicture} />
+        <PrivateRoute path='/battles/:id/vote' component={BattleVote} />
       </Switch>
     </div>
   )
