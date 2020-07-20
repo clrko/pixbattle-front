@@ -1,5 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
+import BattlePost from './components/pages/BattlePost'
+import BattleResults from './components/pages/BattleResults'
 import BattleVote from './components/pages/BattleVote'
 import CreationBattleDeadline from './components/pages/CreationBattleDeadline'
 import CreationBattleRule from './components/pages/CreationBattleRule'
@@ -12,27 +14,26 @@ import MyGroups from './components/pages/MyGroups'
 import MyProfile from './components/pages/MyProfile'
 import MyPictures from './components/pages/MyPictures'
 import MyRanking from './components/pages/MyRanking'
-import BattleResults from './components/pages/BattleResults'
-import BattlePost from './components/pages/BattlePost'
+import PrivateRoute from './components/shared/PrivateRoute'
 
 const App = () => {
   return (
     <div>
       <Switch>
         <Route exact path='/' component={LandingPage} />
-        <Route path='/battle-creation/deadline' component={CreationBattleDeadline} />
-        <Route path='/battle-creation/rule' component={CreationBattleRule} />
-        <Route path='/battle-creation/theme' component={CreationBattleTheme} />
-        <Route path='/battle-creation/summary' component={CreationBattleSummary} />
-        <Route path='/group-creation/group-created/:id' component={CreationSteps} />
-        <Route exact path='/:username' component={MyProfile} />
-        <Route eaxct path='/:username/groups' component={MyGroups} />
-        <Route path='/:username/ranking' component={MyRanking} />
-        <Route path='/:username/pictures' component={MyPictures} />
-        <Route exact path='/:username/battles' component={MyBattles} />
-        <Route path='/groups/:groupId/battles/:battleId/results' component={BattleResults} />
-        <Route path='/groups/:groupId/battles/:battleId/post-picture' component={BattlePost} />
-        <Route path='/groups/:groupId/battles/:battleId/vote' component={BattleVote} />
+        <PrivateRoute path='/battle-creation/deadline' component={CreationBattleDeadline} />
+        <PrivateRoute path='/battle-creation/rule' component={CreationBattleRule} />
+        <PrivateRoute path='/battle-creation/theme' component={CreationBattleTheme} />
+        <PrivateRoute path='/battle-creation/summary' component={CreationBattleSummary} />
+        <PrivateRoute path='/group-creation/group-created/:id' component={CreationSteps} />
+        <PrivateRoute exact path='/:username' component={MyProfile} />
+        <PrivateRoute exact path='/:username/groups' component={MyGroups} />
+        <PrivateRoute path='/:username/ranking' component={MyRanking} />
+        <PrivateRoute path='/:username/pictures' component={MyPictures} />
+        <PrivateRoute exact path='/:username/battles' component={MyBattles} />
+        <PrivateRoute path='/groups/:groupId/battles/:battleId/results' component={BattleResults} />
+        <PrivateRoute path='/groups/:groupId/battles/:battleId/post-picture' component={BattlePost} />
+        <PrivateRoute path='/groups/:groupId/battles/:battleId/vote' component={BattleVote} />
       </Switch>
     </div>
   )

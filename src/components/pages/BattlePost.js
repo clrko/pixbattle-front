@@ -3,8 +3,6 @@ import axios from 'axios'
 import BattlePostTimer from './BattlePostTimer'
 import CloudUpload from '../../asset/pictures/cloud-computing.png'
 import DropDown from '../shared/DropDown'
-import Navbar from '../shared/Navbar'
-import StickyFooter from '../shared/StickyFooter'
 import './BattlePost.css'
 import './MyProfile.css'
 
@@ -69,7 +67,6 @@ class BattlePost extends React.Component {
     const { battleId, groupId } = this.props.match.params
     return (
       <div className='background-MyProfile'>
-        <Navbar />
         <DropDown />
         <div className='window-MyProfile battle-post-container'>
           <div className='battlePost-info-div'>
@@ -86,7 +83,6 @@ class BattlePost extends React.Component {
             <button className='upload-ButtonPostpicture' type='button' onClick={this.handleClick}>Upload</button>
           </div>
         </div>
-        <StickyFooter />
       </div>
     )
   }

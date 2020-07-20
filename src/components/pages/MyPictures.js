@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
-import Navbar from '../shared/Navbar'
 import DropDown from '../shared/DropDown'
 import Lightbox from '../shared/Lightbox'
-import StickyFooter from '../shared/StickyFooter'
 import './MyPictures.css'
 
 const mapStateToProps = state => {
@@ -36,12 +34,10 @@ class MyPictures extends Component {
     const { photos } = this.state
     return (
       <div className='background-MyPictures'>
-        <Navbar />
         <DropDown />
         <div className='window-MyPictures'>
           <Lightbox photos={photos} />
         </div>
-        <StickyFooter />
       </div>
     )
   }
