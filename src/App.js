@@ -38,7 +38,7 @@ const App = () => {
         <PrivateRoute path='/groups/:groupId/battles/:battleId/results/photos' component={BattleResultsPhotos} />
         <PrivateRoute exact path='/groups/:groupId/battles/:battleId/post-picture' component={BattlePost} />
         <PrivateRoute path='/groups/:groupId/battles/:battleId/post-picture/participants' component={ParticipantsPost} />
-        <PrivateRoute path='/groups/:groupId/battles/:battleId/vote' component={BattleVote} />
+        <PrivateRoute exact path='/groups/:groupId/battles/:battleId/vote' component={BattleVote} />
         <PrivateRoute path='/groups/:groupId/battles/:battleId/vote/participants' component={ParticipantsVote} />
       </Switch>
     </div>
