@@ -55,7 +55,7 @@ class BattlePost extends React.Component {
         }
       })
       .then(res => {
-        alert('Bravo! Votre photo a bien été postée')
+        alert('Bravo! Ta photo a bien été postée')
       })
       .catch(() => {
         alert("Une erreur s'est produite pendant le téléchargement ! Réessaye s'il te plait.")
