@@ -1,9 +1,8 @@
 .gallery-image {
   border-radius: 10px;
-  width: 130px;
-  height: 130px;
+  width: 120px;
+  height: 120px;
   object-fit: cover;
-  margin: 15px;
   display: flex;
   flex-direction: column;
 }
@@ -13,13 +12,12 @@
 }
 
 .empty-stars-container {
-  width: 162px;
+  width: 100px;
   height: 32px;
 }
 
 .stars-container-photo,
 .empty-stars-container {
   position: relative;
-  top: 30px;
-  left: 10px;
+  top: 15px;
 }

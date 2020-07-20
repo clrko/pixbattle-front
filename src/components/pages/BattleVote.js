@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-// import Footer from '../shared/StickyFooter'
 import Navbar from '../shared/Navbar'
 import Lightbox from '../shared/Lightbox'
 import DropDownVote from '../shared/DropDownVote'
-// import Navbar from '../shared/Navbar'
+import BattleVoteLightbox from './BattleVoteLightbox'
+import StickyFooter from '../shared/StickyFooter'
 
 class BattleVote extends Component {
   state = {
@@ -52,7 +52,8 @@ class BattleVote extends Component {
         <Navbar />
         <DropDownVote />
         <Lightbox photos={photos} currentUserVotes={currentUserVotes} />
-        {/* <Footer /> */}
+        <BattleVoteLightbox photos={photos} currentUserVotes={currentUserVotes} />
+        <StickyFooter />
       </div>
     )
   }

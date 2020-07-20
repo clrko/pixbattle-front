@@ -19,8 +19,8 @@ class DropDownVote extends React.Component {
     return (
       <div className='background-DropDown'>
         <select value={selectedOption} className='DropDown' onChange={this.handleChange}>
-          <option value='/vote'>Voter</option>
-          <option value='/ranking'>Participants</option>
+          <option value='/groups/:groupId/battles/:battleId/vote'>Voter</option>
+          <option value='/groups/:groupId/battles/:battleId/vote/participants'>Participants</option>
         </select>
       </div>
     )

@@ -1,0 +1,8 @@
+.background-ParticipantsPost {
+  width: 100%;
+  background-color: #3181C8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
