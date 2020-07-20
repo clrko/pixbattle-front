@@ -56,8 +56,11 @@ class BattlePost extends React.Component {
           authorization: `Bearer ${localStorage.getItem('token')}`
         }
       })
+      .then(res => {
+        alert('Bravo! Ta photo a bien été postée')
+      })
       .catch(() => {
-        alert('Error while uploading the picture! Try again please.')
+        alert("Une erreur s'est produite pendant le téléchargement ! Réessaye s'il te plait.")
       })
   }
 
