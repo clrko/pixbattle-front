@@ -3,9 +3,7 @@ import moment from 'moment'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import MyBattlesCardList from './MyBattlesCardList'
-import Navbar from '../shared/Navbar'
 import PageHeader from '../shared/PageHeader.js'
-import StickyFooter from '../shared/StickyFooter'
 import './MyBattles.css'
 
 const mapStateToProps = state => {
@@ -98,7 +96,6 @@ const MyBattles = ({ user, history, location }) => {
 
   return (
     <div className='MyBattles-background'>
-      <Navbar />
       <PageHeader pageTitle={location.state ? `Mes Battles - Groupe ${location.state.groupName}` : 'Mes Battles'} />
       <MyBattlesCardList
         userId={user.userId}
@@ -108,7 +105,6 @@ const MyBattles = ({ user, history, location }) => {
         getBattleStatus={getBattleStatus}
         handleClick={handleClick}
       />
-      <StickyFooter />
     </div>
   )
 }

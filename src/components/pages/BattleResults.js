@@ -1,8 +1,6 @@
 import React from 'react'
 import axios from 'axios'
 import DropDownResults from '../shared/DropDownResults'
-import Navbar from '../shared/Navbar'
-import StickyFooter from '../shared/StickyFooter'
 import avatar from '../../asset/pictures/avatar_MyProfile.png'
 import avatar2 from '../../asset/pictures/avatar2.png'
 import avatar3 from '../../asset/pictures/avatar3.png'
@@ -91,7 +89,6 @@ class BattleResults extends React.Component {
   render () {
     return (
       <div>
-        <Navbar />
         <DropDownResults />
         <div className='div-AvatarPodium'>
           <div className='div-center-AvatarPodium'>
@@ -149,7 +146,6 @@ class BattleResults extends React.Component {
             ))}
           </div>
         </div>
-        <StickyFooter />
       </div>
     )
   }

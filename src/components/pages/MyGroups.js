@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import MyGroupsCardList from './MyGroupsCardList.js'
-import Navbar from '../shared/Navbar'
 import PageHeader from '../shared/PageHeader.js'
-import StickyFooter from '../shared/StickyFooter'
 import './MyGroups.css'
 
 const mapStateToProps = state => {
@@ -66,7 +64,6 @@ const MyGroups = ({ user, history }) => {
 
   return (
     <div className='background-MyGroups'>
-      <Navbar />
       <PageHeader pageTitle='Mes Groupes' />
       <MyGroupsCardList
         userGroupInformation={userGroupInformation}
@@ -76,7 +73,6 @@ const MyGroups = ({ user, history }) => {
         getGroupMemberMessage={getGroupMemberMessage}
         handleClick={handleClick}
       />
-      <StickyFooter />
     </div>
   )
 }

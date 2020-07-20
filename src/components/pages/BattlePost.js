@@ -3,8 +3,6 @@ import axios from 'axios'
 import BattlePostTimer from './BattlePostTimer'
 import CloudUpload from '../../asset/pictures/cloud-computing.png'
 import DropDownPost from '../shared/DropDownPost'
-import Navbar from '../shared/Navbar'
-import StickyFooter from '../shared/StickyFooter'
 import './BattlePost.css'
 import './MyProfile.css'
 
@@ -56,8 +54,11 @@ class BattlePost extends React.Component {
           authorization: `Bearer ${localStorage.getItem('token')}`
         }
       })
+      .then(res => {
+        alert('Bravo! Ta photo a bien été postée')
+      })
       .catch(() => {
-        alert('Error while uploading the picture! Try again please.')
+        alert("Une erreur s'est produite pendant le téléchargement ! Réessaye s'il te plait.")
       })
   }
 
@@ -66,7 +67,6 @@ class BattlePost extends React.Component {
     const { battleId, groupId } = this.props.match.params
     return (
       <div className='background-MyProfile'>
-        <Navbar />
         <DropDownPost />
         <div className='window-MyProfile battle-post-container'>
           <div className='battlePost-info-div'>
@@ -83,7 +83,6 @@ class BattlePost extends React.Component {
             <button className='upload-ButtonPostpicture' type='button' onClick={this.handleClick}>Upload</button>
           </div>
         </div>
-        <StickyFooter />
       </div>
     )
   }

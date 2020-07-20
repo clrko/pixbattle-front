@@ -2,8 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import DropDownMyProfile from '../shared/DropDownMyProfile'
-import Navbar from '../shared/Navbar'
-import StickyFooter from '../shared/StickyFooter'
 import './MyProfile.css'
 
 const mapStateToProps = state => {
@@ -36,7 +34,6 @@ const MyProfile = ({ user, profileInfos, history }) => {
 
   return (
     <div className='background-MyProfile'>
-      <Navbar />
       <DropDownMyProfile />
       <div className='window-MyProfile'>
         <div className='name-fa-star-MyProfile'>
@@ -56,7 +53,6 @@ const MyProfile = ({ user, profileInfos, history }) => {
           <button className='button-createdNewGroup-MyProfile' onClick={handleCreateGroupe}>Créer un nouveau groupe</button>
         </div>
       </div>
-      <StickyFooter />
     </div>
   )
 }
