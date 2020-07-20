@@ -35,7 +35,7 @@ class FormLogin extends React.Component {
         .then(res => {
           localStorage.setItem('token', res.headers['x-access-token'])
           dispatch({ type: LOGIN, ...res.data })
-          history.push(`/${this.props.user.username}`)
+          history.push(`/${res.data.username}`)
         })
       return this.props.onClose(e)
     }
