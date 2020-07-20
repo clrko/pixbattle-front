@@ -1,19 +1,36 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
+import axios from 'axios'
+import { GET_INFOS } from '../../store/action-types'
+import Navbar from './Navbar'
+import StickyFooter from './StickyFooter'
 
-const mapStateToProps = state => ({ user: state.user })
+const mapStateToProps = state => {
+  const { user, profileInfos } = state
+  return { user, profileInfos }
+}
 
-const PrivateRoute = ({ user, component: Component, ...rest }) => {
+const PrivateRoute = ({ user, component: Component, dispatch, profileInfos, ...rest }) => {
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/profile`,
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+      .then(res => {
+        dispatch({ type: GET_INFOS, ...res.data })
+      })
+  }, [])
+
   return (
     <Route
       {...rest}
-      render={
-        props => user
-          ? (
-            <Component {...props} />
-          )
-          : (
+      render={props => {
+        if (!user) {
+          return (
             <Redirect
               to={{
                 pathname: '/',
@@ -21,7 +38,20 @@ const PrivateRoute = ({ user, component: Component, ...rest }) => {
               }}
             />
           )
-      }
+        }
+
+        if (!profileInfos) {
+          return <div>...loading</div>
+        }
+
+        return (
+          <>
+            <Navbar />
+            <Component {...props} />
+            <StickyFooter />
+          </>
+        )
+      }}
     />
   )
 }
