@@ -3,8 +3,6 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import { REMOVE_ALL } from '../../store/action-types'
-import Navbar from '../shared/Navbar'
-import StickyFooter from '../shared/StickyFooter'
 
 const mapStateToProps = state => {
   const { battleCreation } = state
@@ -39,19 +37,15 @@ const CreationBattleSummary = ({ battleCreation, dispatch, history, onClose }) =
   }
 
   return (
-    <div>
-      <Navbar />
-      <div className='cardBattle-summary'>
-        <h1 className='cardBattle-color'>Récapitulatif</h1>
-        <h2 className='cardBattle-color'>Thème choisi</h2>
-        <p className='battle-optionButton battle-btn'>{battleCreation[1].themeName}</p>
-        <h2 className='cardBattle-color'>Contraintes à respecter</h2>
-        {battleCreation[2].map(rule => <p key={rule.rule_id} className='battle-optionButton battle-btn'>{rule.rule_name}</p>)}
-        <h2 className='cardBattle-color'>Date limite choisie</h2>
-        <p>{battleCreation[3]}</p>
-        <button className='battleCreation-validateButton battle-btn' onClick={handleClick}>Confirmer</button>
-      </div>
-      <StickyFooter />
+    <div className='cardBattle-summary'>
+      <h1 className='cardBattle-color'>Récapitulatif</h1>
+      <h2 className='cardBattle-color'>Thème choisi</h2>
+      <p className='battle-optionButton battle-btn'>{battleCreation[1].themeName}</p>
+      <h2 className='cardBattle-color'>Contraintes à respecter</h2>
+      {battleCreation[2].map(rule => <p key={rule.rule_id} className='battle-optionButton battle-btn'>{rule.rule_name}</p>)}
+      <h2 className='cardBattle-color'>Date limite choisie</h2>
+      <p>{battleCreation[3]}</p>
+      <button className='battleCreation-validateButton battle-btn' onClick={handleClick}>Confirmer</button>
     </div>
   )
 }
