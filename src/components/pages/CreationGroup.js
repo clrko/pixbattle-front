@@ -142,7 +142,7 @@ class CreationGroup extends Component {
         <div style={!isGroupName ? { display: 'none' } : { display: 'inline' }}>
           <div className='group-container'>
             <p className='new-group-text'>Invite tes amis par mail</p>
-            <div className='group-input'>
+            <form onSubmit={this.handleAddEmail} className='group-input'>
               <input
                 type='text'
                 className='new-group-input'
@@ -154,17 +154,16 @@ class CreationGroup extends Component {
               <button
                 type='submit'
                 className='add-user'
-                onClick={this.handleAddEmail}
                 disabled={count >= 12}
               >
                 <i className={
                   count < 12
-                    ? 'fas fa-plus-circle email-abled'
+                    ? 'fas fa-plus-circle email-enabled'
                     : 'fas fa-plus-circle email-disabled'
                 }
                 />
               </button>
-            </div>
+            </form>
             <p className={
               allEmails.length < 3 ? 'info' : 'info green'
             }
@@ -205,11 +204,11 @@ class CreationGroup extends Component {
             type='submit'
             className={
               count > 3
-                ? 'create-group create-abled'
+                ? 'create-group create-enabled'
                 : 'create-group create-disabled'
             }
             onClick={this.handleChangeSteps}
-            disabled={count < 3}
+            disabled={count < 4}
           >
             Valider
           </button>

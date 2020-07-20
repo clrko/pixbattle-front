@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import { withRouter } from 'react-router-dom'
 import DropDown from '../shared/DropDown'
 import Navbar from '../shared/Navbar'
 import StickyFooter from '../shared/StickyFooter'
@@ -8,11 +7,9 @@ import avatar from '../../asset/pictures/avatar_MyProfile.png'
 import avatar2 from '../../asset/pictures/avatar2.png'
 import avatar3 from '../../asset/pictures/avatar3.png'
 import avatar4 from '../../asset/pictures/avatar4.png'
-import './Podium.css'
+import './BattleResults.css'
 
-const Menu = withRouter(DropDown)
-
-class Podium extends React.Component {
+class BattleResults extends React.Component {
   state = {
     user: [
       {
@@ -95,38 +92,38 @@ class Podium extends React.Component {
     return (
       <div>
         <Navbar />
-        <Menu />
+        <DropDown />
         <div className='div-AvatarPodium'>
           <div className='div-center-AvatarPodium'>
             <div className='AvatarPodium second-position'>
               <div className='div-p-fas'>
                 <p className='p-AvatarPodium'>{this.state.user[1].username}</p>
-                <i class='fas fa-star'><p className='p-user-victories-podium'>{this.state.user[1].victories}</p></i>
+                <i className='fas fa-star'><p className='p-user-victories-podium'>{this.state.user[1].victories}</p></i>
               </div>
               <div className='div-img-Avatar2'>
                 <img className='img-avatar-position' src={this.state.user[1].avatar} alt='avatar' />
               </div>
-              <i class='fas fa-medal medal2' />
+              <i className='fas fa-medal medal2' />
             </div>
             <div className='AvatarPodium first-position'>
               <div className='div-p-fas'>
                 <p className='p-AvatarPodium'>{this.state.user[0].username}</p>
-                <i class='fas fa-star'><p className='p-user-victories-podium'>{this.state.user[0].victories}</p></i>
+                <i className='fas fa-star'><p className='p-user-victories-podium'>{this.state.user[0].victories}</p></i>
               </div>
               <div className='div-img-Avatar1'>
                 <img className='img-avatar-position' src={this.state.user[0].avatar} alt='avatar' />
               </div>
-              <i class='fas fa-medal medal1'><p /></i>
+              <i className='fas fa-medal medal1'><p /></i>
             </div>
             <div className='AvatarPodium third-position'>
               <div className='div-p-fas'>
                 <p className='p-AvatarPodium'>{this.state.user[2].username}</p>
-                <i class='fas fa-star'><p className='p-user-victories-podium'>{this.state.user[2].victories}</p></i>
+                <i className='fas fa-star'><p className='p-user-victories-podium'>{this.state.user[2].victories}</p></i>
               </div>
               <div className='div-img-Avatar3'>
                 <img className='img-avatar-position' src={this.state.user[2].avatar} alt='avatar' />
               </div>
-              <i class='fas fa-medal medal3' />
+              <i className='fas fa-medal medal3' />
             </div>
           </div>
           <div className='div-congratulations'>
@@ -146,7 +143,7 @@ class Podium extends React.Component {
                   <p className='p-div-participant'>{user.username}</p>
                 </div>
                 <div className='margin-fa-star-attendee-list'>
-                  <i class='fas fa-star fa-star-attendee-list'><p className='p-user-victories'>{user.victories}</p></i>
+                  <i className='fas fa-star fa-star-attendee-list'><p className='p-user-victories'>{user.victories}</p></i>
                 </div>
               </div>
             ))}
@@ -158,4 +155,4 @@ class Podium extends React.Component {
   }
 }
 
-export default Podium
+export default BattleResults

@@ -16,7 +16,8 @@
   font-size: 0.8rem;
 }
 
-.password-error-message {
+.password-error-message,
+.username-error-message {
   display: none;
 }
 
@@ -30,10 +31,24 @@
   border: 1px #cea0a5 solid;
   color: #86181d;
   width: 80%;
-  bottom: -1.5em;
+  bottom: -2.5em;
 }
 
-.CheckPassword-wrapper {
+.LoginForm-passwordError+.username-error-message {
+  position: absolute;
+  display: block;
+  padding: 0.5em;
+  font-size: 0.6rem;
+  text-align: center;
+  background-color: #ffdce0;
+  border: 1px #cea0a5 solid;
+  color: #86181d;
+  width: 80%;
+  bottom: -0.3em;
+}
+
+.CheckPassword-wrapper,
+.checkUsername-wrapper {
   position: relative;
 }
 

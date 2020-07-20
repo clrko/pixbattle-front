@@ -58,16 +58,16 @@
   margin-left: -2.5rem;
 }
 
-.email-abled {
+.email-enabled {
   color: #73DB5A;
   transition: all 0.2s ease-in-out;
 }
 
-.email-abled:hover {
+.email-enabled:hover {
   transform: scale(1.1);
 }
 
-.email-abled:active {
+.email-enabled:active {
   transform: scale(0.9);
 }
 
@@ -98,7 +98,6 @@
   height: 15vh;
   overflow: scroll;
   padding: 0;
-  margin: 5% 0;
 }
 
 .emails-container::-webkit-scrollbar {
@@ -146,36 +145,44 @@
 }
 
 .cancel-create-group {
-  border-radius: 50px;
-  border: none;
+  height: 40px;
+  width: 100px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: FuturaPTMedium;
+  font-size: 15px;
+  border-style: none;
+  outline: none;
+  font-weight: bolder;
+  letter-spacing: 0.5px;
   color: white;
-  height: 5vh;
-  padding: 0 1rem;
-  font-size: 1rem;
-  outline: transparent;
   background-color: red;
 }
 
 .create-group {
-  border-radius: 50px;
-  border: none;
-  color: white;
-  height: 5vh;
-  padding: 0 1rem;
-  font-size: 1rem;
-  outline: transparent;
+  height: 40px;
+  width: 100px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: FuturaPTMedium;
+  font-size: 15px;
+  border-style: none;
+  outline: none;
+  font-weight: bolder;
+  letter-spacing: 0.5px;
 }
 
-.create-abled {
+.create-enabled {
   background-color: #73DB5A;
   transition: all 0.2s ease-in-out;
+  color: white;
 }
 
-.create-abled:hover {
+.create-enabled:hover {
   transform: scale(1.1);
 }
 
-.create-abled:active {
+.create-enabled:active {
   transform: scale(0.9);
 }
 
@@ -191,8 +198,11 @@
 
 @media screen and (max-width: 500px) {
   .form-container {
-    width: 95%;
-    height: 100%;
-    border-radius: 0;
+    width: 87%;
+    height: 90%;
+    border-radius: 15px;
+    min-height: 400px;
+    padding: 3px 25px;
+    margin: 20px 25px;
   }
 }

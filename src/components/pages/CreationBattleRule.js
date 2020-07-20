@@ -35,7 +35,7 @@ class CreationBattleRule extends Component {
   }
 
   componentDidMount () {
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/battle-creation/rules`,
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/battle/battle-creation/rules`,
       {
         headers: {
           authorization: `Bearer ${localStorage.getItem('token')}`
@@ -53,7 +53,19 @@ class CreationBattleRule extends Component {
         <div className='cardBattle'>
           <h1 className='cardBattle-color'>2. Personnalise la battle</h1>
           <div className='battleCreation-ruleContainer'>
-            {rules.map((rule, i) => <button type='button' className='battle-optionButton battle-btn' onClick={this.handleOptionClick} id={rule.rule_id} key={i}>{rule.rule_name}</button>)}
+            {
+              rules.map((rule, i) =>
+                <button
+                  type='button'
+                  className='battle-optionButton battle-btn'
+                  onClick={this.handleOptionClick}
+                  id={rule.rule_id}
+                  key={i}
+                >
+                  {rule.rule_name}
+                </button>
+              )
+            }
           </div>
           <div className='battleCreation-btnContainer'>
             <NavLink to='/battle-creation/theme'>

@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import { REMOVE_ALL } from '../../store/action-types'
+import Navbar from '../shared/Navbar'
+import StickyFooter from '../shared/StickyFooter'
 
 const mapStateToProps = state => {
   const { battleCreation } = state
@@ -11,7 +13,7 @@ const mapStateToProps = state => {
 
 const CreationBattleSummary = ({ battleCreation, dispatch, history, onClose }) => {
   const handleClick = e => {
-    axios.post(`${process.env.REACT_APP_SERVER_URL}/battle-creation`,
+    axios.post(`${process.env.REACT_APP_SERVER_URL}/battle/battle-creation`,
       {
         groupId: parseInt(battleCreation[0].groupId),
         themeId: parseInt(battleCreation[1].themeId),
@@ -25,7 +27,8 @@ const CreationBattleSummary = ({ battleCreation, dispatch, history, onClose }) =
       }
     ).then(res => {
       if (res.status === 201) {
-        history.push(`/battles/${res.data.battleId}/post-picture`, {
+        const groupId = parseInt(battleCreation[0].groupId)
+        history.push(`/groups/${groupId}/battles/${res.data.battleId}/post-picture`, {
           battleId: res.data.battleId,
           groupId: parseInt(battleCreation[0].groupId)
         })
@@ -36,15 +39,19 @@ const CreationBattleSummary = ({ battleCreation, dispatch, history, onClose }) =
   }
 
   return (
-    <div className='cardBattle-summary'>
-      <h1 className='cardBattle-color'>Récapitulatif</h1>
-      <h2 className='cardBattle-color'>Thème choisi</h2>
-      <p className='battle-optionButton battle-btn'>{battleCreation[1].themeName}</p>
-      <h2 className='cardBattle-color'>Contraintes à respecter</h2>
-      {battleCreation[2].map(rule => <p key={rule.rule_id} className='battle-optionButton battle-btn'>{rule.rule_name}</p>)}
-      <h2 className='cardBattle-color'>Date limite choisie</h2>
-      <p>{battleCreation[3]}</p>
-      <button className='battleCreation-validateButton battle-btn' onClick={handleClick}>Confirmer</button>
+    <div>
+      <Navbar />
+      <div className='cardBattle-summary'>
+        <h1 className='cardBattle-color'>Récapitulatif</h1>
+        <h2 className='cardBattle-color'>Thème choisi</h2>
+        <p className='battle-optionButton battle-btn'>{battleCreation[1].themeName}</p>
+        <h2 className='cardBattle-color'>Contraintes à respecter</h2>
+        {battleCreation[2].map(rule => <p key={rule.rule_id} className='battle-optionButton battle-btn'>{rule.rule_name}</p>)}
+        <h2 className='cardBattle-color'>Date limite choisie</h2>
+        <p>{battleCreation[3]}</p>
+        <button className='battleCreation-validateButton battle-btn' onClick={handleClick}>Confirmer</button>
+      </div>
+      <StickyFooter />
     </div>
   )
 }

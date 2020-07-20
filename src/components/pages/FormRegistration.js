@@ -3,10 +3,14 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { LOGIN, GET_INFOS } from '../../store/action-types'
-
 import classNames from 'classnames'
 import './FormLogin.css'
 import './FormRegistration.css'
+
+const mapStateToProps = state => {
+  const { user } = state
+  return { user }
+}
 
 class FormRegistration extends React.Component {
   state = {
@@ -27,6 +31,12 @@ class FormRegistration extends React.Component {
     }
   }
 
+  checkUsername = () => {
+    if (/^[a-zA-Z0-9]+$/.test(this.state.username)) {
+      return (this.state.username)
+    }
+  }
+
   handleCheckbox = e => {
     this.setState({ isChecked: e.target.checked })
   }
@@ -38,16 +48,16 @@ class FormRegistration extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault()
-    if (this.checkPassword()) {
+    if (this.checkPassword() && this.checkEmail() && this.checkUsername()) {
       const { dispatch, history } = this.props
-      await axios.post(`${process.env.REACT_APP_SERVER_URL}/register`, this.state)
+      await axios
+        .post(`${process.env.REACT_APP_SERVER_URL}/register`, this.state)
         .then(res => {
           localStorage.setItem('token', res.headers['x-access-token'])
           dispatch({ type: LOGIN, ...res.data })
-          history.push('/MyProfile')
         })
       await axios
-        .post(`${process.env.REACT_APP_SERVER_URL}/profile`,
+        .get(`${process.env.REACT_APP_SERVER_URL}/profile`,
           {
             headers: {
               authorization: `Bearer ${localStorage.getItem('token')}`
@@ -55,7 +65,10 @@ class FormRegistration extends React.Component {
           })
         .then(res => {
           dispatch({ type: GET_INFOS, ...res.data })
+          history.push(`/${this.props.user.username}`)
         })
+    } else {
+      alert('une erreur est survenue')
     }
     return this.props.onClose(e)
   }
@@ -63,15 +76,17 @@ class FormRegistration extends React.Component {
   render () {
     const { password, checkPassword } = this.state
     const passwordError = password && checkPassword && !this.checkPassword()
-    const passwordClass = classNames('LoginForm-input', { 'LoginForm-passwordError': passwordError })
     const emailError = !this.checkEmail()
+    const usernameError = !this.checkUsername()
+    const passwordClass = classNames('LoginForm-input', { 'LoginForm-passwordError': passwordError })
     const emailClass = classNames('LoginForm-input', { 'LoginForm-passwordError': emailError })
+    const usernameClass = classNames('LoginForm-input', { 'LoginForm-passwordError': usernameError })
     return (
       <form className='register-form'>
-        <div className='login-inside LoginForm-div'>
+        <div className='login-inside LoginForm-div checkUsername-wrapper'>
           <label className='LoginForm-label'>Pseudo</label>
           <input
-            className='LoginForm-input'
+            className={usernameClass}
             type='text'
             value={this.state.username}
             onChange={this.handleChange}
@@ -80,6 +95,9 @@ class FormRegistration extends React.Component {
             maxLength='15'
             required
           />
+          {
+            this.state.username.length > 0 && <div className='username-error-message'>Seuls les lettres et les chiffres sont autorisés</div>
+          }
           <div className={this.state.username.length > 3 ? 'character-validation' : ''}>
             <p className='character-validation-p'>Entre 3 et 15 caractères</p>
           </div>
@@ -155,4 +173,4 @@ class FormRegistration extends React.Component {
   }
 }
 
-export default connect()(withRouter(FormRegistration))
+export default connect(mapStateToProps)(withRouter(FormRegistration))
