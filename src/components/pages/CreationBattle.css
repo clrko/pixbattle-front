@@ -32,11 +32,10 @@
 .children-cardBattle-summary {
   background-color: #3181C8;
   margin: 30px 25px;
-  padding: 40px 40px;
   border-radius: 15px;
-  min-height: 480px;
   display: flex;
   flex-direction: column;
+  padding: 5px 50px;
 }
 
 .cardBattle-summary h1 {
