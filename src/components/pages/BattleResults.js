@@ -1,8 +1,15 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { ADD_GROUP } from '../../store/action-types'
 import axios from 'axios'
 import Loader from 'react-loader-spinner'
 import DropDown from '../shared/DropDown'
 import './BattleResults.css'
+
+const mapStateToProps = state => {
+  const { user, profileInfos } = state
+  return { user, profileInfos }
+}
 
 class BattleResults extends React.Component {
   state = {
@@ -22,25 +29,16 @@ class BattleResults extends React.Component {
 
   handleCreateGroupe = e => {
     e.preventDefault()
-    const { history } = this.props
-    axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/group-creation`,
-        {
-          headers: {
-            authorization: `Bearer ${localStorage.getItem('token')}`
-          }
-        }
-      )
-      .then(res => {
-        const groupId = res.data.groupId
-        history.push({
-          pathname: `/group-creation/group-created/${groupId}`
-        })
-      })
+    const { dispatch, history, match } = this.props
+    const currentGroupId = { groupId: match.params.groupId }
+    console.log(currentGroupId)
+    dispatch({ type: ADD_GROUP, currentGroupId })
+    history.push('/battle-creation/theme')
   }
 
   render () {
     const { users } = this.state
+    const { user } = this.props
 
     if (!users) {
       return (
@@ -88,7 +86,11 @@ class BattleResults extends React.Component {
           </div>
           <div className='div-congratulations'>
             <h1 className='h1-div-congratulations'>Félicitations {users[0].username} !</h1>
-            <button className='button-createdNewGroup-MyProfile button-div-congratulations' onClick={this.handleCreateGroupe}>Crée la prochaine battle</button>
+            {
+              user.userId === users[0].user_id
+                ? <button className='button-createdNewGroup-MyProfile button-div-congratulations' onClick={this.handleCreateGroupe}>Crée la prochaine battle</button>
+                : <div className='button-div-congratulations-empty' />
+            }
           </div>
           <div className='div-attendee-list'>
             {users.slice(3).map((u, i) => (
@@ -114,4 +116,4 @@ class BattleResults extends React.Component {
   }
 }
 
-export default BattleResults
+export default connect(mapStateToProps)(BattleResults)
