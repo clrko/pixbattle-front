@@ -62,9 +62,14 @@ class BattlePost extends React.Component {
       })
   }
 
+  handleDeadlineReached = () => {
+    const { history } = this.props
+    const { battleId, groupId } = this.props.match.params
+    history.push(`/groups/${groupId}/battles/${battleId}/vote`)
+  }
+
   render () {
     const { battlePostInfo, deadline, selectedFile } = this.state
-    const { battleId, groupId } = this.props.match.params
     return (
       <div className='background-MyProfile'>
         <DropDown />
@@ -75,7 +80,7 @@ class BattlePost extends React.Component {
               <p className='battlePost-info'>{battlePostInfo.rule_name}</p>
             </div>
           </div>
-          <BattlePostTimer deadline={deadline} groupId={groupId} battleId={battleId} />
+          <BattlePostTimer onDeadlineReached={this.handleDeadlineReached} deadline={deadline} />
           <div>
             <div className='countdown' />
             <img className='picture' src={selectedFile} alt='preview' />
