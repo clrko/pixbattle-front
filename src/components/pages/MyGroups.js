@@ -32,9 +32,9 @@ const MyGroups = ({ user, history }) => {
   }
 
   const getOngoingBattlesMessage = importedOngoingBattleCount => {
-    if (importedOngoingBattleCount > 1) {
+    if (parseInt(importedOngoingBattleCount) > 1) {
       return `${importedOngoingBattleCount} battles en cours`
-    } else if (importedOngoingBattleCount === 1) {
+    } else if (parseInt(importedOngoingBattleCount) === 1) {
       return `${importedOngoingBattleCount} battle en cours`
     } else {
       return 'Aucune battle en cours'
@@ -42,9 +42,9 @@ const MyGroups = ({ user, history }) => {
   }
 
   const getFinishedBattlesMessage = importedFinishedBattleCount => {
-    if (importedFinishedBattleCount > 1) {
+    if (parseInt(importedFinishedBattleCount) > 1) {
       return `${importedFinishedBattleCount} battles terminées`
-    } else if (importedFinishedBattleCount === 1) {
+    } else if (parseInt(importedFinishedBattleCount) === 1) {
       return `${importedFinishedBattleCount} battle terminée`
     } else {
       return 'Aucune battle terminée'
