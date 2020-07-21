@@ -135,3 +135,41 @@
 .number-of-votes {
   color: white;
 }
+
+.lightbox-infos-container {
+  width: 60vw;
+  height: 15vh;
+  background-color: #235789;
+  border-radius: 15px;
+  position: relative;
+  left: -18vw;
+  top: 80vh;
+  padding: 1rem;
+  line-height: 2rem;
+  overflow: scroll;
+}
+
+.lightbox-infos-container::-webkit-scrollbar {
+  width: 5px;
+}
+
+.lightbox-infos-container::-webkit-scrollbar-thumb {
+  background-color: #FAC748;
+  border-radius: 10px;
+}
+
+.lightbox-infos-user {
+  display: flex;
+}
+
+.lightbox-infos-user-avatar {
+  width: 25px;
+  height: 25px;
+  margin-left: 0.5rem;
+}
+
+.lightbox-infos-span {
+  font-weight: 600;
+  margin: 0 0.5rem;
+  color: #FAC745;
+}
