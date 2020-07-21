@@ -74,13 +74,22 @@ const Lightbox = ({ photos }) => {
         <div className='lightbox-img-container'>
           <img src={dispImg} alt={dispImg} className='lightbox-img' />
         </div>
-        <div>
-          <div className='btn-vote-container'>
-            <div className='stars-container'>
-              <i className='fas fa-star' />
+        {
+          photos[cardIndex].avatar_url &&
+            <div className='lightbox-infos-container'>
+              <div className='lightbox-infos-user'>
+                <p className='lightbox-infos-p'>Postée par : </p>
+                <img className='lightbox-infos-user-avatar' src={photos[cardIndex].avatar_url} alt={photos[cardIndex].avatar_url} />
+                <span className='lightbox-infos-span'>{photos[cardIndex].username}</span>
+              </div>
+              <p className='lightbox-infos-p'>Le :
+                <span className='lightbox-infos-span'>{photos[cardIndex].create_date.slice(0, 10)}</span>
+              </p>
+              <p className='lightbox-infos-p'>Points gagnés :
+                <span className='lightbox-infos-span'>{photos[cardIndex].score}</span>
+              </p>
             </div>
-          </div>
-        </div>
+        }
       </section>
     </div>
   )
