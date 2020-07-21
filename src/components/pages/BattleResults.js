@@ -1,8 +1,7 @@
 import React from 'react'
 import axios from 'axios'
-// import DropDown from '../shared/DropDown'
-// import Navbar from '../shared/Navbar'
-// import StickyFooter from '../shared/StickyFooter'
+import Loader from 'react-loader-spinner'
+import DropDown from '../shared/DropDown'
 import './BattleResults.css'
 
 class BattleResults extends React.Component {
@@ -68,53 +67,56 @@ class BattleResults extends React.Component {
     const { users, allInfos } = this.state
 
     if (users === undefined) {
-      return <p>loading...</p>
+      return (
+        <div style={{ width: 'auto', margin: 'auto', textAlign: 'center' }}>
+          <Loader type='ThreeDots' color='#00BFFF' height={80} width={80} />
+        </div>
+      )
     }
 
     return (
       <div>
-        {/* <Navbar />
-        <Menu /> */}
+        <DropDown />
         {allInfos && console.log('state', allInfos)}
         {/* <div className='div-AvatarPodium'>
           <div className='div-center-AvatarPodium'>
             <div className='AvatarPodium second-position'>
               <div className='div-p-fas'>
-                <p className='p-AvatarPodium'>{user[3].username}</p>
-                <i className='fas fa-star'><p className='p-user-victories-podium'>{user.victories}</p></i>
+                <p className='p-AvatarPodium'>{users[3].username}</p>
+                <i className='fas fa-star'><p className='p-user-victories-podium'>{users.victories}</p></i>
               </div>
               <div className='div-img-Avatar2'>
-                <img className='img-avatar-position' src={user[3].avatar_url} alt='avatar' />
+                <img className='img-avatar-position' src={users[3].avatar_url} alt='avatar' />
               </div>
               <i className='fas fa-medal medal2' />
             </div>
             <div className='AvatarPodium first-position'>
               <div className='div-p-fas'>
-                <p className='p-AvatarPodium'>{user[0].username}</p>
-                <i className='fas fa-star'><p className='p-user-victories-podium'>{user.victories}</p></i>
+                <p className='p-AvatarPodium'>{users[0].username}</p>
+                <i className='fas fa-star'><p className='p-user-victories-podium'>{users.victories}</p></i>
               </div>
               <div className='div-img-Avatar1'>
-                <img className='img-avatar-position' src={user[0].avatar_url} alt='avatar' />
+                <img className='img-avatar-position' src={users[0].avatar_url} alt='avatar' />
               </div>
               <i className='fas fa-medal medal1'><p /></i>
             </div>
             <div className='AvatarPodium third-position'>
               <div className='div-p-fas'>
-                <p className='p-AvatarPodium'>{user[6].username}</p>
-                <i className='fas fa-star'><p className='p-user-victories-podium'>{user.victories}</p></i>
+                <p className='p-AvatarPodium'>{users[6].username}</p>
+                <i className='fas fa-star'><p className='p-user-victories-podium'>{users.victories}</p></i>
               </div>
               <div className='div-img-Avatar3'>
-                <img className='img-avatar-position' src={user[6].avatar_url} alt='avatar' />
+                <img className='img-avatar-position' src={users[6].avatar_url} alt='avatar' />
               </div>
               <i className='fas fa-medal medal3' />
             </div>
           </div>
           <div className='div-congratulations'>
-            <h1 className='h1-div-congratulations'>Félicitations {user[0].username} !</h1>
+            <h1 className='h1-div-congratulations'>Félicitations {users[0].username} !</h1>
             <button className='button-createdNewGroup-MyProfile button-div-congratulations' onClick={this.handleCreateGroupe}>crée la prochaine battle</button>
           </div>
           <div className='div-attendee-list'>
-            {user.slice(9).map((u, i) => (
+            {users.slice(9).map((u, i) => (
               <div key={i} className='div-participant'>
                 <div className='margin-div-participant'>
                   <p className='p-div-participant'>{u.user_id}.</p>
@@ -132,7 +134,6 @@ class BattleResults extends React.Component {
             ))}
           </div>
         </div> */}
-        {/* <StickyFooter /> */}
       </div>
     )
   }

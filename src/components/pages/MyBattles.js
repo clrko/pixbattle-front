@@ -3,9 +3,7 @@ import moment from 'moment'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import MyBattlesCardList from './MyBattlesCardList'
-import Navbar from '../shared/Navbar'
 import PageHeader from '../shared/PageHeader.js'
-import StickyFooter from '../shared/StickyFooter'
 import './MyBattles.css'
 
 const mapStateToProps = state => {
@@ -35,26 +33,35 @@ const MyBattles = ({ user, history, location }) => {
       })
   }
 
-  const getCompletedPercentage = (importedCreateDate, importedDeadline) => {
+  const getCompletedPercentage = (importedCreateDate, importedDeadline, importedStatus) => {
     const today = moment().local()
     const deadline = moment(importedDeadline)
     const createDate = moment(importedCreateDate)
-    if (today > deadline) {
+    if (importedStatus === 'completed') {
       return 100
+    }
+    if (importedStatus === 'vote') {
+      const durationVoteToToday = today.diff(deadline, 'hours')
+      return (durationVoteToToday / 24) * 100
     }
     const differenceToToday = today.diff(createDate, 'seconds')
     const differenceToDeadline = deadline.diff(createDate, 'seconds')
     return (differenceToToday / differenceToDeadline) * 100
   }
 
-  const getBattleTimeMessage = importedDeadline => {
+  const getBattleTimeMessage = (importedDeadline, importedStatus) => {
     const deadline = moment(importedDeadline)
     const today = moment().local()
-    if (today > deadline) {
+    if (importedStatus === 'completed') {
       return 'Va vite voir les resultats'
     }
+    if (importedStatus === 'vote') {
+      const deadlineToVote = moment(deadline.add(24, 'hours').format('YYYY-MM-DDTHH:mm:ss.SSSSZ'))
+      const durationToVote = moment.duration(deadlineToVote.diff(today))
+      return `Il te reste ${durationToVote.humanize()} pour voter`
+    }
     const durationTodayToDeadline = moment.duration(deadline.diff(today))
-    return `Il te reste ${durationTodayToDeadline.humanize()}`
+    return `Encore ${durationTodayToDeadline.humanize()} pour poster ta photo`
   }
 
   const getBattleStatus = importedStatus => {
@@ -98,7 +105,6 @@ const MyBattles = ({ user, history, location }) => {
 
   return (
     <div className='MyBattles-background'>
-      <Navbar />
       <PageHeader pageTitle={location.state ? `Mes Battles - Groupe ${location.state.groupName}` : 'Mes Battles'} />
       <MyBattlesCardList
         userId={user.userId}
@@ -108,7 +114,6 @@ const MyBattles = ({ user, history, location }) => {
         getBattleStatus={getBattleStatus}
         handleClick={handleClick}
       />
-      <StickyFooter />
     </div>
   )
 }
