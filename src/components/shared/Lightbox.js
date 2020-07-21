@@ -92,7 +92,7 @@ const Lightbox = ({ photos, votes }) => {
                 votes.map(vote => {
                   if (vote.photo_id === photoId) {
                     return (
-                      <div className='lightbox-infos-user votes'>
+                      <div key={vote.photo_id} className='lightbox-infos-user votes'>
                         <img className='lightbox-infos-user-avatar-vote' src={vote.avatar_url} alt={vote.avatar_url} />
                         <p className='lightbox-infos-span' key={vote.username}>{vote.username}</p>
                         {
