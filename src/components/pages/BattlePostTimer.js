@@ -1,6 +1,8 @@
 import React from 'react'
+import Loader from 'react-loader-spinner'
 import Timer from 'react-compound-timer'
 import './BattlePostTimer.css'
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 
 const BattlePostTimer = ({ deadline, history, battleId, groupId }) => {
   const startDate = new Date()
@@ -9,7 +11,11 @@ const BattlePostTimer = ({ deadline, history, battleId, groupId }) => {
   const difference = (endDate.getTime() - utc)
 
   if (!deadline) {
-    return <p>loading...</p>
+    return (
+      <div style={{ width: 'auto', margin: 'auto', textAlign: 'center' }}>
+        <Loader type='ThreeDots' color='#00BFFF' height={80} width={80} />
+      </div>
+    )
   }
 
   return (
