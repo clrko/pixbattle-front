@@ -4,7 +4,7 @@ import Timer from 'react-compound-timer'
 import './BattlePostTimer.css'
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 
-const BattlePostTimer = ({ deadline, history, battleId, groupId }) => {
+const BattlePostTimer = ({ deadline, onDeadlineReached }) => {
   const startDate = new Date()
   const endDate = new Date(deadline)
   const utc = startDate.getTime() + (startDate.getTimezoneOffset() * 60000)
@@ -23,6 +23,12 @@ const BattlePostTimer = ({ deadline, history, battleId, groupId }) => {
       <Timer
         initialTime={difference}
         direction='backward'
+        checkpoints={[
+          {
+            time: 0,
+            callback: onDeadlineReached
+          }
+        ]}
       >
         <div className='battle-post-timer-container'>
           <div className='battle-post-timer-count'>
