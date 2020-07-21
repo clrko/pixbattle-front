@@ -14,6 +14,7 @@ class FormLogin extends React.Component {
   state = {
     email: '',
     password: '',
+    invitationCode: null,
     isChecked: false
   }
 
@@ -40,6 +41,12 @@ class FormLogin extends React.Component {
       return this.props.onClose(e)
     }
     alert('Il faut un email et un mot de passe')
+  }
+
+  componentDidMount () {
+    if (this.props.invitationCode) {
+      this.setState({ invitationCode: this.props.invitationCode })
+    }
   }
 
   render () {

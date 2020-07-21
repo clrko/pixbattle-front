@@ -9,6 +9,7 @@ import CreationBattleTheme from './components/pages/CreationBattleTheme'
 import CreationBattleSummary from './components/pages/CreationBattleSummary'
 import CreationSteps from './components/pages/CreationSteps'
 import LandingPage from './components/pages/LandingPage'
+import LandingPageInvitedUser from './components/pages/LandingPageInvitedUser'
 import MyBattles from './components/pages/MyBattles'
 import MyGroups from './components/pages/MyGroups'
 import MyProfile from './components/pages/MyProfile'
@@ -21,6 +22,7 @@ const App = () => {
     <div>
       <Switch>
         <Route exact path='/' component={LandingPage} />
+        <Route path='/invite/:code' component={LandingPageInvitedUser} />
         <PrivateRoute path='/battle-creation/deadline' component={CreationBattleDeadline} />
         <PrivateRoute path='/battle-creation/rule' component={CreationBattleRule} />
         <PrivateRoute path='/battle-creation/theme' component={CreationBattleTheme} />
