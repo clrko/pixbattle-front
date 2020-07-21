@@ -1,8 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
+import Loader from 'react-loader-spinner'
 import DropDown from '../shared/DropDown'
 import './MyProfile.css'
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 
 const mapStateToProps = state => {
   const { user, profileInfos } = state
@@ -28,8 +30,12 @@ const MyProfile = ({ user, profileInfos, history }) => {
       })
   }
 
-  if (profileInfos === null) {
-    return <p>loading...</p>
+  if (!profileInfos) {
+    return (
+      <div style={{ width: 'auto', margin: 'auto', textAlign: 'center' }}>
+        <Loader type='ThreeDots' color='#00BFFF' height={80} width={80} />
+      </div>
+    )
   }
 
   return (

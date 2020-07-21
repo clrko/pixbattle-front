@@ -23,17 +23,27 @@
 }
 
 .cardBattle-summary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.children-cardBattle-summary {
   background-color: #3181C8;
   margin: 30px 25px;
-  padding: 30px 25px;
   border-radius: 15px;
-  min-height: 480px;
   display: flex;
   flex-direction: column;
+  padding: 5px 50px;
 }
 
 .cardBattle-summary h1 {
   margin: 10px auto;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.8em;
+  margin-bottom: 30px;
 }
 
 .cardBattle-summary h2 {
@@ -42,17 +52,37 @@
   color: #FDFFFC;
 }
 
+.p-date-CreationbattleSummary {
+  width: fit-content;
+  margin: 5px auto;
+  background-color: #FAC748;
+  color: #3181C8;
+  padding: 7px 10px;
+  font-weight: bold;
+  border-radius: 20px;
+  font-size: 15px;
+}
+
 .cardBattle-summary p {
   width: fit-content;
   margin: 5px auto;
 }
 
+.div-button-CreationBattleSummary {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
 .cardBattle-summary button {
   margin-bottom: 0;
-  background-color: #FAC748;
-  color: #3181C8;
-  padding: 7px 10px;
+  background-color: #73db5a;
+  color: white;
+  padding: 10px 10px;
+  text-transform: uppercase;
   margin: 8px;
+  width: 110px;
+  font-size: 0.9em;
 }
 
 .cardBattle-summary-options {
