@@ -2,9 +2,11 @@ import React, { useEffect } from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import axios from 'axios'
+import Loader from 'react-loader-spinner'
 import { GET_INFOS } from '../../store/action-types'
 import Navbar from './Navbar'
 import StickyFooter from './StickyFooter'
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 
 const mapStateToProps = state => {
   const { user, profileInfos } = state
@@ -39,11 +41,13 @@ const PrivateRoute = ({ user, component: Component, dispatch, profileInfos, ...r
             />
           )
         }
-
         if (!profileInfos) {
-          return <div>...loading</div>
+          return (
+            <div style={{ width: 'auto', margin: 'auto', textAlign: 'center' }}>
+              <Loader type='ThreeDots' color='#00BFFF' height={80} width={80} />
+            </div>
+          )
         }
-
         return (
           <>
             <Navbar />

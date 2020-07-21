@@ -9,7 +9,7 @@ class BattleVote extends Component {
   }
 
   getPhotos = () => {
-    const { battleId } = this.props.location.state
+    const { battleId } = this.props.match.params
     axios.post(`${process.env.REACT_APP_SERVER_URL}/gallery/battle`,
       {
         battleId: battleId
@@ -20,7 +20,7 @@ class BattleVote extends Component {
   }
 
   getStatusUser = () => {
-    const { battleId } = this.props.location.state
+    const { battleId } = this.props.match.params
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/battle/battle-vote/status-user`,
         {
