@@ -7,6 +7,7 @@
   margin: 20px 25px;
   overflow: scroll;
   margin: auto;
+  color: white;
 }
 
 .gallery-lightbox-container::-webkit-scrollbar {
@@ -138,7 +139,7 @@
 
 .lightbox-infos-container {
   width: 60vw;
-  height: 15vh;
+  height: 18vh;
   background-color: #235789;
   border-radius: 15px;
   position: relative;
@@ -160,6 +161,7 @@
 
 .lightbox-infos-user {
   display: flex;
+  align-items: center;
 }
 
 .lightbox-infos-user-avatar {
@@ -172,4 +174,13 @@
   font-weight: 600;
   margin: 0 0.5rem;
   color: #FAC745;
+}
+
+.lightbox-infos-user-avatar-vote {
+  width: 25px;
+  height: 25px;
+}
+
+.votes {
+  margin-top: 0.5rem;
 }
