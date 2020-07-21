@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 import DropDown from '../shared/DropDown'
 import Lightbox from '../shared/Lightbox'
-import './MyPictures.css'
 
 const mapStateToProps = state => {
   const { user } = state

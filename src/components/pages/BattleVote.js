@@ -44,7 +44,7 @@ class BattleVote extends Component {
   render () {
     const { photos, currentUserVotes } = this.state
     return (
-      <div>
+      <div className='battle-vote-container'>
         <BattleVoteLightbox photos={photos} currentUserVotes={currentUserVotes} />
       </div>
     )

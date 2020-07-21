@@ -50,7 +50,7 @@ const Lightbox = ({ photos, votes }) => {
   }
 
   return (
-    <div className='gallery-lightbox-container'>
+    <div className='gallery-lightbox-container gallery-lightbox-container-user'>
       {
         photos &&
           <section className='Gallery'>
