@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
+import classnames from 'classnames'
 import { ADD_THEME } from '../../store/action-types'
 import './CreationBattle.css'
 
@@ -20,7 +21,7 @@ class CreationBattleTheme extends Component {
 
   handleThemeChange = e => {
     const selectedTheme = Object.assign({}, this.state.selectedTheme)
-    selectedTheme.themeId = e.target.id
+    selectedTheme.themeId = Number(e.target.id)
     selectedTheme.themeName = e.target.value
     this.setState({
       selectedTheme: selectedTheme
@@ -61,18 +62,20 @@ class CreationBattleTheme extends Component {
             {
               displayedThemes.map(theme => (
                 <Fragment key={theme.theme_id}>
-                  <input
-                    type='radio'
-                    name='themeButton'
-                    value={theme.theme_name}
-                    checked={selectedTheme.themeId === theme.theme_id}
-                    onChange={this.handleThemeChange}
-                    id={theme.theme_id}
-                  />
                   <label
                     htmlFor={theme.theme_id}
-                    className='battle-optionButton battle-btn'
+                    className={classnames('battle-btn battle-optionButton', {
+                      'battle-optionButton-selected': selectedTheme.themeId === theme.theme_id
+                    })}
                   >
+                    <input
+                      type='radio'
+                      name='themeButton'
+                      value={theme.theme_name}
+                      checked={selectedTheme.themeId === theme.theme_id}
+                      onChange={this.handleThemeChange}
+                      id={theme.theme_id}
+                    />
                     {theme.theme_name}
                   </label>
                 </Fragment>

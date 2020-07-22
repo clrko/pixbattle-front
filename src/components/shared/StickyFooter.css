@@ -5,8 +5,8 @@
   justify-content: space-evenly;
   align-items: center;
   background-color: #FAC748;
-  position:absolute;
-  bottom:0;
+  position: absolute;
+  bottom: 0;
 }
 
 .div-camera-StickyFooter {
@@ -60,7 +60,9 @@
   color: #FAC748;
 }
 
-.fa-camera, .fa-users, .fa-user-circle {
+.fa-camera,
+.fa-users,
+.fa-user-circle {
   color: #235789;
   font-size: 2rem;
 }

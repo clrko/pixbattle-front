@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import axios from 'axios'
+import classnames from 'classnames'
 import { ADD_RULES, REMOVE_THEME } from '../../store/action-types'
 import './CreationBattle.css'
 
@@ -55,7 +56,7 @@ class CreationBattleRule extends Component {
   }
 
   render () {
-    const { rules } = this.state
+    const { rules, selectedRules } = this.state
     return (
       <div className='battleCreation-page'>
         <div className='cardBattle'>
@@ -65,7 +66,9 @@ class CreationBattleRule extends Component {
               rules.map((rule, i) =>
                 <button
                   type='button'
-                  className='battle-optionButton battle-btn'
+                  className={classnames('battle-btn battle-optionButton', {
+                    'battle-optionButton-selected': selectedRules.find(r => r.rule_id === rule.rule_id)
+                  })}
                   onClick={this.handleOptionClick}
                   id={rule.rule_id}
                   key={i}

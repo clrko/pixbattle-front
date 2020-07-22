@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+// import classnames from 'classnames'
 import './StickyFooter.css'
 
 const mapStateToProps = state => {
