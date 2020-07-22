@@ -7,11 +7,6 @@ import classNames from 'classnames'
 import './FormLogin.css'
 import './FormRegistration.css'
 
-const mapStateToProps = state => {
-  const { user } = state
-  return { user }
-}
-
 class FormRegistration extends React.Component {
   state = {
     username: '',
@@ -170,4 +165,4 @@ class FormRegistration extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(withRouter(FormRegistration))
+export default connect()(withRouter(FormRegistration))
