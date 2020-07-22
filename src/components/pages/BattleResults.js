@@ -33,12 +33,14 @@ class BattleResults extends React.Component {
       )
   }
 
-  handleCreateGroupe = e => {
+  handleCreateBattle = e => {
     e.preventDefault()
     const { dispatch, history, match } = this.props
     const currentGroupId = { groupId: match.params.groupId }
     dispatch({ type: ADD_GROUP, currentGroupId })
-    history.push('/battle-creation/theme')
+    history.push({
+      pathname: `/battle-creation/group-created/${currentGroupId}`
+    })
   }
 
   render () {
@@ -94,7 +96,7 @@ class BattleResults extends React.Component {
             <h1 className='h1-div-congratulations'>Félicitations {users[0].username} !</h1>
             {
               user.userId === users[0].user_id
-                ? <button className='button-createdNewGroup-MyProfile button-div-congratulations' onClick={this.handleCreateGroupe}>Crée la prochaine battle</button>
+                ? <button className='button-createdNewGroup-MyProfile button-div-congratulations' onClick={this.handleCreateBattle}>Crée la prochaine battle</button>
                 : <div className='button-div-congratulations-empty' />
             }
           </div>

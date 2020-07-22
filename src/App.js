@@ -8,6 +8,7 @@ import CreationBattleDeadline from './components/pages/CreationBattleDeadline'
 import CreationBattleRule from './components/pages/CreationBattleRule'
 import CreationBattleTheme from './components/pages/CreationBattleTheme'
 import CreationBattleSummary from './components/pages/CreationBattleSummary'
+import CreationBattleSteps from './components/pages/CreationBattleSteps'
 import CreationSteps from './components/pages/CreationSteps'
 import LandingPage from './components/pages/LandingPage'
 import LandingPageInvitedUser from './components/pages/LandingPageInvitedUser'
@@ -31,6 +32,7 @@ const App = () => {
         <PrivateRoute path='/battle-creation/theme' component={CreationBattleTheme} />
         <PrivateRoute path='/battle-creation/summary' component={CreationBattleSummary} />
         <PrivateRoute path='/group-creation/group-created/:id' component={CreationSteps} />
+        <PrivateRoute path='/battle-creation/group-created/:id' component={CreationBattleSteps} />
         <PrivateRoute exact path='/:username' component={MyProfile} />
         <PrivateRoute exact path='/:username/groups' component={MyGroups} />
         <PrivateRoute path='/:username/ranking' component={MyRanking} />
