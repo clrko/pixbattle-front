@@ -26,16 +26,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
 .children-cardBattle-summary {
-  background-color: #3181C8;
-  margin: 30px 25px;
-  border-radius: 15px;
   display: flex;
   flex-direction: column;
-  padding: 5px 50px;
+  background-color: #3181C8;
+  width: 100%;
+  height: 80vh;
+  border-radius: 25px;
+  justify-content: space-around;
 }
 
 .cardBattle-summary h1 {
@@ -43,23 +43,20 @@
   text-transform: uppercase;
   font-weight: bold;
   font-size: 1.8em;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .cardBattle-summary h2 {
   font-size: 17px;
-  margin: 20px auto;
+  margin: 5px auto;
   color: #FDFFFC;
+  font-weight: 400;
 }
 
 .p-date-CreationbattleSummary {
-  width: fit-content;
-  margin: 5px auto;
-  background-color: #FAC748;
-  color: #3181C8;
-  padding: 7px 10px;
+
+  color: #FAC748;
   font-weight: bold;
-  border-radius: 20px;
   font-size: 15px;
 }
 
@@ -71,7 +68,7 @@
 .div-button-CreationBattleSummary {
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 10px;
 }
 
 .cardBattle-summary button {
@@ -207,6 +204,18 @@
   background-color: #73db5a;
   height: 40px;
   width: 100px;
+}
+
+.battle-creation-summary {
+  background-color: transparent;
+  color: #FAC748;
+  padding: 0;
+}
+
+.battle-summary-hr {
+  width: 90%;
+  align-self: center;
+  margin: 0.5rem 0;
 }
 
 @media screen and (min-width: 500px) {
