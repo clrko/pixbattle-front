@@ -38,7 +38,7 @@ const CreationBattleDeadline = (props) => {
   return (
     <div className='battleCreation-page'>
       <div className='cardBattle'>
-        <h1 className='cardBattle-color'>3. Choisis la date limite</h1>
+        <h1 className='cardBattle-color'>Choisis la date limite</h1>
         <div className='battleCreation-deadlineContainer'>
           <div className='battleCreation-dateTimeContainer'>
             <DateTime
