@@ -31,7 +31,6 @@ class BattleResults extends React.Component {
     e.preventDefault()
     const { dispatch, history, match } = this.props
     const currentGroupId = { groupId: match.params.groupId }
-    console.log(currentGroupId)
     dispatch({ type: ADD_GROUP, currentGroupId })
     history.push('/battle-creation/theme')
   }

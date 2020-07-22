@@ -31,7 +31,6 @@ class BattlePostParticipants extends Component {
 
   render () {
     const { participants, hasPosted } = this.state
-    console.log(participants, hasPosted)
     return (
       <div>
         <DropDownPost />
