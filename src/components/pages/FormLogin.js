@@ -5,15 +5,11 @@ import { withRouter } from 'react-router-dom'
 import { LOGIN } from '../../store/action-types'
 import './FormLogin.css'
 
-const mapStateToProps = state => {
-  const { user } = state
-  return { user }
-}
-
 class FormLogin extends React.Component {
   state = {
     email: '',
     password: '',
+    invitationCode: null,
     isChecked: false
   }
 
@@ -40,6 +36,12 @@ class FormLogin extends React.Component {
       return this.props.onClose(e)
     }
     alert('Il faut un email et un mot de passe')
+  }
+
+  componentDidMount () {
+    if (this.props.invitationCode) {
+      this.setState({ invitationCode: this.props.invitationCode })
+    }
   }
 
   render () {
@@ -96,4 +98,4 @@ class FormLogin extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(withRouter(FormLogin))
+export default connect()(withRouter(FormLogin))

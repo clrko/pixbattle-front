@@ -2,24 +2,21 @@ import React, { Component } from 'react'
 import CreationBattleDeadline from './CreationBattleDeadline'
 import CreationBattleRule from './CreationBattleRule'
 import CreationBattleTheme from './CreationBattleTheme'
-import CreationGroup from './CreationGroup'
-import Steps from './CreationStepper'
+import Steps from './CreationBattleStepper'
 
-class CreationSteps extends Component {
+class CreationBattleSteps extends Component {
   state = {
-    stepsTitles: ['Ton groupe', 'Ta battle: le thème', 'Ta battle: les options', 'Ta battle: la deadline'],
+    stepsTitles: ['Ta battle: le thème', 'Ta battle: les options', 'Ta battle: la deadline'],
     stepsNumbers: 0
   }
 
   getContent = () => {
     switch (this.state.stepsNumbers) {
       case 0:
-        return <CreationGroup changeStep={this.changeStepsNumber} groupId={this.props.match.params.id} />
-      case 1:
         return <CreationBattleTheme changeStep={this.changeStepsNumber} />
-      case 2:
+      case 1:
         return <CreationBattleRule changeStep={this.changeStepsNumber} />
-      case 3:
+      case 2:
         return <CreationBattleDeadline changeStep={this.changeStepsNumber} />
       default:
         return <></>
@@ -43,4 +40,4 @@ class CreationSteps extends Component {
   }
 }
 
-export default CreationSteps
+export default CreationBattleSteps

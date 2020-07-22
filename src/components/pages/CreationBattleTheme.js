@@ -29,12 +29,16 @@ class CreationBattleTheme extends Component {
 
   handleChangeSteps = e => {
     const selectedTheme = this.state.selectedTheme
-    const { dispatch } = this.props
+    const { dispatch, history } = this.props
     dispatch({ type: ADD_THEME, selectedTheme })
-    return this.props.changeStep(e)
+    if (this.props.changeStep) {
+      return this.props.changeStep(e)
+    }
+    return history.push('/battle-creation/rule')
   }
 
   componentDidMount () {
+    console.log(this.props)
     axios.get(`${process.env.REACT_APP_SERVER_URL}/battle/battle-creation/themes`,
       {
         headers: {
@@ -52,7 +56,7 @@ class CreationBattleTheme extends Component {
     return (
       <div className='battleCreation-page'>
         <div className='cardBattle'>
-          <h1 className='cardBattle-color'>1. Choisis un thème</h1>
+          <h1 className='cardBattle-color'>Choisis un thème</h1>
           <div className='battleCreation-themeContainer'>
             {
               displayedThemes.map(theme => (
@@ -85,12 +89,6 @@ class CreationBattleTheme extends Component {
             </button>
           </div>
           <div className='battleCreation-btnContainer'>
-            <button
-              className='battleCreation-cancelButton battle-btn'
-              type='button'
-            >
-              Annuler
-            </button> {/* Ajouter lien vers le choix du nom de groupe */}
             <button
               className='battleCreation-validateButton battle-btn'
               onClick={this.handleChangeSteps}

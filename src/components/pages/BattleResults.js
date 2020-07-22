@@ -1,149 +1,126 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { ADD_GROUP } from '../../store/action-types'
 import axios from 'axios'
-import DropDown from '../shared/DropDown'
-import avatar from '../../asset/pictures/avatar_MyProfile.png'
-import avatar2 from '../../asset/pictures/avatar2.png'
-import avatar3 from '../../asset/pictures/avatar3.png'
-import avatar4 from '../../asset/pictures/avatar4.png'
+import DropDownResults from '../shared/DropDownResults'
+import Loader from 'react-loader-spinner'
 import './BattleResults.css'
+
+const mapStateToProps = state => {
+  const { user, profileInfos } = state
+  return { user, profileInfos }
+}
 
 class BattleResults extends React.Component {
   state = {
-    user: [
-      {
-        id: 1,
-        username: 'Marie',
-        avatar: avatar3,
-        victories: 9
-      },
-      {
-        id: 2,
-        username: 'Jean',
-        avatar: avatar2,
-        victories: 7
-      },
-      {
-        id: 3,
-        username: 'Paul',
-        avatar: avatar,
-        victories: 6
-      },
-      {
-        id: 4,
-        username: 'Aristide',
-        avatar: avatar4,
-        victories: 5
-      },
-      {
-        id: 5,
-        username: 'Marion',
-        avatar: avatar2,
-        victories: 3
-      },
-      {
-        id: 6,
-        username: 'Zoé',
-        avatar: avatar3,
-        victories: 2
-      },
-      {
-        id: 7,
-        username: 'Lola',
-        avatar: avatar3,
-        victories: 1
-      },
-      {
-        id: 8,
-        username: 'Julien',
-        avatar: avatar4,
-        victories: 0
-      },
-      {
-        id: 9,
-        username: 'Auxence',
-        avatar: avatar,
-        victories: 0
-      }
-    ]
+    users: '',
+    victories: []
   }
 
-  handleCreateGroupe = e => {
-    e.preventDefault()
-    const { history } = this.props
+  componentDidMount () {
+    this.getResults()
+  }
+
+  getResults = () => {
+    const { battleId } = this.props.match.params
     axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/group-creation`,
-        {
-          headers: {
-            authorization: `Bearer ${localStorage.getItem('token')}`
-          }
-        }
-      )
-      .then(res => {
-        const groupId = res.data.groupId
-        history.push({
-          pathname: `/group-creation/group-created/${groupId}`
+      .get(`${process.env.REACT_APP_SERVER_URL}/battle/${battleId}/results`)
+      .then(res =>
+        this.setState({
+          users: res.data.participantsList,
+          victories: res.data.victoriesParticipants
         })
-      })
+      )
+  }
+
+  handleCreateBattle = e => {
+    e.preventDefault()
+    const { dispatch, history, match } = this.props
+    const currentGroupId = { groupId: match.params.groupId }
+    dispatch({ type: ADD_GROUP, currentGroupId })
+    history.push({
+      pathname: `/battle-creation/group-created/${currentGroupId}`
+    })
   }
 
   render () {
+    const { users, victories } = this.state
+    const { user } = this.props
+
+    if (!users) {
+      return (
+        <div style={{ width: 'auto', margin: 'auto', textAlign: 'center' }}>
+          <Loader type='ThreeDots' color='#00BFFF' height={80} width={80} />
+        </div>
+      )
+    }
+
     return (
       <div>
-        <DropDown />
+        {console.log(victories)}
+        <DropDownResults />
         <div className='div-AvatarPodium'>
           <div className='div-center-AvatarPodium'>
             <div className='AvatarPodium second-position'>
               <div className='div-p-fas'>
-                <p className='p-AvatarPodium'>{this.state.user[1].username}</p>
-                <i className='fas fa-star'><p className='p-user-victories-podium'>{this.state.user[1].victories}</p></i>
+                <p className='p-AvatarPodium'>{users[1].username}</p>
+                <i className='fas fa-star'><p className='p-user-victories-podium'>{!users[1].victories && 0}</p></i>
               </div>
               <div className='div-img-Avatar2'>
-                <img className='img-avatar-position' src={this.state.user[1].avatar} alt='avatar' />
+                <img className='img-avatar-position' src={users[1].avatar_url} alt='avatar' />
               </div>
               <i className='fas fa-medal medal2' />
             </div>
             <div className='AvatarPodium first-position'>
               <div className='div-p-fas'>
-                <p className='p-AvatarPodium'>{this.state.user[0].username}</p>
-                <i className='fas fa-star'><p className='p-user-victories-podium'>{this.state.user[0].victories}</p></i>
+                <p className='p-AvatarPodium'>{users[0].username}</p>
+                <i className='fas fa-star'><p className='p-user-victories-podium'>{!users[0].victories && 0}</p></i>
               </div>
               <div className='div-img-Avatar1'>
-                <img className='img-avatar-position' src={this.state.user[0].avatar} alt='avatar' />
+                <img className='img-avatar-position' src={users[0].avatar_url} alt='avatar' />
               </div>
               <i className='fas fa-medal medal1'><p /></i>
             </div>
             <div className='AvatarPodium third-position'>
               <div className='div-p-fas'>
-                <p className='p-AvatarPodium'>{this.state.user[2].username}</p>
-                <i className='fas fa-star'><p className='p-user-victories-podium'>{this.state.user[2].victories}</p></i>
+                <p className='p-AvatarPodium'>{users[2].username}</p>
+                <i className='fas fa-star'><p className='p-user-victories-podium'>{!users[2].victories && 0}</p></i>
               </div>
               <div className='div-img-Avatar3'>
-                <img className='img-avatar-position' src={this.state.user[2].avatar} alt='avatar' />
+                <img className='img-avatar-position' src={users[2].avatar_url} alt='avatar' />
               </div>
               <i className='fas fa-medal medal3' />
             </div>
           </div>
           <div className='div-congratulations'>
-            <h1 className='h1-div-congratulations'>Félicitations {this.state.user[0].username} !</h1>
-            <button className='button-createdNewGroup-MyProfile button-div-congratulations' onClick={this.handleCreateGroupe}>crée la prochaine battle</button>
+            <h1 className='h1-div-congratulations'>Félicitations {users[0].username} !</h1>
+            {
+              user.userId === users[0].user_id
+                ? <button className='button-createdNewGroup-MyProfile button-div-congratulations' onClick={this.handleCreateBattle}>Crée la prochaine battle</button>
+                : <div className='button-div-congratulations-empty' />
+            }
           </div>
           <div className='div-attendee-list'>
-            {this.state.user.slice(3).map((user, i) => (
-              <div key={i} className='div-participant'>
-                <div className='margin-div-participant'>
-                  <p className='p-div-participant'>{user.id}.</p>
+            {
+              users.slice(3).map((u, i) => (
+                <div key={i} className='div-participant'>
+                  <div className='margin-div-participant'>
+                    <p className='p-div-participant'>{i + 4}.</p>
+                  </div>
+                  <div className='margin-div-participant'>
+                    <img className='img-attendee-list' src={u.avatar_url} alt='avatar' />
+                  </div>
+                  <div className='margin-div-participant'>
+                    <p className='p-div-participant'>{u.username}</p>
+                  </div>
+                  <div className='margin-fa-star-attendee-list'>
+                    <i className='fas fa-star fa-star-attendee-list'>
+                      <p className='p-user-victories'>{!u.victories && 0}</p>
+                    </i>
+                  </div>
                 </div>
-                <div className='margin-div-participant'>
-                  <img className='img-attendee-list' src={user.avatar} alt='avatar' />
-                </div>
-                <div className='margin-div-participant'>
-                  <p className='p-div-participant'>{user.username}</p>
-                </div>
-                <div className='margin-fa-star-attendee-list'>
-                  <i className='fas fa-star fa-star-attendee-list'><p className='p-user-victories'>{user.victories}</p></i>
-                </div>
-              </div>
-            ))}
+              ))
+            }
           </div>
         </div>
       </div>
@@ -151,4 +128,4 @@ class BattleResults extends React.Component {
   }
 }
 
-export default BattleResults
+export default connect(mapStateToProps)(BattleResults)

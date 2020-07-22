@@ -5,14 +5,17 @@ import axios from 'axios'
 import { ADD_GROUP } from '../../store/action-types'
 import './CreationGroup.css'
 
+const mapStateToProps = state => {
+  const { user } = state
+  return { user }
+}
 class CreationGroup extends Component {
   state = {
     groupName: '',
     isGroupName: false,
     email: '',
     count: 1,
-    allEmails: [],
-    contentModal: 'newBattleTheme'
+    allEmails: []
   }
 
   handleChange = e => {
@@ -24,7 +27,7 @@ class CreationGroup extends Component {
     const { groupName } = this.state
     if (this.state.groupName.length > 0) {
       axios
-        .put(`${process.env.REACT_APP_SERVER_URL}/group/${this.props.params}`,
+        .put(`${process.env.REACT_APP_SERVER_URL}/group/${this.props.groupId}`,
           { groupName },
           {
             headers: {
@@ -41,6 +44,9 @@ class CreationGroup extends Component {
     e.preventDefault()
     const { allEmails, email, count } = this.state
     if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      if (email === this.props.user.userEmail) {
+        return alert('Tu ne peux pas ajouter ton propre email')
+      }
       if (allEmails.includes(email) === false) {
         const allEmailsTemp = allEmails
         const newEmail = email.toLowerCase()
@@ -74,7 +80,7 @@ class CreationGroup extends Component {
     e.preventDefault()
     const { allEmails } = this.state
     axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/group/${this.props.params}`,
+      .post(`${process.env.REACT_APP_SERVER_URL}/group/${this.props.groupId}`,
         { allEmails },
         {
           headers: {
@@ -84,9 +90,8 @@ class CreationGroup extends Component {
       .then(res => {
         console.log(res.data) /* Il faut renvoyer une notification à l'utilisateur soit les emails soit group créé */
       })
-    const currentGroupId = { groupId: this.props.params }
-    const { dispatch } = this.props
-    dispatch({ type: ADD_GROUP, currentGroupId })
+    const { dispatch, groupId } = this.props
+    dispatch({ type: ADD_GROUP, groupId })
     return this.props.changeStep(e)
   }
 
@@ -218,4 +223,4 @@ class CreationGroup extends Component {
   }
 }
 
-export default connect()(CreationGroup)
+export default connect(mapStateToProps)(CreationGroup)

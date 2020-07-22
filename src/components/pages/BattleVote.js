@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import DropDownVote from '../shared/DropDownVote'
 import BattleVoteLightbox from './BattleVoteLightbox'
 
 class BattleVote extends Component {
@@ -9,23 +10,18 @@ class BattleVote extends Component {
   }
 
   getPhotos = () => {
-    const { battleId } = this.props.location.state
-    axios.post(`${process.env.REACT_APP_SERVER_URL}/gallery/battle`,
-      {
-        battleId: battleId
-      }
-    ).then(res => {
-      this.setState({ photos: res.data })
-    })
+    const { battleId } = this.props.match.params
+    axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/gallery/battle/${battleId}`)
+      .then(res => {
+        this.setState({ photos: res.data })
+      })
   }
 
-  getStatusUser = () => {
-    const { battleId } = this.props.location.state
+  getStatusCurrentUser = () => {
+    const { battleId } = this.props.match.params
     axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/battle/battle-vote/status-user`,
-        {
-          battleId: battleId
-        },
+      .get(`${process.env.REACT_APP_SERVER_URL}/battle/battle-vote/${battleId}/status-user`,
         {
           headers: {
             authorization: `Bearer ${localStorage.getItem('token')}`
@@ -38,13 +34,14 @@ class BattleVote extends Component {
 
   componentDidMount () {
     this.getPhotos()
-    this.getStatusUser()
+    this.getStatusCurrentUser()
   }
 
   render () {
     const { photos, currentUserVotes } = this.state
     return (
-      <div>
+      <div className='battle-vote-container'>
+        <DropDownVote />
         <BattleVoteLightbox photos={photos} currentUserVotes={currentUserVotes} />
       </div>
     )

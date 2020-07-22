@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Photo from './Photo'
 import './Lightbox.css'
 
-const Lightbox = ({ photos }) => {
+const Lightbox = ({ photos, votes }) => {
   const [dispImg, setDisp] = useState('')
   const [photoId, setPhotoId] = useState('')
   const [cardIndex, setIndex] = useState(0)
@@ -50,7 +50,7 @@ const Lightbox = ({ photos }) => {
   }
 
   return (
-    <div className='gallery-lightbox-container'>
+    <div className='gallery-lightbox-container gallery-lightbox-container-user'>
       {
         photos &&
           <section className='Gallery'>
@@ -74,13 +74,39 @@ const Lightbox = ({ photos }) => {
         <div className='lightbox-img-container'>
           <img src={dispImg} alt={dispImg} className='lightbox-img' />
         </div>
-        <div>
-          <div className='btn-vote-container'>
-            <div className='stars-container'>
-              <i className='fas fa-star' />
+        {
+          photos[cardIndex].avatar_url &&
+            <div className='lightbox-infos-container'>
+              <div className='lightbox-infos-user'>
+                <p className='lightbox-infos-p'>Postée par : </p>
+                <img className='lightbox-infos-user-avatar' src={photos[cardIndex].avatar_url} alt={photos[cardIndex].avatar_url} />
+                <p className='lightbox-infos-span'>{photos[cardIndex].username}</p>
+              </div>
+              <p className='lightbox-infos-p'>Le :
+                <span className='lightbox-infos-span'>{photos[cardIndex].create_date.slice(0, 10)}</span>
+              </p>
+              <p className='lightbox-infos-p'>Points gagnés :
+                <span className='lightbox-infos-span'>+ {photos[cardIndex].score}</span>
+              </p>
+              {
+                votes.map(vote => {
+                  if (vote.photo_id === photoId) {
+                    return (
+                      <div key={vote.photo_id} className='lightbox-infos-user votes'>
+                        <img className='lightbox-infos-user-avatar-vote' src={vote.avatar_url} alt={vote.avatar_url} />
+                        <p className='lightbox-infos-span' key={vote.username}>{vote.username}</p>
+                        {
+                          vote.vote && new Array(vote.vote).fill(0).map((_, i) => (
+                            <i key={i} className='fas fa-star' />
+                          ))
+                        }
+                      </div>
+                    )
+                  }
+                })
+              }
             </div>
-          </div>
-        </div>
+        }
       </section>
     </div>
   )

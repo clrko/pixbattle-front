@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import BattlePostTimer from './BattlePostTimer'
 import CloudUpload from '../../asset/pictures/cloud-computing.png'
-import DropDown from '../shared/DropDown'
+import DropDownPost from '../shared/DropDownPost'
 import './BattlePost.css'
 import './MyProfile.css'
 
@@ -10,7 +10,8 @@ class BattlePost extends React.Component {
   state = {
     previewPicture: CloudUpload,
     selectedFile: CloudUpload,
-    battlePostInfo: '',
+    themeName: '',
+    rulesNames: [],
     deadline: ''
   }
 
@@ -20,6 +21,7 @@ class BattlePost extends React.Component {
 
   handleInfosBattle = () => {
     const { battleId, groupId } = this.props.match.params
+    const allRulesNames = []
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/battle/battle-post/${groupId}/${battleId}`,
         {
@@ -27,10 +29,14 @@ class BattlePost extends React.Component {
             authorization: `Bearer ${localStorage.getItem('token')}`
           }
         }
-      ).then(res => this.setState({
-        battlePostInfo: res.data.battleInfos[0],
-        deadline: res.data.battleInfos[0].deadline.replace('T', ' ').substr(0, 19)
-      }))
+      ).then(res => {
+        allRulesNames.push(res.data.battleInfos.map(info => { return ' - ' + info.rule_name }))
+        this.setState({
+          themeName: res.data.battleInfos[0].theme_name,
+          rulesNames: allRulesNames,
+          deadline: res.data.battleInfos[0].deadline.replace('T', ' ').substr(0, 19)
+        })
+      })
   }
 
   handleChange = event => {
@@ -62,20 +68,29 @@ class BattlePost extends React.Component {
       })
   }
 
-  render () {
-    const { battlePostInfo, deadline, selectedFile } = this.state
+  handleDeadlineReached = () => {
+    const { history } = this.props
     const { battleId, groupId } = this.props.match.params
+    history.push(`/groups/${groupId}/battles/${battleId}/vote`)
+  }
+
+  render () {
+    const { themeName, deadline, rulesNames, selectedFile } = this.state
     return (
       <div className='background-MyProfile'>
-        <DropDown />
+        <DropDownPost />
         <div className='window-MyProfile battle-post-container'>
+          <BattlePostTimer onDeadlineReached={this.handleDeadlineReached} deadline={deadline} />
           <div className='battlePost-info-div'>
-            <div className='battle-post-infos'>
-              <h4 className='battlePost-rules'>Contraintes:</h4>
-              <p className='battlePost-info'>{battlePostInfo.rule_name}</p>
-            </div>
+            <p className='battlePost-info'>Thème : <sapn className='battlePost-span'>{themeName}</sapn></p>
+            <hr className='battlePost-line' />
+            <p className='battlePost-info'>Contraintes :
+              {
+                rulesNames.map((rule, i) => <span key={i} className='battlePost-span'>{rule}</span>)
+              }
+            </p>
+            <hr className='battlePost-line' />
           </div>
-          <BattlePostTimer deadline={deadline} groupId={groupId} battleId={battleId} />
           <div>
             <div className='countdown' />
             <img className='picture' src={selectedFile} alt='preview' />

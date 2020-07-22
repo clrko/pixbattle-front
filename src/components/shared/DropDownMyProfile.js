@@ -8,7 +8,7 @@ const mapStateToProps = state => {
   return { user }
 }
 
-const DropDown = ({ user, history, match }) => {
+const DropDownMyProfile = ({ user, history, match }) => {
   const handleChange = e => {
     history.push(e.target.value)
   }
@@ -26,4 +26,4 @@ const DropDown = ({ user, history, match }) => {
   )
 }
 
-export default connect(mapStateToProps)(withRouter(DropDown))
+export default connect(mapStateToProps)(withRouter(DropDownMyProfile))

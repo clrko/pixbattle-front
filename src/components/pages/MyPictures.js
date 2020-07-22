@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
-import DropDown from '../shared/DropDown'
+import DropDownMyProfile from '../shared/DropDownMyProfile'
 import Lightbox from '../shared/Lightbox'
-import './MyPictures.css'
 
 const mapStateToProps = state => {
   const { user } = state
@@ -12,7 +11,8 @@ const mapStateToProps = state => {
 
 class MyPictures extends Component {
   state = {
-    photos: []
+    photos: [],
+    usersVotes: []
   }
 
   componentDidMount () {
@@ -27,16 +27,20 @@ class MyPictures extends Component {
             authorization: `Bearer ${localStorage.getItem('token')}`
           }
         })
-      .then(res => this.setState({ photos: res.data }))
+      .then(res => this.setState({
+        photos: res.data.photosUserUrls,
+        usersVotes: res.data.userVoteInfos
+      })
+      )
   }
 
   render () {
-    const { photos } = this.state
+    const { photos, usersVotes } = this.state
     return (
       <div className='background-MyPictures'>
-        <DropDown />
+        <DropDownMyProfile />
         <div className='window-MyPictures'>
-          <Lightbox photos={photos} />
+          <Lightbox photos={photos} votes={usersVotes} />
         </div>
       </div>
     )

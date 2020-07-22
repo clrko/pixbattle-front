@@ -24,7 +24,7 @@ const Photo = ({ photo, id, handleClick, currentUserVotes }) => {
           )) : <div className='empty-stars-container' />
         }
       </div>
-      <img src={photo.photo_url} onClick={handleClick} id={id} alt={photo.photo_url} className='gallery-image' />
+      <img src={`${process.env.REACT_APP_SERVER_URL}/${photo.photo_url}`} onClick={handleClick} id={id} alt={photo.photo_url} className='gallery-image' />
     </div>
   )
 }

@@ -7,16 +7,12 @@ import classNames from 'classnames'
 import './FormLogin.css'
 import './FormRegistration.css'
 
-const mapStateToProps = state => {
-  const { user } = state
-  return { user }
-}
-
 class FormRegistration extends React.Component {
   state = {
     username: '',
     email: '',
     password: '',
+    invitationCode: null,
     checkPassword: '',
     isChecked: false
   }
@@ -61,6 +57,12 @@ class FormRegistration extends React.Component {
       alert('une erreur est survenue')
     }
     return this.props.onClose(e)
+  }
+
+  componentDidMount () {
+    if (this.props.invitationCode) {
+      this.setState({ invitationCode: this.props.invitationCode })
+    }
   }
 
   render () {
@@ -163,4 +165,4 @@ class FormRegistration extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(withRouter(FormRegistration))
+export default connect()(withRouter(FormRegistration))
