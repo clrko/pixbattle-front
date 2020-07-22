@@ -24,9 +24,9 @@ class FormContainer extends Component {
   getTabContent = () => {
     switch (this.state.activeId) {
       case 'registration':
-        return <FormRegistration onClose={this.props.onClose} />
+        return <FormRegistration onClose={this.props.onClose} invitationCode={this.props.invitationCode} />
       case 'login':
-        return <FormLogin onClose={this.props.onClose} />
+        return <FormLogin onClose={this.props.onClose} invitationCode={this.props.invitationCode} />
       default:
         return <Error />
     }

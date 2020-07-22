@@ -17,6 +17,7 @@ class FormRegistration extends React.Component {
     username: '',
     email: '',
     password: '',
+    invitationCode: null,
     checkPassword: '',
     isChecked: false
   }
@@ -61,6 +62,12 @@ class FormRegistration extends React.Component {
       alert('une erreur est survenue')
     }
     return this.props.onClose(e)
+  }
+
+  componentDidMount () {
+    if (this.props.invitationCode) {
+      this.setState({ invitationCode: this.props.invitationCode })
+    }
   }
 
   render () {
