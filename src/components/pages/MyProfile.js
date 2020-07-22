@@ -53,9 +53,21 @@ const MyProfile = ({ user, profileInfos, history }) => {
           <img className='avatar-MyProfile' src={user.avatar} alt='avatar' placeholder='https://oasys.ch/wp-content/uploads/2019/03/photo-avatar-profil.png' />
         </div>
         <div className='div-informations-MyProfile'>
-          <p className='p-picture-MyProfile'>{profileInfos.nbPhotos[0].nb_photos} photos postées</p>
-          <p className='p-group-MyProfile'>{profileInfos.nbGroups[0].nb_groups} groupes</p>
-          <p className='p-friend-MyProfile'>{profileInfos.nbBattles[0].nb_battles} battles</p>
+          {
+            profileInfos
+              ? (
+                <div className='div-informations-MyProfile'>
+                  <p className='p-picture-MyProfile'>{profileInfos.nbPhotos[0].nb_photos} photos postées</p>
+                  <p className='p-group-MyProfile'>{profileInfos.nbGroups[0].nb_groups} groupes</p>
+                  <p className='p-friend-MyProfile'>{profileInfos.nbBattles[0].nb_battles} battles</p>
+                </div>
+              )
+              : (
+                <div className='div-informations-MyProfile-empty'>
+                  <p>Crée ton groupe, une battle et invite tes amis pour pouvoir les défier !</p>
+                </div>
+              )
+          }
           <button className='button-createdNewGroup-MyProfile' onClick={handleCreateGroupe}>Créer un nouveau groupe</button>
         </div>
       </div>
