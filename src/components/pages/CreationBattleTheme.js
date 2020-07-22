@@ -56,7 +56,7 @@ class CreationBattleTheme extends Component {
     return (
       <div className='battleCreation-page'>
         <div className='cardBattle'>
-          <h1 className='cardBattle-color'>1. Choisis un thème</h1>
+          <h1 className='cardBattle-color'>Choisis un thème</h1>
           <div className='battleCreation-themeContainer'>
             {
               displayedThemes.map(theme => (

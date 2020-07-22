@@ -54,7 +54,7 @@ class CreationBattleRule extends Component {
     return (
       <div className='battleCreation-page'>
         <div className='cardBattle'>
-          <h1 className='cardBattle-color'>2. Personnalise la battle</h1>
+          <h1 className='cardBattle-color'>Personnalise la battle</h1>
           <div className='battleCreation-ruleContainer'>
             {
               rules.map((rule, i) =>
