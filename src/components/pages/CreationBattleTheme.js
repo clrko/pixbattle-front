@@ -38,7 +38,6 @@ class CreationBattleTheme extends Component {
   }
 
   componentDidMount () {
-    console.log(this.props)
     axios.get(`${process.env.REACT_APP_SERVER_URL}/battle/battle-creation/themes`,
       {
         headers: {

@@ -12,8 +12,8 @@ import './CreationBattleDeadline.css'
 
 const CreationBattleDeadline = (props) => {
   const [selectedDate, setDateChange] = useState(moment())
-  const [selectedTime, setTimeChange] = useState('01:00:00') // moment().format('HH:mm:ss')
-  const [timeConstraints, setTimeConstraints] = useState({ hours: { min: Number(DateTime.moment().format('H')), max: 23 } })
+  const [selectedTime, setTimeChange] = useState('01:00:00')
+  // const [isDisable, setIsDisable] = useState(true)
   const [isOpen, setIsOpen] = useState(false)
 
   const yesterday = DateTime.moment().subtract(1, 'day')
@@ -23,14 +23,17 @@ const CreationBattleDeadline = (props) => {
   }
 
   const handleDateChange = e => {
-    // if (e.isAfter(DateTime.moment()))
-    const today = DateTime.moment()
-    const isAfterToday = (selectedDate.isAfter(today))
-    const hour = Number(today.format('H'))
-    const newTimeConstraints = isAfterToday ? { hours: { min: 0, max: 23 } } : { hours: { min: hour, max: 23 } }
-    setTimeConstraints(newTimeConstraints)
     setDateChange(e)
   }
+
+  // const getEnable = () => {
+  //   const now = new Date()
+  //   const date = new Date(selectedDate)
+  //   console.log(date)
+  //   if (date > now) {
+  //     return setIsDisable(false)
+  //   }
+  // }
 
   const handleTimeChange = e => {
     setTimeChange(e.format('LTS'))
@@ -76,7 +79,6 @@ const CreationBattleDeadline = (props) => {
               dateFormat={false} locale='fr'
               timeFormat='HH:mm:ss'
               timeIntervals={15}
-              timeConstraints={timeConstraints}
             />
           </div>
         </div>
@@ -94,6 +96,7 @@ const CreationBattleDeadline = (props) => {
             className='battleCreation-validateButton battle-btn'
             type='button'
             onClick={handleSubmit}
+          // disabled={isDisable}
           >
             Valider
           </button>
