@@ -11,13 +11,11 @@ class BattleVote extends Component {
 
   getPhotos = () => {
     const { battleId } = this.props.match.params
-    axios.post(`${process.env.REACT_APP_SERVER_URL}/gallery/battle`,
-      {
-        battleId: battleId
-      }
-    ).then(res => {
-      this.setState({ photos: res.data })
-    })
+    axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/gallery/battle/${battleId}`)
+      .then(res => {
+        this.setState({ photos: res.data })
+      })
   }
 
   getStatusUser = () => {

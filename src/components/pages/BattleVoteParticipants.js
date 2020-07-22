@@ -5,7 +5,8 @@ import ListRankingMembers from '../shared/ListRankingMembers'
 
 class BattleVoteParticipants extends Component {
   state = {
-    participants: []
+    participants: [],
+    hasVoted: []
   }
 
   componentDidMount () {
@@ -13,22 +14,27 @@ class BattleVoteParticipants extends Component {
   }
 
   getVoteRanking = () => {
+    const { battleId } = this.props.match.params
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/profile/ranking`,
+      .get(`${process.env.REACT_APP_SERVER_URL}/battle/battle-vote/${battleId}/members`,
         {
           headers: {
             authorization: `Bearer ${localStorage.getItem('token')}`
           }
         })
-      .then(res => console.log(res)
+      .then(res => this.setState({
+        participants: res.data.allParticipants,
+        hasVoted: res.data.allHasVoted
+      })
       )
   }
 
   render () {
+    const { participants, hasVoted } = this.state
     return (
       <div>
         <DropDownVote />
-        <ListRankingMembers />
+        <ListRankingMembers participants={participants} hasVoted={hasVoted} />
       </div>
     )
   }

@@ -18,12 +18,10 @@ const ListRankingMembers = ({ participants, hasPosted, hasVoted, victories }) =>
     }
   }
 
-  console.log('ldkgj', icon)
+  console.log('ldkgj', hasVoted)
 
   return (
-
     <div className='window-RankingMembers scrollbar-ListRankingMembers'>
-
       {participants.map((p, i) => (
         <div key={i} className='div-participants-RankingMembers'>
           <div className='margin-div-participant-RankingMembers'>
