@@ -5,6 +5,10 @@ import axios from 'axios'
 import { ADD_GROUP } from '../../store/action-types'
 import './CreationGroup.css'
 
+const mapStateToProps = state => {
+  const { user } = state
+  return { user }
+}
 class CreationGroup extends Component {
   state = {
     groupName: '',
@@ -40,6 +44,9 @@ class CreationGroup extends Component {
     e.preventDefault()
     const { allEmails, email, count } = this.state
     if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      if (email === this.props.user.userEmail) {
+        return alert('Tu ne peux pas ajouter ton propre email')
+      }
       if (allEmails.includes(email) === false) {
         const allEmailsTemp = allEmails
         const newEmail = email.toLowerCase()
@@ -217,4 +224,4 @@ class CreationGroup extends Component {
   }
 }
 
-export default connect()(CreationGroup)
+export default connect(mapStateToProps)(CreationGroup)
