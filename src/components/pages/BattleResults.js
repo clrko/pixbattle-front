@@ -35,11 +35,11 @@ class BattleResults extends React.Component {
 
   handleCreateBattle = e => {
     e.preventDefault()
-    const { dispatch, history, match } = this.props
-    const currentGroupId = { groupId: match.params.groupId }
-    dispatch({ type: ADD_GROUP, currentGroupId })
+    const { dispatch, history } = this.props
+    const groupId = this.props.match.params.groupId
+    dispatch({ type: ADD_GROUP, groupId })
     history.push({
-      pathname: `/battle-creation/group-created/${currentGroupId}`
+      pathname: `/battle-creation/group-created/${groupId}`
     })
   }
 
