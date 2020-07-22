@@ -158,7 +158,7 @@ const Lightbox = ({ photos, currentUserVotes }) => {
           <i className='fas fa-chevron-right' />
         </div>
         <div className='lightbox-img-container'>
-          <img src={dispImg} alt={dispImg} className='lightbox-img' />
+          {dispImg && <img src={`${process.env.REACT_APP_SERVER_URL}/${dispImg}`} alt={dispImg} className='lightbox-img' />}
         </div>
         {
           currentUserVotes.length === 0 &&

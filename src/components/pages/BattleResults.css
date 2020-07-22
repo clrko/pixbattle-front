@@ -124,6 +124,13 @@
   margin-bottom: 8px;
 }
 
+.button-div-congratulations-empty {
+  width: 188px;
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+
 .div-attendee-list {
   display: flex;
   flex-direction: column;
@@ -136,7 +143,6 @@
   overflow: auto;
   border: 6px solid #235789;
 }
-
 
 .div-attendee-list::-webkit-scrollbar {
   width: 5px;

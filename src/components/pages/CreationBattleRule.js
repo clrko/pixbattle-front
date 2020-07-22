@@ -29,9 +29,12 @@ class CreationBattleRule extends Component {
 
   handleChangeSteps = e => {
     const rules = [...this.state.selectedRules]
-    const { dispatch } = this.props
+    const { dispatch, history } = this.props
     dispatch({ type: ADD_RULES, rules })
-    return this.props.changeStep(e)
+    if (this.props.changeStep) {
+      return this.props.changeStep(e)
+    }
+    return history.push('/battle-creation/deadline')
   }
 
   componentDidMount () {
