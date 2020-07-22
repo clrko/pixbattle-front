@@ -42,7 +42,7 @@ class BattleResults extends React.Component {
   }
 
   render () {
-    const { users } = this.state
+    const { users, victories } = this.state
     const { user } = this.props
 
     if (!users) {
@@ -55,13 +55,14 @@ class BattleResults extends React.Component {
 
     return (
       <div>
+        {console.log(victories)}
         <DropDownResults />
         <div className='div-AvatarPodium'>
           <div className='div-center-AvatarPodium'>
             <div className='AvatarPodium second-position'>
               <div className='div-p-fas'>
                 <p className='p-AvatarPodium'>{users[1].username}</p>
-                <i className='fas fa-star'><p className='p-user-victories-podium'>{users[1].victories}</p></i>
+                <i className='fas fa-star'><p className='p-user-victories-podium'>{!users[1].victories && 0}</p></i>
               </div>
               <div className='div-img-Avatar2'>
                 <img className='img-avatar-position' src={users[1].avatar_url} alt='avatar' />
@@ -71,7 +72,7 @@ class BattleResults extends React.Component {
             <div className='AvatarPodium first-position'>
               <div className='div-p-fas'>
                 <p className='p-AvatarPodium'>{users[0].username}</p>
-                <i className='fas fa-star'><p className='p-user-victories-podium'>{users[0].victories}</p></i>
+                <i className='fas fa-star'><p className='p-user-victories-podium'>{!users[0].victories && 0}</p></i>
               </div>
               <div className='div-img-Avatar1'>
                 <img className='img-avatar-position' src={users[0].avatar_url} alt='avatar' />
@@ -81,7 +82,7 @@ class BattleResults extends React.Component {
             <div className='AvatarPodium third-position'>
               <div className='div-p-fas'>
                 <p className='p-AvatarPodium'>{users[2].username}</p>
-                <i className='fas fa-star'><p className='p-user-victories-podium'>{users[2].victories}</p></i>
+                <i className='fas fa-star'><p className='p-user-victories-podium'>{!users[2].victories && 0}</p></i>
               </div>
               <div className='div-img-Avatar3'>
                 <img className='img-avatar-position' src={users[2].avatar_url} alt='avatar' />
@@ -111,7 +112,9 @@ class BattleResults extends React.Component {
                     <p className='p-div-participant'>{u.username}</p>
                   </div>
                   <div className='margin-fa-star-attendee-list'>
-                    <i className='fas fa-star fa-star-attendee-list'><p className='p-user-victories'>{!u.victories && 0}</p></i>
+                    <i className='fas fa-star fa-star-attendee-list'>
+                      <p className='p-user-victories'>{!u.victories && 0}</p>
+                    </i>
                   </div>
                 </div>
               ))
