@@ -13,7 +13,8 @@ const mapStateToProps = state => {
 
 class BattleResults extends React.Component {
   state = {
-    users: ''
+    users: '',
+    victories: []
   }
 
   componentDidMount () {
@@ -21,23 +22,27 @@ class BattleResults extends React.Component {
   }
 
   getResults = () => {
-    const { battleId, groupId } = this.props.match.params
+    const { battleId } = this.props.match.params
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/battle/${groupId}/${battleId}/results`)
-      .then(res => this.setState({ users: res.data }))
+      .get(`${process.env.REACT_APP_SERVER_URL}/battle/${battleId}/results`)
+      .then(res =>
+        this.setState({
+          users: res.data.participantsList,
+          victories: res.data.victoriesParticipants
+        })
+      )
   }
 
   handleCreateGroupe = e => {
     e.preventDefault()
     const { dispatch, history, match } = this.props
     const currentGroupId = { groupId: match.params.groupId }
-    console.log(currentGroupId)
     dispatch({ type: ADD_GROUP, currentGroupId })
     history.push('/battle-creation/theme')
   }
 
   render () {
-    const { users } = this.state
+    const { users, victories } = this.state
     const { user } = this.props
 
     if (!users) {
@@ -50,13 +55,14 @@ class BattleResults extends React.Component {
 
     return (
       <div>
+        {console.log(victories)}
         <DropDownResults />
         <div className='div-AvatarPodium'>
           <div className='div-center-AvatarPodium'>
             <div className='AvatarPodium second-position'>
               <div className='div-p-fas'>
                 <p className='p-AvatarPodium'>{users[1].username}</p>
-                <i className='fas fa-star'><p className='p-user-victories-podium'>{users[1].victories}</p></i>
+                <i className='fas fa-star'><p className='p-user-victories-podium'>{!users[1].victories && 0}</p></i>
               </div>
               <div className='div-img-Avatar2'>
                 <img className='img-avatar-position' src={users[1].avatar_url} alt='avatar' />
@@ -66,7 +72,7 @@ class BattleResults extends React.Component {
             <div className='AvatarPodium first-position'>
               <div className='div-p-fas'>
                 <p className='p-AvatarPodium'>{users[0].username}</p>
-                <i className='fas fa-star'><p className='p-user-victories-podium'>{users[0].victories}</p></i>
+                <i className='fas fa-star'><p className='p-user-victories-podium'>{!users[0].victories && 0}</p></i>
               </div>
               <div className='div-img-Avatar1'>
                 <img className='img-avatar-position' src={users[0].avatar_url} alt='avatar' />
@@ -76,7 +82,7 @@ class BattleResults extends React.Component {
             <div className='AvatarPodium third-position'>
               <div className='div-p-fas'>
                 <p className='p-AvatarPodium'>{users[2].username}</p>
-                <i className='fas fa-star'><p className='p-user-victories-podium'>{users[2].victories}</p></i>
+                <i className='fas fa-star'><p className='p-user-victories-podium'>{!users[2].victories && 0}</p></i>
               </div>
               <div className='div-img-Avatar3'>
                 <img className='img-avatar-position' src={users[2].avatar_url} alt='avatar' />
@@ -93,22 +99,26 @@ class BattleResults extends React.Component {
             }
           </div>
           <div className='div-attendee-list'>
-            {users.slice(3).map((u, i) => (
-              <div key={i} className='div-participant'>
-                <div className='margin-div-participant'>
-                  <p className='p-div-participant'>{i + 4}.</p>
+            {
+              users.slice(3).map((u, i) => (
+                <div key={i} className='div-participant'>
+                  <div className='margin-div-participant'>
+                    <p className='p-div-participant'>{i + 4}.</p>
+                  </div>
+                  <div className='margin-div-participant'>
+                    <img className='img-attendee-list' src={u.avatar_url} alt='avatar' />
+                  </div>
+                  <div className='margin-div-participant'>
+                    <p className='p-div-participant'>{u.username}</p>
+                  </div>
+                  <div className='margin-fa-star-attendee-list'>
+                    <i className='fas fa-star fa-star-attendee-list'>
+                      <p className='p-user-victories'>{!u.victories && 0}</p>
+                    </i>
+                  </div>
                 </div>
-                <div className='margin-div-participant'>
-                  <img className='img-attendee-list' src={u.avatar_url} alt='avatar' />
-                </div>
-                <div className='margin-div-participant'>
-                  <p className='p-div-participant'>{u.username}</p>
-                </div>
-                <div className='margin-fa-star-attendee-list'>
-                  <i className='fas fa-star fa-star-attendee-list'><p className='p-user-victories'>{u.victories}</p></i>
-                </div>
-              </div>
-            ))}
+              ))
+            }
           </div>
         </div>
       </div>

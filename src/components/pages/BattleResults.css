@@ -175,7 +175,7 @@
 
 .fa-star-attendee-list {
   color: #FAC748;
-  font-size: 1.8rem;
+  font-size: 1.8rem !important;
   display: flex;
 }
 
