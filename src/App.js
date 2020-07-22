@@ -16,8 +16,8 @@ import MyGroups from './components/pages/MyGroups'
 import MyProfile from './components/pages/MyProfile'
 import MyPictures from './components/pages/MyPictures'
 import MyRanking from './components/pages/MyRanking'
-import ParticipantsVote from './components/pages/ParticipantsVote'
-import ParticipantsPost from './components/pages/ParticipantsPost'
+import BattleVoteParticipants from './components/pages/BattleVoteParticipants'
+import BattlePostParticipants from './components/pages/BattlePostParticipants'
 import PrivateRoute from './components/shared/PrivateRoute'
 
 const App = () => {
@@ -39,9 +39,9 @@ const App = () => {
         <PrivateRoute exact path='/groups/:groupId/battles/:battleId/results' component={BattleResults} />
         {/* <PrivateRoute path='/groups/:groupId/battles/:battleId/results/photos' component={BattleResultsPhotos} /> */}
         <PrivateRoute exact path='/groups/:groupId/battles/:battleId/post-picture' component={BattlePost} />
-        <PrivateRoute path='/groups/:groupId/battles/:battleId/post-picture/participants' component={ParticipantsPost} />
+        <PrivateRoute path='/groups/:groupId/battles/:battleId/post-picture/participants' component={BattlePostParticipants} />
         <PrivateRoute exact path='/groups/:groupId/battles/:battleId/vote' component={BattleVote} />
-        <PrivateRoute path='/groups/:groupId/battles/:battleId/vote/participants' component={ParticipantsVote} />
+        <PrivateRoute path='/groups/:groupId/battles/:battleId/vote/participants' component={BattleVoteParticipants} />
       </Switch>
     </div>
   )
