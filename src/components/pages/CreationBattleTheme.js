@@ -90,12 +90,6 @@ class CreationBattleTheme extends Component {
           </div>
           <div className='battleCreation-btnContainer'>
             <button
-              className='battleCreation-cancelButton battle-btn'
-              type='button'
-            >
-              Annuler
-            </button> {/* Ajouter lien vers le choix du nom de groupe */}
-            <button
               className='battleCreation-validateButton battle-btn'
               onClick={this.handleChangeSteps}
               type='button'
