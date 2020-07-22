@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import DropDownVote from '../shared/DropDownVote'
 import BattleVoteLightbox from './BattleVoteLightbox'
 
 class BattleVote extends Component {
@@ -45,6 +46,7 @@ class BattleVote extends Component {
     const { photos, currentUserVotes } = this.state
     return (
       <div className='battle-vote-container'>
+        <DropDownVote />
         <BattleVoteLightbox photos={photos} currentUserVotes={currentUserVotes} />
       </div>
     )

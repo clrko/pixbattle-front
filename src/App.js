@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
+// import BattleResultsPhotos from './components/pages/BattleResultsPhotos'
 import BattlePost from './components/pages/BattlePost'
 import BattleResults from './components/pages/BattleResults'
 import BattleVote from './components/pages/BattleVote'
@@ -14,6 +15,8 @@ import MyGroups from './components/pages/MyGroups'
 import MyProfile from './components/pages/MyProfile'
 import MyPictures from './components/pages/MyPictures'
 import MyRanking from './components/pages/MyRanking'
+import ParticipantsVote from './components/pages/ParticipantsVote'
+import ParticipantsPost from './components/pages/ParticipantsPost'
 import PrivateRoute from './components/shared/PrivateRoute'
 
 const App = () => {
@@ -31,9 +34,12 @@ const App = () => {
         <PrivateRoute path='/:username/ranking' component={MyRanking} />
         <PrivateRoute path='/:username/pictures' component={MyPictures} />
         <PrivateRoute exact path='/:username/battles' component={MyBattles} />
-        <PrivateRoute path='/groups/:groupId/battles/:battleId/results' component={BattleResults} />
-        <PrivateRoute path='/groups/:groupId/battles/:battleId/post-picture' component={BattlePost} />
-        <PrivateRoute path='/groups/:groupId/battles/:battleId/vote' component={BattleVote} />
+        <PrivateRoute exact path='/groups/:groupId/battles/:battleId/results' component={BattleResults} />
+        {/* <PrivateRoute path='/groups/:groupId/battles/:battleId/results/photos' component={BattleResultsPhotos} /> */}
+        <PrivateRoute exact path='/groups/:groupId/battles/:battleId/post-picture' component={BattlePost} />
+        <PrivateRoute path='/groups/:groupId/battles/:battleId/post-picture/participants' component={ParticipantsPost} />
+        <PrivateRoute exact path='/groups/:groupId/battles/:battleId/vote' component={BattleVote} />
+        <PrivateRoute path='/groups/:groupId/battles/:battleId/vote/participants' component={ParticipantsVote} />
       </Switch>
     </div>
   )

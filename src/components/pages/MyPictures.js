@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
-import DropDown from '../shared/DropDown'
+import DropDownMyProfile from '../shared/DropDownMyProfile'
 import Lightbox from '../shared/Lightbox'
 
 const mapStateToProps = state => {
@@ -38,7 +38,7 @@ class MyPictures extends Component {
     const { photos, usersVotes } = this.state
     return (
       <div className='background-MyPictures'>
-        <DropDown />
+        <DropDownMyProfile />
         <div className='window-MyPictures'>
           <Lightbox photos={photos} votes={usersVotes} />
         </div>

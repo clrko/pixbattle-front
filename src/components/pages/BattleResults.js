@@ -2,8 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { ADD_GROUP } from '../../store/action-types'
 import axios from 'axios'
+import DropDownResults from '../shared/DropDownResults'
 import Loader from 'react-loader-spinner'
-import DropDown from '../shared/DropDown'
 import './BattleResults.css'
 
 const mapStateToProps = state => {
@@ -50,7 +50,7 @@ class BattleResults extends React.Component {
 
     return (
       <div>
-        <DropDown />
+        <DropDownResults />
         <div className='div-AvatarPodium'>
           <div className='div-center-AvatarPodium'>
             <div className='AvatarPodium second-position'>

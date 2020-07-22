@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import BattlePostTimer from './BattlePostTimer'
 import CloudUpload from '../../asset/pictures/cloud-computing.png'
-import DropDown from '../shared/DropDown'
+import DropDownPost from '../shared/DropDownPost'
 import './BattlePost.css'
 import './MyProfile.css'
 
@@ -72,7 +72,7 @@ class BattlePost extends React.Component {
     const { battlePostInfo, deadline, selectedFile } = this.state
     return (
       <div className='background-MyProfile'>
-        <DropDown />
+        <DropDownPost />
         <div className='window-MyProfile battle-post-container'>
           <div className='battlePost-info-div'>
             <div className='battle-post-infos'>

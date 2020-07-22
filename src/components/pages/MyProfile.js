@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
+import DropDownMyProfile from '../shared/DropDownMyProfile'
 import Loader from 'react-loader-spinner'
-import DropDown from '../shared/DropDown'
 import './MyProfile.css'
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 
@@ -40,7 +40,7 @@ const MyProfile = ({ user, profileInfos, history }) => {
 
   return (
     <div className='background-MyProfile'>
-      <DropDown />
+      <DropDownMyProfile />
       <div className='window-MyProfile'>
         <div className='name-fa-star-MyProfile'>
           <h1 className='name-MyProfile'>{user.username}
