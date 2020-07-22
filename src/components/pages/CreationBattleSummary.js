@@ -41,11 +41,11 @@ const CreationBattleSummary = ({ battleCreation, dispatch, history, onClose }) =
       <div className='children-cardBattle-summary'>
         <h1 className='cardBattle-color h1-recapitulatif'>Récapitulatif</h1>
         <h2 className='cardBattle-color'>Thème choisi</h2>
-        <p className='battle-optionButton battle-btn battle-creation-summery'>{battleCreation[1].themeName}</p>
-        <hr className='battle-summery-hr' />
+        <p className='battle-optionButton battle-btn battle-creation-summary'>{battleCreation[1].themeName}</p>
+        <hr className='battle-summary-hr' />
         <h2 className='cardBattle-color'>Contraintes à respecter</h2>
-        {battleCreation[2].map(rule => <p key={rule.rule_id} className='battle-optionButton battle-btn battle-creation-summery'>{rule.rule_name}</p>)}
-        <hr className='battle-summery-hr' />
+        {battleCreation[2].map(rule => <p key={rule.rule_id} className='battle-optionButton battle-btn battle-creation-summary'>{rule.rule_name}</p>)}
+        <hr className='battle-summary-hr' />
         <h2 className='cardBattle-color'>Date limite choisie</h2>
         <p className='p-date-CreationbattleSummary'>{battleCreation[3]}</p>
         <div className='div-button-CreationBattleSummary'>

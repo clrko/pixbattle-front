@@ -206,13 +206,13 @@
   width: 100px;
 }
 
-.battle-creation-summery {
+.battle-creation-summary {
   background-color: transparent;
   color: #FAC748;
   padding: 0;
 }
 
-.battle-summery-hr {
+.battle-summary-hr {
   width: 90%;
   align-self: center;
   margin: 0.5rem 0;
