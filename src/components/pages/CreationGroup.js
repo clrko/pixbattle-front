@@ -27,7 +27,7 @@ class CreationGroup extends Component {
     const { groupName } = this.state
     if (this.state.groupName.length > 0) {
       axios
-        .put(`${process.env.REACT_APP_SERVER_URL}/group/${this.props.params}`,
+        .put(`${process.env.REACT_APP_SERVER_URL}/group/${this.props.groupId}`,
           { groupName },
           {
             headers: {
@@ -80,7 +80,7 @@ class CreationGroup extends Component {
     e.preventDefault()
     const { allEmails } = this.state
     axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/group/${this.props.params}`,
+      .post(`${process.env.REACT_APP_SERVER_URL}/group/${this.props.groupId}`,
         { allEmails },
         {
           headers: {
@@ -90,9 +90,8 @@ class CreationGroup extends Component {
       .then(res => {
         console.log(res.data) /* Il faut renvoyer une notification à l'utilisateur soit les emails soit group créé */
       })
-    const currentGroupId = { groupId: this.props.params }
-    const { dispatch } = this.props
-    dispatch({ type: ADD_GROUP, currentGroupId })
+    const { dispatch, groupId } = this.props
+    dispatch({ type: ADD_GROUP, groupId })
     return this.props.changeStep(e)
   }
 
