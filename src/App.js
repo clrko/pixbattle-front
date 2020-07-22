@@ -8,6 +8,7 @@ import CreationBattleDeadline from './components/pages/CreationBattleDeadline'
 import CreationBattleRule from './components/pages/CreationBattleRule'
 import CreationBattleTheme from './components/pages/CreationBattleTheme'
 import CreationBattleSummary from './components/pages/CreationBattleSummary'
+import CreationBattleSteps from './components/pages/CreationBattleSteps'
 import CreationSteps from './components/pages/CreationSteps'
 import LandingPage from './components/pages/LandingPage'
 import LandingPageInvitedUser from './components/pages/LandingPageInvitedUser'
@@ -16,8 +17,8 @@ import MyGroups from './components/pages/MyGroups'
 import MyProfile from './components/pages/MyProfile'
 import MyPictures from './components/pages/MyPictures'
 import MyRanking from './components/pages/MyRanking'
-import ParticipantsVote from './components/pages/ParticipantsVote'
-import ParticipantsPost from './components/pages/ParticipantsPost'
+import BattleVoteParticipants from './components/pages/BattleVoteParticipants'
+import BattlePostParticipants from './components/pages/BattlePostParticipants'
 import PrivateRoute from './components/shared/PrivateRoute'
 
 const App = () => {
@@ -31,6 +32,7 @@ const App = () => {
         <PrivateRoute path='/battle-creation/theme' component={CreationBattleTheme} />
         <PrivateRoute path='/battle-creation/summary' component={CreationBattleSummary} />
         <PrivateRoute path='/group-creation/group-created/:id' component={CreationSteps} />
+        <PrivateRoute path='/battle-creation/group-created/:id' component={CreationBattleSteps} />
         <PrivateRoute exact path='/:username' component={MyProfile} />
         <PrivateRoute exact path='/:username/groups' component={MyGroups} />
         <PrivateRoute path='/:username/ranking' component={MyRanking} />
@@ -39,9 +41,9 @@ const App = () => {
         <PrivateRoute exact path='/groups/:groupId/battles/:battleId/results' component={BattleResults} />
         {/* <PrivateRoute path='/groups/:groupId/battles/:battleId/results/photos' component={BattleResultsPhotos} /> */}
         <PrivateRoute exact path='/groups/:groupId/battles/:battleId/post-picture' component={BattlePost} />
-        <PrivateRoute path='/groups/:groupId/battles/:battleId/post-picture/participants' component={ParticipantsPost} />
+        <PrivateRoute path='/groups/:groupId/battles/:battleId/post-picture/participants' component={BattlePostParticipants} />
         <PrivateRoute exact path='/groups/:groupId/battles/:battleId/vote' component={BattleVote} />
-        <PrivateRoute path='/groups/:groupId/battles/:battleId/vote/participants' component={ParticipantsVote} />
+        <PrivateRoute path='/groups/:groupId/battles/:battleId/vote/participants' component={BattleVoteParticipants} />
       </Switch>
     </div>
   )

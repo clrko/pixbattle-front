@@ -15,8 +15,7 @@ class CreationGroup extends Component {
     isGroupName: false,
     email: '',
     count: 1,
-    allEmails: [],
-    contentModal: 'newBattleTheme'
+    allEmails: []
   }
 
   handleChange = e => {
