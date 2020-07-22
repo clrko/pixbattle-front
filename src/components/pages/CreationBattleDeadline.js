@@ -12,10 +12,23 @@ import './CreationBattleDeadline.css'
 
 const CreationBattleDeadline = (props) => {
   const [selectedDate, setDateChange] = useState(moment())
-  const [selectedTime, setTimeChange] = useState('01:00:00')
+  const [selectedTime, setTimeChange] = useState('01:00:00') // moment().format('HH:mm:ss')
+  const [timeConstraints, setTimeConstraints] = useState({ hours: { min: Number(DateTime.moment().format('H')), max: 23 } })
   const [isOpen, setIsOpen] = useState(false)
 
+  const yesterday = DateTime.moment().subtract(1, 'day')
+
+  const isValidDate = (current) => {
+    return current.isAfter(yesterday)
+  }
+
   const handleDateChange = e => {
+    // if (e.isAfter(DateTime.moment()))
+    const today = DateTime.moment()
+    const isAfterToday = (selectedDate.isAfter(today))
+    const hour = Number(today.format('H'))
+    const newTimeConstraints = isAfterToday ? { hours: { min: 0, max: 23 } } : { hours: { min: hour, max: 23 } }
+    setTimeConstraints(newTimeConstraints)
     setDateChange(e)
   }
 
@@ -52,6 +65,8 @@ const CreationBattleDeadline = (props) => {
               timeFormat={false}
               locale='fr-FR'
               dateFormat='dddd Do MMMM YYYY'
+              isValidDate={isValidDate}
+              closeOnSelect
             />
           </div>
           <div className='battleCreation-dateTimeContainer'>
@@ -61,6 +76,7 @@ const CreationBattleDeadline = (props) => {
               dateFormat={false} locale='fr'
               timeFormat='HH:mm:ss'
               timeIntervals={15}
+              timeConstraints={timeConstraints}
             />
           </div>
         </div>
