@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import axios from 'axios'
-import { ADD_RULES } from '../../store/action-types'
+import { ADD_RULES, REMOVE_THEME } from '../../store/action-types'
 import './CreationBattle.css'
 
 class CreationBattleRule extends Component {
@@ -35,6 +35,11 @@ class CreationBattleRule extends Component {
       return this.props.changeStep(e)
     }
     return history.push('/battle-creation/deadline')
+  }
+
+  handleReturn = e => {
+    const { dispatch } = this.props
+    dispatch({ type: REMOVE_THEME })
   }
 
   componentDidMount () {
@@ -75,10 +80,11 @@ class CreationBattleRule extends Component {
               <button
                 className='battleCreation-cancelButton battle-btn'
                 type='button'
+                onClick={this.handleReturn}
               >
                 Retour
               </button>
-            </NavLink> {/* Ajouter lien vers theme page + redux */}
+            </NavLink>
             <button
               className='battleCreation-validateButton battle-btn'
               type='button'

@@ -1,4 +1,4 @@
-import { ADD_GROUP, ADD_THEME, ADD_RULES, ADD_DEADLINE, REMOVE_ALL } from './action-types'
+import { ADD_GROUP, ADD_THEME, ADD_RULES, ADD_DEADLINE, REMOVE_THEME, REMOVE_RULES, REMOVE_DEADLINE, REMOVE_ALL } from './action-types'
 
 const initialState = {
   groupId: null,
@@ -24,6 +24,15 @@ const battleCreationReducer = (state = initialState, action) => {
     case ADD_DEADLINE: {
       const { selectedDeadline } = action
       return { ...state, deadline: selectedDeadline }
+    }
+    case REMOVE_THEME: {
+      return { ...state, theme: null }
+    }
+    case REMOVE_RULES: {
+      return { ...state, rules: [] }
+    }
+    case REMOVE_DEADLINE: {
+      return { ...state, deadline: '' }
     }
     case REMOVE_ALL:
       return initialState

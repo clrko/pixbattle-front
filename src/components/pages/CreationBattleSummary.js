@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
-import { REMOVE_ALL } from '../../store/action-types'
+import { REMOVE_ALL, REMOVE_DEADLINE } from '../../store/action-types'
 
 const mapStateToProps = state => {
   const { battleCreation } = state
@@ -36,6 +36,11 @@ const CreationBattleSummary = ({ battleCreation, dispatch, history, onClose }) =
     return onClose(e)
   }
 
+  const handleReturn = e => {
+    dispatch({ type: REMOVE_DEADLINE })
+    return onClose(e)
+  }
+
   return (
     <div className='cardBattle-summary'>
       <div className='children-cardBattle-summary'>
@@ -47,6 +52,7 @@ const CreationBattleSummary = ({ battleCreation, dispatch, history, onClose }) =
         <h2 className='cardBattle-color'>Date limite choisie</h2>
         <p className='p-date-CreationbattleSummary'>{battleCreation.deadline}</p>
         <div className='div-button-CreationBattleSummary'>
+          <button className='battleCreation-cancelButton battle-btn' onClick={handleReturn}>Retour</button>
           <button className='battleCreation-validateButton battle-btn' onClick={handleClick}>Confirmer</button>
         </div>
       </div>

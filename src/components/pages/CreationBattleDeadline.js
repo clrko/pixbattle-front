@@ -3,7 +3,7 @@ import { NavLink, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import DateTime from 'react-datetime'
 import moment from 'moment'
-import { ADD_DEADLINE } from '../../store/action-types'
+import { ADD_DEADLINE, REMOVE_RULES } from '../../store/action-types'
 import Modal from '../shared/Modal'
 import CreationBattleSummary from './CreationBattleSummary'
 import 'moment/locale/fr'
@@ -28,6 +28,11 @@ const CreationBattleDeadline = (props) => {
     const { dispatch } = props
     dispatch({ type: ADD_DEADLINE, selectedDeadline })
     setIsOpen(!isOpen)
+  }
+
+  const handleReturn = e => {
+    const { dispatch } = props
+    dispatch({ type: REMOVE_RULES })
   }
 
   const handleOpenModal = e => {
@@ -64,6 +69,7 @@ const CreationBattleDeadline = (props) => {
             <button
               className='battleCreation-cancelButton battle-btn'
               type='button'
+              onClick={handleReturn}
             >
               Retour
             </button>
