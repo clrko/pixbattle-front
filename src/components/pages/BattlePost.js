@@ -51,7 +51,7 @@ class BattlePost extends React.Component {
   handleClick = () => {
     const data = new FormData()
     data.append('file', this.state.file)
-    const { battleId, groupId } = this.props.location.state
+    const { battleId, groupId } = this.props.match.params
     data.append('battleId', battleId)
     data.append('groupId', groupId)
     axios.post(`${process.env.REACT_APP_SERVER_URL}/battle/battle-post/addpicture`, data,
