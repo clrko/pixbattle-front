@@ -4,6 +4,8 @@ import BattleResultsPhotos from './components/pages/BattleResultsPhotos'
 import BattlePost from './components/pages/BattlePost'
 import BattleResults from './components/pages/BattleResults'
 import BattleVote from './components/pages/BattleVote'
+import BattleVoteParticipants from './components/pages/BattleVoteParticipants'
+import BattlePostParticipants from './components/pages/BattlePostParticipants'
 import CreationBattleDeadline from './components/pages/CreationBattleDeadline'
 import CreationBattleRule from './components/pages/CreationBattleRule'
 import CreationBattleTheme from './components/pages/CreationBattleTheme'
@@ -17,8 +19,8 @@ import MyGroups from './components/pages/MyGroups'
 import MyProfile from './components/pages/MyProfile'
 import MyPictures from './components/pages/MyPictures'
 import MyRanking from './components/pages/MyRanking'
-import BattleVoteParticipants from './components/pages/BattleVoteParticipants'
-import BattlePostParticipants from './components/pages/BattlePostParticipants'
+import MySettings from './components/pages/MySettings'
+import MySettingsAvatar from './components/pages/MySettingsAvatar'
 import PrivateRoute from './components/shared/PrivateRoute'
 
 const App = () => {
@@ -44,6 +46,8 @@ const App = () => {
         <PrivateRoute path='/groups/:groupId/battles/:battleId/post-picture/participants' component={BattlePostParticipants} />
         <PrivateRoute exact path='/groups/:groupId/battles/:battleId/vote' component={BattleVote} />
         <PrivateRoute path='/groups/:groupId/battles/:battleId/vote/participants' component={BattleVoteParticipants} />
+        <PrivateRoute path='/:username/settings/connexion' component={MySettings} />
+        <PrivateRoute path='/:username/settings/informations' component={MySettingsAvatar} />
       </Switch>
     </div>
   )
