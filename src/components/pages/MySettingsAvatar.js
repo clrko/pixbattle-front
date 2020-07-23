@@ -1,16 +1,55 @@
 import React, { Component } from 'react'
 import DropDownSettings from '../shared/DropDownSettings'
-import './MySettings.css'
 import axios from 'axios'
+import './MySettings.css'
 
 class MySettingsAvatar extends Component {
   state = {
-    modifPseudo: '',
-    avatars: []
+    newUsername: '',
+    avatars: [],
+    selectedAvatar: {
+      avatarId: 0,
+      avatarUrl: ''
+    }
   }
 
-  handleChange = e => {
+  handleChangeUsername = e => {
     this.setState({ [e.target.name]: e.target.value })
+  }
+
+  handleChangeAvatar = e => {
+    const selectedAvatar = Object.assign({}, this.state.selectedAvatar)
+    selectedAvatar.avatarId = Number(e.target.id)
+    selectedAvatar.avatarUrl = e.target.value
+    this.setState({
+      selectedAvatar: selectedAvatar
+    })
+  }
+
+  checkUsername = () => {
+    if (/^[a-zA-Z0-9]+$/.test(this.state.newUsername)) {
+      return (this.state.newUsername)
+    }
+  }
+
+  handleSubmit = e => {
+    e.preventDefault()
+    if (this.checkUsername()) {
+      const { newUsername, selectedAvatar } = this.state
+      axios
+        .put(`${process.env.REACT_APP_SERVER_URL}/profile/settings/informations`,
+          { newUsername, selectedAvatar },
+          {
+            headers: {
+              authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+          })
+        .then(res => {
+          alert('Les modifications ont bien été enregistrées')
+        })
+    } else {
+      alert('Seuls les lettres et les chiffres sont autorisés')
+    }
   }
 
   componentDidMount () {
@@ -25,14 +64,7 @@ class MySettingsAvatar extends Component {
   }
 
   render () {
-    const { avatars } = this.state
-    const card = avatars.map(function (avatar, ind) {
-      return (
-        <div key={ind}>
-          <img className='card-avatar-settings' src={avatar.avatar_url} alt={avatar.avatar_url} />
-        </div>
-      )
-    })
+    const { avatars, selectedAvatar, newUsername } = this.state
 
     return (
       <div>
@@ -44,15 +76,32 @@ class MySettingsAvatar extends Component {
               <input
                 className='LoginForm-input'
                 type='text'
-                value={this.state.modifPseudo}
-                onChange={this.handleChange}
-                name='modifPseudo'
+                value={newUsername}
+                onChange={this.handleChangeUsername}
+                name='newUsername'
                 minLength='3'
                 maxLength='15'
               />
               <div className='LoginForm-label AC-MA-margin'>Modifier ton avatar</div>
               <div className='settings-avatar-page'>
-                {card}
+                {
+                  avatars.map((avatar, ind) => (
+                    <div key={ind}>
+                      <label htmlFor={avatar.avatar_id}>
+                        <input
+                          className='avatar-btn-settings'
+                          type='radio'
+                          name='avatar'
+                          value={avatar.avatar_url}
+                          checked={selectedAvatar.avatar_id === avatar.avatar_id}
+                          onChange={this.handleChangeAvatar}
+                          id={avatar.avatar_id}
+                        />
+                        <img className='card-avatar-settings' src={avatar.avatar_url} alt={avatar.avatar_url} />
+                      </label>
+                    </div>
+                  ))
+                }
               </div>
             </div>
             <div>

@@ -43,3 +43,14 @@
 .card-avatar-settings {
   width: 25vw;
 }
+
+.avatar-btn-settings {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.avatar-btn-settings+.card-avatar-settings {
+  cursor: pointer;
+}
