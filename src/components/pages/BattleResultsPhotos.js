@@ -5,7 +5,8 @@ import DropDownResults from '../shared/DropDownResults'
 
 class BattleResultsPhotos extends React.Component {
   state = {
-    photos: []
+    photos: [],
+    usersVotes: []
   }
 
   getPhotos = () => {
@@ -17,7 +18,10 @@ class BattleResultsPhotos extends React.Component {
             authorization: `Bearer ${localStorage.getItem('token')}`
           }
         })
-      .then(res => this.setState({ photos: res.data })
+      .then(res => this.setState({
+        photos: res.data.photos,
+        usersVotes: res.data.users
+      })
       )
   }
 
@@ -26,11 +30,11 @@ class BattleResultsPhotos extends React.Component {
   }
 
   render () {
-    const { photos } = this.state
+    const { photos, usersVotes } = this.state
     return (
       <div>
         <DropDownResults />
-        <Lightbox photos={photos} />
+        <Lightbox photos={photos} votes={usersVotes} />
       </div>
     )
   }
