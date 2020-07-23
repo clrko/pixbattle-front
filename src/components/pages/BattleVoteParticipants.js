@@ -26,13 +26,9 @@ const BattleVoteParticipants = ({ match }) => {
     if (Object.keys(item).includes('victories')) {
       return <i className='fas fa-trophy fa-trophy-RankingMembers'><p>{item.victories}</p></i>
     } else if (Object.keys(item).includes('posted')) {
-      if (item.posted !== 0) {
-        return <i className='far fa-image' />
-      }
+      return parseInt(item.posted) !== 0 ? <i className='far fa-image' /> : <></>
     } else if (Object.keys(item).includes('voted')) {
-      if (item.voted !== 0) {
-        return <i className='fas fa-check' />
-      }
+      return parseInt(item.voted) !== 0 ? <i className='fas fa-check' /> : <></>
     }
   }
 
