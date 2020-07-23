@@ -52,7 +52,7 @@ const Lightbox = ({ photos, votes }) => {
   const votesForCurrentPhoto = votes.filter(vote => vote.photo_id === photoId)
 
   const scoreForCurrentPhoto = votesForCurrentPhoto.reduce((sum, vote) => sum + vote.vote, 0)
-  console.log(photos[cardIndex].avatar_url)
+
   return (
     <div className='gallery-lightbox-container gallery-lightbox-container-user'>
       {
