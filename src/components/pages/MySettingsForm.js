@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import './FormRegistration.css'
 import './FormLogin.css'
 
-class FormProfileSettings extends React.Component {
+class MySettingsForm extends React.Component {
   state = {
     currentEmail: '',
     newEmail: '',
@@ -68,7 +68,7 @@ class FormProfileSettings extends React.Component {
           <input
             className={passwordClass}
             type='password'
-            value={this.state.cuerrentPassword}
+            value={this.state.currentPassword}
             onChange={this.handleChange}
             name='currentPassword'
             minLength='6'
@@ -128,4 +128,4 @@ class FormProfileSettings extends React.Component {
   }
 }
 
-export default FormProfileSettings
+export default MySettingsForm

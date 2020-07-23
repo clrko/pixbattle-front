@@ -1,6 +1,5 @@
 import React from 'react'
-
-import './AvatarChoice.css'
+import './MySettingsAvatar.css'
 import './FormLogin.css'
 
 const imagesData = [
@@ -53,7 +52,7 @@ const imagesData = [
   }
 ]
 
-class AvatarChoice extends React.Component {
+class MySettingsAvatar extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -106,4 +105,4 @@ class AvatarChoice extends React.Component {
   }
 }
 
-export default AvatarChoice
+export default MySettingsAvatar
