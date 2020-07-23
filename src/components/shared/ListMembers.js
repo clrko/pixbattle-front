@@ -15,7 +15,7 @@ const ListMembers = ({ listParticipants, handleRemoveParticipant }) => {
           <div className='margin-p-div-participant-members'>
             <p className='p-margin-div-participant-members'>{p.username}</p>
           </div>
-          <input type='button' value='X' name={p.username} className='participants-remove-btn' onClick={handleRemoveParticipant} />
+          <input type='button' value='X' id={p.user_id} className='participants-remove-btn' onClick={handleRemoveParticipant} />
         </div>
       ))}
     </>
