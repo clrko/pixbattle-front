@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
+import { axios } from 'axios'
 import ListMembers from '../shared/ListMembers'
 import './MySettingsGroups.css'
 
@@ -8,7 +9,7 @@ const mapStateToProps = state => {
   return { user }
 }
 
-const MySettingsGroups = ({ user }) => {
+const MySettingsGroups = ({ user, match }) => {
   const [groupName, setGroupName] = useState('')
   const [isGroupName, setIsGroupName] = useState(false)
   const [listGroupMembers, setListGroupMembers] = useState([])
@@ -21,8 +22,17 @@ const MySettingsGroups = ({ user }) => {
   const handleChosenName = e => {
     e.preventDefault()
     if (groupName.length > 0) {
-      /* ajouter le axios et mettre a true quand on a la reponse */
-      setIsGroupName(true)
+      axios
+        .put(`${process.env.REACT_APP_SERVER_URL}/group/update/${match.params.groupId}`,
+          { groupName },
+          {
+            headers: {
+              authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+          })
+        .then(res => {
+          setIsGroupName(true)
+        })
     }
   }
 
@@ -33,7 +43,17 @@ const MySettingsGroups = ({ user }) => {
     if (remove) {
       listTemp.splice(index, 1)
       setListGroupMembers(listTemp)
-      /* ajouter axios */
+      axios
+        .delete(`${process.env.REACT_APP_SERVER_URL}/members/${e.target.id}/group/${match.params.groupId}`,
+          { groupName },
+          {
+            headers: {
+              authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+          })
+        .then(res => {
+          setListGroupMembers(res.data)
+        })
     }
   }
 
@@ -69,9 +89,48 @@ const MySettingsGroups = ({ user }) => {
     setCount(count - 1)
   }
 
+  const handleValidateNewMembers = e => {
+    axios
+      .post(`${process.env.REACT_APP_SERVER_URL}/group/${match.params.groupId}`,
+        { groupName },
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+      .then(res => {
+        console.log('Les invitations ont été envoyées')
+      })
+  }
+
+  const handleGroupRemoval = e => {
+    axios
+      .delete(`${process.env.REACT_APP_SERVER_URL}/group/${match.params.groupId}`,
+        { groupName },
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+      .then(res => {
+        console.log('Le group a été supprimé!')
+      })
+  }
+
   useEffect(() => {
-    /* lors du axios il faudra cset le count au lengt su memberlist ilf aut recuperer aussi les emails */
-  })
+    axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/members/group/${match.params.groupId}`,
+        { groupName },
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+      .then(res => {
+        setListGroupMembers(res.data)
+        setCount(res.data.length)
+      })
+  }, [])
 
   return (
     <div>
@@ -85,7 +144,7 @@ const MySettingsGroups = ({ user }) => {
               className='modified-group-input'
               name='groupName'
               onChange={handleGroupNameChange}
-              placeholder='Nom du groupe' /* mettre le group actuel */
+              placeholder='Nouveau nom'
               value={groupName}
               required
               minLength='5'
@@ -144,7 +203,9 @@ const MySettingsGroups = ({ user }) => {
               }
             </ul>
           </div>
+          <button onClick={handleValidateNewMembers}>Valider</button>
         </section>
+        <button onClick={handleGroupRemoval}>Supprimer le groupe</button>
       </div>
     </div>
   )
