@@ -3,6 +3,7 @@ import axios from 'axios'
 import classNames from 'classnames'
 import DropDownSettings from '../shared/DropDownSettings'
 import './MySettings.css'
+import './FormRegistration.css'
 
 class MySettings extends Component {
   state = {
@@ -24,8 +25,8 @@ class MySettings extends Component {
   }
 
   checkPassword = () => {
-    const { password, checkPassword } = this.state
-    return (password === checkPassword)
+    const { newPassword, confirmePassword } = this.state
+    return (newPassword === confirmePassword)
   }
 
   handleSubmit = e => {
@@ -60,8 +61,8 @@ class MySettings extends Component {
   }
 
   render () {
-    const { password, checkPassword } = this.state
-    const passwordError = password && checkPassword && !this.checkPassword()
+    const { newPassword, confirmePassword } = this.state
+    const passwordError = newPassword && confirmePassword && !this.checkPassword()
     const passwordClass = classNames('LoginForm-input', { 'LoginForm-passwordError': passwordError })
     const emailError = !this.checkEmail()
     const emailClass = classNames('LoginForm-input', { 'LoginForm-passwordError': emailError })
@@ -89,7 +90,6 @@ class MySettings extends Component {
                 value={this.state.newEmail}
                 onChange={this.handleChange}
                 name='newEmail'
-                required
               />
             </div>
             <div className='login-inside LoginForm-div'>

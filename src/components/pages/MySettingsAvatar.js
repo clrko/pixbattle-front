@@ -82,6 +82,9 @@ class MySettingsAvatar extends Component {
                 minLength='3'
                 maxLength='15'
               />
+              <div className={newUsername.length > 3 ? 'character-validation' : ''}>
+                <p className='character-validation-p'>Entre 3 et 15 caractères</p>
+              </div>
               <div className='LoginForm-label AC-MA-margin'>Modifier ton avatar</div>
               <div className='settings-avatar-page'>
                 {
