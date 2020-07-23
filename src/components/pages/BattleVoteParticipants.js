@@ -1,20 +1,17 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import DropDownVote from '../shared/DropDownVote'
 import ListRankingMembers from '../shared/ListRankingMembers'
 
-class BattleVoteParticipants extends Component {
-  state = {
-    participants: [],
-    hasVoted: []
-  }
+const BattleVoteParticipants = ({ match }) => {
+  const [listParticipantVotes, setListParticipantVotes] = useState([])
 
-  componentDidMount () {
-    this.getVoteRanking()
-  }
+  useEffect(() => {
+    getVoteRanking()
+  }, [])
 
-  getVoteRanking = () => {
-    const { battleId } = this.props.match.params
+  const getVoteRanking = () => {
+    const { battleId } = match.params
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/battle/battle-vote/${battleId}/members`,
         {
@@ -22,22 +19,29 @@ class BattleVoteParticipants extends Component {
             authorization: `Bearer ${localStorage.getItem('token')}`
           }
         })
-      .then(res => this.setState({
-        participants: res.data.allParticipants,
-        hasVoted: res.data.allHasVoted
-      })
-      )
+      .then(res => setListParticipantVotes(res.data))
   }
 
-  render () {
-    const { participants, hasVoted } = this.state
-    return (
-      <div>
-        <DropDownVote />
-        <ListRankingMembers participants={participants} hasVoted={hasVoted} />
-      </div>
-    )
+  const getIcon = (item) => {
+    if (Object.keys(item).includes('victories')) {
+      return <i className='fas fa-trophy fa-trophy-RankingMembers'><p>{item.victories}</p></i>
+    } else if (Object.keys(item).includes('posted')) {
+      if (item.posted !== 0) {
+        return <i className='far fa-image' />
+      }
+    } else if (Object.keys(item).includes('voted')) {
+      if (item.voted !== 0) {
+        return <i className='fas fa-check' />
+      }
+    }
   }
+
+  return (
+    <div>
+      <DropDownVote />
+      <ListRankingMembers listParticipants={listParticipantVotes} getIcon={getIcon} />
+    </div>
+  )
 }
 
 export default BattleVoteParticipants
