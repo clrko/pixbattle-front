@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import DropDownSettings from '../shared/DropDownSettings'
 import './MySettingsPage.css'
 import './MySettingsAvatar.css'
 import './FormLogin.css'
@@ -72,34 +73,37 @@ class MySettingsAvatarPage extends Component {
     })
 
     return (
-      <div className='background-PageProfileSettings'>
-        <form className='register-form from-PSW-AC'>
-          <div className='login-inside LoginForm-div'>
-            <label className='LoginForm-label'>Modifier ton pseudo</label>
-            <input
-              className='LoginForm-input'
-              type='text'
-              alue={this.state.modifPseudo}
-              onChange={this.handleChange}
-              name='modifPseudo'
-              minLength='3'
-              maxLength='15'
-              required
-            />
-            <div className='LoginForm-label AC-MA-margin'>Modifier ton avatar</div>
-            <section className='container'>
-              {card}
-            </section>
-          </div>
-          <div>
-            <input
-              className='LoginForm-validateButton AC-VB-Margin'
-              type='submit'
-              value='Valider'
-              onClick={this.handleSubmit}
-            />
-          </div>
-        </form>
+      <div>
+        <DropDownSettings />
+        <div className='background-PageProfileSettings'>
+          <form className='register-form from-PSW-AC'>
+            <div className='login-inside LoginForm-div'>
+              <label className='LoginForm-label'>Modifier ton pseudo</label>
+              <input
+                className='LoginForm-input'
+                type='text'
+                alue={this.state.modifPseudo}
+                onChange={this.handleChange}
+                name='modifPseudo'
+                minLength='3'
+                maxLength='15'
+                required
+              />
+              <div className='LoginForm-label AC-MA-margin'>Modifier ton avatar</div>
+              <section className='container'>
+                {card}
+              </section>
+            </div>
+            <div>
+              <input
+                className='LoginForm-validateButton AC-VB-Margin'
+                type='submit'
+                value='Valider'
+                onClick={this.handleSubmit}
+              />
+            </div>
+          </form>
+        </div>
       </div>
     )
   }
