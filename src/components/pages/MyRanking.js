@@ -26,7 +26,7 @@ const MyRanking = () => {
 
   const getIcon = (item) => {
     if (Object.keys(item).includes('victories')) {
-      return <i className='fas fa-trophy fa-trophy-RankingMembers'><p>{item.victories}</p></i>
+      return <i className='fas fa-trophy fa-trophy-RankingMembers'><p className='my-ranking-victories'>{item.victories}</p></i>
     } else if (Object.keys(item).includes('posted')) {
       if (item.posted !== 0) {
         return <i className='far fa-image' />
