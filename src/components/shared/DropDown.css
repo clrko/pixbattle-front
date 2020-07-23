@@ -17,3 +17,17 @@
   cursor: pointer;
   background-color: white;
 }
+
+.fa-cog {
+  position: relative;
+  left: 15vw;
+  color: #235789;
+  font-size: 2rem;
+}
+
+.settings-btn-profil {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  outline: transparent;
+}

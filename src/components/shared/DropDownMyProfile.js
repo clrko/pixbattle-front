@@ -13,7 +13,12 @@ const DropDownMyProfile = ({ user, history, match }) => {
     history.push(e.target.value)
   }
 
-  const selectedOption = match.path
+  const handleSettings = e => {
+    e.preventDefault()
+    history.push(`/${user.username}/settings/informations`)
+  }
+
+  const selectedOption = match.url
 
   return (
     <div className='background-DropDown'>
@@ -22,6 +27,7 @@ const DropDownMyProfile = ({ user, history, match }) => {
         <option value={`/${user.username}/ranking`}>Mon Classement</option>
         <option value={`/${user.username}/pictures`}>Mes Photos</option>
       </select>
+      <button className='settings-btn-profil' onClick={handleSettings}><i className='fas fa-cog' /></button>
     </div>
   )
 }

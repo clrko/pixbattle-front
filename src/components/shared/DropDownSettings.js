@@ -8,23 +8,23 @@ const mapStateToProps = state => {
   return { user }
 }
 
-class DropDownPost extends React.Component {
+class DropDownSettings extends React.Component {
   handleChange = e => {
     this.props.history.push(e.target.value)
   }
 
   render () {
-    const { match } = this.props
+    const { match, user } = this.props
     const selectedOption = match.url
     return (
       <div className='background-DropDown'>
         <select value={selectedOption} className='DropDown' onChange={this.handleChange}>
-          <option value={`/groups/${match.params.groupId}/battles/${match.params.battleId}/post-picture`}>Poster</option>
-          <option value={`/groups/${match.params.groupId}/battles/${match.params.battleId}/post-picture/participants`}>Participants</option>
+          <option value={`/${user.username}/settings/informations`}>Paramètres du profil</option>
+          <option value={`/${user.username}/settings/connexion`}>Paramètres de connexion</option>
         </select>
       </div>
     )
   }
 }
 
-export default connect(mapStateToProps)(withRouter(DropDownPost))
+export default connect(mapStateToProps)(withRouter(DropDownSettings))

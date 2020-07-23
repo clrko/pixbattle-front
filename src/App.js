@@ -1,9 +1,11 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-// import BattleResultsPhotos from './components/pages/BattleResultsPhotos'
+import BattleResultsPhotos from './components/pages/BattleResultsPhotos'
 import BattlePost from './components/pages/BattlePost'
 import BattleResults from './components/pages/BattleResults'
 import BattleVote from './components/pages/BattleVote'
+import BattleVoteParticipants from './components/pages/BattleVoteParticipants'
+import BattlePostParticipants from './components/pages/BattlePostParticipants'
 import CreationBattleDeadline from './components/pages/CreationBattleDeadline'
 import CreationBattleRule from './components/pages/CreationBattleRule'
 import CreationBattleTheme from './components/pages/CreationBattleTheme'
@@ -17,8 +19,8 @@ import MyGroups from './components/pages/MyGroups'
 import MyProfile from './components/pages/MyProfile'
 import MyPictures from './components/pages/MyPictures'
 import MyRanking from './components/pages/MyRanking'
-import BattleVoteParticipants from './components/pages/BattleVoteParticipants'
-import BattlePostParticipants from './components/pages/BattlePostParticipants'
+import MySettings from './components/pages/MySettings'
+import MySettingsAvatar from './components/pages/MySettingsAvatar'
 import PrivateRoute from './components/shared/PrivateRoute'
 import Cgu from './components/pages/Cgu'
 
@@ -40,11 +42,13 @@ const App = () => {
         <PrivateRoute path='/:username/pictures' component={MyPictures} />
         <PrivateRoute exact path='/:username/battles' component={MyBattles} />
         <PrivateRoute exact path='/groups/:groupId/battles/:battleId/results' component={BattleResults} />
-        {/* <PrivateRoute path='/groups/:groupId/battles/:battleId/results/photos' component={BattleResultsPhotos} /> */}
+        <PrivateRoute path='/groups/:groupId/battles/:battleId/results/photos' component={BattleResultsPhotos} />
         <PrivateRoute exact path='/groups/:groupId/battles/:battleId/post-picture' component={BattlePost} />
         <PrivateRoute path='/groups/:groupId/battles/:battleId/post-picture/participants' component={BattlePostParticipants} />
         <PrivateRoute exact path='/groups/:groupId/battles/:battleId/vote' component={BattleVote} />
         <PrivateRoute path='/groups/:groupId/battles/:battleId/vote/participants' component={BattleVoteParticipants} />
+        <PrivateRoute path='/:username/settings/connexion' component={MySettings} />
+        <PrivateRoute path='/:username/settings/informations' component={MySettingsAvatar} />
       </Switch>
       <Cgu />
     </div>

@@ -1,39 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import Loader from 'react-loader-spinner'
+import React from 'react'
 import './ListRankingMembers.css'
 
-const ListRankingMembers = ({ participants, hasPosted, hasVoted, victories }) => {
-  const [icon, setIcon] = useState('')
-  const [iconClass, setIconClass] = useState('')
-
-  useEffect(() => {
-    return getIcon
-  })
-
-  const getIcon = () => {
-    if (hasPosted) {
-      setIcon(hasPosted)
-      setIconClass('far fa-image')
-    } else if (hasVoted) {
-      setIcon(hasVoted)
-      setIconClass('fas fa-check')
-    } else if (victories) {
-      setIcon(victories)
-      setIconClass('fas fa-trophy fa-trophy-RankingMembers')
-    }
-  }
-
-  if (!icon) {
-    return (
-      <div style={{ width: 'auto', margin: 'auto', textAlign: 'center' }}>
-        <Loader type='ThreeDots' color='#00BFFF' height={80} width={80} />
-      </div>
-    )
-  }
-
+const ListRankingMembers = ({ listParticipants, getIcon }) => {
   return (
     <div className='window-RankingMembers scrollbar-ListRankingMembers'>
-      {participants.map((p, i) => (
+      {listParticipants.map((p, i) => (
         <div key={i} className='div-participants-RankingMembers'>
           <div className='margin-div-participant-RankingMembers'>
             <p className='p-div-participant-RankingMembers'>{p.user_id}.</p>
@@ -45,9 +16,7 @@ const ListRankingMembers = ({ participants, hasPosted, hasVoted, victories }) =>
             <p className='p-margin-div-participant-RankingMembers'>{p.username}</p>
           </div>
           <div className='margin-fa-trophy-RankingMembers'>
-            {
-              icon.map(userId => userId === participants.user_id) && <i className={iconClass} />
-            }
+            {getIcon(p)}
           </div>
         </div>
       ))}
