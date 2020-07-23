@@ -1,10 +1,10 @@
 import React from 'react'
-import './MySettingsAvatarPage.css'
+import './MySettingsPage.css'
 import MySettingsAvatar from './MySettingsAvatar'
 
 const MySettingsAvatarPage = () => {
   return (
-    <div className='background-PageAvatarChoice'>
+    <div className='background-PageProfileSettings'>
       <MySettingsAvatar />
     </div>
   )

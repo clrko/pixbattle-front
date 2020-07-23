@@ -1,9 +1,6 @@
 import React from 'react'
-
+import axios from 'axios'
 import classNames from 'classnames'
-
-import './FormRegistration.css'
-import './FormLogin.css'
 
 class MySettingsForm extends React.Component {
   state = {
@@ -24,13 +21,40 @@ class MySettingsForm extends React.Component {
     }
   }
 
-  handleCheckbox = e => {
-    this.setState({ isChecked: e.target.checked })
-  }
-
   checkPassword = () => {
     const { password, checkPassword } = this.state
     return (password === checkPassword)
+  }
+
+  handleSubmit = e => {
+    e.preventDefault()
+    if (this.checkPassword() && this.checkEmail()) {
+      // const { dispatch, history } = this.props
+      axios
+        .put(`${process.env.REACT_APP_SERVER_URL}/profile/settings`,
+          {
+            headers: {
+              authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+          })
+        .then(res => console.log(res.data))
+    } else {
+      alert('une erreur est survenue')
+    }
+  }
+
+  handleDeleteAccount = e => {
+    e.preventDefault()
+    if (window.confirm('Ce choix est définitif et toutes des données seront perdues. Es-tu sûr-e de vouloir supprimer ton compte ?')) {
+      axios
+        .delete(`${process.env.REACT_APP_SERVER_URL}/profile`,
+          {
+            headers: {
+              authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+          })
+        .then(res => console.log(res))
+    }
   }
 
   render () {
@@ -40,8 +64,8 @@ class MySettingsForm extends React.Component {
     const emailError = !this.checkEmail()
     const emailClass = classNames('LoginForm-input', { 'LoginForm-passwordError': emailError })
     return (
-      <form className='register-form from-PSW-AC'>
-        <div className='login-inside LoginForm-div'>
+      <form className='register-form'>
+        <div className='login-inside LoginForm-div settings-form'>
           <label className='LoginForm-label'>Email actuel</label>
           <input
             className={emailClass}
@@ -111,13 +135,13 @@ class MySettingsForm extends React.Component {
         </div>
         <div>
           <input
-            className='LoginForm-deleteButton'
+            className='delete-account-btn'
             type='button'
             value='Supprimer le compte'
-            onClick={this.props.onClose}
+            onClick={this.handleDeleteAccount}
           />
           <input
-            className='LoginForm-validateButton'
+            className='LoginForm-validateButton settings-btn'
             type='submit'
             value='Valider'
             onClick={this.handleSubmit}

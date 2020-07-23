@@ -1,8 +1,4 @@
-*{
-  margin: 0; padding: 0; font-family: sans-serif;
-}
-
-.container{
+.container {
   display: flex;
   width: 100%;
   min-height: 50vh;
@@ -11,7 +7,7 @@
   box-sizing: border-box;
 }
 
-.container .card{
+.container .card {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -22,7 +18,7 @@
   border-radius: 50%;
 }
 
-.container .card img{
+.container .card img {
   position: absolute;
   z-index: 1;
   height: 100%;

@@ -21,6 +21,9 @@ import BattleVoteParticipants from './components/pages/BattleVoteParticipants'
 import BattlePostParticipants from './components/pages/BattlePostParticipants'
 import PrivateRoute from './components/shared/PrivateRoute'
 
+import MySettingsPage from './components/pages/MySettingsPage'
+import MySettingsAvatarPage from './components/pages/MySettingsAvatarPage'
+
 const App = () => {
   return (
     <div>
@@ -45,6 +48,8 @@ const App = () => {
         <PrivateRoute exact path='/groups/:groupId/battles/:battleId/vote' component={BattleVote} />
         <PrivateRoute path='/groups/:groupId/battles/:battleId/vote/participants' component={BattleVoteParticipants} />
       </Switch>
+      <MySettingsPage />
+      <MySettingsAvatarPage />
     </div>
   )
 }

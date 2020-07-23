@@ -97,33 +97,3 @@
     padding: 0;
   }
 }
-
-
-.LoginForm-deleteButton {
-  background-color: #235789;
-  color: #ef4536;
-  font-size: 1rem;
-  font-weight: bold;
-  border-radius: 20px;
-  border-style: none;
-  margin-right: 20px;
-  height: 40px;
-  width: 90px;
-  cursor: pointer;
-  margin-top: 50px;
-  margin-bottom: 15px;
-}
-
-.from-PSW-AC {
-  width: 80%;
-  background-color: #235789;
-  border-radius: 20px;
-}
-
-.AC-VB-Margin {
-  margin-bottom: 15px;
-}
-
-.AC-MA-margin {
-  margin-top: 15px;
-}
