@@ -49,9 +49,9 @@ const Lightbox = ({ photos, votes }) => {
     return <p>Tu n'as pas encore posté de photo</p>
   }
 
-  const votesForCurrentPhoto = votes.filter(vote => vote.photo_id === photoId)
+  // const votesForCurrentPhoto = votes.filter(vote => vote.photo_id === photoId)
 
-  const scoreForCurrentPhoto = votesForCurrentPhoto.reduce((sum, vote) => sum + vote.vote, 0)
+  // const scoreForCurrentPhoto = votesForCurrentPhoto.reduce((sum, vote) => sum + vote.vote, 0)
 
   return (
     <div className='gallery-lightbox-container gallery-lightbox-container-user'>
@@ -78,7 +78,7 @@ const Lightbox = ({ photos, votes }) => {
         <div className='lightbox-img-container'>
           <img src={dispImg} alt={dispImg} className='lightbox-img' />
         </div>
-        {
+        {/* {
           photos[cardIndex].avatar_url &&
             <div className='lightbox-infos-container'>
               <div className='lightbox-infos-user'>
@@ -108,7 +108,7 @@ const Lightbox = ({ photos, votes }) => {
                 })
               }
             </div>
-        }
+        } */}
       </section>
     </div>
   )
