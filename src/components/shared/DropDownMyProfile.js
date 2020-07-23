@@ -27,7 +27,7 @@ const DropDownMyProfile = ({ user, history, match }) => {
         <option value={`/${user.username}/ranking`}>Mon Classement</option>
         <option value={`/${user.username}/pictures`}>Mes Photos</option>
       </select>
-      <button className='settings-btn-profil' onClick={handleSettings}><i class='fas fa-cog' /></button>
+      <button className='settings-btn-profil' onClick={handleSettings}><i className='fas fa-cog' /></button>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-// import BattleResultsPhotos from './components/pages/BattleResultsPhotos'
+import BattleResultsPhotos from './components/pages/BattleResultsPhotos'
 import BattlePost from './components/pages/BattlePost'
 import BattleResults from './components/pages/BattleResults'
 import BattleVote from './components/pages/BattleVote'
@@ -41,7 +41,7 @@ const App = () => {
         <PrivateRoute path='/:username/pictures' component={MyPictures} />
         <PrivateRoute exact path='/:username/battles' component={MyBattles} />
         <PrivateRoute exact path='/groups/:groupId/battles/:battleId/results' component={BattleResults} />
-        {/* <PrivateRoute path='/groups/:groupId/battles/:battleId/results/photos' component={BattleResultsPhotos} /> */}
+        <PrivateRoute path='/groups/:groupId/battles/:battleId/results/photos' component={BattleResultsPhotos} />
         <PrivateRoute exact path='/groups/:groupId/battles/:battleId/post-picture' component={BattlePost} />
         <PrivateRoute path='/groups/:groupId/battles/:battleId/post-picture/participants' component={BattlePostParticipants} />
         <PrivateRoute exact path='/groups/:groupId/battles/:battleId/vote' component={BattleVote} />
