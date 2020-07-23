@@ -11,7 +11,8 @@ const Lightbox = ({ photos, currentUserVotes }) => {
   const [dispImgStyle, setStyle] = useState({ display: 'none' })
   const [vote, setVote] = useState({ photoId: '', vote: '' })
   const [allVotes, setAllVotes] = useState([])
-  const [numberOfVotes, setNumberOfVotes] = useState(3 - allVotes.length)
+
+  const numberOfVotes = 3 - allVotes.length
 
   const showPhotoUrl = e => {
     setDisp(photos[Number(e.target.id)].photo_url)
@@ -67,7 +68,6 @@ const Lightbox = ({ photos, currentUserVotes }) => {
       setAllVotes(allVotes => {
         const nextVotes = [...allVotes]
         nextVotes.splice(samePhotoSameVoteIdx, 1)
-        setNumberOfVotes(numberOfVotes + 1)
         return nextVotes
       })
     } else if (samePhotoDiffVoteIdx !== -1) {
@@ -106,7 +106,6 @@ const Lightbox = ({ photos, currentUserVotes }) => {
       }
     } else {
       setAllVotes(allVotes => [...allVotes, newVote])
-      setNumberOfVotes(numberOfVotes - 1)
     }
   }
 
