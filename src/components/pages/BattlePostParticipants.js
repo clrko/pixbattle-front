@@ -1,20 +1,17 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import DropDownPost from '../shared/DropDownPost'
 import ListRankingMembers from '../shared/ListRankingMembers'
 
-class BattlePostParticipants extends Component {
-  state = {
-    participants: [],
-    hasPosted: []
-  }
+const BattlePostParticipants = ({ match }) => {
+  const [listParticipantPost, setListParticipantPost] = useState([])
 
-  componentDidMount () {
-    this.getPostRanking()
-  }
+  useEffect(() => {
+    getPostRanking()
+  }, [])
 
-  getPostRanking = () => {
-    const { battleId } = this.props.match.params
+  const getPostRanking = () => {
+    const { battleId } = match.params
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/battle/battle-post/${battleId}/members`,
         {
@@ -22,22 +19,29 @@ class BattlePostParticipants extends Component {
             authorization: `Bearer ${localStorage.getItem('token')}`
           }
         })
-      .then(res => this.setState({
-        participants: res.data.battleMembers,
-        hasPosted: res.data.battleMemberStatus
-      })
-      )
+      .then(res => setListParticipantPost(res.data))
   }
 
-  render () {
-    const { participants, hasPosted } = this.state
-    return (
-      <div>
-        <DropDownPost />
-        <ListRankingMembers participants={participants} hasPosted={hasPosted} />
-      </div>
-    )
+  const getIcon = (item) => {
+    if (Object.keys(item).includes('victories')) {
+      return <i className='fas fa-trophy fa-trophy-RankingMembers'><p>{item.victories}</p></i>
+    } else if (Object.keys(item).includes('posted')) {
+      if (item.posted !== 0) {
+        return <i className='far fa-image' />
+      }
+    } else if (Object.keys(item).includes('voted')) {
+      if (item.voted !== 0) {
+        return <i className='fas fa-check' />
+      }
+    }
   }
+
+  return (
+    <div>
+      <DropDownPost />
+      <ListRankingMembers listParticipants={listParticipantPost} getIcon={getIcon} />
+    </div>
+  )
 }
 
 export default BattlePostParticipants
