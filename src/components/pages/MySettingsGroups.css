@@ -1,0 +1,54 @@
+.setting-group-container {
+  margin: 4% 0;
+  padding: 5% ;
+}
+
+.modified-group-text {
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  padding-left: 5%;
+  padding-top: 4%;
+  padding-bottom: 2%;
+}
+
+.modified-group-input {
+  width: 70%;
+  border-radius: 20px;
+  border-style: none;
+  padding: 10px 15px;
+  border: 1px solid transparent;
+  height: 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  outline: 0;
+  color: #235789;
+}
+.modified-group-input:focus {
+  border: solid 3px #FAC748;
+}
+
+.container-modified-group-name {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.infoSettings {
+  color: white;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  line-height: 1rem;
+  margin-top: 1%;
+  padding-left: 5%;
+  padding-bottom: 2%;
+}
+
+.button-modified-group-name {
+  background-color: #73DB5A;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  height: 30px;
+}

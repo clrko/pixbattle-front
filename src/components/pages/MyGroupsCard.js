@@ -10,6 +10,7 @@ const MyGroupsCard = ({ groupName, userAdmin, ongoingBattles, finishedBattles, g
       <p className='MyGroups-card-battle'>{finishedBattles}</p>
       <p className='MyGroups-card-member'>{groupMembers}</p>
       <button className='MyGroups-card-button' onClick={handleClick}>Voir</button>
+      <button className='MyGroups-card-button' onClick={handleClick}>Modifier</button>
     </div>
   )
 }
