@@ -58,7 +58,7 @@ class CreationBattleRule extends Component {
   }
 
   render () {
-    const { rules, selectedRules } = this.state
+    const { rules, selectedRules, isRule } = this.state
     return (
       <div className='battleCreation-page'>
         <div className='cardBattle'>
