@@ -7,10 +7,7 @@ class MySettingsAvatar extends Component {
   state = {
     newUsername: '',
     avatars: [],
-    selectedAvatar: {
-      avatarId: 0,
-      avatarUrl: ''
-    }
+    selectedAvatar: 0
   }
 
   handleChangeUsername = e => {
@@ -18,12 +15,7 @@ class MySettingsAvatar extends Component {
   }
 
   handleChangeAvatar = e => {
-    const selectedAvatar = Object.assign({}, this.state.selectedAvatar)
-    selectedAvatar.avatarId = Number(e.target.id)
-    selectedAvatar.avatarUrl = e.target.value
-    this.setState({
-      selectedAvatar: selectedAvatar
-    })
+    this.setState({ [e.target.name]: e.target.id })
   }
 
   checkUsername = () => {
@@ -34,8 +26,8 @@ class MySettingsAvatar extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    if (this.checkUsername()) {
-      const { newUsername, selectedAvatar } = this.state
+    const { newUsername, selectedAvatar } = this.state
+    if ((newUsername && this.checkUsername()) || selectedAvatar) {
       axios
         .put(`${process.env.REACT_APP_SERVER_URL}/profile/settings/informations`,
           { newUsername, selectedAvatar },
@@ -46,6 +38,8 @@ class MySettingsAvatar extends Component {
           })
         .then(res => {
           alert('Les modifications ont bien été enregistrées')
+          this.setState({ newUsername: '' })
+          // mettre à jour le store
         })
     } else {
       alert('Seuls les lettres et les chiffres sont autorisés')
@@ -94,7 +88,7 @@ class MySettingsAvatar extends Component {
                         <input
                           className='avatar-btn-settings'
                           type='radio'
-                          name='avatar'
+                          name='selectedAvatar'
                           value={avatar.avatar_url}
                           checked={selectedAvatar.avatar_id === avatar.avatar_id}
                           onChange={this.handleChangeAvatar}
