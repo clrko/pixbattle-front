@@ -101,7 +101,7 @@
 }
 
 .battleCreation-themeContainer input {
-  visibility: hidden;
+  display: none;
 }
 
 .battleCreation-themeContainer input:checked~label {
@@ -188,8 +188,6 @@
 .battle-optionButton-selected {
   background-color: #13293D;
   color: #FDFFFC;
-  padding: 7px 10px;
-  margin: 7px 15px;
 }
 
 .battleCreation-cancelButton {
