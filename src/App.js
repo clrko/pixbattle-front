@@ -20,6 +20,7 @@ import MyRanking from './components/pages/MyRanking'
 import BattleVoteParticipants from './components/pages/BattleVoteParticipants'
 import BattlePostParticipants from './components/pages/BattlePostParticipants'
 import PrivateRoute from './components/shared/PrivateRoute'
+import Cgu from './components/pages/Cgu'
 
 const App = () => {
   return (
@@ -45,6 +46,7 @@ const App = () => {
         <PrivateRoute exact path='/groups/:groupId/battles/:battleId/vote' component={BattleVote} />
         <PrivateRoute path='/groups/:groupId/battles/:battleId/vote/participants' component={BattleVoteParticipants} />
       </Switch>
+      <Cgu />
     </div>
   )
 }

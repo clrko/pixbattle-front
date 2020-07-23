@@ -1,0 +1,47 @@
+.CGU-background {
+    display: flex;
+    justify-content: center;
+    background-color: #235789;
+    height: 100%;
+    width: 100vw;
+}
+
+.CGU-TextDecoration {
+    width: 80%;
+    background-color: #fca748;
+    border: solid #13293d 5px;
+    border-radius: 20px;
+    padding: 40px;
+    color: #13293d;
+}
+
+h5 {
+    font-size: 17px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+h6 {
+    font-size: 15px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+p {
+    font-size: 16px;
+}
+
+.listSet {
+    font-size: 13px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.scrollBar {
+    width: 300px;
+    height: 650px;
+    overflow: auto;
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: none;
+}
+
