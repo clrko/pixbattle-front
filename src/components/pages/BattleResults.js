@@ -44,7 +44,7 @@ class BattleResults extends React.Component {
   }
 
   render () {
-    const { users, victories } = this.state
+    const { users } = this.state
     const { user } = this.props
 
     if (!users) {
@@ -57,7 +57,6 @@ class BattleResults extends React.Component {
 
     return (
       <div>
-        {console.log(victories)}
         <DropDownResults />
         <div className='div-AvatarPodium'>
           <div className='div-center-AvatarPodium'>

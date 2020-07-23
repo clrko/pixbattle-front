@@ -12,11 +12,23 @@ import './CreationBattleDeadline.css'
 
 const CreationBattleDeadline = (props) => {
   const [selectedDate, setDateChange] = useState(moment())
-  const [selectedTime, setTimeChange] = useState('01:00:00')
+  const [selectedTime, setTimeChange] = useState(moment().format('HH:mm:ss'))
+  const [isDisable, setIsDisable] = useState(true)
   const [isOpen, setIsOpen] = useState(false)
 
+  const yesterday = DateTime.moment().subtract(1, 'day')
+
+  const isValidDate = (current) => {
+    return current.isAfter(yesterday)
+  }
+
   const handleDateChange = e => {
-    setDateChange(e)
+    const now = new Date()
+    const date = new Date(e)
+    if (date > now) {
+      setIsDisable(false)
+      setDateChange(e)
+    }
   }
 
   const handleTimeChange = e => {
@@ -52,6 +64,8 @@ const CreationBattleDeadline = (props) => {
               timeFormat={false}
               locale='fr-FR'
               dateFormat='dddd Do MMMM YYYY'
+              isValidDate={isValidDate}
+              closeOnSelect
             />
           </div>
           <div className='battleCreation-dateTimeContainer'>
@@ -75,9 +89,14 @@ const CreationBattleDeadline = (props) => {
             </button>
           </NavLink>
           <button
-            className='battleCreation-validateButton battle-btn'
+            className={
+              isDisable
+                ? 'battleCreation-validateButton-disable battle-btn'
+                : 'battleCreation-validateButton battle-btn'
+            }
             type='button'
             onClick={handleSubmit}
+            disabled={isDisable}
           >
             Valider
           </button>
