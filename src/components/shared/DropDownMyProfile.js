@@ -13,7 +13,7 @@ const DropDownMyProfile = ({ user, history, match }) => {
     history.push(e.target.value)
   }
 
-  const selectedOption = match.path
+  const selectedOption = match.url
 
   return (
     <div className='background-DropDown'>
