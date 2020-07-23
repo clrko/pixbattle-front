@@ -1,0 +1,45 @@
+.background-PageProfileSettings {
+  background-color: #235789;
+  height: 68vh;
+  width: 85%;
+  margin: auto;
+  border-radius: 25px;
+}
+
+.settings-form {
+  margin: 1rem 0;
+}
+
+.settings-btn {
+  margin: 2rem;
+}
+
+.delete-account-btn {
+  color: red;
+  background-color: transparent;
+  outline: transparent;
+  border: none;
+  text-decoration: underline;
+}
+
+.settings-avatar-page {
+  overflow: scroll;
+  height: 40vh;
+  width: 85%;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.settings-avatar-page::-webkit-scrollbar {
+  width: 5px;
+}
+
+.settings-avatar-page::-webkit-scrollbar-thumb {
+  background-color: #FAC748;
+  border-radius: 10px;
+}
+
+.card-avatar-settings {
+  width: 25vw;
+}

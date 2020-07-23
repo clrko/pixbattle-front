@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import classNames from 'classnames'
 import DropDownSettings from '../shared/DropDownSettings'
-import './MySettingsPage.css'
+import './MySettings.css'
 
-class MySettingsPage extends Component {
+class MySettings extends Component {
   state = {
     currentEmail: '',
     newEmail: '',
@@ -159,4 +159,4 @@ class MySettingsPage extends Component {
   }
 }
 
-export default MySettingsPage
+export default MySettings
