@@ -35,11 +35,11 @@ class BattleResults extends React.Component {
 
   handleCreateBattle = e => {
     e.preventDefault()
-    const { dispatch, history, match } = this.props
-    const currentGroupId = { groupId: match.params.groupId }
-    dispatch({ type: ADD_GROUP, currentGroupId })
+    const { dispatch, history } = this.props
+    const groupId = this.props.match.params.groupId
+    dispatch({ type: ADD_GROUP, groupId })
     history.push({
-      pathname: `/battle-creation/group-created/${currentGroupId}`
+      pathname: `/battle-creation/group-created/${groupId}`
     })
   }
 
@@ -63,7 +63,7 @@ class BattleResults extends React.Component {
             <div className='AvatarPodium second-position'>
               <div className='div-p-fas'>
                 <p className='p-AvatarPodium'>{users[1].username}</p>
-                <i className='fas fa-star'><p className='p-user-victories-podium'>{!users[1].victories && 0}</p></i>
+                <i className='fas fa-star'><p className='p-user-victories-podium'>{users[1].score}</p></i>
               </div>
               <div className='div-img-Avatar2'>
                 <img className='img-avatar-position' src={users[1].avatar_url} alt='avatar' />
@@ -73,7 +73,7 @@ class BattleResults extends React.Component {
             <div className='AvatarPodium first-position'>
               <div className='div-p-fas'>
                 <p className='p-AvatarPodium'>{users[0].username}</p>
-                <i className='fas fa-star'><p className='p-user-victories-podium'>{!users[0].victories && 0}</p></i>
+                <i className='fas fa-star'><p className='p-user-victories-podium'>{users[0].score}</p></i>
               </div>
               <div className='div-img-Avatar1'>
                 <img className='img-avatar-position' src={users[0].avatar_url} alt='avatar' />
@@ -83,7 +83,7 @@ class BattleResults extends React.Component {
             <div className='AvatarPodium third-position'>
               <div className='div-p-fas'>
                 <p className='p-AvatarPodium'>{users[2].username}</p>
-                <i className='fas fa-star'><p className='p-user-victories-podium'>{!users[2].victories && 0}</p></i>
+                <i className='fas fa-star'><p className='p-user-victories-podium'>{users[2].score}</p></i>
               </div>
               <div className='div-img-Avatar3'>
                 <img className='img-avatar-position' src={users[2].avatar_url} alt='avatar' />
@@ -114,7 +114,7 @@ class BattleResults extends React.Component {
                   </div>
                   <div className='margin-fa-star-attendee-list'>
                     <i className='fas fa-star fa-star-attendee-list'>
-                      <p className='p-user-victories'>{!u.victories && 0}</p>
+                      <p className='p-user-victories'>{u.score}</p>
                     </i>
                   </div>
                 </div>
