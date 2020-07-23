@@ -1,25 +1,17 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import DropDownMyProfile from '../shared/DropDownMyProfile'
 import ListRankingMembers from '../shared/ListRankingMembers'
 import './MyRanking.css'
 
-const mapStateToProps = state => {
-  const { user, profileInfos } = state
-  return { user, profileInfos }
-}
-class MyRanking extends React.Component {
-  state = {
-    participants: [],
-    victories: []
-  }
+const MyRanking = () => {
+  const [listParticipantVictories, setListParticipantVictories] = useState([])
 
-  componentDidMount () {
-    this.getMyRanking()
-  }
+  useEffect(() => {
+    getMyRanking()
+  }, [])
 
-  getMyRanking = () => {
+  const getMyRanking = () => {
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/profile/my-ranking`,
         {
@@ -27,18 +19,30 @@ class MyRanking extends React.Component {
             authorization: `Bearer ${localStorage.getItem('token')}`
           }
         })
-      .then(res => console.log(res.data))
+      .then(res => {
+        setListParticipantVictories(res.data)
+      })
   }
 
-  render () {
-    const { participants, victories } = this.state
-    return (
-      <div className='background-MyRanking'>
-        <DropDownMyProfile />
-        <ListRankingMembers participants={participants} victories={victories} />
-      </div>
-    )
+  const getIcon = (item) => {
+    if (Object.keys(item).includes('victories')) {
+      return <i className='fas fa-trophy fa-trophy-RankingMembers'><p>{item.victories}</p></i>
+    } else if (Object.keys(item).includes('posted')) {
+      if (item.posted !== 0) {
+        return <i className='far fa-image' />
+      }
+    } else if (Object.keys(item).includes('voted')) {
+      if (item.voted !== 0) {
+        return <i className='fas fa-check' />
+      }
+    }
   }
+  return (
+    <div className='background-MyRanking'>
+      <DropDownMyProfile />
+      <ListRankingMembers listParticipants={listParticipantVictories} getIcon={getIcon} />
+    </div>
+  )
 }
 
-export default connect(mapStateToProps)(MyRanking)
+export default MyRanking
