@@ -49,6 +49,10 @@ const Lightbox = ({ photos, votes }) => {
     return <p>Tu n'as pas encore posté de photo</p>
   }
 
+  const votesForCurrentPhoto = votes.filter(vote => vote.photo_id === photoId)
+
+  const scoreForCurrentPhoto = votesForCurrentPhoto.reduce((sum, vote) => sum + vote.vote, 0)
+
   return (
     <div className='gallery-lightbox-container gallery-lightbox-container-user'>
       {
@@ -86,23 +90,21 @@ const Lightbox = ({ photos, votes }) => {
                 <span className='lightbox-infos-span'>{photos[cardIndex].create_date.slice(0, 10)}</span>
               </p>
               <p className='lightbox-infos-p'>Points gagnés :
-                <span className='lightbox-infos-span'>+ {photos[cardIndex].score}</span>
+                <span className='lightbox-infos-span'>+ {scoreForCurrentPhoto}</span>
               </p>
               {
-                votes.map(vote => {
-                  if (vote.photo_id === photoId) {
-                    return (
-                      <div key={vote.photo_id} className='lightbox-infos-user votes'>
-                        <img className='lightbox-infos-user-avatar-vote' src={vote.avatar_url} alt={vote.avatar_url} />
-                        <p className='lightbox-infos-span' key={vote.username}>{vote.username}</p>
-                        {
-                          vote.vote && new Array(vote.vote).fill(0).map((_, i) => (
-                            <i key={i} className='fas fa-star' />
-                          ))
-                        }
-                      </div>
-                    )
-                  }
+                votesForCurrentPhoto.map(vote => {
+                  return (
+                    <div key={`${vote.photo_id}-${vote.username}`} className='lightbox-infos-user votes'>
+                      <img className='lightbox-infos-user-avatar-vote' src={vote.avatar_url} alt={vote.avatar_url} />
+                      <p className='lightbox-infos-span' key={vote.username}>{vote.username}</p>
+                      {
+                        vote.vote && new Array(vote.vote).fill(0).map((_, i) => (
+                          <i key={i} className='fas fa-star' />
+                        ))
+                      }
+                    </div>
+                  )
                 })
               }
             </div>

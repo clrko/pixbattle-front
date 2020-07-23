@@ -82,7 +82,7 @@ class BattlePost extends React.Component {
         <div className='window-MyProfile battle-post-container'>
           <BattlePostTimer onDeadlineReached={this.handleDeadlineReached} deadline={deadline} />
           <div className='battlePost-info-div'>
-            <p className='battlePost-info'>Thème : <sapn className='battlePost-span'>{themeName}</sapn></p>
+            <p className='battlePost-info'>Thème : <span className='battlePost-span'>{themeName}</span></p>
             <hr className='battlePost-line' />
             <p className='battlePost-info'>Contraintes :
               {

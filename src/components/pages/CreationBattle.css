@@ -204,6 +204,14 @@
   width: 100px;
 }
 
+.battleCreation-validateButton-disable {
+  color: white;
+  background-color: lightgray;
+  color: rgb(146, 146, 146);
+  height: 40px;
+  width: 100px;
+}
+
 .battle-creation-summary {
   background-color: transparent;
   color: #FAC748;

@@ -9,7 +9,8 @@ import './CreationBattle.css'
 class CreationBattleRule extends Component {
   state = {
     rules: [],
-    selectedRules: []
+    selectedRules: [],
+    isRule: false
   }
 
   handleOptionClick = e => {
@@ -26,6 +27,7 @@ class CreationBattleRule extends Component {
         selectedRules: [...this.state.selectedRules, this.state.rules[selectedRuleIndex]]
       })
     }
+    this.setState({ isRule: true })
   }
 
   handleChangeSteps = e => {
@@ -89,7 +91,11 @@ class CreationBattleRule extends Component {
               </button>
             </NavLink>
             <button
-              className='battleCreation-validateButton battle-btn'
+              className={
+                isRule
+                  ? 'battleCreation-validateButton battle-btn'
+                  : 'battleCreation-validateButton-disable battle-btn'
+              }
               type='button'
               onClick={this.handleChangeSteps}
             >

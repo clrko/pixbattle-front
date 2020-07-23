@@ -12,7 +12,8 @@ class CreationBattleTheme extends Component {
     selectedTheme: {
       themeId: 0,
       themeName: ''
-    }
+    },
+    isTheme: false
   }
 
   handleRefresh = () => {
@@ -24,7 +25,8 @@ class CreationBattleTheme extends Component {
     selectedTheme.themeId = Number(e.target.id)
     selectedTheme.themeName = e.target.value
     this.setState({
-      selectedTheme: selectedTheme
+      selectedTheme: selectedTheme,
+      isTheme: true
     })
   }
 
@@ -39,7 +41,6 @@ class CreationBattleTheme extends Component {
   }
 
   componentDidMount () {
-    console.log(this.props)
     axios.get(`${process.env.REACT_APP_SERVER_URL}/battle/battle-creation/themes`,
       {
         headers: {
@@ -52,7 +53,7 @@ class CreationBattleTheme extends Component {
   }
 
   render () {
-    const { themes, refreshed, selectedTheme } = this.state
+    const { themes, refreshed, selectedTheme, isTheme } = this.state
     const displayedThemes = refreshed ? themes : themes.slice(0, 5)
     return (
       <div className='battleCreation-page'>
@@ -93,9 +94,14 @@ class CreationBattleTheme extends Component {
           </div>
           <div className='battleCreation-btnContainer'>
             <button
-              className='battleCreation-validateButton battle-btn'
+              className={
+                isTheme
+                  ? 'battleCreation-validateButton battle-btn'
+                  : 'battleCreation-validateButton-disable battle-btn'
+              }
               onClick={this.handleChangeSteps}
               type='button'
+              disabled={!isTheme}
             >
               Suivant
             </button>
