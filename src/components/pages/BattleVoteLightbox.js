@@ -142,7 +142,12 @@ const Lightbox = ({ photos, currentUserVotes }) => {
       <section className='Gallery'>
         {photos.map((photo, i) => (
           <div className='gallery-img-container' key={photo.photo_id}>
-            <Photo photo={photo} handleClick={showPhotoUrl} id={i} currentUserVotes={currentUserVotes} />
+            <Photo
+              photo={photo}
+              handleClick={showPhotoUrl}
+              id={photo.photo_id}
+              currentUserVotes={currentUserVotes}
+            />
           </div>
         ))}
       </section>
