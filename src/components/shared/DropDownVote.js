@@ -15,7 +15,7 @@ class DropDownVote extends React.Component {
 
   render () {
     const { match } = this.props
-    const selectedOption = match.path
+    const selectedOption = match.url
     return (
       <div className='background-DropDown'>
         <select value={selectedOption} className='DropDown' onChange={this.handleChange}>
