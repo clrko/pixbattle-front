@@ -38,6 +38,7 @@ class MySettingsAvatar extends Component {
           })
         .then(res => {
           alert('Les modifications ont bien été enregistrées')
+          this.setState({ newUsername: '' })
           // mettre à jour le store
         })
     } else {
