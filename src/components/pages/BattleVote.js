@@ -12,7 +12,7 @@ class BattleVote extends Component {
   getPhotos = () => {
     const { battleId } = this.props.match.params
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/battle//battle-vote/${battleId}`,
+      .get(`${process.env.REACT_APP_SERVER_URL}/battle/battle-vote/${battleId}`,
         {
           headers: {
             authorization: `Bearer ${localStorage.getItem('token')}`
