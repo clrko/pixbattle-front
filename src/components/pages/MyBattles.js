@@ -13,14 +13,16 @@ const mapStateToProps = state => {
 
 const MyBattles = ({ user, history, location }) => {
   const [userBattleInformation, setUserBattleInformation] = useState([])
+  const [hasPosted, setHasPosted] = useState({})
 
   useEffect(() => {
     getUserBattleInformation()
+      .then(getBattlePostedStatus)
   }, [])
 
   const getUserBattleInformation = () => {
     const backRoute = (location.state) ? `my-battles/${location.state.groupId}` : 'my-battles'
-    axios
+    return axios
       .get(`${process.env.REACT_APP_SERVER_URL}/battle/${backRoute}`,
         {
           headers: {
@@ -30,6 +32,29 @@ const MyBattles = ({ user, history, location }) => {
       )
       .then(res => {
         setUserBattleInformation(res.data)
+        return res.data
+      })
+  }
+
+  const getBattlePostedStatus = allUserBattles => {
+    const battleIds = allUserBattles.map(battle => battle.battle_id)
+    const query = battleIds.map(id => `id[]=${id}`).join('&')
+    axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/battle/battle-post/status-user?${query}`,
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        }
+      )
+      .then(res => {
+        console.log('res.data', res.data)
+        const updateHasPosted = {}
+        res.data.forEach(battle => {
+          updateHasPosted[battle.battle_id] = true
+        })
+        setHasPosted(updateHasPosted)
+        return (res.data.length !== 0)
       })
   }
 
@@ -77,6 +102,20 @@ const MyBattles = ({ user, history, location }) => {
     }
   }
 
+  const getIsAbleStatus = (status, hasPhoto) => {
+    switch (status) {
+      case 'post':
+        return !hasPhoto
+      case 'vote':
+        return hasPhoto
+      case 'completed':
+        return true
+      default:
+        console.warn('wrong status', status)
+        return false
+    }
+  }
+
   const handleClick = (selectedGroupId, selectedBattleId, importedStatus) => {
     switch (importedStatus) {
       case 'post':
@@ -113,6 +152,8 @@ const MyBattles = ({ user, history, location }) => {
         getBattleTimeMessage={getBattleTimeMessage}
         getBattleStatus={getBattleStatus}
         handleClick={handleClick}
+        hasPosted={hasPosted}
+        getIsAbleStatus={getIsAbleStatus}
       />
     </div>
   )
