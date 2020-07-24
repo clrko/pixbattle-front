@@ -2,7 +2,7 @@ import React from 'react'
 import MyBattlesCard from './MyBattlesCard'
 import './MyBattles.css'
 
-const MyBattlesCardList = ({ userId, userBattleInformation, getCompletedPercentage, getBattleTimeMessage, getBattleStatus, handleClick }) => (
+const MyBattlesCardList = ({ userId, userBattleInformation, getCompletedPercentage, getBattleTimeMessage, getBattleStatus, handleClick, getIsAbleStatus, hasPosted }) => (
   <div className='MyBattles-cardList'>
     {userBattleInformation.map((battle, i) =>
       <MyBattlesCard
@@ -12,8 +12,9 @@ const MyBattlesCardList = ({ userId, userBattleInformation, getCompletedPercenta
         battleGroup={battle.group_name}
         userAdmin={battle.admin_user_id === userId}
         completed={getCompletedPercentage(battle.create_date, battle.deadline, battle.status_name)}
-        battleTimeMessage={getBattleTimeMessage(battle.deadline, battle.status_name)}
+        battleTimeMessage={getBattleTimeMessage(battle.deadline, battle.status_name, hasPosted[battle.battle_id])}
         handleClick={() => handleClick(battle.group_id, battle.battle_id, battle.status_name)}
+        showButton={getIsAbleStatus(battle.status_name, hasPosted[battle.battle_id])}
       />)}
   </div>
 )
