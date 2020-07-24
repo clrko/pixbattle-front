@@ -14,11 +14,13 @@ const mapStateToProps = state => {
 class BattleResults extends React.Component {
   state = {
     users: '',
-    victories: []
+    victories: [],
+    pendingBattle: true // if true, prevent creating new battle
   }
 
   componentDidMount () {
     this.getResults()
+    this.getPendingBattle()
   }
 
   getResults = () => {
@@ -33,10 +35,21 @@ class BattleResults extends React.Component {
       )
   }
 
+  getPendingBattle = () => {
+    const { groupId } = this.props.match.params
+    axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/battle/my-battles/${groupId}/pending`)
+      .then(res =>
+        this.setState({
+          pendingBattle: res.data.pending
+        })
+      )
+  }
+
   handleCreateBattle = e => {
     e.preventDefault()
-    const { dispatch, history } = this.props
-    const groupId = this.props.match.params.groupId
+    const { dispatch, history, match } = this.props
+    const groupId = match.params.groupId
     dispatch({ type: ADD_GROUP, groupId })
     history.push({
       pathname: `/battle-creation/group-created/${groupId}`
@@ -44,7 +57,7 @@ class BattleResults extends React.Component {
   }
 
   render () {
-    const { users } = this.state
+    const { users, pendingBattle } = this.state
     const { user } = this.props
 
     if (!users) {
@@ -94,7 +107,7 @@ class BattleResults extends React.Component {
           <div className='div-congratulations'>
             <h1 className='h1-div-congratulations'>Félicitations {users[0].username} !</h1>
             {
-              user.userId === users[0].user_id
+              !pendingBattle && user.userId === users[0].user_id
                 ? <button className='button-createdNewGroup-MyProfile button-div-congratulations' onClick={this.handleCreateBattle}>Crée la prochaine battle</button>
                 : <div className='button-div-congratulations-empty' />
             }
