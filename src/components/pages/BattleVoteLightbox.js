@@ -15,8 +15,9 @@ const Lightbox = ({ photos, currentUserVotes, getUserVotes }) => {
   const numberOfVotes = 3 - allVotes.length
 
   const showPhotoUrl = e => {
-    setDisp(photos[Number(e.target.id)].photo_url)
-    setIndex(Number(e.target.id))
+    const index = Number(e.target.id)
+    setDisp(photos[index].photo_url)
+    setIndex(index)
     setStyle({ display: 'flex' })
     setPhotoId(photos[Number(e.target.id)].photo_id)
   }
@@ -144,6 +145,7 @@ const Lightbox = ({ photos, currentUserVotes, getUserVotes }) => {
             <Photo
               photo={photo}
               handleClick={showPhotoUrl}
+              index={i}
               id={photo.photo_id}
               currentUserVotes={currentUserVotes}
             />

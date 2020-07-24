@@ -1,8 +1,8 @@
 import React from 'react'
 import './Photo.css'
 
-const Photo = ({ photo, id, handleClick, currentUserVotes }) => {
-  const currentVote = currentUserVotes.find(vote => vote.photo_id === id)
+const Photo = ({ photo, index, id, handleClick, currentUserVotes }) => {
+  const currentVote = currentUserVotes && currentUserVotes.find(vote => vote.photo_id === id)
 
   return (
     <div className='photo-container'>
@@ -16,7 +16,7 @@ const Photo = ({ photo, id, handleClick, currentUserVotes }) => {
       <img
         src={`${process.env.REACT_APP_SERVER_URL}/${photo.photo_url}`}
         onClick={handleClick}
-        id={id}
+        id={index}
         alt={photo.photo_url}
         className='gallery-image'
       />
