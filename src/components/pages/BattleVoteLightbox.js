@@ -4,18 +4,20 @@ import axios from 'axios'
 import classnames from 'classnames'
 import '../shared/Lightbox.css'
 
-const Lightbox = ({ photos, currentUserVotes }) => {
+const Lightbox = ({ photos, currentUserVotes, getUserVotes }) => {
   const [dispImg, setDisp] = useState('')
   const [photoId, setPhotoId] = useState('')
   const [cardIndex, setIndex] = useState(0)
   const [dispImgStyle, setStyle] = useState({ display: 'none' })
   const [vote, setVote] = useState({ photoId: '', vote: '' })
   const [allVotes, setAllVotes] = useState([])
-  const [numberOfVotes, setNumberOfVotes] = useState(3 - allVotes.length)
+
+  const numberOfVotes = 3 - allVotes.length
 
   const showPhotoUrl = e => {
-    setDisp(photos[Number(e.target.id)].photo_url)
-    setIndex(Number(e.target.id))
+    const index = Number(e.target.id)
+    setDisp(photos[index].photo_url)
+    setIndex(index)
     setStyle({ display: 'flex' })
     setPhotoId(photos[Number(e.target.id)].photo_id)
   }
@@ -51,7 +53,6 @@ const Lightbox = ({ photos, currentUserVotes }) => {
   }
 
   const getVote = e => {
-    e.preventDefault()
     const newVote = { photoId: photoId, vote: e.target.value }
     setVote(newVote)
     const samePhotoSameVoteIdx = allVotes.findIndex(
@@ -67,7 +68,6 @@ const Lightbox = ({ photos, currentUserVotes }) => {
       setAllVotes(allVotes => {
         const nextVotes = [...allVotes]
         nextVotes.splice(samePhotoSameVoteIdx, 1)
-        setNumberOfVotes(numberOfVotes + 1)
         return nextVotes
       })
     } else if (samePhotoDiffVoteIdx !== -1) {
@@ -106,7 +106,6 @@ const Lightbox = ({ photos, currentUserVotes }) => {
       }
     } else {
       setAllVotes(allVotes => [...allVotes, newVote])
-      setNumberOfVotes(numberOfVotes - 1)
     }
   }
 
@@ -128,10 +127,10 @@ const Lightbox = ({ photos, currentUserVotes }) => {
             }
           })
         .then(res => console.log(res))
+        .then(getUserVotes)
     } else {
       alert(`Tu dois encore voter pour ${3 - allVotes.length} photos pour valider tes votes.`)
     }
-    return window.location.reload(true)
   }
 
   const selectedPhoto = allVotes.find(vote => {
@@ -143,7 +142,13 @@ const Lightbox = ({ photos, currentUserVotes }) => {
       <section className='Gallery'>
         {photos.map((photo, i) => (
           <div className='gallery-img-container' key={photo.photo_id}>
-            <Photo photo={photo} handleClick={showPhotoUrl} id={i} currentUserVotes={currentUserVotes} />
+            <Photo
+              photo={photo}
+              handleClick={showPhotoUrl}
+              index={i}
+              id={photo.photo_id}
+              currentUserVotes={currentUserVotes}
+            />
           </div>
         ))}
       </section>
@@ -217,7 +222,7 @@ const Lightbox = ({ photos, currentUserVotes }) => {
       <div className='vote-status'>
         {
           currentUserVotes.length === 0
-            ? <button onClick={handleVotes}>valider les votes</button>
+            ? <button className='battle-btn battle-optionButton' onClick={handleVotes}>valider les votes</button>
             : <p>Tu as déjà voté pour cette battle !</p>
         }
       </div>
