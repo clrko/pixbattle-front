@@ -74,19 +74,26 @@ const MyBattles = ({ user, history, location }) => {
     return (differenceToToday / differenceToDeadline) * 100
   }
 
-  const getBattleTimeMessage = (importedDeadline, importedStatus) => {
+  const getBattleTimeMessage = (importedDeadline, importedStatus, hasPhoto) => {
     const deadline = moment(importedDeadline)
     const today = moment().local()
     if (importedStatus === 'completed') {
       return 'Va vite voir les resultats'
     }
-    if (importedStatus === 'vote') {
+    if (importedStatus === 'vote' && hasPhoto) {
       const deadlineToVote = moment(deadline.add(24, 'hours').format('YYYY-MM-DDTHH:mm:ss.SSSSZ'))
       const durationToVote = moment.duration(deadlineToVote.diff(today))
       return `Il te reste ${durationToVote.humanize()} pour voter`
+    } else if (importedStatus === 'vote' && !hasPhoto) {
+      return 'Tu n\'as pas participé'
     }
-    const durationTodayToDeadline = moment.duration(deadline.diff(today))
-    return `Encore ${durationTodayToDeadline.humanize()} pour poster ta photo`
+
+    if (importedStatus === 'post' && hasPhoto) {
+      return 'Tu as déjà posté ta photo'
+    } else {
+      const durationTodayToDeadline = moment.duration(deadline.diff(today))
+      return `Encore ${durationTodayToDeadline.humanize()} pour poster ta photo`
+    }
   }
 
   const getBattleStatus = importedStatus => {

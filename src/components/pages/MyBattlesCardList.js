@@ -12,7 +12,7 @@ const MyBattlesCardList = ({ userId, userBattleInformation, getCompletedPercenta
         battleGroup={battle.group_name}
         userAdmin={battle.admin_user_id === userId}
         completed={getCompletedPercentage(battle.create_date, battle.deadline, battle.status_name)}
-        battleTimeMessage={getBattleTimeMessage(battle.deadline, battle.status_name)}
+        battleTimeMessage={getBattleTimeMessage(battle.deadline, battle.status_name, hasPosted[battle.battle_id])}
         handleClick={() => handleClick(battle.group_id, battle.battle_id, battle.status_name)}
         showButton={getIsAbleStatus(battle.status_name, hasPosted[battle.battle_id])}
       />)}
