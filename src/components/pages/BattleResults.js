@@ -62,31 +62,31 @@ class BattleResults extends React.Component {
           <div className='div-center-AvatarPodium'>
             <div className='AvatarPodium second-position'>
               <div className='div-p-fas'>
-                <p className='p-AvatarPodium'>{users[1].username}</p>
-                <i className='fas fa-star'><p className='p-user-victories-podium'>{users[1].score}</p></i>
+                <p className='p-AvatarPodium'>{users[1] && users[1].username}</p>
+                <i className='fas fa-star'><p className='p-user-victories-podium'>{users[1] && users[1].score}</p></i>
               </div>
               <div className='div-img-Avatar2'>
-                <img className='img-avatar-position' src={users[1].avatar_url} alt='avatar' />
+                <img className='img-avatar-position' src={users[1] && users[1].avatar_url} alt='avatar' />
               </div>
               <i className='fas fa-medal medal2' />
             </div>
             <div className='AvatarPodium first-position'>
               <div className='div-p-fas'>
-                <p className='p-AvatarPodium'>{users[0].username}</p>
-                <i className='fas fa-star'><p className='p-user-victories-podium'>{users[0].score}</p></i>
+                <p className='p-AvatarPodium'>{users[0] && users[0].username}</p>
+                <i className='fas fa-star'><p className='p-user-victories-podium'>{users[0] && users[0].score}</p></i>
               </div>
               <div className='div-img-Avatar1'>
-                <img className='img-avatar-position' src={users[0].avatar_url} alt='avatar' />
+                <img className='img-avatar-position' src={users[0] && users[0].avatar_url} alt='avatar' />
               </div>
               <i className='fas fa-medal medal1'><p /></i>
             </div>
             <div className='AvatarPodium third-position'>
               <div className='div-p-fas'>
-                <p className='p-AvatarPodium'>{users[2].username}</p>
-                <i className='fas fa-star'><p className='p-user-victories-podium'>{users[2].score}</p></i>
+                <p className='p-AvatarPodium'>{users[2] && users[2].username}</p>
+                <i className='fas fa-star'><p className='p-user-victories-podium'>{users[2] && users[2].score}</p></i>
               </div>
               <div className='div-img-Avatar3'>
-                <img className='img-avatar-position' src={users[2].avatar_url} alt='avatar' />
+                <img className='img-avatar-position' src={users[2] && users[2].avatar_url} alt='avatar' />
               </div>
               <i className='fas fa-medal medal3' />
             </div>
