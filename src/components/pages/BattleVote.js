@@ -42,7 +42,11 @@ class BattleVote extends Component {
     return (
       <div className='battle-vote-container'>
         <DropDownVote />
-        <BattleVoteLightbox photos={photos} currentUserVotes={currentUserVotes} />
+        <BattleVoteLightbox
+          photos={photos}
+          currentUserVotes={currentUserVotes}
+          getUserVotes={this.getStatusCurrentUser}
+        />
       </div>
     )
   }
