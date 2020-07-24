@@ -48,7 +48,6 @@ const MyBattles = ({ user, history, location }) => {
         }
       )
       .then(res => {
-        console.log('res.data', res.data)
         const updateHasPosted = {}
         res.data.forEach(battle => {
           updateHasPosted[battle.battle_id] = true
