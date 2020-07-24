@@ -8,7 +8,7 @@ const Photo = ({ photo, id, handleClick, currentUserVotes }) => {
     <div className='photo-container'>
       <div className='stars-container-photo'>
         {
-          currentVote !== undefined ? new Array(currentVote).fill(0).map((_, i) => (
+          currentVote !== undefined ? new Array(currentVote.vote).fill(0).map((_, i) => (
             <i key={i} className='fas fa-star' />
           )) : <div className='empty-stars-container' />
         }
