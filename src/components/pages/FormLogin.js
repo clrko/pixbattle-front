@@ -82,7 +82,7 @@ class FormLogin extends React.Component {
     return (
       <form className='login-form'>
         <div className='login-inside LoginForm-div'>
-          <label className='LoginForm-label'>Email</label>
+          <label className='LoginForm-label marginLoginForm-label'>Email</label>
           <input
             className='LoginForm-input'
             type='email' value={email}
@@ -92,7 +92,7 @@ class FormLogin extends React.Component {
           />
         </div>
         <div className='login-inside LoginForm-div'>
-          <label className='LoginForm-label'>Mot de passe</label>
+          <label className='LoginForm-label marginLoginForm-label'>Mot de passe</label>
           <input
             className='LoginForm-input'
             type='password'
@@ -102,7 +102,7 @@ class FormLogin extends React.Component {
             required
           />
         </div>
-        <div className='LoginForm-checkboxAlign LoginForm-div'>
+        <div className='LoginForm-checkboxAlign LoginForm-div div-label-remember'>
           <input
             className='LoginForm-checkbox'
             name='acceptedTerms'
@@ -112,7 +112,7 @@ class FormLogin extends React.Component {
           />
           <label className='label-remember'>Se souvenir de moi</label>
         </div>
-        <div className='LoginForm-div'>
+        <div className='div-buttonFormLogin'>
           <input
             className='LoginForm-cancelButton'
             type='button'

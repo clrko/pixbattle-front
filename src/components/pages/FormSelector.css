@@ -26,3 +26,9 @@
 .TabSelector button:focus {
   outline: none;
 }
+
+@media screen and (max-height: 570px) {
+  .TabSelector button {
+    font-size: 1.1rem;
+  }
+}
