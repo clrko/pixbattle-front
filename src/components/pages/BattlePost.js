@@ -1,15 +1,13 @@
 import React from 'react'
 import axios from 'axios'
 import BattlePostTimer from './BattlePostTimer'
-import CloudUpload from '../../asset/pictures/cloud-computing.png'
 import DropDownPost from '../shared/DropDownPost'
 import './BattlePost.css'
 import './MyProfile.css'
 
 class BattlePost extends React.Component {
   state = {
-    previewPicture: CloudUpload,
-    selectedFile: CloudUpload,
+    selectedFile: '',
     themeName: '',
     rulesNames: [],
     deadline: ''
@@ -93,9 +91,20 @@ class BattlePost extends React.Component {
           </div>
           <div>
             <div className='countdown' />
-            <img className='picture' src={selectedFile} alt='preview' />
-            <input type='file' name='file' className='choose-file-btn' onChange={this.handleChange} />
-            <button className='upload-ButtonPostpicture' type='button' onClick={this.handleClick}>Upload</button>
+            {
+              selectedFile
+                ? <img className='picture' src={selectedFile} alt='preview' />
+                : (
+                  <div className='picture'>
+                    <i className='far fa-image' />
+                  </div>
+                )
+            }
+            <div className='upload-file'>
+              <input type='file' name='file' id='file' onChange={this.handleChange} />
+              <label for='file' className='choose-file-btn'>Choisis une photo</label>
+              <button className='upload-ButtonPostpicture' type='button' onClick={this.handleClick}>Upload</button>
+            </div>
           </div>
         </div>
       </div>
