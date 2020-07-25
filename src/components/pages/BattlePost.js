@@ -12,7 +12,8 @@ class BattlePost extends React.Component {
     selectedFile: CloudUpload,
     themeName: '',
     rulesNames: [],
-    deadline: ''
+    deadline: '',
+    hasPosted: false
   }
 
   componentDidMount () {
@@ -61,7 +62,7 @@ class BattlePost extends React.Component {
         }
       })
       .then(res => {
-        alert('Bravo! Ta photo a bien été postée')
+        this.setState({ hasPosted: true })
       })
       .catch(() => {
         alert("Une erreur s'est produite pendant le téléchargement ! Réessaye s'il te plait.")
@@ -75,7 +76,7 @@ class BattlePost extends React.Component {
   }
 
   render () {
-    const { themeName, deadline, rulesNames, selectedFile } = this.state
+    const { themeName, deadline, rulesNames, selectedFile, hasPosted } = this.state
     return (
       <div className='background-MyProfile'>
         <DropDownPost />
@@ -94,8 +95,16 @@ class BattlePost extends React.Component {
           <div>
             <div className='countdown' />
             <img className='picture' src={selectedFile} alt='preview' />
-            <input type='file' name='file' className='choose-file-btn' onChange={this.handleChange} />
-            <button className='upload-ButtonPostpicture' type='button' onClick={this.handleClick}>Upload</button>
+            {
+              !hasPosted
+                ? (
+                  <div>
+                    <input type='file' name='file' className='choose-file-btn' onChange={this.handleChange} />
+                    <button className='upload-ButtonPostpicture' type='button' onClick={this.handleClick}>Valider</button>
+                  </div>
+                )
+                : <p>T'as photo a bien été enregistrée !</p>
+            }
           </div>
         </div>
       </div>
