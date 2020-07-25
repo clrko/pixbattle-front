@@ -14,7 +14,7 @@ class CreationSteps extends Component {
   getContent = () => {
     switch (this.state.stepsNumbers) {
       case 0:
-        return <CreationGroup changeStep={this.changeStepsNumber} groupId={this.props.match.params.id} />
+        return <CreationGroup changeStep={this.changeStepsNumber} />
       case 1:
         return <CreationBattleTheme changeStep={this.changeStepsNumber} />
       case 2:

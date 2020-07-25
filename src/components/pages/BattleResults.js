@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { ADD_GROUP } from '../../store/action-types'
+import { ADD_GROUP_ID } from '../../store/action-types'
 import axios from 'axios'
 import DropDownResults from '../shared/DropDownResults'
 import Loader from 'react-loader-spinner'
@@ -50,9 +50,9 @@ class BattleResults extends React.Component {
     e.preventDefault()
     const { dispatch, history, match } = this.props
     const groupId = match.params.groupId
-    dispatch({ type: ADD_GROUP, groupId })
+    dispatch({ type: ADD_GROUP_ID, groupId })
     history.push({
-      pathname: `/battle-creation/group-created/${groupId}`
+      pathname: '/battle-creation'
     })
   }
 
