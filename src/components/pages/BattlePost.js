@@ -94,7 +94,7 @@ class BattlePost extends React.Component {
           <div>
             <div className='countdown' />
             <img className='picture' src={selectedFile} alt='preview' />
-            <input type='file' name='file' className='choose-file-btn' onChange={this.handleChange} />
+            <input type='file' name='file' className='choose-file-btn' accept='image/png, image/jpeg' onChange={this.handleChange} />
             <button className='upload-ButtonPostpicture' type='button' onClick={this.handleClick}>Upload</button>
           </div>
         </div>
