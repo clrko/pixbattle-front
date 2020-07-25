@@ -180,7 +180,7 @@ const BattleVoteLightbox = ({ photos, currentUserVotes, getUserVotes }) => {
               <div className='btn-vote-container'>
                 <label
                   className={classnames('label-vote', {
-                    'label-vote-active': selectedPhoto && selectedPhoto.vote === '1'
+                    'label-vote-active': selectedPhoto && selectedPhoto.vote === 1
                   })}
                 >
                   <input
@@ -198,7 +198,7 @@ const BattleVoteLightbox = ({ photos, currentUserVotes, getUserVotes }) => {
                 </label>
                 <label
                   className={classnames('label-vote', {
-                    'label-vote-active': selectedPhoto && selectedPhoto.vote === '2'
+                    'label-vote-active': selectedPhoto && selectedPhoto.vote === 2
                   })}
                 >
                   <input
@@ -216,7 +216,7 @@ const BattleVoteLightbox = ({ photos, currentUserVotes, getUserVotes }) => {
                   </div>
                 </label>
                 <label className={classnames('label-vote', {
-                  'label-vote-active': selectedPhoto && selectedPhoto.vote === '3'
+                  'label-vote-active': selectedPhoto && selectedPhoto.vote === 3
                 })}
                 >
                   <input
