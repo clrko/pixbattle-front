@@ -2,8 +2,12 @@ import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import { LOGIN } from '../../store/action-types'
+import 'react-toastify/dist/ReactToastify.css'
 import './FormLogin.css'
+
+toast.configure()
 
 class FormLogin extends React.Component {
   state = {
@@ -21,21 +25,50 @@ class FormLogin extends React.Component {
     this.setState({ isChecked: e.target.checked })
   }
 
+  checkEmail = () => {
+    if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(this.state.email)) {
+      return (this.state.email)
+    }
+  }
+
   handleSubmit = e => {
-    const { email, password } = this.state
-    if (email && password) {
+    const { password } = this.state
+    if (this.checkEmail() && password) {
       e.preventDefault()
       const { dispatch, history } = this.props
       axios
         .post(`${process.env.REACT_APP_SERVER_URL}/auth`, this.state)
         .then(res => {
+          this.notifySuccess()
           localStorage.setItem('token', res.headers['x-access-token'])
           dispatch({ type: LOGIN, ...res.data })
           history.push(`/${res.data.username}`)
+          return this.props.onClose(e)
         })
-      return this.props.onClose(e)
+        .catch(err => {
+          if (err) {
+            return this.notifyError()
+          }
+        })
+    } else {
+      this.notifyError()
     }
-    alert('Il faut un email et un mot de passe')
+  }
+
+  notifySuccess = () => {
+    toast.success('Bienvenue !', {
+      position: 'bottom-right',
+      autoClose: 3000,
+      draggable: true
+    })
+  }
+
+  notifyError = () => {
+    toast.error('L\'email et/ou le mot de passe sont incorrects', {
+      position: 'bottom-right',
+      autoClose: 3000,
+      draggable: true
+    })
   }
 
   componentDidMount () {
