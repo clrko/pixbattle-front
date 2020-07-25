@@ -44,6 +44,11 @@
   width: 25vw;
 }
 
+.card-avatar-settings-selected {
+  border: 2px solid #FAC748;
+  border-radius: 50%;
+}
+
 .avatar-btn-settings {
   position: absolute;
   opacity: 0;
