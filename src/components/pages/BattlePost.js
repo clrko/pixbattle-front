@@ -35,7 +35,11 @@ class BattlePost extends React.Component {
         this.setState({
           themeName: res.data.battleInfos[0].theme_name,
           rulesNames: allRulesNames,
-          deadline: res.data.battleInfos[0].deadline.replace('T', ' ').substr(0, 19)
+          deadline: res.data.battleInfos[0].deadline.replace('T', ' ').substr(0, 19),
+          selectedFile: res.data.photoUrl
+            ? `${process.env.REACT_APP_SERVER_URL}/${res.data.photoUrl}`
+            : CloudUpload,
+          hasPosted: !!res.data.photoUrl
         })
       })
   }
