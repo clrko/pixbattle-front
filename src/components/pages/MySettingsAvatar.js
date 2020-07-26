@@ -39,7 +39,6 @@ class MySettingsAvatar extends Component {
 
   checkUsername = () => {
     if (/^[a-zA-Z0-9]+$/.test(this.state.newUsername)) {
-      console.log('edsfsd')
       return (this.state.newUsername)
     }
   }

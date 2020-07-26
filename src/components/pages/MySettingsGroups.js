@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 import ListMembers from '../shared/ListMembers'
+import 'react-toastify/dist/ReactToastify.css'
 import './MySettingsGroups.css'
 
 const mapStateToProps = state => {
@@ -43,7 +45,7 @@ const MySettingsGroups = ({ user, match, location }) => {
   const handleAddEmail = e => {
     e.preventDefault()
     if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-      if (email === user.userEmail) alert('Tu ne peux pas ajouter ton propre email')
+      if (email === user.userEmail) notifyErrorOwnEmail()
       if (listGroupMembers.map(member => Object.values(member).includes(email)) && allEmails.includes(email) === false) {
         const allEmailsTemp = [...allEmails]
         const newEmail = email.toLowerCase()
@@ -52,13 +54,41 @@ const MySettingsGroups = ({ user, match, location }) => {
         setCount(count + 1)
         setEmail('')
       } else if (allEmails.includes(email)) {
-        alert('Tu as déjà invité cette personne')
+        notifyErrorAlreadyExisting()
       } else if (listGroupMembers.map(member => Object.values(member).includes(email))) {
-        alert('Ce membre fait déjà parti du groupe')
+        notifyError()
       }
     } else {
-      alert('Cet email est invalide')
+      notifyErrorInvalidEmail()
     }
+  }
+
+  const notifyErrorOwnEmail = () => {
+    toast.error('Tu ne peux pas ajouter ton propre email', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
+  }
+
+  const notifyErrorAlreadyExisting = () => {
+    toast.error('Tu as déjà invité cette personne', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
+  }
+
+  const notifyErrorInvalidEmail = () => {
+    toast.error('Cet email est invalide', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
+  }
+
+  const notifyError = () => {
+    toast.error('Ce membre fait déjà parti du groupe', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
   }
 
   const handleRemoveEmail = e => {
@@ -78,8 +108,15 @@ const MySettingsGroups = ({ user, match, location }) => {
           }
         })
       .then(res => {
-        console.log('Les invitations ont été envoyées')
+        notifySuccess()
       })
+  }
+
+  const notifySuccess = () => {
+    toast.success('Les invitations ont été envoyées', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
   }
 
   useEffect(() => {
