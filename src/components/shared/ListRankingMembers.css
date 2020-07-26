@@ -82,3 +82,9 @@
   bottom: 28px;
   text-align: center;
 }
+
+@media screen and (max-height: 570px) {
+  .window-RankingMembers {
+    height: 64vh;
+  }
+}

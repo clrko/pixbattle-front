@@ -10,17 +10,20 @@ const mapStateToProps = state => {
 
 const StickyFooter = ({ user }) => {
   return (
-    <div className='div-StickyFooter'>
-      <NavLink to={`/${user.username}/battles`} className='div-camera-StickyFooter fa fa-camera'>
-        <p className='footer-title'>Battles</p>
+    <footer className='StickyFooter'>
+      <NavLink to={`/${user.username}/battles`} className='StickyFooter-link'>
+        <i className='fa fa-camera' />
+        <span className='footer-title'>Battles</span>
       </NavLink>
-      <NavLink to={`/${user.username}/groups`} className='div-users-StickyFooter fa fa-users'>
-        <p className='footer-title'>Groupes</p>
+      <NavLink to={`/${user.username}/groups`} className='StickyFooter-link'>
+        <i className='fa fa-users' />
+        <span className='footer-title'>Groupes</span>
       </NavLink>
-      <NavLink to={`/${user.username}`} className='div-user-StickyFooter fa fa-user-circle'>
-        <p className='footer-title'>Profil</p>
+      <NavLink to={`/${user.username}`} exact className='StickyFooter-link'>
+        <i className='fa fa-user-circle' />
+        <span className='footer-title'>Profil</span>
       </NavLink>
-    </div>
+    </footer>
   )
 }
 
