@@ -9,7 +9,7 @@ const mapStateToProps = state => {
   return { user }
 }
 
-const MySettingsGroups = ({ user, match }) => {
+const MySettingsGroups = ({ user, match, location }) => {
   const [groupName, setGroupName] = useState('')
   const [isGroupName, setIsGroupName] = useState(false)
   const [listGroupMembers, setListGroupMembers] = useState([])
@@ -44,7 +44,6 @@ const MySettingsGroups = ({ user, match }) => {
     e.preventDefault()
     if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       if (email === user.userEmail) alert('Tu ne peux pas ajouter ton propre email')
-      if (count === 12) alert('Il n\'y a plus de place dans ton groupe')
       if (listGroupMembers.map(member => Object.values(member).includes(email)) && allEmails.includes(email) === false) {
         const allEmailsTemp = [...allEmails]
         const newEmail = email.toLowerCase()
@@ -61,6 +60,10 @@ const MySettingsGroups = ({ user, match }) => {
       alert('Cet email est invalide')
     }
   }
+
+  useEffect(() => {
+    if (count === 12) alert('Il n\'y a plus de place dans ton groupe')
+  })
 
   const handleRemoveEmail = e => {
     const email = e.target.name
@@ -107,7 +110,7 @@ const MySettingsGroups = ({ user, match }) => {
             className='modified-group-input'
             name='groupName'
             onChange={handleGroupNameChange}
-            placeholder='Nouveau nom'
+            placeholder={location.state.groupName}
             value={groupName}
             required
             minLength='5'
@@ -140,13 +143,13 @@ const MySettingsGroups = ({ user, match }) => {
           >
             <i className={
               count < 12
-                ? 'fas fa-plus-circle email-enabled setting-btn'
-                : 'fas fa-plus-circle email-disabled setting-btn'
+                ? 'fas fa-plus-circle email-enabled settings-btn'
+                : 'fas fa-plus-circle email-disabled settings-btn'
             }
             />
           </button>
         </div>
-        <p className={allEmails.length < 3 ? 'infoSettings' : 'infoSettings green'}>Entre 4 à 12 personnes</p>
+        {count < 12 ? <p className={allEmails.length < 3 ? 'infoSettings' : 'infoSettings green'}>Entre 4 à 12 personnes</p> : <p className='infoSettings'>Le groupe est complet</p>}
       </form>
       <div className='settings-group-bottom'>
         <ul className='settings-emails-container'>
@@ -154,7 +157,7 @@ const MySettingsGroups = ({ user, match }) => {
             allEmails.map((email, i) => (
               <li className='settings-emails-list' key={i}>
                 {email}
-                <input type='button' value='X' name={email} className='remove-email' onClick={handleRemoveEmail} />
+                <input type='button' value='X' name={email} className='settings-remove-email' onClick={handleRemoveEmail} />
               </li>
             ))
           }

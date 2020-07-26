@@ -13,9 +13,8 @@ const ListMembers = ({ listParticipants }) => {
             <img className='img-attendee-list-members' src={p.avatar_url} alt='avatar' />
           </div>
           <div className='margin-p-div-participant-members'>
-            <p className='p-margin-div-participant-members'>{p.username}</p>
+            <p className='p-div-participant-members'>{p.username}</p>
           </div>
-          {/* <input type='button' value='X' id={p.user_id} className='participants-remove-btn' onClick={handleRemoveParticipant} /> */}
         </div>
       ))}
     </>
