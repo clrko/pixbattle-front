@@ -33,9 +33,12 @@ const MySettingsGroups = ({ user, match }) => {
         .then(res => {
           setIsGroupName(true)
           window.location.reload(true)
+          /* ajoter toaster pour dire que le nom a été changé */
         })
     }
   }
+
+  const handleEmailChange = e => setEmail(e.target.value)
 
   const handleAddEmail = e => {
     e.preventDefault()
@@ -58,8 +61,6 @@ const MySettingsGroups = ({ user, match }) => {
       alert('Cet email est invalide')
     }
   }
-
-  const handleEmailChange = e => setEmail(e.target.value)
 
   const handleRemoveEmail = e => {
     const email = e.target.name
@@ -97,77 +98,68 @@ const MySettingsGroups = ({ user, match }) => {
   }, [])
 
   return (
-    <div>
-      <div className='background-PageProfileSettings'>
-        <form className='setting-group-container'>
-          <p className='modified-group-text'>Modifier le nom du groupe</p>
-          <div className='container-modified-group-name'>
-            <input
-              type='text'
-              className='modified-group-input'
-              name='groupName'
-              onChange={handleGroupNameChange}
-              placeholder='Nouveau nom'
-              value={groupName}
-              required
-              minLength='5'
-              maxLength='25'
-              disabled={isGroupName}
-            />
-            {
-              !isGroupName &&
-                <button className='button-modified-group-name' onClick={handleChosenName}>
-                Valider
-                </button>
+    <div className='background-GroupSettings'>
+      <form className='setting-group-container'>
+        <p className='modified-group-text'>Modifier le nom du groupe</p>
+        <div className='container-modified-group-name'>
+          <input
+            type='text'
+            className='modified-group-input'
+            name='groupName'
+            onChange={handleGroupNameChange}
+            placeholder='Nouveau nom'
+            value={groupName}
+            required
+            minLength='5'
+            maxLength='25'
+            disabled={isGroupName}
+          />
+        </div>
+        <p className={groupName.length < 5 ? 'infoSettings' : 'infoSettings green'}>Entre 5 et 25 caractères</p>
+        {!isGroupName && <button className='button-validate-modification' onClick={handleChosenName}>Valider</button>}
+      </form>
+      <div className='setting-group-container'>
+        <p className='modified-group-text'>Liste des membres</p>
+        <ListMembers listParticipants={listGroupMembers} />
+      </div>
+      <form onSubmit={handleAddEmail} className='setting-group-container'>
+        <p className='modified-group-text'>Ajoute un nouveau membre</p>
+        <div className='container-modified-group-name'>
+          <input
+            type='text'
+            className='modified-group-input'
+            onChange={handleEmailChange}
+            value={email}
+            name='email'
+            placeholder='Email'
+          />
+          <button
+            type='submit'
+            className='add-user'
+            disabled={count >= 12}
+          >
+            <i className={
+              count < 12
+                ? 'fas fa-plus-circle email-enabled setting-btn'
+                : 'fas fa-plus-circle email-disabled setting-btn'
             }
-          </div>
-          <p className={groupName.length < 5 ? 'infoSettings' : 'infoSettings green'}>Entre 5 et 25 caractères</p>
-        </form>
-        <section className='setting-group-container'>
-          <p className='modified-group-text'>Liste des membres</p>
-          <ListMembers listParticipants={listGroupMembers} />
-          <div className='setting-group-container'>
-            <p className='modified-group-text'>Ajoute un nouveau membre</p>
-            <form onSubmit={handleAddEmail} className='group-input'>
-              <input
-                type='text'
-                className='modified-group-input'
-                onChange={handleEmailChange}
-                value={email}
-                name='email'
-                placeholder='Email'
-              />
-              <button
-                type='submit'
-                className='add-user'
-                disabled={count >= 12}
-              >
-                <i className={
-                  count < 12
-                    ? 'fas fa-plus-circle email-enabled'
-                    : 'fas fa-plus-circle email-disabled'
-                }
-                />
-              </button>
-            </form>
-            <p className={allEmails.length < 3 ? 'info' : 'info green'}>
-              Entre 4 à 12 personnes
-            </p>
-          </div>
-          <div className='group-bottom'>
-            <ul className='emails-container'>
-              {
-                allEmails.map((email, i) => (
-                  <li className='emails-list' key={i}>
-                    {email}
-                    <input type='button' value='X' name={email} className='remove-email' onClick={handleRemoveEmail} />
-                  </li>
-                ))
-              }
-            </ul>
-          </div>
-          <button onClick={handleValidateNewMembers}>Valider</button>
-        </section>
+            />
+          </button>
+        </div>
+        <p className={allEmails.length < 3 ? 'infoSettings' : 'infoSettings green'}>Entre 4 à 12 personnes</p>
+      </form>
+      <div className='settings-group-bottom'>
+        <ul className='settings-emails-container'>
+          {
+            allEmails.map((email, i) => (
+              <li className='settings-emails-list' key={i}>
+                {email}
+                <input type='button' value='X' name={email} className='remove-email' onClick={handleRemoveEmail} />
+              </li>
+            ))
+          }
+        </ul>
+        <button className='button-validate-modification' onClick={handleValidateNewMembers}>Valider</button>
       </div>
     </div>
   )

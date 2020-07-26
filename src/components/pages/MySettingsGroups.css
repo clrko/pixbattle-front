@@ -1,6 +1,16 @@
+.background-GroupSettings {
+  background-color: #235789;
+  min-height: 68vh;
+  width: 85%;
+  margin: auto;
+  border-radius: 25px;
+  padding-bottom: 5px;
+}
+
 .setting-group-container {
-  margin: 4% 0;
   padding: 5% ;
+  display: flex;
+  flex-direction: column;
 }
 
 .modified-group-text {
@@ -13,7 +23,7 @@
 }
 
 .modified-group-input {
-  width: 70%;
+  width: 90%;
   border-radius: 20px;
   border-style: none;
   padding: 10px 15px;
@@ -45,10 +55,38 @@
   padding-bottom: 2%;
 }
 
-.button-modified-group-name {
+.settings-emails-container {
+  height: 15vh;
+  overflow: scroll;
+  padding: 0;
+}
+
+.settings-emails-list {
+  list-style: none;
+  color: #FAC748;
+  line-height: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 1% 0;
+}
+.settings-group-bottom {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-validate-modification {
   background-color: #73DB5A;
   border: none;
   color: white;
   border-radius: 50px;
   height: 30px;
+  margin-left: 5%;
+  width: fit-content;
+  align-self: center;
+}
+
+.setting-btn {
+  margin-left: 0;
 }

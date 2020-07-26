@@ -49,7 +49,7 @@ const App = () => {
         <PrivateRoute path='/groups/:groupId/battles/:battleId/vote/participants' component={BattleVoteParticipants} />
         <PrivateRoute path='/:username/settings/connexion' component={MySettings} />
         <PrivateRoute path='/:username/settings/informations' component={MySettingsAvatar} />
-        <PrivateRoute path='/groups/:groupid/settings' component={MySettingsGroups} />
+        <PrivateRoute path='/groups/:groupId/settings' component={MySettingsGroups} />
       </Switch>
     </div>
   )
