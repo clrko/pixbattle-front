@@ -80,7 +80,7 @@ class FormLogin extends React.Component {
   render () {
     const { email, password, isChecked } = this.state
     return (
-      <form className='login-form'>
+      <form className='login-form' onSubmit={this.handleSubmit}>
         <div className='login-inside LoginForm-div'>
           <label className='LoginForm-label marginLoginForm-label'>Email</label>
           <input
@@ -113,18 +113,19 @@ class FormLogin extends React.Component {
           <label className='label-remember'>Se souvenir de moi</label>
         </div>
         <div className='div-buttonFormLogin'>
-          <input
+          <button
             className='FormLogin-button LoginForm-cancelButton'
             type='button'
-            value='Annuler'
             onClick={this.props.onClose}
-          />
-          <input
+          >
+            Annuler
+          </button>
+          <button
             className='FormLogin-button LoginForm-validateButton'
             type='submit'
-            value='Valider'
-            onClick={this.handleSubmit}
-          />
+          >
+            Valider
+          </button>
         </div>
       </form>
     )

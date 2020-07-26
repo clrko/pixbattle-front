@@ -107,7 +107,7 @@ class FormRegistration extends React.Component {
     const emailClass = classNames('LoginForm-input', { 'LoginForm-passwordError': emailError })
     const usernameClass = classNames('LoginForm-input', { 'LoginForm-passwordError': usernameError })
     return (
-      <form className='register-form'>
+      <form className='register-form' onSubmit={this.handleSubmit}>
         <div className='login-inside LoginForm-div checkUsername-wrapper'>
           <label className='LoginForm-label'>Pseudo</label>
           <input
@@ -180,18 +180,19 @@ class FormRegistration extends React.Component {
           <label className='label-UGC'>Conditions générales d'utilisations</label>
         </div>
         <div className='div-buttonValidateCancel'>
-          <input
+          <button
             className='FormLogin-button LoginForm-cancelButton'
             type='button'
-            value='Annuler'
             onClick={this.props.onClose}
-          />
-          <input
+          >
+            Annuler
+          </button>
+          <button
             className='FormLogin-button LoginForm-validateButton'
             type='submit'
-            value='Valider'
-            onClick={this.handleSubmit}
-          />
+          >
+            Valider
+          </button>
         </div>
       </form>
     )
