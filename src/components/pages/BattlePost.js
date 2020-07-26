@@ -89,6 +89,14 @@ class BattlePost extends React.Component {
     const { history } = this.props
     const { battleId, groupId } = this.props.match.params
     history.push(`/groups/${groupId}/battles/${battleId}/vote`)
+    this.notifyTimerEnding()
+  }
+
+  notifyTimerEnding = () => {
+    toast('Le temps est écoulé, à tes votes !', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
   }
 
   render () {
