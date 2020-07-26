@@ -93,3 +93,9 @@
 .MyGroups-notAdmin {
   display: none;
 }
+
+@media screen and (max-height: 570px) {
+  .MyGroups-cardList {
+    height: 64vh;
+  }
+}

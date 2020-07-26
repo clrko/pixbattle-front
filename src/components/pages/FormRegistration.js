@@ -179,15 +179,15 @@ class FormRegistration extends React.Component {
           />
           <label className='label-UGC'>Conditions générales d'utilisations</label>
         </div>
-        <div>
+        <div className='div-buttonValidateCancel'>
           <input
-            className='LoginForm-cancelButton'
+            className='FormLogin-button LoginForm-cancelButton'
             type='button'
             value='Annuler'
             onClick={this.props.onClose}
           />
           <input
-            className='LoginForm-validateButton'
+            className='FormLogin-button LoginForm-validateButton'
             type='submit'
             value='Valider'
             onClick={this.handleSubmit}
