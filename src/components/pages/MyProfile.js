@@ -26,7 +26,7 @@ const MyProfile = ({ user, profileInfos }) => {
       <div className='window-MyProfile'>
         <div className='name-fa-star-MyProfile'>
           <h1 className='name-MyProfile'>{user.username}
-            <i className='fa fa-star fa-lg star-icon-MyProfile'>
+            <i className='fas fa-trophy trophy-icon-MyProfile'>
               <p className='p-victory-point-MyProfile'>{!profileInfos.infos ? '0' : profileInfos.infos.victories}</p>
             </i>
           </h1>

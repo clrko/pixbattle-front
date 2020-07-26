@@ -24,7 +24,7 @@
   font-size: 1.8rem;
 }
 
-.name-MyProfile .star-icon-MyProfile {
+.trophy-icon-MyProfile {
   color: #FAC748;
   padding-left: 15px;
   font-size: 2.2rem;
@@ -33,7 +33,7 @@
 
 .p-victory-point-MyProfile {
   position: relative;
-  bottom: 24px;
+  bottom: 30px;
   left: 15px;
   color: black;
   font-size: 1rem;
@@ -93,5 +93,19 @@
 @media screen and (min-width: 600px) {
   .window-MyProfile {
     width: 30vw;
+  }
+}
+
+@media screen and (max-height: 570px) {
+  .avatar-MyProfile {
+    max-width: 120px;
+  }
+
+  .window-MyProfile {
+    height: auto;
+  }
+
+  .fa-cog {
+    left: 12vw;
   }
 }
