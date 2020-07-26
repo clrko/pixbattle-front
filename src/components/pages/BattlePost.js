@@ -1,10 +1,13 @@
 import React from 'react'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 import BattlePostTimer from './BattlePostTimer'
 import DropDownPost from '../shared/DropDownPost'
+import 'react-toastify/dist/ReactToastify.css'
 import './BattlePost.css'
 import './MyProfile.css'
 
+toast.configure()
 class BattlePost extends React.Component {
   state = {
     selectedFile: '',
@@ -63,17 +66,40 @@ class BattlePost extends React.Component {
         }
       })
       .then(res => {
+        this.notifySuccess()
         this.setState({ hasPosted: true })
       })
       .catch(() => {
-        alert("Une erreur s'est produite pendant le téléchargement ! Réessaye s'il te plait.")
+        this.notifyError()
       })
+  }
+
+  notifySuccess = () => {
+    toast.success('Ta photo a bien été enregistrée !', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
+  }
+
+  notifyError = () => {
+    toast.error('Une erreur est survenue', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
   }
 
   handleDeadlineReached = () => {
     const { history } = this.props
     const { battleId, groupId } = this.props.match.params
     history.push(`/groups/${groupId}/battles/${battleId}/vote`)
+    this.notifyTimerEnding()
+  }
+
+  notifyTimerEnding = () => {
+    toast('Le temps est écoulé, à tes votes !', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
   }
 
   getPicturePostForm = () => {

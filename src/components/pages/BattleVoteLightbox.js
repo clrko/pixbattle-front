@@ -2,7 +2,13 @@ import React, { useState } from 'react'
 import Photo from '../shared/Photo'
 import axios from 'axios'
 import classnames from 'classnames'
+import { confirmAlert } from 'react-confirm-alert'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import 'react-confirm-alert/src/react-confirm-alert.css'
 import '../shared/Lightbox.css'
+
+toast.configure()
 
 const BattleVoteLightbox = ({ photos, currentUserVotes, getUserVotes }) => {
   const [dispImg, setDisp] = useState('')
@@ -75,18 +81,27 @@ const BattleVoteLightbox = ({ photos, currentUserVotes, getUserVotes }) => {
         v => v.vote === newVote.vote
       )
       if (sameVoteIdx !== -1) {
-        if (window.confirm('Ce vote est déjà attribué, veux-tu l\'utiliser pour cette photo ?')) {
-          setAllVotes(allVotes => {
-            const nextVotes = [...allVotes]
-            nextVotes.splice(sameVoteIdx, 1)
-            const samePhotoDiffVoteIdx2 = nextVotes.findIndex(
-              v => v.photoId === photoId && v.vote !== newVote.vote
-            )
-            nextVotes.splice(samePhotoDiffVoteIdx2, 1)
-            nextVotes.push(newVote)
-            return nextVotes
-          })
-        }
+        confirmAlert({
+          message: 'Ce vote est déjà attribué, veux-tu l\'utiliser pour cette photo ?',
+          buttons: [
+            {
+              label: 'Oui',
+              onClick: () => setAllVotes(allVotes => {
+                const nextVotes = [...allVotes]
+                nextVotes.splice(sameVoteIdx, 1)
+                const samePhotoDiffVoteIdx2 = nextVotes.findIndex(
+                  v => v.photoId === photoId && v.vote !== newVote.vote
+                )
+                nextVotes.splice(samePhotoDiffVoteIdx2, 1)
+                nextVotes.push(newVote)
+                return nextVotes
+              })
+            },
+            {
+              label: 'Non'
+            }
+          ]
+        })
       } else {
         setAllVotes(allVotes => {
           const nextVotes = [...allVotes]
@@ -96,41 +111,83 @@ const BattleVoteLightbox = ({ photos, currentUserVotes, getUserVotes }) => {
         })
       }
     } else if (diffPhotoSameVoteIdx !== -1) {
-      if (window.confirm('Ce vote est déjà attribué, veux-tu l\'utiliser pour cette photo ?')) {
-        setAllVotes(allVotes => {
-          const nextVotes = [...allVotes]
-          nextVotes.splice(diffPhotoSameVoteIdx, 1)
-          nextVotes.push(newVote)
-          return nextVotes
-        })
-      }
+      confirmAlert({
+        message: 'Ce vote est déjà attribué, veux-tu l\'utiliser pour cette photo ?',
+        buttons: [
+          {
+            label: 'Oui',
+            onClick: () => setAllVotes(allVotes => {
+              const nextVotes = [...allVotes]
+              nextVotes.splice(diffPhotoSameVoteIdx, 1)
+              nextVotes.push(newVote)
+              return nextVotes
+            })
+          },
+          {
+            label: 'Non'
+          }
+        ]
+      })
     } else {
       setAllVotes(allVotes => [...allVotes, newVote])
     }
   }
 
   const handleVotes = () => {
-    if (allVotes.length === 3 && window.confirm('Ces votes sont définitifs, es-tu sûr-e de vouloir les valider ?')) {
-      axios
-        .post(`${process.env.REACT_APP_SERVER_URL}/battle/battle-vote`,
+    if (allVotes.length === 3) {
+      confirmAlert({
+        message: 'Ces votes sont définitifs, es-tu sûr-e de vouloir les valider ?',
+        buttons: [
           {
-            photoId1: allVotes[0].photoId,
-            vote1: allVotes[0].vote,
-            photoId2: allVotes[1].photoId,
-            vote2: allVotes[1].vote,
-            photoId3: allVotes[2].photoId,
-            vote3: allVotes[2].vote
+            label: 'Oui',
+            onClick: () => axios
+              .post(`${process.env.REACT_APP_SERVER_URL}/battle/battle-vote`,
+                {
+                  photoId1: allVotes[0].photoId,
+                  vote1: allVotes[0].vote,
+                  photoId2: allVotes[1].photoId,
+                  vote2: allVotes[1].vote,
+                  photoId3: allVotes[2].photoId,
+                  vote3: allVotes[2].vote
+                },
+                {
+                  headers: {
+                    authorization: `Bearer ${localStorage.getItem('token')}`
+                  }
+                })
+              .then(res => res && notifySuccess())
+              .then(getUserVotes)
+              .catch(err => err && notifyError())
           },
           {
-            headers: {
-              authorization: `Bearer ${localStorage.getItem('token')}`
-            }
-          })
-        .then(res => console.log(res))
-        .then(getUserVotes)
+            label: 'Non'
+          }
+        ]
+      })
     } else {
-      alert(`Tu dois encore voter pour ${3 - allVotes.length} photos pour valider tes votes.`)
+      notifyNeedMoreVotes()
     }
+  }
+
+  const notifySuccess = () => {
+    toast.success('Tes votes ont bien été enregistrés !', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
+  }
+
+  const notifyNeedMoreVotes = () => {
+    toast(`Tu dois encore voter pour ${3 - allVotes.length} photos pour valider`, {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
+  }
+
+  const notifyError = () => {
+    toast.error('Une erreur est survenue', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
   }
 
   const selectedPhoto = allVotes.find(vote => {
