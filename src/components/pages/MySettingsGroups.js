@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { axios } from 'axios'
+import axios from 'axios'
 import ListMembers from '../shared/ListMembers'
 import './MySettingsGroups.css'
 
@@ -32,6 +32,7 @@ const MySettingsGroups = ({ user, match }) => {
           })
         .then(res => {
           setIsGroupName(true)
+          window.location.reload(true)
         })
     }
   }
@@ -84,7 +85,6 @@ const MySettingsGroups = ({ user, match }) => {
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/members/group/${match.params.groupId}`,
-        { groupName },
         {
           headers: {
             authorization: `Bearer ${localStorage.getItem('token')}`

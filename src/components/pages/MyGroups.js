@@ -63,7 +63,7 @@ const MyGroups = ({ user, history }) => {
   }
 
   const handleSettingsClick = (selectedGroupId, selectedGroupName) => {
-    history.push(`/groups/${selectedGroupId}/${selectedGroupName}/settings`, {
+    history.push(`/groups/${selectedGroupId}/settings`, {
       groupId: selectedGroupId,
       groupName: selectedGroupName
     })
