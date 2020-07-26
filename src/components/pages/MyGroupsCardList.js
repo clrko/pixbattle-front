@@ -2,7 +2,7 @@ import React from 'react'
 import MyGroupsCard from './MyGroupsCard.js'
 import './MyBattles.css'
 
-const MyGroupsCardList = ({ userId, userGroupInformation, getOngoingBattlesMessage, getFinishedBattlesMessage, getGroupMemberMessage, handleClick }) => (
+const MyGroupsCardList = ({ userId, userGroupInformation, getOngoingBattlesMessage, getFinishedBattlesMessage, getGroupMemberMessage, handleClick, handleSettingsClick }) => (
   <div className='MyGroups-cardList'>
     {userGroupInformation.map(group =>
       <MyGroupsCard
@@ -13,6 +13,7 @@ const MyGroupsCardList = ({ userId, userGroupInformation, getOngoingBattlesMessa
         finishedBattles={getFinishedBattlesMessage(group.finishedBattles)}
         groupMembers={getGroupMemberMessage(group.groupMembers)}
         handleClick={() => handleClick(group.group_id, group.group_name)}
+        handleSettingsClick={() => handleSettingsClick(group.group_id, group.group_name)}
       />
     )}
   </div>

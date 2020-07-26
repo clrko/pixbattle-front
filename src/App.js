@@ -21,6 +21,7 @@ import MyPictures from './components/pages/MyPictures'
 import MyRanking from './components/pages/MyRanking'
 import MySettings from './components/pages/MySettings'
 import MySettingsAvatar from './components/pages/MySettingsAvatar'
+import MySettingsGroups from './components/pages/MySettingsGroups'
 import PrivateRoute from './components/shared/PrivateRoute'
 
 const App = () => {
@@ -48,6 +49,7 @@ const App = () => {
         <PrivateRoute path='/groups/:groupId/battles/:battleId/vote/participants' component={BattleVoteParticipants} />
         <PrivateRoute path='/:username/settings/connexion' component={MySettings} />
         <PrivateRoute path='/:username/settings/informations' component={MySettingsAvatar} />
+        <PrivateRoute path='/groups/:groupId/settings' component={MySettingsGroups} />
       </Switch>
     </div>
   )
