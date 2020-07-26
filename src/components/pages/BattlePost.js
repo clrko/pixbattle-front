@@ -107,7 +107,7 @@ class BattlePost extends React.Component {
                     <button className='upload-ButtonPostpicture' type='button' onClick={this.handleClick}>Valider</button>
                   </div>
                 )
-                : <p>T'as photo a bien été enregistrée !</p>
+                : <p>Ta photo a bien été enregistrée !</p>
             }
           </div>
         </div>
