@@ -46,7 +46,7 @@ const Lightbox = ({ photos, votes }) => {
   }
 
   if (photos.length === 0) {
-    return <p>Tu n'as pas encore posté de photo</p>
+    return <p className='no-photo-info'>Tu n'as pas encore posté de photo</p>
   }
 
   const votesForCurrentPhoto = votes.filter(vote => vote.photo_id === photoId)
