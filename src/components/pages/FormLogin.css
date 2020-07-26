@@ -68,38 +68,32 @@
   margin-top: 20px;
 }
 
-.LoginForm-cancelButton {
-  background-color: #ef4536;
+.FormLogin-button {
   color: white;
   font-size: 1rem;
   font-weight: bold;
   border-radius: 20px;
   border-style: none;
-  margin-right: 20px;
-  height: 40px;
-  width: 90px;
+  padding: 0.75em 1.5em;
   cursor: pointer;
+}
+
+.LoginForm-cancelButton {
+  background-color: #ef4536;
+  margin-right: 20px;
 }
 
 .LoginForm-validateButton {
-  color: white;
-  font-size: 1rem;
-  font-weight: bold;
   background-color: #73db5a;
-  border-radius: 20px;
-  border-style: none;
-  height: 40px;
-  width: 90px;
-  cursor: pointer;
 }
 
-@media screen and (max-heigth: 600px) {
-  .LoginForm-input {
-    height: 20px;
+@media screen and (max-width: 414px) {
+  .LoginForm-label {
+    padding: 0.5em 0 0.15em 0.5em;
   }
 
-  .LoginForm-label {
-    padding: 0;
+  .FormLogin-button {
+    padding: 0.35em 0.7em;
   }
 }
 
