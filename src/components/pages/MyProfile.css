@@ -15,7 +15,7 @@
   align-items: center;
   justify-content: space-between;
   width: 85%;
-  height: 68vh;
+  /* height: 68vh; */
   border-radius: 15px;
   padding: 20px;
 }
@@ -45,7 +45,7 @@
 
 .avatar-MyProfile {
   max-width: 200px;
-  border-radius: 100px;
+  border-radius: 50%;
 }
 
 .div-informations-MyProfile {
@@ -96,9 +96,9 @@
   }
 }
 
-@media screen and (max-height: 570px) {
+@media screen and (max-width: 369px) {
   .avatar-MyProfile {
-    max-width: 120px;
+    max-width: 100px;
   }
 
   .window-MyProfile {
@@ -107,5 +107,13 @@
 
   .fa-cog {
     left: 12vw;
+  }
+
+  .name-MyProfile {
+    font-size: 1.5rem;
+  }
+
+  .div-avatar-Myprofile {
+    margin-top: 5px;
   }
 }

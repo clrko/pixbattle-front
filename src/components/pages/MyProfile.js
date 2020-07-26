@@ -25,11 +25,11 @@ const MyProfile = ({ user, profileInfos }) => {
       <DropDownMyProfile />
       <div className='window-MyProfile'>
         <div className='name-fa-star-MyProfile'>
-          <h1 className='name-MyProfile'>{user.username}
+          <h2 className='name-MyProfile'>{user.username}
             <i className='fas fa-trophy trophy-icon-MyProfile'>
               <p className='p-victory-point-MyProfile'>{!profileInfos.infos ? '0' : profileInfos.infos.victories}</p>
             </i>
-          </h1>
+          </h2>
         </div>
         <div className='div-avatar-Myprofile'>
           <img className='avatar-MyProfile' src={user.avatar} alt='avatar' />
