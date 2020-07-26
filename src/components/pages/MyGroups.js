@@ -62,6 +62,13 @@ const MyGroups = ({ user, history }) => {
     })
   }
 
+  const handleSettingsClick = (selectedGroupId, selectedGroupName) => {
+    history.push(`/groups/${selectedGroupId}/${selectedGroupName}/settings`, {
+      groupId: selectedGroupId,
+      groupName: selectedGroupName
+    })
+  }
+
   return (
     <div className='background-MyGroups'>
       <PageHeader pageTitle='Mes Groupes' />
@@ -72,6 +79,7 @@ const MyGroups = ({ user, history }) => {
         getFinishedBattlesMessage={getFinishedBattlesMessage}
         getGroupMemberMessage={getGroupMemberMessage}
         handleClick={handleClick}
+        handleSettingsClick={handleSettingsClick}
       />
     </div>
   )

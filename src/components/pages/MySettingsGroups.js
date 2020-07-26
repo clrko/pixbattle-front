@@ -36,33 +36,11 @@ const MySettingsGroups = ({ user, match }) => {
     }
   }
 
-  const handleRemoveParticipant = e => {
-    const listTemp = [...listGroupMembers]
-    const index = listTemp.findIndex(item => item.user_id === parseInt(e.target.id))
-    const remove = window.confirm('Es-tu certain(e) de vouloir retirer ce membre du groupe?')
-    if (remove) {
-      listTemp.splice(index, 1)
-      setListGroupMembers(listTemp)
-      axios
-        .delete(`${process.env.REACT_APP_SERVER_URL}/members/${e.target.id}/group/${match.params.groupId}`,
-          { groupName },
-          {
-            headers: {
-              authorization: `Bearer ${localStorage.getItem('token')}`
-            }
-          })
-        .then(res => {
-          setListGroupMembers(res.data)
-        })
-    }
-  }
-
   const handleAddEmail = e => {
     e.preventDefault()
     if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-      if (email === user.userEmail) {
-        return alert('Tu ne peux pas ajouter ton propre email')
-      }
+      if (email === user.userEmail) alert('Tu ne peux pas ajouter ton propre email')
+      if (count === 12) alert('Il n\'y a plus de place dans ton groupe')
       if (listGroupMembers.map(member => Object.values(member).includes(email)) && allEmails.includes(email) === false) {
         const allEmailsTemp = [...allEmails]
         const newEmail = email.toLowerCase()
@@ -103,20 +81,6 @@ const MySettingsGroups = ({ user, match }) => {
       })
   }
 
-  const handleGroupRemoval = e => {
-    axios
-      .delete(`${process.env.REACT_APP_SERVER_URL}/group/${match.params.groupId}`,
-        { groupName },
-        {
-          headers: {
-            authorization: `Bearer ${localStorage.getItem('token')}`
-          }
-        })
-      .then(res => {
-        console.log('Le group a été supprimé!')
-      })
-  }
-
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/members/group/${match.params.groupId}`,
@@ -134,7 +98,6 @@ const MySettingsGroups = ({ user, match }) => {
 
   return (
     <div>
-      <div>ajouter un dropdown</div>
       <div className='background-PageProfileSettings'>
         <form className='setting-group-container'>
           <p className='modified-group-text'>Modifier le nom du groupe</p>
@@ -162,7 +125,7 @@ const MySettingsGroups = ({ user, match }) => {
         </form>
         <section className='setting-group-container'>
           <p className='modified-group-text'>Liste des membres</p>
-          <ListMembers listParticipants={listGroupMembers} handleRemoveParticipant={handleRemoveParticipant} />
+          <ListMembers listParticipants={listGroupMembers} />
           <div className='setting-group-container'>
             <p className='modified-group-text'>Ajoute un nouveau membre</p>
             <form onSubmit={handleAddEmail} className='group-input'>
@@ -205,7 +168,6 @@ const MySettingsGroups = ({ user, match }) => {
           </div>
           <button onClick={handleValidateNewMembers}>Valider</button>
         </section>
-        <button onClick={handleGroupRemoval}>Supprimer le groupe</button>
       </div>
     </div>
   )
