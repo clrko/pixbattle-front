@@ -1,11 +1,14 @@
 import React from 'react'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 import BattlePostTimer from './BattlePostTimer'
 import CloudUpload from '../../asset/pictures/cloud-computing.png'
 import DropDownPost from '../shared/DropDownPost'
+import 'react-toastify/dist/ReactToastify.css'
 import './BattlePost.css'
 import './MyProfile.css'
 
+toast.configure()
 class BattlePost extends React.Component {
   state = {
     previewPicture: CloudUpload,
@@ -61,11 +64,25 @@ class BattlePost extends React.Component {
         }
       })
       .then(res => {
-        alert('Bravo! Ta photo a bien été postée')
+        this.notifySuccess()
       })
       .catch(() => {
-        alert("Une erreur s'est produite pendant le téléchargement ! Réessaye s'il te plait.")
+        this.notifyError()
       })
+  }
+
+  notifySuccess = () => {
+    toast.success('Ta photo a bien été enregistrée !', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
+  }
+
+  notifyError = () => {
+    toast.error('Une erreur est survenue', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
   }
 
   handleDeadlineReached = () => {
