@@ -61,10 +61,6 @@ const MySettingsGroups = ({ user, match, location }) => {
     }
   }
 
-  useEffect(() => {
-    if (count === 12) alert('Il n\'y a plus de place dans ton groupe')
-  })
-
   const handleRemoveEmail = e => {
     const email = e.target.name
     const allEmailsTemp = [...allEmails]
@@ -75,7 +71,7 @@ const MySettingsGroups = ({ user, match, location }) => {
   const handleValidateNewMembers = e => {
     axios
       .post(`${process.env.REACT_APP_SERVER_URL}/group/${match.params.groupId}`,
-        { groupName },
+        { allEmails },
         {
           headers: {
             authorization: `Bearer ${localStorage.getItem('token')}`
@@ -97,6 +93,7 @@ const MySettingsGroups = ({ user, match, location }) => {
       .then(res => {
         setListGroupMembers(res.data)
         setCount(res.data.length)
+        setGroupName(location.state.groupName)
       })
   }, [])
 
