@@ -10,7 +10,7 @@ import '../shared/Lightbox.css'
 
 toast.configure()
 
-const Lightbox = ({ photos, currentUserVotes, getUserVotes }) => {
+const BattleVoteLightbox = ({ photos, currentUserVotes, getUserVotes }) => {
   const [dispImg, setDisp] = useState('')
   const [photoId, setPhotoId] = useState('')
   const [cardIndex, setIndex] = useState(0)
@@ -59,7 +59,7 @@ const Lightbox = ({ photos, currentUserVotes, getUserVotes }) => {
   }
 
   const getVote = e => {
-    const newVote = { photoId: photoId, vote: e.target.value }
+    const newVote = { photoId: photoId, vote: Number(e.target.value) }
     setVote(newVote)
     const samePhotoSameVoteIdx = allVotes.findIndex(
       v => v.photoId === photoId && v.vote === newVote.vote
@@ -194,6 +194,8 @@ const Lightbox = ({ photos, currentUserVotes, getUserVotes }) => {
     return vote.photoId === photoId
   })
 
+  const highlightVotes = currentUserVotes.length ? currentUserVotes : allVotes
+
   return (
     <div className='gallery-lightbox-container'>
       <section className='Gallery'>
@@ -204,7 +206,7 @@ const Lightbox = ({ photos, currentUserVotes, getUserVotes }) => {
               handleClick={showPhotoUrl}
               index={i}
               id={photo.photo_id}
-              currentUserVotes={currentUserVotes}
+              currentUserVotes={highlightVotes}
             />
           </div>
         ))}
@@ -220,13 +222,24 @@ const Lightbox = ({ photos, currentUserVotes, getUserVotes }) => {
           <i className='fas fa-chevron-right' />
         </div>
         <div className='lightbox-img-container'>
-          {dispImg && <img src={`${process.env.REACT_APP_SERVER_URL}/${dispImg}`} alt={dispImg} className='lightbox-img' />}
+          {
+            dispImg &&
+              <img
+                src={`${process.env.REACT_APP_SERVER_URL}/${dispImg}`}
+                alt={dispImg}
+                className='lightbox-img'
+              />
+          }
         </div>
         {
           currentUserVotes.length === 0 &&
             <div>
               <div className='btn-vote-container'>
-                <label className={classnames('label-vote', { 'label-vote-active': selectedPhoto && selectedPhoto.vote === '1' })}>
+                <label
+                  className={classnames('label-vote', {
+                    'label-vote-active': selectedPhoto && selectedPhoto.vote === 1
+                  })}
+                >
                   <input
                     type='radio'
                     value='1'
@@ -240,7 +253,11 @@ const Lightbox = ({ photos, currentUserVotes, getUserVotes }) => {
                     <i className='fas fa-star' />
                   </div>
                 </label>
-                <label className={classnames('label-vote', { 'label-vote-active': selectedPhoto && selectedPhoto.vote === '2' })}>
+                <label
+                  className={classnames('label-vote', {
+                    'label-vote-active': selectedPhoto && selectedPhoto.vote === 2
+                  })}
+                >
                   <input
                     type='radio'
                     value='2'
@@ -255,7 +272,10 @@ const Lightbox = ({ photos, currentUserVotes, getUserVotes }) => {
                     <i className='fas fa-star' />
                   </div>
                 </label>
-                <label className={classnames('label-vote', { 'label-vote-active': selectedPhoto && selectedPhoto.vote === '3' })}>
+                <label className={classnames('label-vote', {
+                  'label-vote-active': selectedPhoto && selectedPhoto.vote === 3
+                })}
+                >
                   <input
                     type='radio'
                     value='3'
@@ -279,7 +299,7 @@ const Lightbox = ({ photos, currentUserVotes, getUserVotes }) => {
       <div className='vote-status'>
         {
           currentUserVotes.length === 0
-            ? <button className='battle-btn battle-optionButton' onClick={handleVotes}>valider les votes</button>
+            ? <button className='battle-btn battle-optionButton' onClick={handleVotes}>Valider</button>
             : <p>Tu as déjà voté pour cette battle !</p>
         }
       </div>
@@ -287,4 +307,4 @@ const Lightbox = ({ photos, currentUserVotes, getUserVotes }) => {
   )
 }
 
-export default Lightbox
+export default BattleVoteLightbox

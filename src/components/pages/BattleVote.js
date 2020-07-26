@@ -33,7 +33,8 @@ class BattleVote extends Component {
           }
         })
       .then(res => {
-        this.setState({ currentUserVotes: res.data })
+        const currentUserVotes = res.data.map(vote => ({ ...vote, photoId: vote.photo_id }))
+        this.setState({ currentUserVotes: currentUserVotes })
       })
   }
 

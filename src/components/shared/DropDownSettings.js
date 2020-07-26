@@ -20,7 +20,7 @@ class DropDownSettings extends React.Component {
       <div className='background-DropDown'>
         <select value={selectedOption} className='DropDown' onChange={this.handleChange}>
           <option value={`/${user.username}/settings/informations`}>Paramètres du profil</option>
-          <option value={`/${user.username}/settings/connexion`}>Paramètres de connexion</option>
+          {/* <option value={`/${user.username}/settings/connexion`}>Paramètres de connexion</option> */}
         </select>
       </div>
     )

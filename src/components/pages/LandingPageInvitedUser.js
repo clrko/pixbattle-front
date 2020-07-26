@@ -4,7 +4,7 @@ import Modal from '../shared/Modal'
 import logoLP from '../../asset/logo/logo.svg'
 import './LandingPage.css'
 
-class LandingPage extends Component {
+class LandingPageInvitedUser extends Component {
   state = {
     isOpen: false
   }
@@ -24,6 +24,7 @@ class LandingPage extends Component {
           REJOINDRE
         </button>
         <Modal isOpen={this.state.isOpen}>
+
           <FormContainer onClose={this.handleOpenModal} invitationCode={this.props.match.params.code} />
         </Modal>
       </div>
@@ -31,4 +32,4 @@ class LandingPage extends Component {
   }
 }
 
-export default LandingPage
+export default LandingPageInvitedUser
