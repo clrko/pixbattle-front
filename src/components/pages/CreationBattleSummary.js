@@ -10,13 +10,30 @@ const mapStateToProps = state => {
 }
 
 const CreationBattleSummary = ({ battleCreation, dispatch, history, onClose }) => {
-  const handleClick = e => {
-    axios.post(`${process.env.REACT_APP_SERVER_URL}/battle/battle-creation`,
+  const handleClick = async e => {
+    const { groupName, emails, groupId: existingGroupId, theme, rules, deadline } = battleCreation
+    let groupId
+    if (!existingGroupId) {
+      const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/group-creation`,
+        {
+          emails,
+          groupName
+        },
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+      groupId = res.data.groupId
+    } else {
+      groupId = existingGroupId
+    }
+    await axios.post(`${process.env.REACT_APP_SERVER_URL}/battle/battle-creation`,
       {
-        groupId: parseInt(battleCreation.groupId),
-        themeId: parseInt(battleCreation.theme.themeId),
-        rulesId: battleCreation.rules.map(rule => rule.rule_id),
-        deadline: battleCreation.deadline
+        groupId: groupId,
+        themeId: parseInt(theme.themeId),
+        rulesId: rules.map(rule => rule.rule_id),
+        deadline: deadline
       },
       {
         headers: {
@@ -25,10 +42,10 @@ const CreationBattleSummary = ({ battleCreation, dispatch, history, onClose }) =
       }
     ).then(res => {
       if (res.status === 201) {
-        const groupId = parseInt(battleCreation.groupId)
-        history.push(`/groups/${groupId}/battles/${res.data.battleId}/post-picture`, {
-          battleId: res.data.battleId,
-          groupId: parseInt(battleCreation.groupId)
+        const { battleId } = res.data
+        history.push(`/groups/${groupId}/battles/${battleId}/post-picture`, {
+          battleId: battleId,
+          groupId: groupId
         })
         dispatch({ type: REMOVE_ALL })
       }
