@@ -1,18 +1,17 @@
 import React from 'react'
 import axios from 'axios'
 import BattlePostTimer from './BattlePostTimer'
-import CloudUpload from '../../asset/pictures/cloud-computing.png'
 import DropDownPost from '../shared/DropDownPost'
 import './BattlePost.css'
 import './MyProfile.css'
 
 class BattlePost extends React.Component {
   state = {
-    previewPicture: CloudUpload,
-    selectedFile: CloudUpload,
+    selectedFile: '',
     themeName: '',
     rulesNames: [],
-    deadline: ''
+    deadline: '',
+    hasPosted: false
   }
 
   componentDidMount () {
@@ -30,11 +29,14 @@ class BattlePost extends React.Component {
           }
         }
       ).then(res => {
-        allRulesNames.push(res.data.battleInfos.map(info => { return ' - ' + info.rule_name }))
+        const { battleInfos, photoUrl } = res.data
+        allRulesNames.push(battleInfos.map(info => { return ' - ' + info.rule_name }))
         this.setState({
-          themeName: res.data.battleInfos[0].theme_name,
+          themeName: battleInfos[0].theme_name,
           rulesNames: allRulesNames,
-          deadline: res.data.battleInfos[0].deadline.replace('T', ' ').substr(0, 19)
+          deadline: battleInfos[0].deadline.replace('T', ' ').substr(0, 19),
+          postedImg: photoUrl && `${process.env.REACT_APP_SERVER_URL}/${photoUrl}`,
+          hasPosted: !!photoUrl
         })
       })
   }
@@ -61,7 +63,7 @@ class BattlePost extends React.Component {
         }
       })
       .then(res => {
-        alert('Bravo! Ta photo a bien été postée')
+        this.setState({ hasPosted: true })
       })
       .catch(() => {
         alert("Une erreur s'est produite pendant le téléchargement ! Réessaye s'il te plait.")
@@ -74,8 +76,37 @@ class BattlePost extends React.Component {
     history.push(`/groups/${groupId}/battles/${battleId}/vote`)
   }
 
+  getPicturePostForm = () => {
+    const { postedImg, hasPosted, selectedFile } = this.state
+    if (hasPosted) {
+      return (
+        <div>
+          <img className='picture' src={postedImg || selectedFile} alt='posted image' />
+          <p>Ta photo a bien été enregistrée !</p>
+        </div>
+      )
+    }
+    const preview = selectedFile
+      ? <img className='picture' src={selectedFile} alt='preview' />
+      : (
+        <div className='picture'>
+          <i className='far fa-image' />
+        </div>
+      )
+    return (
+      <>
+        {preview}
+        <div className='upload-file'>
+          <input type='file' name='file' id='file' accept='image/png, image/jpeg' onChange={this.handleChange} />
+          <label for='file' className='choose-file-btn'>Choisis une photo</label>
+          <button className='upload-ButtonPostpicture' type='button' onClick={this.handleClick}>Upload</button>
+        </div>
+      </>
+    )
+  }
+
   render () {
-    const { themeName, deadline, rulesNames, selectedFile } = this.state
+    const { themeName, deadline, rulesNames } = this.state
     return (
       <div className='background-MyProfile'>
         <DropDownPost />
@@ -93,9 +124,9 @@ class BattlePost extends React.Component {
           </div>
           <div>
             <div className='countdown' />
-            <img className='picture' src={selectedFile} alt='preview' />
-            <input type='file' name='file' className='choose-file-btn' accept='image/png, image/jpeg' onChange={this.handleChange} />
-            <button className='upload-ButtonPostpicture' type='button' onClick={this.handleClick}>Upload</button>
+            {
+              this.getPicturePostForm()
+            }
           </div>
         </div>
       </div>

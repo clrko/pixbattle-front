@@ -33,8 +33,8 @@ const App = () => {
         <PrivateRoute path='/battle-creation/rule' component={CreationBattleRule} />
         <PrivateRoute path='/battle-creation/theme' component={CreationBattleTheme} />
         <PrivateRoute path='/battle-creation/summary' component={CreationBattleSummary} />
-        <PrivateRoute path='/group-creation/group-created/:id' component={CreationSteps} />
-        <PrivateRoute path='/battle-creation/group-created/:id' component={CreationBattleSteps} />
+        <PrivateRoute path='/group-creation' component={CreationSteps} />
+        <PrivateRoute path='/battle-creation' component={CreationBattleSteps} />
         <PrivateRoute exact path='/:username' component={MyProfile} />
         <PrivateRoute exact path='/:username/groups' component={MyGroups} />
         <PrivateRoute path='/:username/ranking' component={MyRanking} />
