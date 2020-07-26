@@ -2,8 +2,8 @@ import React from 'react'
 import './Photo.css'
 
 const Photo = ({ photo, index, id, handleClick, currentUserVotes }) => {
-  const currentVote = currentUserVotes && currentUserVotes.find(vote => vote.photo_id === id)
-
+  const currentVote = currentUserVotes && currentUserVotes.find(vote => vote.photoId === id)
+  console.log(currentVote)
   return (
     <div className='photo-container'>
       <div className='stars-container-photo'>

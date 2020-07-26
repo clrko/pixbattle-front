@@ -97,7 +97,7 @@ class BattlePost extends React.Component {
       <>
         {preview}
         <div className='upload-file'>
-          <input type='file' name='file' id='file' onChange={this.handleChange} />
+          <input type='file' name='file' id='file' accept='image/png, image/jpeg' onChange={this.handleChange} />
           <label for='file' className='choose-file-btn'>Choisis une photo</label>
           <button className='upload-ButtonPostpicture' type='button' onClick={this.handleClick}>Upload</button>
         </div>
