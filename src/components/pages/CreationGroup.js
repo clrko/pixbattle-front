@@ -76,6 +76,7 @@ class CreationGroup extends Component {
 
   render () {
     const { groupName, email, count, allEmails } = this.state
+    const { user } = this.props
     return (
       <div className='form-container'>
         <div className='group-container'>
@@ -106,7 +107,7 @@ class CreationGroup extends Component {
           <p className='new-group-text'>Invite tes amis par mail</p>
           <form onSubmit={this.handleAddEmail} className='group-input'>
             <input
-              type='text'
+              type='email'
               className='new-group-input'
               onChange={this.handleChange}
               value={email}
@@ -135,7 +136,7 @@ class CreationGroup extends Component {
         </div>
         <div className='group-bottom'>
           <ul className='emails-container'>
-            <li className='emails-list'>current_username</li>
+            <li className='emails-list'>{user.username}</li>
             {
               allEmails.map((email, i) => (
                 <li
