@@ -1,32 +1,31 @@
-.CGU-background {
-  display: flex;
-  justify-content: flex-end;
-  background-color: #3181c8;
-  height: 68vh;
-  width: 85%;
-}
-
 .CGU-TextDecoration {
-  width: 85%;
   background-color: #235789;
   border-radius: 20px;
   padding: 15px;
   color: white;
+  height: 90vh;
+  width: 85%;
+  overflow: scroll;
+  margin: auto;
 }
 
-h5 {
+.logo-cgu {
+  margin: 1rem 0;
+}
+
+.cgu-title {
   font-size: 17px;
-  margin-bottom: 50px;
   text-align: center;
 }
 
-h6 {
+.cgu-subtitle {
   font-size: 15px;
-  margin-bottom: 15px;
-  margin-top: 15px;
+  margin: 2rem 0 1rem 0;
+  font-weight: 400;
+  text-decoration: underline;
 }
 
-p {
+.cgu-paragraph {
   font-size: 16px;
 }
 
@@ -36,18 +35,27 @@ p {
   margin-top: 10px;
 }
 
-.emails-container {
-  width: 85%;
-  height: 68vh;
-  overflow: scroll;
-}
-
-.emails-container::-webkit-scrollbar {
+.CGU-background::-webkit-scrollbar {
   width: 5px;
   height: 0%;
 }
 
-.emails-container::-webkit-scrollbar-thumb {
+.CGU-background::-webkit-scrollbar-thumb {
   background-color: #FAC748;
   border-radius: 10px;
+}
+
+.gcu-back-register {
+  background-color: #FAC748;
+  border-radius: 28px;
+  border: 1px solid rgb(247, 193, 57);
+  cursor: pointer;
+  color: #3181C8;
+  font-size: 20px;
+  padding: 12px 31px;
+  text-decoration: none;
+  margin: 2em auto 1em auto;
+  display: flex;
+  outline: none;
+  font-family: FuturaPTMedium;
 }
