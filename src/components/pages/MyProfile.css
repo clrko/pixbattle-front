@@ -22,6 +22,7 @@
 
 .name-MyProfile {
   font-size: 1.8rem;
+  font-weight: 400;
 }
 
 .trophy-icon-MyProfile {
@@ -79,15 +80,14 @@
   background-color: #FAC748;
   color: #235789;
   margin-top: 30px;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: bold;
   width: 100%;
   padding: 10px;
   border-radius: 20px;
-  border: none;
-  outline: 0;
   cursor: pointer;
   text-transform: uppercase;
+  padding: 0.7rem;
 }
 
 @media screen and (min-width: 600px) {
@@ -111,6 +111,7 @@
 
   .name-MyProfile {
     font-size: 1.5rem;
+    font-weight: 400;
   }
 
   .div-avatar-Myprofile {

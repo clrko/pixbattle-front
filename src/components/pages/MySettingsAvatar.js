@@ -4,6 +4,8 @@ import { LOGIN } from '../../store/action-types'
 import DropDownSettings from '../shared/DropDownSettings'
 import axios from 'axios'
 import classnames from 'classnames'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import './MySettings.css'
 
 const mapStateToProps = state => {
@@ -58,12 +60,26 @@ class MySettingsAvatar extends Component {
           const token = res.headers['x-access-token']
           localStorage.setItem('token', token)
           dispatch({ type: LOGIN, ...res.data })
-          alert('Les modifications ont bien été enregistrées')
           this.setState({ newUsername: '' })
+          this.notifySuccess()
         })
     } else {
-      alert('Seuls les lettres et les chiffres sont autorisés')
+      this.notifyError()
     }
+  }
+
+  notifySuccess = () => {
+    toast.success('Les modifications ont bien été enregistrées !', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
+  }
+
+  notifyError = () => {
+    toast.error('Seuls les lettres et les chiffres sont autorisés', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
   }
 
   componentDidMount () {

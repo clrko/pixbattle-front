@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import BattlePostTimer from './BattlePostTimer'
@@ -6,6 +7,11 @@ import DropDownPost from '../shared/DropDownPost'
 import 'react-toastify/dist/ReactToastify.css'
 import './BattlePost.css'
 import './MyProfile.css'
+
+const mapStateToProps = state => {
+  const { user } = state
+  return { user }
+}
 
 toast.configure()
 class BattlePost extends React.Component {
@@ -89,14 +95,26 @@ class BattlePost extends React.Component {
   }
 
   handleDeadlineReached = () => {
+    const { user } = this.props
     const { history } = this.props
-    const { battleId, groupId } = this.props.match.params
-    history.push(`/groups/${groupId}/battles/${battleId}/vote`)
+    const { battleId, groupId, hasPosted } = this.props.match.params
+    if (hasPosted) {
+      history.push(`/groups/${groupId}/battles/${battleId}/vote`)
+      this.notifyTimerEndingVote()
+    }
+    history.push(`/${user.username}`)
     this.notifyTimerEnding()
   }
 
-  notifyTimerEnding = () => {
+  notifyTimerEndingVote = () => {
     toast('Le temps est écoulé, à tes votes !', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
+  }
+
+  notifyTimerEnding = () => {
+    toast('Le temps est écoulé...', {
       position: 'bottom-right',
       autoClose: 3000
     })
@@ -160,4 +178,4 @@ class BattlePost extends React.Component {
   }
 }
 
-export default BattlePost
+export default connect(mapStateToProps)(BattlePost)

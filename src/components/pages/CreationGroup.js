@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { ADD_GROUP } from '../../store/action-types'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import './CreationGroup.css'
 
 const mapStateToProps = state => {
@@ -25,7 +27,7 @@ class CreationGroup extends Component {
     const { allEmails, email, count } = this.state
     if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       if (email === this.props.user.userEmail) {
-        return alert('Tu ne peux pas ajouter ton propre email')
+        return this.notifyErrorOwnEmail()
       }
       if (allEmails.includes(email) === false) {
         const allEmailsTemp = allEmails
@@ -37,13 +39,41 @@ class CreationGroup extends Component {
           email: ''
         })
       } else if (allEmails.includes(email)) {
-        alert('Tu as déjà invité cette personne')
+        this.notifyErrorAlreadyExisting()
       } else {
-        alert('Quelque chose s\'est mal passé')
+        this.notifyError()
       }
     } else {
-      alert('Cet email est invalide')
+      this.notifyErrorInvalidEmail()
     }
+  }
+
+  notifyErrorOwnEmail = () => {
+    toast.error('Tu ne peux pas ajouter ton propre email', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
+  }
+
+  notifyErrorAlreadyExisting = () => {
+    toast.error('Tu as déjà invité cette personne', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
+  }
+
+  notifyErrorInvalidEmail = () => {
+    toast.error('Cet email est invalide', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
+  }
+
+  notifyError = () => {
+    toast.error('Une erreur est survenue', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
   }
 
   handleRemoveEmail = e => {
