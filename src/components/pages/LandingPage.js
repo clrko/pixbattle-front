@@ -62,7 +62,7 @@ class LandingPage extends Component {
         <button className='pitch-button' onClick={this.handleOpenModal}>
           JOUER
         </button>
-        <Modal isOpen={this.state.isOpen}>
+        <Modal isOpen={this.state.isOpen} showLogo>
           <FormContainer onClose={this.handleOpenModal} />
         </Modal>
       </div>

@@ -8,10 +8,11 @@ class ModalComponent extends Component {
       <div className='modal-overlay-div'>
         <div className='ModalComponent'>
           {
-            this.props.children._owner.type.name === 'LandingPage' &&
+            this.props.showLogo && (
               <div className='modal-title-container'>
                 <img src={logoLP} alt='logo pix battle min' />
               </div>
+            )
           }
           {this.props.children}
         </div>
@@ -24,6 +25,10 @@ class ModalComponent extends Component {
       <div>{modal}</div>
     )
   }
+}
+
+ModalComponent.defaultProps = {
+  showLogo: false
 }
 
 export default ModalComponent
