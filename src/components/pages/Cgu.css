@@ -1,0 +1,53 @@
+.CGU-background {
+  display: flex;
+  justify-content: flex-end;
+  background-color: #3181c8;
+  height: 68vh;
+  width: 85%;
+}
+
+.CGU-TextDecoration {
+  width: 85%;
+  background-color: #235789;
+  border-radius: 20px;
+  padding: 15px;
+  color: white;
+}
+
+h5 {
+  font-size: 17px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+h6 {
+  font-size: 15px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+p {
+  font-size: 16px;
+}
+
+.listSet {
+  font-size: 13px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.emails-container {
+  width: 85%;
+  height: 68vh;
+  overflow: scroll;
+}
+
+.emails-container::-webkit-scrollbar {
+  width: 5px;
+  height: 0%;
+}
+
+.emails-container::-webkit-scrollbar-thumb {
+  background-color: #FAC748;
+  border-radius: 10px;
+}
