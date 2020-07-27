@@ -23,7 +23,6 @@ import MySettings from './components/pages/MySettings'
 import MySettingsAvatar from './components/pages/MySettingsAvatar'
 import MySettingsGroups from './components/pages/MySettingsGroups'
 import PrivateRoute from './components/shared/PrivateRoute'
-import Cgu from './components/pages/Cgu'
 
 const App = () => {
   return (
@@ -52,7 +51,6 @@ const App = () => {
         <PrivateRoute path='/:username/settings/informations' component={MySettingsAvatar} />
         <PrivateRoute path='/groups/:groupId/settings' component={MySettingsGroups} />
       </Switch>
-      <Cgu />
     </div>
   )
 }
