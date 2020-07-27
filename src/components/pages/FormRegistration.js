@@ -1,4 +1,6 @@
 import React from 'react'
+import Cgu from './Cgu'
+import Modal from '../shared/Modal'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
@@ -17,7 +19,8 @@ class FormRegistration extends React.Component {
     password: '',
     invitationCode: null,
     checkPassword: '',
-    isChecked: false
+    isChecked: false,
+    isOpen: false
   }
 
   handleChange = e => {
@@ -90,6 +93,11 @@ class FormRegistration extends React.Component {
       position: 'bottom-right',
       autoClose: 3000
     })
+  }
+
+  handleOpenModal = e => {
+    e.preventDefault()
+    this.setState({ isOpen: !this.state.isOpen })
   }
 
   componentDidMount () {
@@ -177,7 +185,10 @@ class FormRegistration extends React.Component {
             onChange={this.handleCheckbox}
             required
           />
-          <label className='label-UGC'>Conditions générales d'utilisations</label>
+          <button className='label-UGC' onClick={this.handleOpenModal}>Conditions générales d'utilisations</button>
+          <Modal isOpen={this.state.isOpen}>
+            <Cgu onClose={this.handleOpenModal} />
+          </Modal>
         </div>
         <div className='div-buttonValidateCancel'>
           <button

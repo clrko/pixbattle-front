@@ -59,9 +59,15 @@
 
 .label-UGC {
   font-size: 0.8rem;
-  width: 240px;
-  padding-left: 10px;
   text-decoration: underline;
+  border: none;
+  outline: transparent;
+  background-color: transparent;
+  color: white;
+}
+
+.label-UGC:visited {
+  color: white;
 }
 
 .div-buttonValidateCancel {

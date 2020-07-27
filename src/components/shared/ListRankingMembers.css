@@ -31,7 +31,7 @@
 }
 
 .margin-div-participant-RankingMembers {
-  margin: 0 15px;
+  margin: 0 0.5rem;
 }
 
 .p-div-participant-RankingMembers {
@@ -55,7 +55,7 @@
 }
 
 .p-margin-div-participant-RankingMembers {
-  font-size: 1.4em;
+  font-size: 1em;
   font-weight: bold;
   letter-spacing: 1px;
   text-align: left;

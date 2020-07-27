@@ -1,0 +1,60 @@
+.CGU-TextDecoration {
+  background-color: #235789;
+  border-radius: 20px;
+  color: white;
+  height: 90vh;
+  width: 85%;
+  overflow: scroll;
+  margin: auto;
+}
+
+.logo-cgu {
+  margin: 1rem 0;
+}
+
+.cgu-title {
+  font-size: 17px;
+  text-align: center;
+}
+
+.cgu-subtitle {
+  font-size: 15px;
+  margin: 2rem 0 1rem 0;
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+.cgu-paragraph {
+  font-size: 16px;
+}
+
+.listSet {
+  font-size: 13px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.CGU-background::-webkit-scrollbar {
+  width: 5px;
+  height: 0%;
+}
+
+.CGU-background::-webkit-scrollbar-thumb {
+  background-color: #FAC748;
+  border-radius: 10px;
+}
+
+.gcu-back-register {
+  background-color: #FAC748;
+  border-radius: 28px;
+  border: 1px solid rgb(247, 193, 57);
+  cursor: pointer;
+  color: #3181C8;
+  font-size: 20px;
+  padding: 12px 31px;
+  text-decoration: none;
+  margin: 2em auto 1em auto;
+  display: flex;
+  outline: none;
+  font-family: FuturaPTMedium;
+}
