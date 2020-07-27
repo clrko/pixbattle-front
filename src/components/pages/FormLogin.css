@@ -64,6 +64,10 @@
   text-decoration: underline;
 }
 
+.label-UGC:visited {
+  color: white;
+}
+
 .div-buttonValidateCancel {
   margin-top: 20px;
 }

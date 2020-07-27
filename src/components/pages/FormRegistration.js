@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { LOGIN } from '../../store/action-types'
 import classNames from 'classnames'
@@ -177,7 +177,7 @@ class FormRegistration extends React.Component {
             onChange={this.handleCheckbox}
             required
           />
-          <label className='label-UGC'>Conditions générales d'utilisations</label>
+          <NavLink to='' className='label-UGC'>Conditions générales d'utilisations</NavLink>
         </div>
         <div className='div-buttonValidateCancel'>
           <button
