@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
-import axios from 'axios'
 import { ADD_GROUP } from '../../store/action-types'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import './CreationGroup.css'
 
 const mapStateToProps = state => {
@@ -12,7 +13,6 @@ const mapStateToProps = state => {
 class CreationGroup extends Component {
   state = {
     groupName: '',
-    isGroupName: false,
     email: '',
     count: 1,
     allEmails: []
@@ -22,30 +22,12 @@ class CreationGroup extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  handleChooseName = e => {
-    e.preventDefault()
-    const { groupName } = this.state
-    if (this.state.groupName.length > 0) {
-      axios
-        .put(`${process.env.REACT_APP_SERVER_URL}/group/${this.props.groupId}`,
-          { groupName },
-          {
-            headers: {
-              authorization: `Bearer ${localStorage.getItem('token')}`
-            }
-          })
-        .then(res => {
-          this.setState({ isGroupName: true })
-        })
-    }
-  }
-
   handleAddEmail = e => {
     e.preventDefault()
     const { allEmails, email, count } = this.state
     if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       if (email === this.props.user.userEmail) {
-        return alert('Tu ne peux pas ajouter ton propre email')
+        return this.notifyErrorOwnEmail()
       }
       if (allEmails.includes(email) === false) {
         const allEmailsTemp = allEmails
@@ -57,13 +39,41 @@ class CreationGroup extends Component {
           email: ''
         })
       } else if (allEmails.includes(email)) {
-        alert('Tu as déjà invité cette personne')
+        this.notifyErrorAlreadyExisting()
       } else {
-        alert('Quelque chose s\'est mal passé')
+        this.notifyError()
       }
     } else {
-      alert('Cet email est invalide')
+      this.notifyErrorInvalidEmail()
     }
+  }
+
+  notifyErrorOwnEmail = () => {
+    toast.error('Tu ne peux pas ajouter ton propre email', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
+  }
+
+  notifyErrorAlreadyExisting = () => {
+    toast.error('Tu as déjà invité cette personne', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
+  }
+
+  notifyErrorInvalidEmail = () => {
+    toast.error('Cet email est invalide', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
+  }
+
+  notifyError = () => {
+    toast.error('Une erreur est survenue', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
   }
 
   handleRemoveEmail = e => {
@@ -78,20 +88,9 @@ class CreationGroup extends Component {
 
   handleChangeSteps = e => {
     e.preventDefault()
-    const { allEmails } = this.state
-    axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/group/${this.props.groupId}`,
-        { allEmails },
-        {
-          headers: {
-            authorization: `Bearer ${localStorage.getItem('token')}`
-          }
-        })
-      .then(res => {
-        console.log(res.data) /* Il faut renvoyer une notification à l'utilisateur soit les emails soit group créé */
-      })
-    const { dispatch, groupId } = this.props
-    dispatch({ type: ADD_GROUP, groupId })
+    const { dispatch } = this.props
+    const { allEmails, groupName } = this.state
+    dispatch({ type: ADD_GROUP, emails: allEmails, groupName })
     return this.props.changeStep(e)
   }
 
@@ -99,7 +98,6 @@ class CreationGroup extends Component {
     e.preventDefault()
     this.setState({
       groupName: '',
-      isGroupName: false,
       email: '',
       count: 1,
       allEmails: []
@@ -107,7 +105,8 @@ class CreationGroup extends Component {
   }
 
   render () {
-    const { groupName, email, count, allEmails, isGroupName } = this.state
+    const { groupName, email, count, allEmails } = this.state
+    const { user } = this.props
     return (
       <div className='form-container'>
         <div className='group-container'>
@@ -123,17 +122,7 @@ class CreationGroup extends Component {
               required
               minLength='5'
               maxLength='25'
-              disabled={isGroupName}
             />
-            {
-              !isGroupName &&
-                <button
-                  className='button-add-group-name'
-                  onClick={this.handleChooseName}
-                >
-                Valider
-                </button>
-            }
           </div>
           <p className={
             groupName.length < 5
@@ -144,57 +133,55 @@ class CreationGroup extends Component {
             Entre 5 et 25 caractères
           </p>
         </div>
-        <div style={!isGroupName ? { display: 'none' } : { display: 'inline' }}>
-          <div className='group-container'>
-            <p className='new-group-text'>Invite tes amis par mail</p>
-            <form onSubmit={this.handleAddEmail} className='group-input'>
-              <input
-                type='text'
-                className='new-group-input'
-                onChange={this.handleChange}
-                value={email}
-                name='email'
-                placeholder='Email'
-              />
-              <button
-                type='submit'
-                className='add-user'
-                disabled={count >= 12}
-              >
-                <i className={
-                  count < 12
-                    ? 'fas fa-plus-circle email-enabled'
-                    : 'fas fa-plus-circle email-disabled'
-                }
-                />
-              </button>
-            </form>
-            <p className={
-              allEmails.length < 3 ? 'info' : 'info green'
-            }
+        <div className='group-container'>
+          <p className='new-group-text'>Invite tes amis par mail</p>
+          <form onSubmit={this.handleAddEmail} className='group-input'>
+            <input
+              type='email'
+              className='new-group-input'
+              onChange={this.handleChange}
+              value={email}
+              name='email'
+              placeholder='Email'
+            />
+            <button
+              type='submit'
+              className='add-user'
+              disabled={count >= 12}
             >
-              Entre 4 à 12 personnes
-            </p>
-          </div>
-          <div className='group-bottom'>
-            <ul className='emails-container'>
-              <li className='emails-list'>current_username</li>
-              {
-                allEmails.map((email, i) => (
-                  <li
-                    className='emails-list'
-                    key={i}
-                  >
-                    {email}
-                    <input type='button' value='X' name={email} className='remove-email' onClick={this.handleRemoveEmail} />
-                  </li>
-                ))
+              <i className={
+                count < 12
+                  ? 'fas fa-plus-circle email-enabled'
+                  : 'fas fa-plus-circle email-disabled'
               }
-            </ul>
-            <p className='members'>
-              Déjà {count} {count === 1 ? 'personne inscrite !' : 'personnes inscrites !'}
-            </p>
-          </div>
+              />
+            </button>
+          </form>
+          <p className={
+            allEmails.length < 3 ? 'info' : 'info green'
+          }
+          >
+            Entre 4 à 12 personnes
+          </p>
+        </div>
+        <div className='group-bottom'>
+          <ul className='emails-container'>
+            <li className='emails-list'>{user.username}</li>
+            {
+              allEmails.map((email, i) => (
+                <li
+                  className='emails-list'
+                  key={i}
+                >
+                  {email}
+                  <input type='button' value='X' name={email} className='remove-email' onClick={this.handleRemoveEmail} />
+                </li>
+              ))
+            }
+          </ul>
+          <p className='members'>
+            Déjà {count} {count === 1 ? 'personne inscrite !' : 'personnes inscrites !'}
+          </p>
         </div>
         <div className='bottom-new-group'>
           <NavLink to='/profile'>

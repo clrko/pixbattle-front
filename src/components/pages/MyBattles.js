@@ -13,14 +13,16 @@ const mapStateToProps = state => {
 
 const MyBattles = ({ user, history, location }) => {
   const [userBattleInformation, setUserBattleInformation] = useState([])
+  const [hasPosted, setHasPosted] = useState({})
 
   useEffect(() => {
     getUserBattleInformation()
+      .then(getBattlePostedStatus)
   }, [])
 
   const getUserBattleInformation = () => {
     const backRoute = (location.state) ? `my-battles/${location.state.groupId}` : 'my-battles'
-    axios
+    return axios
       .get(`${process.env.REACT_APP_SERVER_URL}/battle/${backRoute}`,
         {
           headers: {
@@ -30,6 +32,28 @@ const MyBattles = ({ user, history, location }) => {
       )
       .then(res => {
         setUserBattleInformation(res.data)
+        return res.data
+      })
+  }
+
+  const getBattlePostedStatus = allUserBattles => {
+    const battleIds = allUserBattles.map(battle => battle.battle_id)
+    const query = battleIds.map(id => `id[]=${id}`).join('&')
+    axios
+      .get(`${process.env.REACT_APP_SERVER_URL}/battle/battle-post/status-user?${query}`,
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        }
+      )
+      .then(res => {
+        const updateHasPosted = {}
+        res.data.forEach(battle => {
+          updateHasPosted[battle.battle_id] = true
+        })
+        setHasPosted(updateHasPosted)
+        return (res.data.length !== 0)
       })
   }
 
@@ -49,19 +73,26 @@ const MyBattles = ({ user, history, location }) => {
     return (differenceToToday / differenceToDeadline) * 100
   }
 
-  const getBattleTimeMessage = (importedDeadline, importedStatus) => {
+  const getBattleTimeMessage = (importedDeadline, importedStatus, hasPhoto) => {
     const deadline = moment(importedDeadline)
     const today = moment().local()
     if (importedStatus === 'completed') {
       return 'Va vite voir les resultats'
     }
-    if (importedStatus === 'vote') {
+    if (importedStatus === 'vote' && hasPhoto) {
       const deadlineToVote = moment(deadline.add(24, 'hours').format('YYYY-MM-DDTHH:mm:ss.SSSSZ'))
       const durationToVote = moment.duration(deadlineToVote.diff(today))
       return `Il te reste ${durationToVote.humanize()} pour voter`
+    } else if (importedStatus === 'vote' && !hasPhoto) {
+      return 'Tu n\'as pas participé'
     }
-    const durationTodayToDeadline = moment.duration(deadline.diff(today))
-    return `Encore ${durationTodayToDeadline.humanize()} pour poster ta photo`
+
+    if (importedStatus === 'post' && hasPhoto) {
+      return 'Tu as déjà posté ta photo'
+    } else {
+      const durationTodayToDeadline = moment.duration(deadline.diff(today))
+      return `Encore ${durationTodayToDeadline.humanize()} pour poster ta photo`
+    }
   }
 
   const getBattleStatus = importedStatus => {
@@ -74,6 +105,20 @@ const MyBattles = ({ user, history, location }) => {
         return 'Resultats'
       default:
         return importedStatus
+    }
+  }
+
+  const getIsAbleStatus = (status, hasPhoto) => {
+    switch (status) {
+      case 'post':
+        return !hasPhoto
+      case 'vote':
+        return hasPhoto
+      case 'completed':
+        return true
+      default:
+        console.warn('wrong status', status)
+        return false
     }
   }
 
@@ -113,6 +158,8 @@ const MyBattles = ({ user, history, location }) => {
         getBattleTimeMessage={getBattleTimeMessage}
         getBattleStatus={getBattleStatus}
         handleClick={handleClick}
+        hasPosted={hasPosted}
+        getIsAbleStatus={getIsAbleStatus}
       />
     </div>
   )

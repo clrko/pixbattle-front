@@ -12,7 +12,12 @@ class BattleVote extends Component {
   getPhotos = () => {
     const { battleId } = this.props.match.params
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/gallery/battle/${battleId}`)
+      .get(`${process.env.REACT_APP_SERVER_URL}/battle/battle-vote/${battleId}`,
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
       .then(res => {
         this.setState({ photos: res.data })
       })
@@ -28,7 +33,8 @@ class BattleVote extends Component {
           }
         })
       .then(res => {
-        this.setState({ currentUserVotes: res.data })
+        const currentUserVotes = res.data.map(vote => ({ ...vote, photoId: vote.photo_id }))
+        this.setState({ currentUserVotes: currentUserVotes })
       })
   }
 
@@ -42,7 +48,11 @@ class BattleVote extends Component {
     return (
       <div className='battle-vote-container'>
         <DropDownVote />
-        <BattleVoteLightbox photos={photos} currentUserVotes={currentUserVotes} />
+        <BattleVoteLightbox
+          photos={photos}
+          currentUserVotes={currentUserVotes}
+          getUserVotes={this.getStatusCurrentUser}
+        />
       </div>
     )
   }

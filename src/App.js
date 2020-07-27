@@ -21,6 +21,7 @@ import MyPictures from './components/pages/MyPictures'
 import MyRanking from './components/pages/MyRanking'
 import MySettings from './components/pages/MySettings'
 import MySettingsAvatar from './components/pages/MySettingsAvatar'
+import MySettingsGroups from './components/pages/MySettingsGroups'
 import PrivateRoute from './components/shared/PrivateRoute'
 import Cgu from './components/pages/Cgu'
 
@@ -34,8 +35,8 @@ const App = () => {
         <PrivateRoute path='/battle-creation/rule' component={CreationBattleRule} />
         <PrivateRoute path='/battle-creation/theme' component={CreationBattleTheme} />
         <PrivateRoute path='/battle-creation/summary' component={CreationBattleSummary} />
-        <PrivateRoute path='/group-creation/group-created/:id' component={CreationSteps} />
-        <PrivateRoute path='/battle-creation/group-created/:id' component={CreationBattleSteps} />
+        <PrivateRoute path='/group-creation' component={CreationSteps} />
+        <PrivateRoute path='/battle-creation' component={CreationBattleSteps} />
         <PrivateRoute exact path='/:username' component={MyProfile} />
         <PrivateRoute exact path='/:username/groups' component={MyGroups} />
         <PrivateRoute path='/:username/ranking' component={MyRanking} />
@@ -49,6 +50,7 @@ const App = () => {
         <PrivateRoute path='/groups/:groupId/battles/:battleId/vote/participants' component={BattleVoteParticipants} />
         <PrivateRoute path='/:username/settings/connexion' component={MySettings} />
         <PrivateRoute path='/:username/settings/informations' component={MySettingsAvatar} />
+        <PrivateRoute path='/groups/:groupId/settings' component={MySettingsGroups} />
       </Switch>
       <Cgu />
     </div>

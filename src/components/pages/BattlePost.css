@@ -33,11 +33,16 @@
 }
 
 .picture {
-  width: 70%;
-  background-color: #FAC748;
+  width: 70vw;
   border-radius: 10px;
   margin: auto;
   object-fit: contain;
+  margin-bottom: 1rem;
+  max-height: 30vh;
+}
+
+.fa-image {
+  font-size: 10rem;
 }
 
 .choose-file-btn {
@@ -60,4 +65,16 @@
   font-size: 1rem;
   outline: transparent;
   background-color: #FAC748;
+}
+
+[type='file'] {
+  height: 0;
+  overflow: hidden;
+  width: 0;
+}
+
+[type='file']+.choose-file-btn {
+  text-decoration: underline;
+  cursor: pointer;
+  margin-right: 1rem;
 }

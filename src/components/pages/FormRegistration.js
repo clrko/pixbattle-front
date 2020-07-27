@@ -2,11 +2,14 @@ import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import { LOGIN } from '../../store/action-types'
 import classNames from 'classnames'
+import 'react-toastify/dist/ReactToastify.css'
 import './FormLogin.css'
 import './FormRegistration.css'
 
+toast.configure()
 class FormRegistration extends React.Component {
   state = {
     username: '',
@@ -28,7 +31,8 @@ class FormRegistration extends React.Component {
   }
 
   checkUsername = () => {
-    if (/^[a-zA-Z0-9]+$/.test(this.state.username)) {
+    const { username } = this.state
+    if (/^[a-zA-Z0-9]+$/.test(this.state.username) && (username.length >= 3 && username.length <= 15)) {
       return (this.state.username)
     }
   }
@@ -39,7 +43,7 @@ class FormRegistration extends React.Component {
 
   checkPassword = () => {
     const { password, checkPassword } = this.state
-    return (password === checkPassword)
+    return (password === checkPassword && password.length >= 6)
   }
 
   handleSubmit = e => {
@@ -49,14 +53,43 @@ class FormRegistration extends React.Component {
       axios
         .post(`${process.env.REACT_APP_SERVER_URL}/register`, this.state)
         .then(res => {
+          this.notifySuccess()
           localStorage.setItem('token', res.headers['x-access-token'])
           dispatch({ type: LOGIN, ...res.data })
           history.push(`/${res.data.username}`)
+          return this.props.onClose(e)
+        })
+        .catch(err => {
+          if (err.response.status === 409) {
+            this.notifyAlreadyRegister()
+          } else {
+            this.notifyError()
+          }
         })
     } else {
-      alert('une erreur est survenue')
+      this.notifyError()
     }
-    return this.props.onClose(e)
+  }
+
+  notifySuccess = () => {
+    toast.success('Bienvenue !', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
+  }
+
+  notifyAlreadyRegister = () => {
+    toast.error('Tu es déjà inscrit-e', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
+  }
+
+  notifyError = () => {
+    toast.error('Une erreur est survenue', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
   }
 
   componentDidMount () {
@@ -74,7 +107,7 @@ class FormRegistration extends React.Component {
     const emailClass = classNames('LoginForm-input', { 'LoginForm-passwordError': emailError })
     const usernameClass = classNames('LoginForm-input', { 'LoginForm-passwordError': usernameError })
     return (
-      <form className='register-form'>
+      <form className='register-form' onSubmit={this.handleSubmit}>
         <div className='login-inside LoginForm-div checkUsername-wrapper'>
           <label className='LoginForm-label'>Pseudo</label>
           <input
@@ -146,19 +179,20 @@ class FormRegistration extends React.Component {
           />
           <label className='label-UGC'>Conditions générales d'utilisations</label>
         </div>
-        <div>
-          <input
-            className='LoginForm-cancelButton'
+        <div className='div-buttonValidateCancel'>
+          <button
+            className='FormLogin-button LoginForm-cancelButton'
             type='button'
-            value='Annuler'
             onClick={this.props.onClose}
-          />
-          <input
-            className='LoginForm-validateButton'
+          >
+            Annuler
+          </button>
+          <button
+            className='FormLogin-button LoginForm-validateButton'
             type='submit'
-            value='Valider'
-            onClick={this.handleSubmit}
-          />
+          >
+            Valider
+          </button>
         </div>
       </form>
     )

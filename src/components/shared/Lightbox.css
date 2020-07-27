@@ -184,3 +184,9 @@
 .votes {
   margin-top: 0.5rem;
 }
+
+.no-photo-info {
+  color: white;
+  text-align: center;
+  margin-top: 1rem;
+}

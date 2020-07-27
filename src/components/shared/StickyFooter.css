@@ -1,15 +1,15 @@
-.div-StickyFooter {
+.StickyFooter {
   display: flex;
   width: 100%;
   height: 60px;
   justify-content: space-evenly;
   align-items: center;
   background-color: #FAC748;
-  position: absolute;
+  position: fixed;
   bottom: 0;
 }
 
-.div-camera-StickyFooter {
+.StickyFooter-link {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,58 +21,45 @@
   cursor: pointer;
 }
 
-.div-camera-StickyFooter:hover {
+.StickyFooter-link:hover,
+.StickyFooter .active {
   background-color: #235789;
   color: #FAC748;
 }
 
-.div-users-StickyFooter {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
+.StickyFooter i[class^="fa"] {
   color: #235789;
-  font-weight: bold;
-  cursor: pointer;
+  font-size: 1.8rem;
 }
 
-.div-users-StickyFooter:hover {
-  background-color: #235789;
+.StickyFooter .active i[class^="fa"] {
   color: #FAC748;
-}
-
-.div-user-StickyFooter {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  color: #235789;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.div-user-StickyFooter:hover {
-  background-color: #235789;
-  color: #FAC748;
-}
-
-.fa-camera,
-.fa-users,
-.fa-user-circle {
-  color: #235789;
-  font-size: 2rem;
 }
 
 .footer-title {
   font-size: 1.2rem;
 }
 
+@media screen and (min-width: 370px) and (max-width: 414px) {
+  .StickyFooter i[class^="fa"] {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 369px) {
+  .StickyFooter {
+    height: 42px;
+  }
+  .StickyFooter-link .footer-title {
+    font-size: 80%;
+  }
+  .StickyFooter i[class^="fa"] {
+    font-size: 1.1rem;
+  }
+}
+
 @media screen and (min-width: 600px) {
-  .div-StickyFooter {
+  .StickyFooter {
     display: none;
   }
 }

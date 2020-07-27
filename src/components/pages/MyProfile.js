@@ -1,6 +1,6 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
-import axios from 'axios'
 import DropDownMyProfile from '../shared/DropDownMyProfile'
 import Loader from 'react-loader-spinner'
 import './MyProfile.css'
@@ -11,25 +11,7 @@ const mapStateToProps = state => {
   return { user, profileInfos }
 }
 
-const MyProfile = ({ user, profileInfos, history }) => {
-  const handleCreateGroupe = e => {
-    e.preventDefault()
-    axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/group-creation`, {},
-        {
-          headers: {
-            authorization: `Bearer ${localStorage.getItem('token')}`
-          }
-        }
-      )
-      .then(res => {
-        const groupId = res.data.groupId
-        history.push({
-          pathname: `/group-creation/group-created/${groupId}`
-        })
-      })
-  }
-
+const MyProfile = ({ user, profileInfos }) => {
   if (!profileInfos) {
     return (
       <div style={{ width: 'auto', margin: 'auto', textAlign: 'center' }}>
@@ -43,14 +25,14 @@ const MyProfile = ({ user, profileInfos, history }) => {
       <DropDownMyProfile />
       <div className='window-MyProfile'>
         <div className='name-fa-star-MyProfile'>
-          <h1 className='name-MyProfile'>{user.username}
-            <i className='fa fa-star fa-lg star-icon-MyProfile'>
+          <h2 className='name-MyProfile'>{user.username}
+            <i className='fas fa-trophy trophy-icon-MyProfile'>
               <p className='p-victory-point-MyProfile'>{!profileInfos.infos ? '0' : profileInfos.infos.victories}</p>
             </i>
-          </h1>
+          </h2>
         </div>
         <div className='div-avatar-Myprofile'>
-          <img className='avatar-MyProfile' src={user.avatar} alt='avatar' placeholder='https://oasys.ch/wp-content/uploads/2019/03/photo-avatar-profil.png' />
+          <img className='avatar-MyProfile' src={user.avatar} alt='avatar' />
         </div>
         <div className='div-informations-MyProfile'>
           {
@@ -68,7 +50,7 @@ const MyProfile = ({ user, profileInfos, history }) => {
                 </div>
               )
           }
-          <button className='button-createdNewGroup-MyProfile' onClick={handleCreateGroupe}>Créer un nouveau groupe</button>
+          <NavLink to='/group-creation' className='button-createdNewGroup-MyProfile'>Créer un nouveau groupe</NavLink>
         </div>
       </div>
     </div>

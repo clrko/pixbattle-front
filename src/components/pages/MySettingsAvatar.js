@@ -1,13 +1,29 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { LOGIN } from '../../store/action-types'
 import DropDownSettings from '../shared/DropDownSettings'
 import axios from 'axios'
+import classnames from 'classnames'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import './MySettings.css'
 
+const mapStateToProps = state => {
+  const { user } = state
+  return { user }
+}
+
 class MySettingsAvatar extends Component {
-  state = {
-    newUsername: '',
-    avatars: [],
-    selectedAvatar: 0
+  constructor (props) {
+    super(props)
+    const { user } = this.props
+    const newUsername = user ? user.username : ''
+    this.state = {
+      newUsername,
+      avatars: [],
+      selectedAvatar: 0,
+      selectedAvatarUrl: ''
+    }
   }
 
   handleChangeUsername = e => {
@@ -15,7 +31,10 @@ class MySettingsAvatar extends Component {
   }
 
   handleChangeAvatar = e => {
-    this.setState({ [e.target.name]: e.target.id })
+    this.setState({
+      selectedAvatar: Number(e.target.id),
+      selectedAvatarUrl: e.target.value
+    })
   }
 
   checkUsername = () => {
@@ -26,24 +45,41 @@ class MySettingsAvatar extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    const { newUsername, selectedAvatar } = this.state
+    const { newUsername, selectedAvatar, selectedAvatarUrl } = this.state
+    const { dispatch } = this.props
     if ((newUsername && this.checkUsername()) || selectedAvatar) {
       axios
         .put(`${process.env.REACT_APP_SERVER_URL}/profile/settings/informations`,
-          { newUsername, selectedAvatar },
+          { newUsername, selectedAvatar, selectedAvatarUrl },
           {
             headers: {
               authorization: `Bearer ${localStorage.getItem('token')}`
             }
           })
         .then(res => {
-          alert('Les modifications ont bien été enregistrées')
+          const token = res.headers['x-access-token']
+          localStorage.setItem('token', token)
+          dispatch({ type: LOGIN, ...res.data })
           this.setState({ newUsername: '' })
-          // mettre à jour le store
+          this.notifySuccess()
         })
     } else {
-      alert('Seuls les lettres et les chiffres sont autorisés')
+      this.notifyError()
     }
+  }
+
+  notifySuccess = () => {
+    toast.success('Les modifications ont bien été enregistrées !', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
+  }
+
+  notifyError = () => {
+    toast.error('Seuls les lettres et les chiffres sont autorisés', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
   }
 
   componentDidMount () {
@@ -54,7 +90,16 @@ class MySettingsAvatar extends Component {
             authorization: `Bearer ${localStorage.getItem('token')}`
           }
         })
-      .then(res => this.setState({ avatars: res.data }))
+      .then(res => {
+        const { user } = this.props
+        const avatarUrl = user.avatar
+        const avatar = res.data.find(avatar => avatar.avatar_url === avatarUrl)
+        this.setState({
+          avatars: res.data,
+          selectedAvatar: avatar.avatar_id,
+          selectedAvatarUrl: avatarUrl
+        })
+      })
   }
 
   render () {
@@ -90,11 +135,17 @@ class MySettingsAvatar extends Component {
                           type='radio'
                           name='selectedAvatar'
                           value={avatar.avatar_url}
-                          checked={selectedAvatar.avatar_id === avatar.avatar_id}
+                          checked={selectedAvatar === avatar.avatar_id}
                           onChange={this.handleChangeAvatar}
                           id={avatar.avatar_id}
                         />
-                        <img className='card-avatar-settings' src={avatar.avatar_url} alt={avatar.avatar_url} />
+                        <img
+                          className={classnames('card-avatar-settings', {
+                            'card-avatar-settings-selected': selectedAvatar === avatar.avatar_id
+                          })}
+                          src={avatar.avatar_url}
+                          alt={avatar.avatar_url}
+                        />
                       </label>
                     </div>
                   ))
@@ -116,4 +167,4 @@ class MySettingsAvatar extends Component {
   }
 }
 
-export default MySettingsAvatar
+export default connect(mapStateToProps)(MySettingsAvatar)
