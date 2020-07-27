@@ -1,18 +1,17 @@
 .CGU-background {
     display: flex;
-    justify-content: center;
-    background-color: #235789;
-    height: 100%;
-    width: 100vw;
+    justify-content: flex-end;
+    background-color: #3181c8;
+    height: 68vh;
+    width: 85%;
 }
 
 .CGU-TextDecoration {
-    width: 80%;
-    background-color: #fca748;
-    border: solid #13293d 5px;
+    width: 85%;
+    background-color: #235789;
     border-radius: 20px;
-    padding: 40px;
-    color: #13293d;
+    padding: 15px;
+    color: white;
 }
 
 h5 {
@@ -37,11 +36,18 @@ p {
     margin-top: 10px;
 }
 
-.scrollBar {
-    width: 300px;
-    height: 650px;
-    overflow: auto;
-    scrollbar-color: rebeccapurple green;
-    scrollbar-width: none;
+.emails-container {
+    width: 85%;
+    height: 68vh;
+    overflow: scroll;
 }
 
+.emails-container::-webkit-scrollbar {
+    width: 5px;
+    height: 0%;
+  }
+
+.emails-container::-webkit-scrollbar-thumb {
+    background-color: #FAC748;
+    border-radius: 10px;
+  }

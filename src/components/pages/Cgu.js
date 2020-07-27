@@ -4,7 +4,7 @@ import './Cgu.css'
 const Cgu = () => {
   return (
     <section className='CGU-background'>
-      <div className='CGU-TextDecoration scrollBar'>
+      <div className='CGU-TextDecoration emails-container emails-container::-webkit-scrollbar-thumb '>
         <h5>Conditions générales d’utilisation du site Pix Battle</h5>
         <h6>Article 1 : Objet</h6>
         <p>Les présentes CGU ou Conditions Générales d’Utilisation encadrent juridiquement l’utilisation des services du site Pix Battle (ci-après dénommé « le site »).<br /> Constituant le contrat entre la société Pix Battle, l’Utilisateur, l’accès au site doit être précédé de l’acceptation de ces CGU. L’accès à cette plateforme signifie l’acceptation des présentes CGU.
