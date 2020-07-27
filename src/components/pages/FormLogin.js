@@ -13,16 +13,11 @@ class FormLogin extends React.Component {
   state = {
     email: '',
     password: '',
-    invitationCode: null,
-    isChecked: false
+    invitationCode: null
   }
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value })
-  }
-
-  handleCheckbox = e => {
-    this.setState({ isChecked: e.target.checked })
   }
 
   checkEmail = () => {
@@ -78,7 +73,7 @@ class FormLogin extends React.Component {
   }
 
   render () {
-    const { email, password, isChecked } = this.state
+    const { email, password } = this.state
     return (
       <form className='login-form' onSubmit={this.handleSubmit}>
         <div className='login-inside LoginForm-div'>
@@ -101,16 +96,6 @@ class FormLogin extends React.Component {
             name='password'
             required
           />
-        </div>
-        <div className='LoginForm-checkboxAlign LoginForm-div div-label-remember'>
-          <input
-            className='LoginForm-checkbox'
-            name='acceptedTerms'
-            type='checkbox'
-            checked={isChecked}
-            onChange={this.handleCheckbox}
-          />
-          <label className='label-remember'>Se souvenir de moi</label>
         </div>
         <div className='div-buttonFormLogin'>
           <button
