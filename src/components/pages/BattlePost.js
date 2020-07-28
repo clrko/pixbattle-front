@@ -51,13 +51,44 @@ class BattlePost extends React.Component {
       })
   }
 
+  compress = () => {
+    const { file } = this.state
+    const fileName = file.name
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = event => {
+      const img = new Image()
+      img.src = event.target.result
+      img.onload = () => {
+        const width = 1000
+        const scaleFactor = width / img.width
+        const elem = document.createElement('canvas')
+        elem.width = width
+        elem.height = img.height * scaleFactor
+        const ctx = elem.getContext('2d')
+        ctx.drawImage(img, 0, 0, width, img.height * scaleFactor)
+        // img.width and img.height will contain the original dimensions
+        ctx.canvas.toBlob((blob) => {
+          const resizedFile = new File([blob], fileName, {
+            type: 'image/jpeg',
+            lastModified: Date.now()
+          })
+          this.setState({
+            file: resizedFile
+          })
+        }, 'image/jpeg', 1)
+      }
+      reader.onerror = error => console.log(error)
+    }
+  }
+
   handleChange = event => {
     const file = event.target.files[0]
     this.setState({
       selectedFile: URL.createObjectURL(file),
       file,
       loaded: 0
-    })
+    }, this.compress)
   }
 
   handleClick = () => {

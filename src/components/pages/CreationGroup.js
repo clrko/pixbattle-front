@@ -90,8 +90,18 @@ class CreationGroup extends Component {
     e.preventDefault()
     const { dispatch } = this.props
     const { allEmails, groupName } = this.state
-    dispatch({ type: ADD_GROUP, emails: allEmails, groupName })
-    return this.props.changeStep(e)
+    if (groupName.length !== 0) {
+      dispatch({ type: ADD_GROUP, emails: allEmails, groupName })
+      return this.props.changeStep(e)
+    }
+    this.notifyErrorGroupName()
+  }
+
+  notifyErrorGroupName = () => {
+    toast.error('Tu dois donner un nom à ton groupe', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
   }
 
   handleCancelCreation = e => {
