@@ -19,7 +19,16 @@ const Navbar = ({ user, profileInfos, dispatch, history }) => {
 
   return (
     <div className='div-NavbarMobile'>
-      <Link to={`/${user.username}`} className='link-logo'><img src={logoLP} className='logo-NavbarMobile' alt='Pix Battle Logo' /></Link>
+      <Link
+        to={`/${user.username}`}
+        className='link-logo'
+      >
+        <img
+          src={logoLP}
+          className='logo-NavbarMobile'
+          alt='Pix Battle Logo'
+        />
+      </Link>
       <div className='links-NavbarMobile'>
         <img className='avatar-NavbarMobile' src={user.avatar} alt='avatar' />
         <span className='Navbar-trophy-wrapper'>

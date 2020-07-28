@@ -7,13 +7,13 @@
 }
 
 .link-logo {
-  width: 42%;
+  width: 45%;
   height: 100%;
-  display: flex;
-  align-items: center;
+  display: inline-block;
 }
 
 .logo-NavbarMobile {
+  display: block;
   max-width: 150px;
   padding-left: 4px;
   cursor: pointer;
@@ -76,7 +76,6 @@
 
 @media screen and (min-width: 600px) {
   .link-logo {
-    width: auto;
     height: 100%;
     display: flex;
     align-items: center;
@@ -114,12 +113,24 @@
 }
 
 @media screen and (max-height: 570px) {
+  .div-NavbarMobile {
+    margin-bottom: 0;
+  }
+
+  .link-logo {
+    margin-right: 5px;
+  }
+
   .links-NavbarMobile {
     margin-right: 11px;
   }
 
   .fa-sign-out-alt {
     font-size: 2.2rem;
+  }
+
+  .avatar-NavbarMobile {
+    padding: 7px 10px;
   }
 
   .Navbar-trophy-wrapper {
