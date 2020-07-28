@@ -92,10 +92,11 @@
   height: 30px;
   margin-left: 5%;
   width: fit-content;
+  outline: transparent;
 }
 
-.settings-btn {
-  margin-left: 0;
+.settings-btn-add-user {
+  margin-left: 30%;
 }
 
 .settings-remove-email {
@@ -109,4 +110,10 @@
 
 .green {
   color: green
+}
+
+.align-flex-end {
+  align-self: flex-end;
+  margin-right: 5%;
+  margin-bottom: 5%;
 }
