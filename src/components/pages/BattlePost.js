@@ -155,7 +155,7 @@ class BattlePost extends React.Component {
         {preview}
         <div className='upload-file'>
           <input type='file' name='file' id='file' accept='image/png, image/jpeg' onChange={this.handleChange} />
-          <label for='file' className='choose-file-btn'>Choisis une photo</label>
+          <label htmlFor='file' className='choose-file-btn'>Choisis une photo</label>
           <button className='upload-ButtonPostpicture' type='button' onClick={this.handleClick}>Upload</button>
         </div>
       </>
@@ -165,7 +165,7 @@ class BattlePost extends React.Component {
   render () {
     const { themeName, deadline, rulesNames } = this.state
     return (
-      <div className='background-MyProfile'>
+      <div className='BattlePost background-MyProfile'>
         <DropDownPost />
         <div className='window-MyProfile battle-post-container'>
           <BattlePostTimer onDeadlineReached={this.handleDeadlineReached} deadline={deadline} />

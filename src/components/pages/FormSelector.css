@@ -29,6 +29,12 @@
 
 @media screen and (max-height: 570px) {
   .TabSelector button {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
+  }
+  .TabSelector button:nth-of-type(1) {
+    border-top-left-radius: 25px;
+  }
+  .TabSelector button:nth-of-type(2) {
+    border-top-right-radius: 25px;
   }
 }

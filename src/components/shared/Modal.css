@@ -39,8 +39,14 @@
 
 @media screen and (max-width: 500px) {
   .ModalComponent {
-    width: 85%;
+    width: 90%;
     height: auto;
-    margin-top: 3vh;
+    margin-top: 1.5vh;
+  }
+}
+
+@media screen and (max-height: 640px) {
+  .modal-title-container {
+    display: none;
   }
 }

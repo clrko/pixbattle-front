@@ -17,7 +17,7 @@
   flex-direction: column;
   align-items: center;
   width: 85%;
-  height: 68vh;
+  max-height: 67vh;
   border-radius: 15px;
   padding: 15px;
   overflow-y: scroll;
@@ -46,13 +46,11 @@
 }
 
 .MyGroups-card-title {
-  align-self: flex-start;
   font-size: 15px;
   font-weight: 200;
 }
 
 .MyGroups-card-battle {
-  align-self: flex-start;
   color: #FDFFFC;
   font-size: 14px;
 }
