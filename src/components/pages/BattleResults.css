@@ -217,4 +217,24 @@
     width: auto;
     height: auto;
   }
+
+  .div-img-Avatar1 img {
+    width: 60px;
+  }
+
+  .div-img-Avatar2 img {
+    width: 60px;
+  }
+
+  .div-img-Avatar3 img {
+    width: 60px;
+  }
+
+  .AvatarPodium .fa-star {
+    font-size: 1.1rem;
+  }
+
+  .button-BattleResults {
+    padding: 5px;
+  }
 }
