@@ -59,3 +59,18 @@
 .avatar-btn-settings+.card-avatar-settings {
   cursor: pointer;
 }
+
+.AC-VB-Margin {
+  height: 40px;
+  width: 100px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: FuturaPTMedium;
+  font-size: 15px;
+  border-style: none;
+  outline: none;
+  font-weight: bolder;
+  letter-spacing: 0.5px;
+  color: white;
+  background-color: #73db5a;
+}
