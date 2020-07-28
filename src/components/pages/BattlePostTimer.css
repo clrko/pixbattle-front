@@ -23,3 +23,16 @@
   color: #235785;
   font-weight: 600;
 }
+
+@media screen and (max-height: 570px) {
+  .battle-post-timer-count {
+    width: 46px;
+    height: 46px;
+    font-size: 0.9em;
+    margin: 0.25rem;
+  }
+
+  .battle-post-timer-container span {
+    font-size: 1.6rem;
+  }
+}
