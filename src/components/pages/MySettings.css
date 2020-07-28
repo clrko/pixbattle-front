@@ -74,3 +74,15 @@
   color: white;
   background-color: #73db5a;
 }
+
+@media screen and (max-width: 369px) {
+  .AC-VB-Margin {
+    height: 25px;
+    width: 70px;
+  }
+
+  .settings-avatar-page {
+    justify-content: center;
+    width: 101%;
+  }
+}
