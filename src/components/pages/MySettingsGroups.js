@@ -185,8 +185,8 @@ const MySettingsGroups = ({ user, match, location }) => {
             >
               <i className={
                 count < 12
-                  ? 'fas fa-plus-circle email-enabled settings-btn'
-                  : 'fas fa-plus-circle email-disabled settings-btn'
+                  ? 'fas fa-plus-circle email-enabled settings-btn-add-user'
+                  : 'fas fa-plus-circle email-disabled settings-btn-add-user'
               }
               />
             </button>
@@ -204,7 +204,7 @@ const MySettingsGroups = ({ user, match, location }) => {
               ))
             }
           </ul>
-          <button className='button-validate-modification' onClick={handleValidateNewMembers}>Valider</button>
+          <button className='button-validate-modification align-flex-end' onClick={handleValidateNewMembers}>Valider</button>
         </div>
       </div>
     </div>
