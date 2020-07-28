@@ -203,3 +203,18 @@
   right: 21px;
   top: 7px;
 }
+
+@media screen and (max-width: 369px) {
+  .first-position {
+    padding: 0px 20px;
+  }
+
+  .h1-div-congratulations {
+    font-size: 1.1rem;
+  }
+
+  .div-attendee-list {
+    width: auto;
+    height: auto;
+  }
+}

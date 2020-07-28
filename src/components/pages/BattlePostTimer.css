@@ -23,3 +23,10 @@
   color: #235785;
   font-weight: 600;
 }
+
+@media screen and (max-width: 369px) {
+  .battle-post-timer-count {
+    width: 40px;
+    font-size: 0.8rem;
+  }
+}
