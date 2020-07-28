@@ -127,7 +127,7 @@ class BattleResults extends React.Component {
                   </div>
                   <div className='margin-fa-star-attendee-list'>
                     <i className='fas fa-star fa-star-attendee-list'>
-                      <p className='p-user-victories'>{u.score}</p>
+                      <p className='p-user-victories'>{u.score ? u.score : '0'}</p>
                     </i>
                   </div>
                 </div>
