@@ -23,8 +23,7 @@ class LandingPageInvitedUser extends Component {
         <button className='landing-join-button' onClick={this.handleOpenModal}>
           REJOINDRE
         </button>
-        <Modal isOpen={this.state.isOpen}>
-
+        <Modal isOpen={this.state.isOpen} showLogo>
           <FormContainer onClose={this.handleOpenModal} invitationCode={this.props.match.params.code} />
         </Modal>
       </div>
