@@ -22,11 +22,22 @@ const Navbar = ({ user, profileInfos, dispatch, history }) => {
       <Link to={`/${user.username}`} className='link-logo'><img src={logoLP} className='logo-NavbarMobile' alt='Pix Battle Logo' /></Link>
       <div className='links-NavbarMobile'>
         <img className='avatar-NavbarMobile' src={user.avatar} alt='avatar' />
-        <i className='fas fa-trophy star-icon-NavbarMobile'><p className='p-victory-point-NavbarMobile'>{!profileInfos.infos ? '0' : profileInfos.infos.victories}</p></i>
-        <div className='Logout'>
-          <p className='p-Logout' onClick={handleLogOut}>Déconnexion</p>
-        </div>
-        <i className='fas fa-sign-out-alt' onClick={handleLogOut} />
+        <span className='Navbar-trophy-wrapper'>
+          <i className='fas fa-trophy Navbar-trophy-icon' />
+          <span
+            className='Navbar-victory-points'
+          >
+            {!profileInfos.infos ? '0' : profileInfos.infos.victories}
+          </span>
+        </span>
+        <button
+          type='button'
+          className='btn-Logout'
+          onClick={handleLogOut}
+        >
+          <span className='Logout-text'>Déconnexion</span>
+          <i className='fas fa-sign-out-alt' />
+        </button>
       </div>
     </div>
   )
