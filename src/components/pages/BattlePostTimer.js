@@ -1,14 +1,14 @@
 import React from 'react'
 import Loader from 'react-loader-spinner'
 import Timer from 'react-compound-timer'
+import moment from 'moment'
 import './BattlePostTimer.css'
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 
 const BattlePostTimer = ({ deadline, onDeadlineReached }) => {
-  const startDate = new Date()
-  const endDate = new Date(deadline)
-  const utc = startDate.getTime() + (startDate.getTimezoneOffset() * 60000)
-  const difference = (endDate.getTime() - utc)
+  const startDate = moment()
+  const endDate = moment(deadline)
+  const difference = endDate.diff(startDate)
 
   if (!deadline) {
     return (
