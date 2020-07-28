@@ -7,7 +7,7 @@ const ListRankingMembers = ({ listParticipants, getIcon }) => {
       {listParticipants.map((p, i) => (
         <div key={i} className='div-participants-RankingMembers'>
           <div className='margin-div-participant-RankingMembers'>
-            <p className='p-div-participant-RankingMembers'>{p.user_id}.</p>
+            <p className='p-div-participant-RankingMembers'>{i + 1}.</p>
           </div>
           <div className='margin-div-participant-RankingMembers'>
             <img className='img-attendee-list-RankingMembers' src={p.avatar_url} alt='avatar' />
