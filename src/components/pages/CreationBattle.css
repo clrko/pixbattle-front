@@ -73,9 +73,9 @@
 
 .cardBattle-summary button {
   margin-bottom: 0;
-  background-color: #73db5a;
+  /* background-color: #73db5a; */
   color: white;
-  padding: 10px 10px;
+  /* padding: 10px 10px; */
   text-transform: uppercase;
   margin: 8px;
   width: 110px;
@@ -232,5 +232,47 @@
 
   .cardBattle-summary {
     margin: 50px 50px;
+  }
+}
+
+@media screen and (max-width: 369px) {
+  .cardBattle {
+    min-height: 65vh;
+  }
+
+  .battle-optionButton {
+    padding: 5px 5px;
+    margin: 8px;
+  }
+
+  .children-cardBattle-summary {
+    height: 90vh;
+  }
+
+  .div-button-refreshed {
+    margin-top: 20px;
+  }
+
+  .refreshButton {
+    height: 30px;
+    width: 30px;
+  }
+
+  .battleCreation-validateButton-disable {
+    color: white;
+    background-color: lightgray;
+    color: rgb(146, 146, 146);
+    height: 30px;
+    width: 80px;
+  }
+
+  .battleCreation-validateButton {
+    height: 30px;
+    width: 80px;
+  }
+
+  .battleCreation-cancelButton {
+    height: 30px;
+    width: 80px;
   }
 }

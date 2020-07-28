@@ -190,3 +190,9 @@
   text-align: center;
   margin-top: 1rem;
 }
+
+@media screen and (max-width: 369px) {
+  .gallery-lightbox-container {
+    height: 70vh;
+  }
+}

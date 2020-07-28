@@ -15,7 +15,6 @@
   align-items: center;
   justify-content: space-between;
   width: 85%;
-  /* height: 68vh; */
   border-radius: 15px;
   padding: 20px;
 }
@@ -98,7 +97,7 @@
 
 @media screen and (max-width: 369px) {
   .avatar-MyProfile {
-    max-width: 100px;
+    max-width: 120px;
   }
 
   .window-MyProfile {
@@ -112,13 +111,14 @@
   .name-MyProfile {
     font-size: 1.5rem;
     font-weight: 400;
+    margin-top: 10px;
   }
 
   .div-avatar-Myprofile {
-    margin-top: 5px;
+    margin-top: 20px;
   }
 
-  .button-createdNewGroup-MyProfile {
-    margin-top: 10px;
+  .div-informations-MyProfile {
+    margin-top: 13px;
   }
 }
