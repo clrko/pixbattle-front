@@ -113,6 +113,7 @@ const MySettingsGroups = ({ user, match, location }) => {
           }
         })
       .then(res => {
+        setAllEmails([])
         notifySuccess()
       })
   }
