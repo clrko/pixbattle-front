@@ -14,7 +14,6 @@ const mapStateToProps = state => {
 
 const MySettingsGroups = ({ user, match, location }) => {
   const [groupName, setGroupName] = useState('')
-  const [isGroupName, setIsGroupName] = useState(false)
   const [listGroupMembers, setListGroupMembers] = useState([])
   const [email, setEmail] = useState('')
   const [count, setCount] = useState(0)
@@ -34,8 +33,6 @@ const MySettingsGroups = ({ user, match, location }) => {
             }
           })
         .then(res => {
-          setIsGroupName(true)
-          // window.location.reload(true)
           notifySuccessGroupName()
         })
     }
@@ -108,7 +105,7 @@ const MySettingsGroups = ({ user, match, location }) => {
 
   const handleValidateNewMembers = e => {
     axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/group/${match.params.groupId}`,
+      .post(`${process.env.REACT_APP_SERVER_URL}/group/add-members/${match.params.groupId}`,
         { allEmails },
         {
           headers: {
@@ -116,6 +113,7 @@ const MySettingsGroups = ({ user, match, location }) => {
           }
         })
       .then(res => {
+        setAllEmails([])
         notifySuccess()
       })
   }
@@ -163,9 +161,7 @@ const MySettingsGroups = ({ user, match, location }) => {
               />
               <p className={groupName.length < 5 ? 'infoSettings' : 'infoSettings green'}>Entre 5 et 25 caractères</p>
             </div>
-            {
-              !isGroupName && <button className='button-validate-modification' onClick={handleChosenName}>Valider</button>
-            }
+            <button className='button-validate-modification' onClick={handleChosenName}>Valider</button>
           </div>
         </form>
         <div className='setting-group-container participants'>
@@ -190,8 +186,8 @@ const MySettingsGroups = ({ user, match, location }) => {
             >
               <i className={
                 count < 12
-                  ? 'fas fa-plus-circle email-enabled settings-btn'
-                  : 'fas fa-plus-circle email-disabled settings-btn'
+                  ? 'fas fa-plus-circle email-enabled settings-btn-add-user'
+                  : 'fas fa-plus-circle email-disabled settings-btn-add-user'
               }
               />
             </button>
@@ -209,7 +205,7 @@ const MySettingsGroups = ({ user, match, location }) => {
               ))
             }
           </ul>
-          <button className='button-validate-modification' onClick={handleValidateNewMembers}>Valider</button>
+          <button className='button-validate-modification align-flex-end' onClick={handleValidateNewMembers}>Valider</button>
         </div>
       </div>
     </div>
