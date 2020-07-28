@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
+import { confirmAlert } from 'react-confirm-alert'
 import { toast } from 'react-toastify'
 import BattlePostTimer from './BattlePostTimer'
 import DropDownPost from '../shared/DropDownPost'
@@ -65,19 +66,31 @@ class BattlePost extends React.Component {
     const { battleId, groupId } = this.props.match.params
     data.append('battleId', battleId)
     data.append('groupId', groupId)
-    axios.post(`${process.env.REACT_APP_SERVER_URL}/battle/battle-post/addpicture`, data,
-      {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem('token')}`
+    confirmAlert({
+      message: 'Ce choix est défitif, es-tu sûr-e de vouloir envoyer cette photo ?',
+      buttons: [
+        {
+          label: 'Oui',
+          onClick: () => axios
+            .post(`${process.env.REACT_APP_SERVER_URL}/battle/battle-post/addpicture`, data,
+              {
+                headers: {
+                  authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+              })
+            .then(res => {
+              this.notifySuccess()
+              this.setState({ hasPosted: true })
+            })
+            .catch(() => {
+              this.notifyError()
+            })
+        },
+        {
+          label: 'Non'
         }
-      })
-      .then(res => {
-        this.notifySuccess()
-        this.setState({ hasPosted: true })
-      })
-      .catch(() => {
-        this.notifyError()
-      })
+      ]
+    })
   }
 
   notifySuccess = () => {
