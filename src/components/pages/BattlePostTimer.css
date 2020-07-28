@@ -36,3 +36,10 @@
     font-size: 1.6rem;
   }
 }
+
+@media screen and (max-width: 369px) {
+  .battle-post-timer-count {
+    width: 40px;
+    font-size: 0.8rem;
+  }
+}

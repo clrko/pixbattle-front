@@ -57,9 +57,3 @@
     font-size: 1.1rem;
   }
 }
-
-@media screen and (min-width: 600px) {
-  .StickyFooter {
-    display: none;
-  }
-}

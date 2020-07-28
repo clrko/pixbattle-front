@@ -108,7 +108,7 @@ class BattleResults extends React.Component {
             <h1 className='h1-div-congratulations'>Félicitations {users[0].username} !</h1>
             {
               !pendingBattle && user.userId === users[0].user_id
-                ? <button className='button-createdNewGroup-MyProfile button-div-congratulations' onClick={this.handleCreateBattle}>Crée la prochaine battle</button>
+                ? <button className='button-createdNewGroup-MyProfile button-div-congratulations button-BattleResults' onClick={this.handleCreateBattle}>Crée la prochaine battle</button>
                 : <div className='button-div-congratulations-empty' />
             }
           </div>

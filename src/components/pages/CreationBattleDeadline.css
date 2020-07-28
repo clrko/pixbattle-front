@@ -256,3 +256,9 @@ td.rdtYear:hover {
   color: #235789;
   font-weight: bold;
 }
+
+@media screen and (max-width: 369px) {
+  .rdt input {
+    width: auto;
+  }
+}

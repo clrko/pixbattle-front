@@ -203,3 +203,38 @@
   right: 21px;
   top: 7px;
 }
+
+@media screen and (max-width: 369px) {
+  .first-position {
+    padding: 0px 20px;
+  }
+
+  .h1-div-congratulations {
+    font-size: 1.1rem;
+  }
+
+  .div-attendee-list {
+    width: auto;
+    height: auto;
+  }
+
+  .div-img-Avatar1 img {
+    width: 60px;
+  }
+
+  .div-img-Avatar2 img {
+    width: 60px;
+  }
+
+  .div-img-Avatar3 img {
+    width: 60px;
+  }
+
+  .AvatarPodium .fa-star {
+    font-size: 1.1rem;
+  }
+
+  .button-BattleResults {
+    padding: 5px;
+  }
+}

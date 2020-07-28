@@ -88,3 +88,9 @@
     height: 64vh;
   }
 }
+
+@media screen and (max-width: 369px) {
+  .window-RankingMembers {
+    height: 70vh;
+  }
+}
