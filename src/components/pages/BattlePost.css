@@ -41,7 +41,7 @@
   max-height: 30vh;
 }
 
-.fa-image {
+.BattlePost .fa-image {
   font-size: 10rem;
 }
 
@@ -77,4 +77,10 @@
   text-decoration: underline;
   cursor: pointer;
   margin-right: 1rem;
+}
+
+@media screen and (max-height: 570px) {
+  .BattlePost .fa-image {
+    font-size: 7.5rem;
+  }
 }
