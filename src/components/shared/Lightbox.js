@@ -76,7 +76,7 @@ const Lightbox = ({ photos, votes }) => {
           <i className='fas fa-chevron-right' />
         </div>
         <div className='lightbox-img-container'>
-          <img src={dispImg} alt={dispImg} className='lightbox-img' />
+          <img src={`${process.env.REACT_APP_SERVER_URL}/${dispImg}`} alt={dispImg} className='lightbox-img' />
         </div>
         {
           photos[cardIndex].avatar_url &&
