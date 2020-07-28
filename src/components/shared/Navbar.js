@@ -1,5 +1,5 @@
 import React from 'react'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter, NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { LOGOUT } from '../../store/action-types'
 import logoLP from '../../asset/logo/logo.svg'
@@ -19,9 +19,9 @@ const Navbar = ({ user, profileInfos, dispatch, history }) => {
 
   return (
     <div className='div-NavbarMobile'>
-      <Link to={`/${user.username}`} className='link-logo'><img src={logoLP} className='logo-NavbarMobile' alt='Pix Battle Logo' /></Link>
+      <img src={logoLP} className='logo-NavbarMobile' alt='Pix Battle Logo' />
       <div className='links-NavbarMobile'>
-        <img className='avatar-NavbarMobile' src={user.avatar} alt='avatar' />
+        <NavLink to={`/${user.username}`} className='link-logo'><img className='avatar-NavbarMobile' src={user.avatar} alt='avatar' /></NavLink>
         <i className='fas fa-trophy star-icon-NavbarMobile'><p className='p-victory-point-NavbarMobile'>{!profileInfos.infos ? '0' : profileInfos.infos.victories}</p></i>
         <div className='Logout'>
           <p className='p-Logout' onClick={handleLogOut}>Déconnexion</p>
