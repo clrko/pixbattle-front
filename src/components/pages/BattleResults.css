@@ -35,7 +35,7 @@
 .AvatarPodium .fa-star {
   color: #FAC748;
   padding-left: 6px;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
 }
 
 .div-img-Avatar1 {
@@ -190,10 +190,10 @@
 
 .p-user-victories-podium {
   color: black;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   position: relative;
-  bottom: 18px;
-  left: 8.5px;
+  bottom: 16px;
+  text-align: center;
 }
 
 .p-user-victories {
@@ -241,7 +241,6 @@
   .p-user-victories-podium {
     font-size: 0.8rem;
     bottom: 16px;
-    left: 9px;
   }
 
   .AvatarPodium .fa-star {
