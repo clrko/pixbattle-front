@@ -138,7 +138,7 @@
   background-color: #235789;
   border-radius: 18px;
   width: 80%;
-  height: 170px;
+  height: auto;
   margin-top: 3px;
   overflow: auto;
   border: 6px solid #235789;
@@ -192,8 +192,8 @@
   color: black;
   font-size: 0.9rem;
   position: relative;
-  bottom: 17px;
-  left: 8px;
+  bottom: 18px;
+  left: 8.5px;
 }
 
 .p-user-victories {
@@ -236,5 +236,15 @@
 
   .button-BattleResults {
     padding: 5px;
+  }
+
+  .p-user-victories-podium {
+    font-size: 0.8rem;
+    bottom: 16px;
+    left: 9px;
+  }
+
+  .AvatarPodium .fa-star {
+    font-size: 1.4rem;
   }
 }
