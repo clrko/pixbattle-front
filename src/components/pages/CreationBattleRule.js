@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import axios from 'axios'
-import { ADD_RULES } from '../../store/action-types'
+import classnames from 'classnames'
+import { ADD_RULES, REMOVE_THEME } from '../../store/action-types'
 import './CreationBattle.css'
 
 class CreationBattleRule extends Component {
   state = {
     rules: [],
-    selectedRules: []
+    selectedRules: [],
+    isRule: false
   }
 
   handleOptionClick = e => {
@@ -25,13 +27,22 @@ class CreationBattleRule extends Component {
         selectedRules: [...this.state.selectedRules, this.state.rules[selectedRuleIndex]]
       })
     }
+    this.setState({ isRule: true })
   }
 
   handleChangeSteps = e => {
     const rules = [...this.state.selectedRules]
-    const { dispatch } = this.props
+    const { dispatch, history } = this.props
     dispatch({ type: ADD_RULES, rules })
-    return this.props.changeStep(e)
+    if (this.props.changeStep) {
+      return this.props.changeStep(e)
+    }
+    return history.push('/battle-creation/deadline')
+  }
+
+  handleReturn = e => {
+    const { dispatch } = this.props
+    dispatch({ type: REMOVE_THEME })
   }
 
   componentDidMount () {
@@ -47,17 +58,19 @@ class CreationBattleRule extends Component {
   }
 
   render () {
-    const { rules } = this.state
+    const { rules, selectedRules, isRule } = this.state
     return (
       <div className='battleCreation-page'>
         <div className='cardBattle'>
-          <h1 className='cardBattle-color'>2. Personnalise la battle</h1>
+          <h1 className='cardBattle-color'>Personnalise la battle</h1>
           <div className='battleCreation-ruleContainer'>
             {
               rules.map((rule, i) =>
                 <button
                   type='button'
-                  className='battle-optionButton battle-btn'
+                  className={classnames('battle-btn battle-optionButton', {
+                    'battle-optionButton-selected': selectedRules.find(r => r.rule_id === rule.rule_id)
+                  })}
                   onClick={this.handleOptionClick}
                   id={rule.rule_id}
                   key={i}
@@ -72,12 +85,17 @@ class CreationBattleRule extends Component {
               <button
                 className='battleCreation-cancelButton battle-btn'
                 type='button'
+                onClick={this.handleReturn}
               >
                 Retour
               </button>
-            </NavLink> {/* Ajouter lien vers theme page + redux */}
+            </NavLink>
             <button
-              className='battleCreation-validateButton battle-btn'
+              className={
+                isRule
+                  ? 'battleCreation-validateButton battle-btn'
+                  : 'battleCreation-validateButton-disable battle-btn'
+              }
               type='button'
               onClick={this.handleChangeSteps}
             >

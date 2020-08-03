@@ -5,11 +5,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: auto;
-  height: 66vh;
+  width: 85%;
+  height: 68vh;
   border-radius: 15px;
   overflow: auto;
-  margin-top: 3px;
+  margin: auto;
   border: 6px solid #235789;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .margin-div-participant-RankingMembers {
-  margin: 0 15px;
+  margin: 0 0.5rem;
 }
 
 .p-div-participant-RankingMembers {
@@ -55,7 +55,7 @@
 }
 
 .p-margin-div-participant-RankingMembers {
-  font-size: 1.4em;
+  font-size: 1em;
   font-weight: bold;
   letter-spacing: 1px;
   text-align: left;
@@ -78,7 +78,19 @@
 .p-user-victories-trophy-RankingMembers {
   position: relative;
   color: black;
-  font-size: 0.5em; 
+  font-size: 0.5em;
   bottom: 28px;
   text-align: center;
+}
+
+@media screen and (max-height: 570px) {
+  .window-RankingMembers {
+    height: 64vh;
+  }
+}
+
+@media screen and (max-width: 369px) {
+  .window-RankingMembers {
+    height: 70vh;
+  }
 }

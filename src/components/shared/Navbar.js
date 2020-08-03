@@ -1,5 +1,5 @@
 import React from 'react'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter, NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { LOGOUT } from '../../store/action-types'
 import logoLP from '../../asset/logo/logo.svg'
@@ -19,14 +19,34 @@ const Navbar = ({ user, profileInfos, dispatch, history }) => {
 
   return (
     <div className='div-NavbarMobile'>
-      <Link to={`/${user.username}`} className='link-logo'><img src={logoLP} className='logo-NavbarMobile' alt='Pix Battle Logo' /></Link>
+      <img
+        src={logoLP}
+        className='logo-NavbarMobile'
+        alt='Pix Battle Logo'
+      />
       <div className='links-NavbarMobile'>
-        <img className='avatar-NavbarMobile' src={user.avatar} alt='avatar' />
-        <i className='fas fa-trophy star-icon-NavbarMobile'><p className='p-victory-point-NavbarMobile'>{!profileInfos.infos ? '0' : profileInfos.infos.victories}</p></i>
-        <div className='Logout'>
-          <p className='p-Logout' onClick={handleLogOut}>Déconnexion</p>
-        </div>
-        <i className='fas fa-sign-out-alt' onClick={handleLogOut} />
+        <NavLink
+          to={`/${user.username}`}
+          className='link-logo'
+        >
+          <img className='avatar-NavbarMobile' src={user.avatar} alt='avatar' />
+        </NavLink>
+        <span className='Navbar-trophy-wrapper'>
+          <i className='fas fa-trophy Navbar-trophy-icon' />
+          <span
+            className='Navbar-victory-points'
+          >
+            {!profileInfos.infos ? '0' : profileInfos.infos.victories}
+          </span>
+        </span>
+        <button
+          type='button'
+          className='btn-Logout'
+          onClick={handleLogOut}
+        >
+          <span className='Logout-text'>Déconnexion</span>
+          <i className='fas fa-sign-out-alt' />
+        </button>
       </div>
     </div>
   )

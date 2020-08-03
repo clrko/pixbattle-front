@@ -1,15 +1,21 @@
 import React from 'react'
+import Loader from 'react-loader-spinner'
 import Timer from 'react-compound-timer'
+import moment from 'moment'
 import './BattlePostTimer.css'
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 
-const BattlePostTimer = ({ deadline, history, battleId, groupId }) => {
-  const startDate = new Date()
-  const endDate = new Date(deadline)
-  const utc = startDate.getTime() + (startDate.getTimezoneOffset() * 60000)
-  const difference = (endDate.getTime() - utc)
+const BattlePostTimer = ({ deadline, onDeadlineReached }) => {
+  const startDate = moment()
+  const endDate = moment(deadline)
+  const difference = endDate.diff(startDate)
 
   if (!deadline) {
-    return <p>loading...</p>
+    return (
+      <div style={{ width: 'auto', margin: 'auto', textAlign: 'center' }}>
+        <Loader type='ThreeDots' color='#00BFFF' height={80} width={80} />
+      </div>
+    )
   }
 
   return (
@@ -17,6 +23,12 @@ const BattlePostTimer = ({ deadline, history, battleId, groupId }) => {
       <Timer
         initialTime={difference}
         direction='backward'
+        checkpoints={[
+          {
+            time: 0,
+            callback: onDeadlineReached
+          }
+        ]}
       >
         <div className='battle-post-timer-container'>
           <div className='battle-post-timer-count'>

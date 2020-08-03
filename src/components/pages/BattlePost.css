@@ -3,34 +3,18 @@
 }
 
 .battle-post-container {
-  width: 85%;
-  height: 67vh;
   display: flex;
   flex-direction: column;
   text-align: center;
   justify-content: space-between;
 }
 
-.battlePost-info {
-  background-color: #FAC748;
-  color: #3181C8;
-  cursor: pointer;
-  font-family: FuturaPTMedium;
-  border-style: none;
-  font-weight: bolder;
-  letter-spacing: 0.5px;
-  border-radius: 50px;
-  border: none;
-  padding: 0 1rem;
-  font-size: 1rem;
-  outline: transparent;
-  text-align: center;
+.battlePost-line {
+  font-size: 2px;
 }
 
-.battle-post-infos {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0.5rem 0;
+.battlePost-span {
+  color: #FAC748;
 }
 
 .battlePost-rules {
@@ -49,11 +33,16 @@
 }
 
 .picture {
-  width: 85%;
-  background-color: #FAC748;
+  width: 70vw;
   border-radius: 10px;
   margin: auto;
   object-fit: contain;
+  margin-bottom: 1rem;
+  max-height: 30vh;
+}
+
+.BattlePost .fa-image {
+  font-size: 10rem;
 }
 
 .choose-file-btn {
@@ -76,4 +65,22 @@
   font-size: 1rem;
   outline: transparent;
   background-color: #FAC748;
+}
+
+[type='file'] {
+  height: 0;
+  overflow: hidden;
+  width: 0;
+}
+
+[type='file']+.choose-file-btn {
+  text-decoration: underline;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+@media screen and (max-height: 570px) {
+  .BattlePost .fa-image {
+    font-size: 7.5rem;
+  }
 }

@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import MyGroupsCardList from './MyGroupsCardList.js'
-import Navbar from '../shared/Navbar'
 import PageHeader from '../shared/PageHeader.js'
-import StickyFooter from '../shared/StickyFooter'
 import './MyGroups.css'
 
 const mapStateToProps = state => {
@@ -34,9 +32,9 @@ const MyGroups = ({ user, history }) => {
   }
 
   const getOngoingBattlesMessage = importedOngoingBattleCount => {
-    if (importedOngoingBattleCount > 1) {
+    if (parseInt(importedOngoingBattleCount) > 1) {
       return `${importedOngoingBattleCount} battles en cours`
-    } else if (importedOngoingBattleCount === 1) {
+    } else if (parseInt(importedOngoingBattleCount) === 1) {
       return `${importedOngoingBattleCount} battle en cours`
     } else {
       return 'Aucune battle en cours'
@@ -44,9 +42,9 @@ const MyGroups = ({ user, history }) => {
   }
 
   const getFinishedBattlesMessage = importedFinishedBattleCount => {
-    if (importedFinishedBattleCount > 1) {
+    if (parseInt(importedFinishedBattleCount) > 1) {
       return `${importedFinishedBattleCount} battles terminées`
-    } else if (importedFinishedBattleCount === 1) {
+    } else if (parseInt(importedFinishedBattleCount) === 1) {
       return `${importedFinishedBattleCount} battle terminée`
     } else {
       return 'Aucune battle terminée'
@@ -64,9 +62,15 @@ const MyGroups = ({ user, history }) => {
     })
   }
 
+  const handleSettingsClick = (selectedGroupId, selectedGroupName) => {
+    history.push(`/groups/${selectedGroupId}/settings`, {
+      groupId: selectedGroupId,
+      groupName: selectedGroupName
+    })
+  }
+
   return (
     <div className='background-MyGroups'>
-      <Navbar />
       <PageHeader pageTitle='Mes Groupes' />
       <MyGroupsCardList
         userGroupInformation={userGroupInformation}
@@ -75,8 +79,8 @@ const MyGroups = ({ user, history }) => {
         getFinishedBattlesMessage={getFinishedBattlesMessage}
         getGroupMemberMessage={getGroupMemberMessage}
         handleClick={handleClick}
+        handleSettingsClick={handleSettingsClick}
       />
-      <StickyFooter />
     </div>
   )
 }

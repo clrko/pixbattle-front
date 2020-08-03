@@ -23,23 +23,41 @@
 }
 
 .cardBattle-summary {
-  background-color: #3181C8;
-  margin: 30px 25px;
-  padding: 30px 25px;
-  border-radius: 15px;
-  min-height: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.children-cardBattle-summary {
   display: flex;
   flex-direction: column;
+  background-color: #3181C8;
+  width: 100%;
+  height: 80vh;
+  border-radius: 25px;
+  justify-content: space-around;
 }
 
 .cardBattle-summary h1 {
   margin: 10px auto;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.8em;
+  margin-bottom: 15px;
 }
 
 .cardBattle-summary h2 {
   font-size: 17px;
-  margin: 20px auto;
+  margin: 5px auto;
   color: #FDFFFC;
+  font-weight: 400;
+}
+
+.p-date-CreationbattleSummary {
+
+  color: #FAC748;
+  font-weight: bold;
+  font-size: 15px;
 }
 
 .cardBattle-summary p {
@@ -47,12 +65,21 @@
   margin: 5px auto;
 }
 
+.div-button-CreationBattleSummary {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
 .cardBattle-summary button {
   margin-bottom: 0;
-  background-color: #FAC748;
-  color: #3181C8;
-  padding: 7px 10px;
+  /* background-color: #73db5a; */
+  color: white;
+  /* padding: 10px 10px; */
+  text-transform: uppercase;
   margin: 8px;
+  width: 110px;
+  font-size: 0.9em;
 }
 
 .cardBattle-summary-options {
@@ -74,7 +101,7 @@
 }
 
 .battleCreation-themeContainer input {
-  visibility: hidden;
+  display: none;
 }
 
 .battleCreation-themeContainer input:checked~label {
@@ -161,8 +188,6 @@
 .battle-optionButton-selected {
   background-color: #13293D;
   color: #FDFFFC;
-  padding: 7px 10px;
-  margin: 7px 15px;
 }
 
 .battleCreation-cancelButton {
@@ -179,6 +204,26 @@
   width: 100px;
 }
 
+.battleCreation-validateButton-disable {
+  color: white;
+  background-color: lightgray;
+  color: rgb(146, 146, 146);
+  height: 40px;
+  width: 100px;
+}
+
+.battle-creation-summary {
+  background-color: transparent;
+  color: #FAC748;
+  padding: 0;
+}
+
+.battle-summary-hr {
+  width: 90%;
+  align-self: center;
+  margin: 0.5rem 0;
+}
+
 @media screen and (min-width: 500px) {
   .cardBattle {
     width: 500px;
@@ -187,5 +232,47 @@
 
   .cardBattle-summary {
     margin: 50px 50px;
+  }
+}
+
+@media screen and (max-width: 369px) {
+  .cardBattle {
+    min-height: 65vh;
+  }
+
+  .battle-optionButton {
+    padding: 5px 5px;
+    margin: 8px;
+  }
+
+  .children-cardBattle-summary {
+    height: 90vh;
+  }
+
+  .div-button-refreshed {
+    margin-top: 20px;
+  }
+
+  .refreshButton {
+    height: 30px;
+    width: 30px;
+  }
+
+  .battleCreation-validateButton-disable {
+    color: white;
+    background-color: lightgray;
+    color: rgb(146, 146, 146);
+    height: 30px;
+    width: 80px;
+  }
+
+  .battleCreation-validateButton {
+    height: 30px;
+    width: 80px;
+  }
+
+  .battleCreation-cancelButton {
+    height: 30px;
+    width: 80px;
   }
 }

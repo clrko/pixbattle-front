@@ -35,7 +35,7 @@
 .AvatarPodium .fa-star {
   color: #FAC748;
   padding-left: 6px;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
 }
 
 .div-img-Avatar1 {
@@ -124,6 +124,13 @@
   margin-bottom: 8px;
 }
 
+.button-div-congratulations-empty {
+  width: 188px;
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+
 .div-attendee-list {
   display: flex;
   flex-direction: column;
@@ -131,12 +138,11 @@
   background-color: #235789;
   border-radius: 18px;
   width: 80%;
-  height: 170px;
+  height: auto;
   margin-top: 3px;
   overflow: auto;
   border: 6px solid #235789;
 }
-
 
 .div-attendee-list::-webkit-scrollbar {
   width: 5px;
@@ -148,7 +154,7 @@
 }
 
 .p-div-participant {
-  font-size: 1.4rem;
+  font-size: 1rem;
   font-weight: bold;
   letter-spacing: 1px;
   text-align: left;
@@ -174,7 +180,7 @@
 }
 
 .margin-div-participant {
-  margin: 0 15px;
+  margin: 0 0.5rem;
 }
 
 .margin-fa-star-attendee-list {
@@ -184,10 +190,10 @@
 
 .p-user-victories-podium {
   color: black;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   position: relative;
-  bottom: 17px;
-  left: 8px;
+  bottom: 16px;
+  text-align: center;
 }
 
 .p-user-victories {
@@ -196,4 +202,48 @@
   font-size: 1rem;
   right: 21px;
   top: 7px;
+}
+
+@media screen and (max-width: 369px) {
+  .first-position {
+    padding: 0px 20px;
+  }
+
+  .h1-div-congratulations {
+    font-size: 1.1rem;
+  }
+
+  .div-attendee-list {
+    width: auto;
+    height: auto;
+  }
+
+  .div-img-Avatar1 img {
+    width: 60px;
+  }
+
+  .div-img-Avatar2 img {
+    width: 60px;
+  }
+
+  .div-img-Avatar3 img {
+    width: 60px;
+  }
+
+  .AvatarPodium .fa-star {
+    font-size: 1.1rem;
+  }
+
+  .button-BattleResults {
+    padding: 5px;
+  }
+
+  .p-user-victories-podium {
+    font-size: 0.8rem;
+    bottom: 16px;
+  }
+
+  .AvatarPodium .fa-star {
+    font-size: 1.4rem;
+  }
 }

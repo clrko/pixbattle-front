@@ -8,12 +8,17 @@ const mapStateToProps = state => {
   return { user }
 }
 
-const DropDown = ({ user, history, match }) => {
+const DropDownMyProfile = ({ user, history, match }) => {
   const handleChange = e => {
     history.push(e.target.value)
   }
 
-  const selectedOption = match.path
+  const handleSettings = e => {
+    e.preventDefault()
+    history.push(`/${user.username}/settings/informations`)
+  }
+
+  const selectedOption = match.url
 
   return (
     <div className='background-DropDown'>
@@ -22,8 +27,9 @@ const DropDown = ({ user, history, match }) => {
         <option value={`/${user.username}/ranking`}>Mon Classement</option>
         <option value={`/${user.username}/pictures`}>Mes Photos</option>
       </select>
+      <button className='settings-btn-profil' onClick={handleSettings}><i className='fas fa-cog' /></button>
     </div>
   )
 }
 
-export default connect(mapStateToProps)(withRouter(DropDown))
+export default connect(mapStateToProps)(withRouter(DropDownMyProfile))

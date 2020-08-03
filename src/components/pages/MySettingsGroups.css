@@ -1,0 +1,119 @@
+.background-GroupSettings {
+  background-color: #235789;
+  height: auto;
+  width: 85%;
+  margin: auto;
+  border-radius: 25px;
+  padding-bottom: 5px;
+  overflow-y: scroll;
+}
+
+.setting-group-container {
+  padding: 0 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.participants {
+  overflow: scroll;
+  height: 20vh;
+}
+
+.modified-group-text {
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  padding-left: 5%;
+  padding-top: 4%;
+  padding-bottom: 2%;
+}
+
+.modified-group-input {
+  width: 100%;
+  border-radius: 20px;
+  border-style: none;
+  padding: 10px 15px;
+  border: 1px solid transparent;
+  height: 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  outline: 0;
+  color: #235789;
+}
+
+.modified-group-input:focus {
+  border: solid 3px #FAC748;
+}
+
+.container-modified-group-name {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.infoSettings {
+  color: white;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  line-height: 1rem;
+  margin-top: 1%;
+  padding-left: 5%;
+  padding-bottom: 2%;
+}
+
+.settings-emails-container {
+  height: 10vh;
+  overflow: scroll;
+  padding: 0;
+}
+
+.settings-emails-list {
+  list-style: none;
+  color: #FAC748;
+  line-height: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 1% 0;
+}
+
+.settings-group-bottom {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-validate-modification {
+  background-color: #73DB5A;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  height: 30px;
+  margin-left: 5%;
+  width: fit-content;
+  outline: transparent;
+}
+
+.settings-btn-add-user {
+  margin-left: 30%;
+}
+
+.settings-remove-email {
+  color: red;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-right: 2px;
+  background: transparent;
+  border: none;
+}
+
+.green {
+  color: green
+}
+
+.align-flex-end {
+  align-self: flex-end;
+  margin-right: 5%;
+  margin-bottom: 5%;
+}

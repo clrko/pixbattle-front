@@ -4,16 +4,17 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
+  padding: 10px 0;
 }
 
 .link-logo {
-  width: 42%;
+  width: 45%;
   height: 100%;
-  display: flex;
-  align-items: center;
+  display: inline-block;
 }
 
 .logo-NavbarMobile {
+  display: block;
   max-width: 150px;
   padding-left: 4px;
   cursor: pointer;
@@ -28,25 +29,29 @@
 }
 
 .avatar-NavbarMobile {
-  max-width: 40%;
-  padding: 10px;
-  border-radius: 100px;
+  width: 40px;
 }
 
-.star-icon-NavbarMobile {
+.Navbar-trophy-icon {
   color: #FAC748;
   font-size: 1.8rem;
-  margin-right: 26px;
-  display: flex;
-  align-items: center;
 }
 
-.p-victory-point-NavbarMobile {
+.Navbar-trophy-wrapper {
   position: relative;
-  bottom: 6px;
-  right: 20px;
+  padding: 0 10px;
+}
+
+.Navbar-victory-points {
+  position: absolute;
+  left: 0;
+  bottom: 9px;
+  width: 100%;
+  text-align: center;
   color: black;
-  font-size: 0.8rem;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: FuturaPTMedium;
 }
 
 .fa-sign-out-alt {
@@ -55,13 +60,22 @@
   color: #FAC748;
 }
 
-.Logout {
+.Logout-text {
   display: none;
+}
+
+.btn-Logout {
+  background: transparent;
+  border: none;
+  color: #FAC748;
+  font-weight: bold;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0 0 0 10px;
 }
 
 @media screen and (min-width: 600px) {
   .link-logo {
-    width: auto;
     height: 100%;
     display: flex;
     align-items: center;
@@ -80,34 +94,43 @@
     justify-content: normal;
   }
 
-  .avatar-NavbarMobile {
-    max-width: 25%;
-    padding: 10px;
-  }
-
-  .star-icon-NavbarMobile {
+  .Navbar-trophy-icon {
     font-size: 2.8rem;
-    margin-right: 26px;
-  }
-
-  .p-victory-point-NavbarMobile {
-    top: 2px;
-    right: 37px;
-    font-size: 1.2rem;
   }
 
   .fa-sign-out-alt {
     display: none;
   }
 
-  .Logout {
+  .Logout-text {
     display: inline;
   }
+}
 
-  .p-Logout {
-    color: #FAC748;
-    font-weight: bold;
-    font-size: 1.3rem;
-    cursor: pointer;
+@media screen and (max-height: 570px) {
+  .div-NavbarMobile {
+    margin-bottom: 0;
+    padding: 7px 0;
+  }
+
+  .link-logo {
+    margin-right: 5px;
+  }
+
+  .links-NavbarMobile {
+    margin-right: 11px;
+  }
+
+  .fa-sign-out-alt {
+    font-size: 2.2rem;
+  }
+
+  .Navbar-trophy-wrapper {
+    padding: 0 5px;
+  }
+
+  .Navbar-victory-points {
+    font-size: 0.9rem;
+    top: 5%;
   }
 }

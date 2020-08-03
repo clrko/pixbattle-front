@@ -1,24 +1,26 @@
 import React from 'react'
+import Cgu from './Cgu'
+import Modal from '../shared/Modal'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { LOGIN, GET_INFOS } from '../../store/action-types'
+import { toast } from 'react-toastify'
+import { LOGIN } from '../../store/action-types'
 import classNames from 'classnames'
+import 'react-toastify/dist/ReactToastify.css'
 import './FormLogin.css'
 import './FormRegistration.css'
 
-const mapStateToProps = state => {
-  const { user } = state
-  return { user }
-}
-
+toast.configure()
 class FormRegistration extends React.Component {
   state = {
     username: '',
     email: '',
     password: '',
+    invitationCode: null,
     checkPassword: '',
-    isChecked: false
+    isChecked: false,
+    isOpen: false
   }
 
   handleChange = e => {
@@ -32,7 +34,8 @@ class FormRegistration extends React.Component {
   }
 
   checkUsername = () => {
-    if (/^[a-zA-Z0-9]+$/.test(this.state.username)) {
+    const { username } = this.state
+    if (/^[a-zA-Z0-9]+$/.test(this.state.username) && (username.length >= 3 && username.length <= 15)) {
       return (this.state.username)
     }
   }
@@ -43,34 +46,64 @@ class FormRegistration extends React.Component {
 
   checkPassword = () => {
     const { password, checkPassword } = this.state
-    return (password === checkPassword)
+    return (password === checkPassword && password.length >= 6)
   }
 
-  handleSubmit = async (e) => {
+  handleSubmit = e => {
     e.preventDefault()
     if (this.checkPassword() && this.checkEmail() && this.checkUsername()) {
       const { dispatch, history } = this.props
-      await axios
+      axios
         .post(`${process.env.REACT_APP_SERVER_URL}/register`, this.state)
         .then(res => {
+          this.notifySuccess()
           localStorage.setItem('token', res.headers['x-access-token'])
           dispatch({ type: LOGIN, ...res.data })
+          history.push(`/${res.data.username}`)
+          return this.props.onClose(e)
         })
-      await axios
-        .get(`${process.env.REACT_APP_SERVER_URL}/profile`,
-          {
-            headers: {
-              authorization: `Bearer ${localStorage.getItem('token')}`
-            }
-          })
-        .then(res => {
-          dispatch({ type: GET_INFOS, ...res.data })
-          history.push(`/${this.props.user.username}`)
+        .catch(err => {
+          if (err.response.status === 409) {
+            this.notifyAlreadyRegister()
+          } else {
+            this.notifyError()
+          }
         })
     } else {
-      alert('une erreur est survenue')
+      this.notifyError()
     }
-    return this.props.onClose(e)
+  }
+
+  notifySuccess = () => {
+    toast.success('Bienvenue !', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
+  }
+
+  notifyAlreadyRegister = () => {
+    toast.error('Tu es déjà inscrit-e', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
+  }
+
+  notifyError = () => {
+    toast.error('Une erreur est survenue', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
+  }
+
+  handleOpenModal = e => {
+    e.preventDefault()
+    this.setState({ isOpen: !this.state.isOpen })
+  }
+
+  componentDidMount () {
+    if (this.props.invitationCode) {
+      this.setState({ invitationCode: this.props.invitationCode })
+    }
   }
 
   render () {
@@ -82,7 +115,7 @@ class FormRegistration extends React.Component {
     const emailClass = classNames('LoginForm-input', { 'LoginForm-passwordError': emailError })
     const usernameClass = classNames('LoginForm-input', { 'LoginForm-passwordError': usernameError })
     return (
-      <form className='register-form'>
+      <form className='register-form' onSubmit={this.handleSubmit}>
         <div className='login-inside LoginForm-div checkUsername-wrapper'>
           <label className='LoginForm-label'>Pseudo</label>
           <input
@@ -152,25 +185,29 @@ class FormRegistration extends React.Component {
             onChange={this.handleCheckbox}
             required
           />
-          <label className='label-UGC'>Conditions générales d'utilisations</label>
+          <button className='label-UGC' onClick={this.handleOpenModal}>Conditions générales d'utilisations</button>
+          <Modal isOpen={this.state.isOpen}>
+            <Cgu onClose={this.handleOpenModal} />
+          </Modal>
         </div>
-        <div>
-          <input
-            className='LoginForm-cancelButton'
+        <div className='div-buttonValidateCancel'>
+          <button
+            className='FormLogin-button LoginForm-cancelButton'
             type='button'
-            value='Annuler'
             onClick={this.props.onClose}
-          />
-          <input
-            className='LoginForm-validateButton'
+          >
+            Annuler
+          </button>
+          <button
+            className='FormLogin-button LoginForm-validateButton'
             type='submit'
-            value='Valider'
-            onClick={this.handleSubmit}
-          />
+          >
+            Valider
+          </button>
         </div>
       </form>
     )
   }
 }
 
-export default connect(mapStateToProps)(withRouter(FormRegistration))
+export default connect()(withRouter(FormRegistration))

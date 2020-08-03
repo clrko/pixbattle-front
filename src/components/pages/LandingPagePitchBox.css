@@ -54,13 +54,24 @@
     background-color: #235789;
     margin: none;
     border-radius: 25px;
-    margin-top: 15%;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .pitchBoxLandingPage {
+    margin-top: 1em;
+  }
+
+  .pitch-button {
+    font-size: 16px;
+  }
+
+  .pitch-h2 {
+    font-size: 1.25em;
   }
 
   .pitchBoxLandingPage-text {
-    margin: 0 10%;
-    text-align: center;
-    font-size: 24px;
+    font-size: 21px;
   }
 }
 
@@ -90,8 +101,6 @@
   }
 
   .pitchBoxLandingPage-text {
-    margin: 0 10%;
-    text-align: center;
     font-size: 25px;
   }
 

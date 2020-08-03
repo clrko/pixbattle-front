@@ -2,20 +2,28 @@ import React, { useState } from 'react'
 import Photo from '../shared/Photo'
 import axios from 'axios'
 import classnames from 'classnames'
+import { confirmAlert } from 'react-confirm-alert'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import 'react-confirm-alert/src/react-confirm-alert.css'
 import '../shared/Lightbox.css'
 
-const Lightbox = ({ photos, currentUserVotes }) => {
+toast.configure()
+
+const BattleVoteLightbox = ({ photos, currentUserVotes, getUserVotes }) => {
   const [dispImg, setDisp] = useState('')
   const [photoId, setPhotoId] = useState('')
   const [cardIndex, setIndex] = useState(0)
   const [dispImgStyle, setStyle] = useState({ display: 'none' })
   const [vote, setVote] = useState({ photoId: '', vote: '' })
   const [allVotes, setAllVotes] = useState([])
-  const [numberOfVotes, setNumberOfVotes] = useState(3 - allVotes.length)
+
+  const numberOfVotes = 3 - allVotes.length
 
   const showPhotoUrl = e => {
-    setDisp(photos[Number(e.target.id)].photo_url)
-    setIndex(Number(e.target.id))
+    const index = Number(e.target.id)
+    setDisp(photos[index].photo_url)
+    setIndex(index)
     setStyle({ display: 'flex' })
     setPhotoId(photos[Number(e.target.id)].photo_id)
   }
@@ -51,8 +59,7 @@ const Lightbox = ({ photos, currentUserVotes }) => {
   }
 
   const getVote = e => {
-    e.preventDefault()
-    const newVote = { photoId: photoId, vote: e.target.value }
+    const newVote = { photoId: photoId, vote: Number(e.target.value) }
     setVote(newVote)
     const samePhotoSameVoteIdx = allVotes.findIndex(
       v => v.photoId === photoId && v.vote === newVote.vote
@@ -67,7 +74,6 @@ const Lightbox = ({ photos, currentUserVotes }) => {
       setAllVotes(allVotes => {
         const nextVotes = [...allVotes]
         nextVotes.splice(samePhotoSameVoteIdx, 1)
-        setNumberOfVotes(numberOfVotes + 1)
         return nextVotes
       })
     } else if (samePhotoDiffVoteIdx !== -1) {
@@ -75,18 +81,27 @@ const Lightbox = ({ photos, currentUserVotes }) => {
         v => v.vote === newVote.vote
       )
       if (sameVoteIdx !== -1) {
-        if (window.confirm('Ce vote est déjà attribué, veux-tu l\'utiliser pour cette photo ?')) {
-          setAllVotes(allVotes => {
-            const nextVotes = [...allVotes]
-            nextVotes.splice(sameVoteIdx, 1)
-            const samePhotoDiffVoteIdx2 = nextVotes.findIndex(
-              v => v.photoId === photoId && v.vote !== newVote.vote
-            )
-            nextVotes.splice(samePhotoDiffVoteIdx2, 1)
-            nextVotes.push(newVote)
-            return nextVotes
-          })
-        }
+        confirmAlert({
+          message: 'Ce vote est déjà attribué, veux-tu l\'utiliser pour cette photo ?',
+          buttons: [
+            {
+              label: 'Oui',
+              onClick: () => setAllVotes(allVotes => {
+                const nextVotes = [...allVotes]
+                nextVotes.splice(sameVoteIdx, 1)
+                const samePhotoDiffVoteIdx2 = nextVotes.findIndex(
+                  v => v.photoId === photoId && v.vote !== newVote.vote
+                )
+                nextVotes.splice(samePhotoDiffVoteIdx2, 1)
+                nextVotes.push(newVote)
+                return nextVotes
+              })
+            },
+            {
+              label: 'Non'
+            }
+          ]
+        })
       } else {
         setAllVotes(allVotes => {
           const nextVotes = [...allVotes]
@@ -96,54 +111,103 @@ const Lightbox = ({ photos, currentUserVotes }) => {
         })
       }
     } else if (diffPhotoSameVoteIdx !== -1) {
-      if (window.confirm('Ce vote est déjà attribué, veux-tu l\'utiliser pour cette photo ?')) {
-        setAllVotes(allVotes => {
-          const nextVotes = [...allVotes]
-          nextVotes.splice(diffPhotoSameVoteIdx, 1)
-          nextVotes.push(newVote)
-          return nextVotes
-        })
-      }
+      confirmAlert({
+        message: 'Ce vote est déjà attribué, veux-tu l\'utiliser pour cette photo ?',
+        buttons: [
+          {
+            label: 'Oui',
+            onClick: () => setAllVotes(allVotes => {
+              const nextVotes = [...allVotes]
+              nextVotes.splice(diffPhotoSameVoteIdx, 1)
+              nextVotes.push(newVote)
+              return nextVotes
+            })
+          },
+          {
+            label: 'Non'
+          }
+        ]
+      })
     } else {
       setAllVotes(allVotes => [...allVotes, newVote])
-      setNumberOfVotes(numberOfVotes - 1)
     }
   }
 
   const handleVotes = () => {
-    if (allVotes.length === 3 && window.confirm('Ces votes sont définitifs, es-tu sûr-e de vouloir les valider ?')) {
-      axios
-        .post(`${process.env.REACT_APP_SERVER_URL}/battle/battle-vote`,
+    if (allVotes.length === 3) {
+      confirmAlert({
+        message: 'Ces votes sont définitifs, es-tu sûr-e de vouloir les valider ?',
+        buttons: [
           {
-            photoId1: allVotes[0].photoId,
-            vote1: allVotes[0].vote,
-            photoId2: allVotes[1].photoId,
-            vote2: allVotes[1].vote,
-            photoId3: allVotes[2].photoId,
-            vote3: allVotes[2].vote
+            label: 'Oui',
+            onClick: () => axios
+              .post(`${process.env.REACT_APP_SERVER_URL}/battle/battle-vote`,
+                {
+                  photoId1: allVotes[0].photoId,
+                  vote1: allVotes[0].vote,
+                  photoId2: allVotes[1].photoId,
+                  vote2: allVotes[1].vote,
+                  photoId3: allVotes[2].photoId,
+                  vote3: allVotes[2].vote
+                },
+                {
+                  headers: {
+                    authorization: `Bearer ${localStorage.getItem('token')}`
+                  }
+                })
+              .then(res => res && notifySuccess())
+              .then(getUserVotes)
+              .catch(err => err && notifyError())
           },
           {
-            headers: {
-              authorization: `Bearer ${localStorage.getItem('token')}`
-            }
-          })
-        .then(res => console.log(res))
+            label: 'Non'
+          }
+        ]
+      })
     } else {
-      alert(`Tu dois encore voter pour ${3 - allVotes.length} photos pour valider tes votes.`)
+      notifyNeedMoreVotes()
     }
-    return window.location.reload(true)
+  }
+
+  const notifySuccess = () => {
+    toast.success('Tes votes ont bien été enregistrés !', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
+  }
+
+  const notifyNeedMoreVotes = () => {
+    toast(`Tu dois encore voter pour ${3 - allVotes.length} photos pour valider`, {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
+  }
+
+  const notifyError = () => {
+    toast.error('Une erreur est survenue', {
+      position: 'bottom-right',
+      autoClose: 3000
+    })
   }
 
   const selectedPhoto = allVotes.find(vote => {
     return vote.photoId === photoId
   })
 
+  const highlightVotes = currentUserVotes.length ? currentUserVotes : allVotes
+
   return (
     <div className='gallery-lightbox-container'>
       <section className='Gallery'>
         {photos.map((photo, i) => (
           <div className='gallery-img-container' key={photo.photo_id}>
-            <Photo photo={photo} handleClick={showPhotoUrl} id={i} currentUserVotes={currentUserVotes} />
+            <Photo
+              photo={photo}
+              handleClick={showPhotoUrl}
+              index={i}
+              id={photo.photo_id}
+              currentUserVotes={highlightVotes}
+            />
           </div>
         ))}
       </section>
@@ -158,13 +222,24 @@ const Lightbox = ({ photos, currentUserVotes }) => {
           <i className='fas fa-chevron-right' />
         </div>
         <div className='lightbox-img-container'>
-          <img src={dispImg} alt={dispImg} className='lightbox-img' />
+          {
+            dispImg &&
+              <img
+                src={`${process.env.REACT_APP_SERVER_URL}/${dispImg}`}
+                alt={dispImg}
+                className='lightbox-img'
+              />
+          }
         </div>
         {
           currentUserVotes.length === 0 &&
             <div>
               <div className='btn-vote-container'>
-                <label className={classnames('label-vote', { 'label-vote-active': selectedPhoto && selectedPhoto.vote === '1' })}>
+                <label
+                  className={classnames('label-vote', {
+                    'label-vote-active': selectedPhoto && selectedPhoto.vote === 1
+                  })}
+                >
                   <input
                     type='radio'
                     value='1'
@@ -178,7 +253,11 @@ const Lightbox = ({ photos, currentUserVotes }) => {
                     <i className='fas fa-star' />
                   </div>
                 </label>
-                <label className={classnames('label-vote', { 'label-vote-active': selectedPhoto && selectedPhoto.vote === '2' })}>
+                <label
+                  className={classnames('label-vote', {
+                    'label-vote-active': selectedPhoto && selectedPhoto.vote === 2
+                  })}
+                >
                   <input
                     type='radio'
                     value='2'
@@ -193,7 +272,10 @@ const Lightbox = ({ photos, currentUserVotes }) => {
                     <i className='fas fa-star' />
                   </div>
                 </label>
-                <label className={classnames('label-vote', { 'label-vote-active': selectedPhoto && selectedPhoto.vote === '3' })}>
+                <label className={classnames('label-vote', {
+                  'label-vote-active': selectedPhoto && selectedPhoto.vote === 3
+                })}
+                >
                   <input
                     type='radio'
                     value='3'
@@ -217,7 +299,7 @@ const Lightbox = ({ photos, currentUserVotes }) => {
       <div className='vote-status'>
         {
           currentUserVotes.length === 0
-            ? <button onClick={handleVotes}>valider les votes</button>
+            ? <button className='battle-btn battle-optionButton' onClick={handleVotes}>Valider</button>
             : <p>Tu as déjà voté pour cette battle !</p>
         }
       </div>
@@ -225,4 +307,4 @@ const Lightbox = ({ photos, currentUserVotes }) => {
   )
 }
 
-export default Lightbox
+export default BattleVoteLightbox

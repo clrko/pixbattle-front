@@ -1,0 +1,56 @@
+.scrollbar-ListMembers::-webkit-scrollbar {
+  width: 5px;
+}
+
+.scrollbar-ListMembers::-webkit-scrollbar-thumb {
+  background-color: #FAC748;
+  border-radius: 10px;
+}
+
+.div-participants-members {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 4px 0;
+  width: 100%;
+}
+
+.margin-div-participant-members {
+  margin: 0 15px;
+}
+
+.p-div-participant-members {
+  font-size: 1em;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-align: left;
+  color: white
+}
+
+.margin-div-participant-members {
+  width: 6%;
+}
+
+.img-attendee-list-members {
+  max-width: 2em;
+  border-radius: 50%;
+}
+
+.margin-p-div-participant-members {
+  margin-left: 10%;
+}
+
+.participants-remove-btn {
+  position: relative;
+  top: 7px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 15px;
+  color: red;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-right: 2px;
+  background-color: transparent;
+  border: none;
+}
