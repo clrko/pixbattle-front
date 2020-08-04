@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import LandingPagePitchBox from './LandingPagePitchBox'
 import FormContainer from './FormContainer'
 import Modal from '../shared/Modal'
 import logoLP from '../../asset/logo/logo.svg'
 import './LandingPage.css'
+
+const mapStateToProps = state => ({
+  user: state.user
+})
 
 class LandingPage extends Component {
   state = {
@@ -20,9 +25,17 @@ class LandingPage extends Component {
     isOpen: false
   }
 
-  handleOpenModal = e => {
-    e.preventDefault()
+  handleOpenModal = () => {
     this.setState({ isOpen: !this.state.isOpen })
+  }
+
+  handleClickButton = () => {
+    const { user, history } = this.props
+    if (user) {
+      history.push(`/${user.username}`)
+    } else {
+      this.handleOpenModal()
+    }
   }
 
   render () {
@@ -59,7 +72,11 @@ class LandingPage extends Component {
             }
           </div>
         </div>
-        <button className='pitch-button' onClick={this.handleOpenModal}>
+        <button
+          type='button'
+          className='pitch-button'
+          onClick={this.handleClickButton}
+        >
           JOUER
         </button>
         <Modal isOpen={this.state.isOpen} showLogo>
@@ -70,4 +87,4 @@ class LandingPage extends Component {
   }
 }
 
-export default LandingPage
+export default connect(mapStateToProps)(LandingPage)
