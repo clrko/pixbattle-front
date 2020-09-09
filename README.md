@@ -1,68 +1,84 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Pixbattle](/public/img/header.png)
+# Pixbattle
+👉[The app is live here](https://pixbattle.com/) 👈 
 
-## Available Scripts
+**Pixbattle** is a responsive web application which allow any user to set up a photo contest with a group of his choice (family, friends, colleagues etc.).
 
-In the project directory, you can run:
+The idea was found during the coronavirus crisis by Maxime Parola, our client, who wanted to find a way to maintain social ties despite the lockdown. 
 
-### `npm start`
+The principle of the game is for a user to create a group by inviting some friends or family members and organise a photo contest on a particular topic. 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Each member has to upload a picture and in the end, after discovering all the pictures, will have to vote for his favorite ones. The winner will choose the theme of the next contest.  
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## The team
 
-### `npm test`
+![The team](/public/img/team.png)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Aristide Ouedraogo [Github](https://github.com/Aristide-O) - [LinkedIn](https://www.linkedin.com/in/aristide-ouedraogo/)
+* Claire Kodia [Github](https://github.com/clrko') - [LinkedIn](https://www.linkedin.com/in/clairekodia/)
+* Lola Donval [Github](https://github.com/Lola-D) - [LinkedIn](https://www.linkedin.com/in/lola-donval/)
+* Maxime Poitoux [Github](https://github.com/MaximePoitoux) - [LinkedIn](https://www.linkedin.com/in/maximepoitoux/)
+* Vincent Igabille [Github](https://github.com/vincentiga)
 
-### `npm run build`
+## The project
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The projet has been developed as part of the web developement training program at [Wild Code School](https://www.wildcodeschool.com/en-GB), for 2 months. 
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+The aim was to create and deploy a full stack web application (React.js, Node.js and MySQL) for an entrepreneur and apply all the knowledge acquired during the training (agile methodolody, customer management, coding, deployement etc.).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This 2-month real-life project has been an even bigger challenge for our team as we were working remotly.
+ 
+## Features
 
-### `npm run eject`
+* Ability to sign up, invite people, create a group and/or join an existing one
+* Ability to upload a picture, vote and view the contest pictures
+* Creation and management of user accounts with a record of the battles, victories, pictures and groups
+* Display of the battle rankings and pictures
+* Mailing notification system
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Technologies
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Frontend**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* React.js
+* JavaScript
+* HTML5
+* CSS3
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+**Backend**
 
-## Learn More
+* Node.js
+* Express.js
+* MySQL
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You can find the source code [here](https://github.com/clrko/pixbattle-back)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Hosting
 
-### Code Splitting
+* PlanetHoste
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Potential improvements
 
-### Analyzing the Bundle Size
+* Develop a system to moderate and report inappropriate pictures
+* Develop a communication system (chat or forum) to be able to chat with the group
+* Link the application to social networks 
+* Develop a PWA
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Screenshots
 
-### Making a Progressive Web App
+<div style="display:flex; justify-content:space-around; margin:30px 0;">
+<img src="/public/img/authpage.png" alt="Authentication page"/>
+<img src="/public/img/userpage.png" alt="User profile page"/>
+<img src="/public/img/userprofilesetting.png" alt="Settings of the userprofile"/>
+<img src="/public/img/userranking.png" alt="Rankiing of the user"/>
+<img src="/public/img/usergroups.png" alt="List of the user's groups"/>
+<img src="/public/img/battlecreationtheme.png" alt="Choice of the theme of the battle"/>
+<img src="/public/img/battlecreationoptions.png" alt="Choice of the options of the battle"/>
+<img src="/public/img/battlepost.png" alt="Upload of a picture"/>
+</div>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## In the project directory, you can run:
+* `npm install`
+* `npm start`
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+These commands install the dependencies and start the app in the developement mode.
