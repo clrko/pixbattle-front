@@ -51,7 +51,7 @@ This 2-month real-life project has been an even bigger challenge for our team as
 * Express.js
 * MySQL
 
-You can find the source code [here](https://github.com/clrko/pixbattle-back)
+You can find the backend source code [here](https://github.com/clrko/pixbattle-back)
 
 ## Hosting
 
@@ -68,13 +68,13 @@ You can find the source code [here](https://github.com/clrko/pixbattle-back)
 
 <div style="display:flex; justify-content:space-around; margin:30px 0;">
 <img src="/public/img/authpage.png" alt="Authentication page" width="200" height="356"/>
-<img src="/public/img/userpage.png" alt="User profile page" width="100" height="178"/>
-<img src="/public/img/userprofilesetting.png" alt="Settings of the userprofile"/>
-<img src="/public/img/userranking.png" alt="Rankiing of the user"/>
-<img src="/public/img/usergroups.png" alt="List of the user's groups"/>
-<img src="/public/img/battlecreationtheme.png" alt="Choice of the theme of the battle"/>
-<img src="/public/img/battlecreationoptions.png" alt="Choice of the options of the battle"/>
-<img src="/public/img/battlepost.png" alt="Upload of a picture"/>
+<img src="/public/img/userpage.png" alt="User profile page" width="200" height="356"/>
+<img src="/public/img/userprofilesetting.png" alt="Settings of the userprofile" width="200" height="356"/>
+<img src="/public/img/userranking.png" alt="Rankiing of the user" width="200" height="356"/>
+<img src="/public/img/usergroups.png" alt="List of the user's groups" width="200" height="356"/>
+<img src="/public/img/battlecreationtheme.png" alt="Choice of the theme of the battle" width="200" height="356"/>
+<img src="/public/img/battlecreationoptions.png" alt="Choice of the options of the battle" width="200" height="356"/>
+<img src="/public/img/battlepost.png" alt="Upload of a picture" width="200" height="356"/>
 </div>
 
 ## In the project directory, you can run:
