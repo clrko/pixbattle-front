@@ -2,7 +2,7 @@
 # Pixbattle
 👉[The app is live here](https://pixbattle.com/) 👈 
 
-**Pixbattle** is a responsive web application which allow any user to set up a photo contest with a group of his choice (family, friends, colleagues etc.).
+**Pixbattle** is a responsive web application which allows any user to set up a photo contest with a group of his choice (family, friends, colleagues etc.).
 
 The idea was found during the coronavirus crisis by Maxime Parola, our client, who wanted to find a way to maintain social ties despite the lockdown. 
 
@@ -24,7 +24,7 @@ Each member has to upload a picture and in the end, after discovering all the pi
 
 The projet has been developed for 2 months as part of the web developement training program at [Wild Code School](https://www.wildcodeschool.com/en-GB). 
 
-The aim was to create and deploy a full stack web application (React.js, Node.js and MySQL) for an entrepreneur and apply all the knowledge acquired during the training (agile methodolody, customer management, coding, deployement etc.).
+The aim was to create and deploy a full stack web application (React.js, Node.js and MySQL) for an entrepreneur and apply the knowledge acquired during the training (agile methodolody, customer management, coding, deployment etc.).
 
 This 2-month real-life project has been an even bigger challenge for our team as we were working remotly.
  
