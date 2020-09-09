@@ -22,7 +22,7 @@ Each member has to upload a picture and in the end, after discovering all the pi
 
 ## The project
 
-The projet has been developed as part of the web developement training program at [Wild Code School](https://www.wildcodeschool.com/en-GB), for 2 months. 
+The projet has been developed for 2 months as part of the web developement training program at [Wild Code School](https://www.wildcodeschool.com/en-GB). 
 
 The aim was to create and deploy a full stack web application (React.js, Node.js and MySQL) for an entrepreneur and apply all the knowledge acquired during the training (agile methodolody, customer management, coding, deployement etc.).
 
@@ -31,9 +31,9 @@ This 2-month real-life project has been an even bigger challenge for our team as
 ## Features
 
 * Ability to sign up, invite people, create a group and/or join an existing one
-* Ability to upload a picture, vote and view the contest pictures
-* Creation and management of user accounts with a record of the battles, victories, pictures and groups
+* Ability to upload a picture and vote for the favorite ones
 * Display of the battle rankings and pictures
+* Creation and management of user accounts with a record of the battles, victories, pictures and groups
 * Mailing notification system
 
 ## Technologies
@@ -55,20 +55,20 @@ You can find the source code [here](https://github.com/clrko/pixbattle-back)
 
 ## Hosting
 
-* PlanetHoste
+* PlanetHoster
 
 ## Potential improvements
 
 * Develop a system to moderate and report inappropriate pictures
-* Develop a communication system (chat or forum) to be able to chat with the group
+* Develop a group communication system (chat or forum)
 * Link the application to social networks 
-* Develop a PWA
+* Develop a Progressive Web App
 
 ## Screenshots
 
 <div style="display:flex; justify-content:space-around; margin:30px 0;">
-<img src="/public/img/authpage.png" alt="Authentication page"/>
-<img src="/public/img/userpage.png" alt="User profile page"/>
+<img src="/public/img/authpage.png" alt="Authentication page" width="200" height="356"/>
+<img src="/public/img/userpage.png" alt="User profile page" width="100" height="178"/>
 <img src="/public/img/userprofilesetting.png" alt="Settings of the userprofile"/>
 <img src="/public/img/userranking.png" alt="Rankiing of the user"/>
 <img src="/public/img/usergroups.png" alt="List of the user's groups"/>
